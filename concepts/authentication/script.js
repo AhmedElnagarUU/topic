@@ -474,9 +474,13 @@ let playInterval = null;
 let isComplete = false;
 let advancedApproach = null;
 let advancedStep = 0;
+let renderedPhaseKey = null;
+let currentDiagramData = null;
+let packetAnimRunning = false;
+let packetAnimFrames = [];
 
 // DOM refs
-let canvas, svgLayer, nodesContainer, labelsContainer, diagramTooltip, stepBar;
+let canvas, svgLayer, nodesContainer, labelsContainer, packetsContainer, diagramTooltip, stepBar;
 
 // ─── Init ────────────────────────────────────────────────────────────────────
 function init() {
@@ -484,6 +488,7 @@ function init() {
   svgLayer = document.getElementById('connection-layer');
   nodesContainer = document.getElementById('nodes-container');
   labelsContainer = document.getElementById('connection-labels');
+  packetsContainer = document.getElementById('packets-container');
   diagramTooltip = document.getElementById('diagram-tooltip');
   stepBar = document.getElementById('step-bar');
 
@@ -521,6 +526,9 @@ function getMaxUnlockedPhase() {
 function goToPhase(index) {
   if (index < 0 || index >= TUTORIAL_PHASES.length) return;
   stopPlay();
+  renderedPhaseKey = null;
+  currentDiagramData = null;
+  stopPacketAnimations();
   currentPhaseIndex = index;
   currentStep = 0;
   isComplete = false;
@@ -651,32 +659,42 @@ function renderPhase() {
   }
 
   renderDiagram(phase);
+  if (isCompare) updateCompareHighlight(step);
   updateStepUI(phase, steps);
   lucide.createIcons();
 }
 
 // ─── Diagram rendering ───────────────────────────────────────────────────────
 function renderDiagram(phase) {
-  const diagramData = getPhaseDiagramData(phase);
+  const phaseKey = `${currentPhaseIndex}-${phase.id}`;
   const steps = getPhaseSteps(phase);
   const step = steps[currentStep];
-  const emptyEl = document.getElementById('diagram-empty');
 
+  if (renderedPhaseKey === phaseKey && currentDiagramData && phase.type !== 'compare') {
+    updateDiagramHighlights(phase, step);
+    return;
+  }
+
+  renderedPhaseKey = phaseKey;
+  stopPacketAnimations();
+  currentDiagramData = getPhaseDiagramData(phase);
+
+  const emptyEl = document.getElementById('diagram-empty');
   nodesContainer.innerHTML = '';
   svgLayer.innerHTML = '';
   if (labelsContainer) labelsContainer.innerHTML = '';
+  if (packetsContainer) packetsContainer.innerHTML = '';
   hideDiagramTooltip();
 
   const showDiagram = phase.type === 'walkthrough' || (phase.type === 'intro' && step.showDiagram === true);
   emptyEl.classList.toggle('hidden', showDiagram || phase.type === 'compare');
   if (phase.type === 'compare') return;
 
-  if (!diagramData || !showDiagram) {
-    if (phase.type === 'compare') updateCompareHighlight(step);
-    return;
-  }
+  const diagramData = currentDiagramData;
+  if (!diagramData || !showDiagram) return;
 
   const accent = diagramData.accent || diagramData.color || '#818cf8';
+  ensureArrowMarker(accent);
 
   diagramData.nodes.forEach(node => {
     const el = document.createElement('div');
@@ -715,6 +733,7 @@ function renderDiagram(phase) {
     const bgLine = document.createElementNS(svgNS, 'path');
     bgLine.setAttribute('d', path);
     bgLine.setAttribute('class', 'connection-line-bg');
+    bgLine.setAttribute('id', `conn-bg-${i}`);
     svgLayer.appendChild(bgLine);
 
     const hitLine = document.createElementNS(svgNS, 'path');
@@ -760,21 +779,124 @@ function renderDiagram(phase) {
   });
 
   lucide.createIcons();
+  requestAnimationFrame(() => updateDiagramHighlights(phase, step));
+}
 
-  requestAnimationFrame(() => {
-    const highlight = getCurrentHighlight(phase, step);
-    const visibleNodes = highlight.nodes.length > 0 ? highlight.nodes : diagramData.nodes.map(n => n.id);
+function ensureArrowMarker(color) {
+  const svgNS = 'http://www.w3.org/2000/svg';
+  let defs = svgLayer.querySelector('defs');
+  if (!defs) {
+    defs = document.createElementNS(svgNS, 'defs');
+    svgLayer.prepend(defs);
+  }
+  if (!defs.querySelector('#arrow-marker')) {
+    const marker = document.createElementNS(svgNS, 'marker');
+    marker.setAttribute('id', 'arrow-marker');
+    marker.setAttribute('viewBox', '0 0 10 10');
+    marker.setAttribute('refX', '8');
+    marker.setAttribute('refY', '5');
+    marker.setAttribute('markerWidth', '5');
+    marker.setAttribute('markerHeight', '5');
+    marker.setAttribute('orient', 'auto');
+    const arrowPath = document.createElementNS(svgNS, 'path');
+    arrowPath.setAttribute('d', 'M 0 0 L 10 5 L 0 10 z');
+    arrowPath.setAttribute('fill', color);
+    marker.appendChild(arrowPath);
+    defs.appendChild(marker);
+  }
+}
 
-    diagramData.nodes.forEach((node, i) => {
-      const el = document.getElementById(`node-${node.id}`);
-      if (!el) return;
-      if (visibleNodes.includes(node.id)) {
-        setTimeout(() => el.classList.add('visible'), i * 150);
+function getHighlightForStep(phase, step, stepIndex) {
+  if (phase.type === 'intro') {
+    return step.highlight || { nodes: [], connections: [] };
+  }
+  if (phase.type === 'walkthrough') {
+    const map = getStepHighlightMap(phase.approach);
+    return map[stepIndex] || { nodes: [], connections: [] };
+  }
+  return { nodes: [], connections: [] };
+}
+
+function getRevealedConnections(phase, stepIndex) {
+  const revealed = new Set();
+  const steps = getPhaseSteps(phase);
+  for (let i = 0; i <= stepIndex && i < steps.length; i++) {
+    const h = getHighlightForStep(phase, steps[i], i);
+    (h.connections || []).forEach(c => revealed.add(c));
+  }
+  return revealed;
+}
+
+function updateDiagramHighlights(phase, step, stepIndexOverride) {
+  const diagramData = currentDiagramData || getPhaseDiagramData(phase);
+  if (!diagramData) return;
+
+  const stepIndex = stepIndexOverride ?? currentStep;
+  const highlight = getHighlightForStep(phase, step, stepIndex);
+  const revealed = getRevealedConnections(phase, stepIndex);
+  const visibleNodes = highlight.nodes.length > 0
+    ? highlight.nodes
+    : (phase.type === 'intro' ? [] : diagramData.nodes.map(n => n.id));
+
+  removePulseRings();
+
+  diagramData.nodes.forEach((node, i) => {
+    const el = document.getElementById(`node-${node.id}`);
+    if (!el) return;
+    el.classList.remove('highlight', 'dimmed', 'sending', 'visible');
+
+    if (visibleNodes.includes(node.id)) {
+      setTimeout(() => el.classList.add('visible'), phase.type === 'intro' ? i * 120 : 0);
+      if (highlight.nodes.includes(node.id)) {
+        el.classList.add('highlight');
+      } else if (highlight.nodes.length > 0) {
+        el.classList.add('dimmed');
       }
-    });
-
-    setTimeout(() => highlightForStep(phase, step), 100);
+    }
   });
+
+  const sendingNodes = new Set();
+  (highlight.connections || []).forEach(i => {
+    const conn = diagramData.connections[i];
+    if (conn) sendingNodes.add(conn.from);
+  });
+  sendingNodes.forEach(id => {
+    const el = document.getElementById(`node-${id}`);
+    if (el) {
+      el.classList.add('sending');
+      addPulseRing(el, diagramData);
+    }
+  });
+
+  const totalConns = diagramData.connections.length;
+  const activeConns = highlight.connections || [];
+  for (let i = 0; i < totalConns; i++) {
+    const isRevealed = revealed.has(i);
+    const isActive = activeConns.includes(i);
+    const connEl = document.getElementById(`conn-${i}`);
+
+    document.getElementById(`conn-bg-${i}`)?.classList.toggle('revealed', isRevealed);
+    connEl?.classList.toggle('revealed', isRevealed);
+    connEl?.classList.toggle('active', isActive);
+    if (isActive) {
+      connEl?.setAttribute('marker-end', 'url(#arrow-marker)');
+    } else {
+      connEl?.removeAttribute('marker-end');
+    }
+    document.getElementById(`particle-${i}`)?.classList.toggle('active', isActive);
+    document.getElementById(`label-${i}`)?.classList.toggle('revealed', isRevealed);
+    document.getElementById(`label-${i}`)?.classList.toggle('active', isActive);
+  }
+
+  updateFlowLegend(step, highlight, diagramData);
+  stopPacketAnimations();
+  if (activeConns.length > 0) {
+    activeConns.forEach((connIdx, order) => {
+      setTimeout(() => startPacketAnimation(connIdx), order * 350);
+    });
+  }
+
+  if (phase.type === 'compare') updateCompareHighlight(step);
 }
 
 function updateCompareHighlight(step) {
@@ -785,49 +907,97 @@ function updateCompareHighlight(step) {
   document.getElementById('compare-jwt').classList.toggle('dimmed', focus === 'session');
 }
 
-function getCurrentHighlight(phase, step) {
-  if (phase.type === 'intro') {
-    return step.highlight || { nodes: [], connections: [] };
+function updateFlowLegend(step, highlight, diagramData) {
+  const legend = document.getElementById('flow-legend');
+  const text = document.getElementById('flow-legend-text');
+  if (!legend || !text) return;
+
+  const hasFlow = step.watch || (highlight.connections && highlight.connections.length > 0);
+  if (!hasFlow) {
+    legend.classList.add('hidden');
+    return;
   }
-  if (phase.type === 'walkthrough') {
-    const map = getStepHighlightMap(phase.approach);
-    return map[currentStep] || { nodes: [], connections: [] };
+
+  legend.classList.remove('hidden');
+  if (step.watch) {
+    text.textContent = step.watch;
+  } else if (highlight.connections?.length) {
+    const parts = highlight.connections.map((i, order) => {
+      const conn = diagramData.connections[i];
+      const from = diagramData.nodes.find(n => n.id === conn.from)?.label || conn.from;
+      const to = diagramData.nodes.find(n => n.id === conn.to)?.label || conn.to;
+      const prefix = highlight.connections.length > 1 ? `${order + 1}. ` : '';
+      return `${prefix}${from} → ${to} (${conn.label})`;
+    });
+    text.textContent = parts.join('  ·  ');
   }
-  return { nodes: [], connections: [] };
+  lucide.createIcons();
 }
 
-function highlightForStep(phase, step) {
-  const diagramData = getPhaseDiagramData(phase);
-  if (!diagramData) return;
+function stopPacketAnimations() {
+  packetAnimRunning = false;
+  packetAnimFrames.forEach(id => cancelAnimationFrame(id));
+  packetAnimFrames = [];
+  if (packetsContainer) packetsContainer.innerHTML = '';
+}
 
-  const highlight = getCurrentHighlight(phase, step);
-  const totalConns = diagramData.connections.length;
+function startPacketAnimation(connIndex) {
+  const pathEl = document.getElementById(`conn-${connIndex}`);
+  if (!pathEl || !packetsContainer || !currentDiagramData) return;
 
-  diagramData.nodes.forEach(n => {
-    const el = document.getElementById(`node-${n.id}`);
-    if (el) el.classList.remove('highlight', 'dimmed');
-  });
-  for (let i = 0; i < totalConns; i++) {
-    document.getElementById(`conn-${i}`)?.classList.remove('active');
-    document.getElementById(`particle-${i}`)?.classList.remove('active');
-    document.getElementById(`label-${i}`)?.classList.remove('active');
+  const conn = currentDiagramData.connections[connIndex];
+  if (!conn) return;
+
+  packetAnimRunning = true;
+  const packet = document.createElement('div');
+  packet.className = 'data-packet';
+  packet.textContent = shortenLabel(conn.label);
+  packet.style.background = `${conn.color}22`;
+  packet.style.border = `1px solid ${conn.color}99`;
+  packet.style.color = conn.color;
+  packetsContainer.appendChild(packet);
+  requestAnimationFrame(() => packet.classList.add('show'));
+
+  const duration = 2600;
+  const length = pathEl.getTotalLength();
+  let startTime = null;
+
+  function tick(timestamp) {
+    if (!packetAnimRunning || !packet.parentElement) return;
+    if (!startTime) startTime = timestamp;
+    const progress = ((timestamp - startTime) % duration) / duration;
+    const point = pathEl.getPointAtLength(progress * length);
+    const containerRect = packetsContainer.getBoundingClientRect();
+    const svgPoint = svgLayer.createSVGPoint();
+    svgPoint.x = point.x;
+    svgPoint.y = point.y;
+    const ctm = pathEl.getScreenCTM();
+    if (!ctm) return;
+    const screen = svgPoint.matrixTransform(ctm);
+    packet.style.left = `${screen.x - containerRect.left}px`;
+    packet.style.top = `${screen.y - containerRect.top}px`;
+    const id = requestAnimationFrame(tick);
+    packetAnimFrames.push(id);
   }
+  packetAnimFrames.push(requestAnimationFrame(tick));
+}
 
-  diagramData.nodes.forEach(n => {
-    const el = document.getElementById(`node-${n.id}`);
-    if (!el) return;
-    if (highlight.nodes.includes(n.id)) {
-      el.classList.add('highlight');
-    } else if (highlight.nodes.length > 0) {
-      el.classList.add('dimmed');
-    }
-  });
+function shortenLabel(label) {
+  if (label.length <= 28) return label;
+  return label.slice(0, 26) + '…';
+}
 
-  (highlight.connections || []).forEach(i => {
-    document.getElementById(`conn-${i}`)?.classList.add('active');
-    document.getElementById(`particle-${i}`)?.classList.add('active');
-    document.getElementById(`label-${i}`)?.classList.add('active');
-  });
+function addPulseRing(nodeEl, diagramData) {
+  const wrap = nodeEl?.querySelector('.node-icon-wrap');
+  if (!wrap || wrap.querySelector('.pulse-ring')) return;
+  const ring = document.createElement('div');
+  ring.className = 'pulse-ring';
+  ring.style.color = diagramData.color || diagramData.accent || '#6366f1';
+  wrap.appendChild(ring);
+}
+
+function removePulseRings() {
+  document.querySelectorAll('.pulse-ring').forEach(r => r.remove());
 }
 
 function getStepHighlightMap(approachId) {
@@ -918,8 +1088,9 @@ function updateStepUI(phase, steps) {
 
     const watchBlock = document.getElementById('step-watch');
     const watchText = document.getElementById('step-watch-text');
+    const diagramVisible = phase.type === 'walkthrough' || (phase.type === 'intro' && step.showDiagram === true);
     if (watchBlock && watchText) {
-      if (step.watch) {
+      if (step.watch && !diagramVisible) {
         watchBlock.classList.remove('hidden');
         watchText.textContent = step.watch;
         watchBlock.style.opacity = '1';
@@ -1036,6 +1207,9 @@ function hideAdvancedPanel() {
   document.getElementById('tutorial-visual').classList.add('hidden');
   document.getElementById('adv-step-controls').classList.add('hidden');
   document.getElementById('step-controls').classList.remove('hidden');
+  renderedPhaseKey = null;
+  currentDiagramData = null;
+  stopPacketAnimations();
 
   // Restore animation inside walkthrough panel
   const visual = document.getElementById('tutorial-visual');
@@ -1045,15 +1219,29 @@ function hideAdvancedPanel() {
 
 function renderAdvancedDiagram() {
   const approach = APPROACHES[advancedApproach];
+  const step = approach.steps[advancedStep];
+  const phaseKey = `advanced-${advancedApproach}`;
+
+  if (renderedPhaseKey === phaseKey && currentDiagramData) {
+    updateDiagramHighlights({ type: 'walkthrough', approach: advancedApproach }, step, advancedStep);
+    return;
+  }
+
+  renderedPhaseKey = phaseKey;
+  stopPacketAnimations();
+  currentDiagramData = approach;
+
   nodesContainer.innerHTML = '';
   svgLayer.innerHTML = '';
   if (labelsContainer) labelsContainer.innerHTML = '';
+  if (packetsContainer) packetsContainer.innerHTML = '';
 
   const accent = approach.color || '#818cf8';
+  ensureArrowMarker(accent);
 
   approach.nodes.forEach(node => {
     const el = document.createElement('div');
-    el.className = 'node-card visible';
+    el.className = 'node-card';
     el.id = `node-${node.id}`;
     el.style.left = `${node.x}%`;
     el.style.top = `${node.y}%`;
@@ -1075,32 +1263,43 @@ function renderAdvancedDiagram() {
     if (!fromNode || !toNode) return;
     const path = computePath(fromNode, toNode, conn, i);
 
-    ['connection-line-bg', 'connection-line', 'flow-particle'].forEach((cls, j) => {
-      const line = document.createElementNS(svgNS, 'path');
-      line.setAttribute('d', path);
-      line.setAttribute('class', cls);
-      line.setAttribute('id', j === 1 ? `conn-${i}` : j === 2 ? `particle-${i}` : '');
-      if (j === 1) line.setAttribute('stroke', conn.color);
-      if (j === 2) line.setAttribute('stroke', conn.color);
-      if (conn.dashed && j === 1) line.setAttribute('stroke-dasharray', '6 4');
-      svgLayer.appendChild(line);
-    });
-  });
+    const bgLine = document.createElementNS(svgNS, 'path');
+    bgLine.setAttribute('d', path);
+    bgLine.setAttribute('class', 'connection-line-bg');
+    bgLine.setAttribute('id', `conn-bg-${i}`);
+    svgLayer.appendChild(bgLine);
 
-  const map = getStepHighlightMap(advancedApproach);
-  const active = map[advancedStep] || { nodes: [], connections: [] };
-  approach.nodes.forEach(n => {
-    const el = document.getElementById(`node-${n.id}`);
-    if (!el) return;
-    el.classList.toggle('highlight', active.nodes.includes(n.id));
-    el.classList.toggle('dimmed', active.nodes.length > 0 && !active.nodes.includes(n.id));
-  });
-  active.connections.forEach(i => {
-    document.getElementById(`conn-${i}`)?.classList.add('active');
-    document.getElementById(`particle-${i}`)?.classList.add('active');
+    const line = document.createElementNS(svgNS, 'path');
+    line.setAttribute('d', path);
+    line.setAttribute('class', 'connection-line');
+    line.setAttribute('id', `conn-${i}`);
+    line.setAttribute('stroke', conn.color);
+    if (conn.dashed) line.setAttribute('stroke-dasharray', '6 4');
+    svgLayer.appendChild(line);
+
+    const particle = document.createElementNS(svgNS, 'path');
+    particle.setAttribute('d', path);
+    particle.setAttribute('class', 'flow-particle');
+    particle.setAttribute('id', `particle-${i}`);
+    particle.setAttribute('stroke', conn.color);
+    svgLayer.appendChild(particle);
+
+    const labelPos = getLabelPosition(fromNode, toNode, conn, i);
+    if (labelsContainer) {
+      const labelEl = document.createElement('div');
+      labelEl.className = 'conn-label';
+      labelEl.id = `label-${i}`;
+      labelEl.style.left = `${labelPos.x}%`;
+      labelEl.style.top = `${labelPos.y}%`;
+      labelEl.textContent = conn.label;
+      labelsContainer.appendChild(labelEl);
+    }
   });
 
   lucide.createIcons();
+  requestAnimationFrame(() => {
+    updateDiagramHighlights({ type: 'walkthrough', approach: advancedApproach }, step, advancedStep);
+  });
 }
 
 function goToAdvancedStep(step) {
