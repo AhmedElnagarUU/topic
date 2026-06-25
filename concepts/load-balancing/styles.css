@@ -1,0 +1,87 @@
+/* Fan-out distribution animation — unique approach #4 */
+
+.fan-canvas {
+  padding: 1.5rem;
+}
+
+.fan-node, .fan-server {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.375rem;
+  padding: 0.75rem 0.5rem;
+  border-radius: 0.875rem;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(26, 26, 38, 0.9);
+  width: 5.25rem;
+  opacity: 0.25;
+  transition: all 0.45s ease;
+  z-index: 2;
+}
+
+.fan-node.visible, .fan-server.visible { opacity: 1; }
+.fan-node.active, .fan-server.active {
+  border-color: rgba(251, 113, 133, 0.5);
+  box-shadow: 0 0 24px rgba(251, 113, 133, 0.2);
+}
+
+.fan-node i, .fan-server i { width: 1.5rem; height: 1.5rem; color: #fb7185; }
+.fan-node span, .fan-server span { font-size: 0.5625rem; font-weight: 600; text-align: center; }
+
+#fan-client { left: 4%; top: 40%; }
+#fan-lb { left: 28%; top: 40%; width: 6rem; }
+#fan-s1 { right: 8%; top: 12%; }
+#fan-s2 { right: 8%; top: 40%; }
+#fan-s3 { right: 8%; top: 68%; }
+
+.fan-svg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+
+.fan-line {
+  fill: none;
+  stroke-width: 2;
+  stroke-linecap: round;
+  opacity: 0.12;
+  transition: opacity 0.4s ease, stroke-width 0.3s ease;
+}
+
+.fan-line.visible { opacity: 0.3; }
+.fan-line.active {
+  opacity: 1;
+  stroke-width: 3;
+  filter: drop-shadow(0 0 5px currentColor);
+}
+
+.fan-packet {
+  position: absolute;
+  width: 0.625rem;
+  height: 0.625rem;
+  border-radius: 50%;
+  background: #fb7185;
+  box-shadow: 0 0 12px rgba(251, 113, 133, 0.8);
+  transform: translate(-50%, -50%);
+  z-index: 5;
+}
+
+.fan-counter {
+  position: absolute;
+  bottom: 8%;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 0.5rem 1rem;
+  border-radius: 2rem;
+  font-size: 0.6875rem;
+  font-family: 'JetBrains Mono', monospace;
+  font-weight: 600;
+  color: #fda4af;
+  background: rgba(251, 113, 133, 0.12);
+  border: 1px solid rgba(251, 113, 133, 0.3);
+  white-space: nowrap;
+  z-index: 6;
+}

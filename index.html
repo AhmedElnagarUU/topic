@@ -69,14 +69,61 @@
           See how code
           <span class="bg-gradient-to-r from-indigo-400 via-violet-400 to-cyan-400 bg-clip-text text-transparent">actually works</span>
         </h2>
-        <p class="text-lg text-white/50 leading-relaxed">
-          Each concept lives in its own space — animated diagrams, flowing connections, and hierarchy cards that explain ideas on a single canvas. No slideshows, just clarity.
+        <p class="text-lg text-white/50 leading-relaxed mb-8">
+          Start with the fundamentals — client, server, database — then build up through auth, APIs, caching, and scaling. Each concept uses a <strong class="text-white/70 font-medium">different animation style</strong> so you can compare approaches and pick what clicks.
         </p>
+
+        <!-- Learning path -->
+        <div class="learning-path mb-10">
+          <p class="text-xs font-medium text-white/30 uppercase tracking-widest mb-4">Recommended path</p>
+          <div class="path-track">
+            <a href="concepts/client-server-database/index.html" class="path-step start-here">
+              <span class="path-num">01</span>
+              <span class="path-name">Client / Server / DB</span>
+            </a>
+            <i data-lucide="chevron-right" class="path-arrow"></i>
+            <a href="concepts/authentication/index.html" class="path-step">
+              <span class="path-num">02</span>
+              <span class="path-name">Authentication</span>
+            </a>
+            <i data-lucide="chevron-right" class="path-arrow"></i>
+            <a href="concepts/http-rest/index.html" class="path-step">
+              <span class="path-num">03</span>
+              <span class="path-name">HTTP & REST</span>
+            </a>
+            <i data-lucide="chevron-right" class="path-arrow"></i>
+            <a href="concepts/caching/index.html" class="path-step">
+              <span class="path-num">04</span>
+              <span class="path-name">Caching</span>
+            </a>
+            <i data-lucide="chevron-right" class="path-arrow"></i>
+            <a href="concepts/load-balancing/index.html" class="path-step">
+              <span class="path-num">05</span>
+              <span class="path-name">Load Balancing</span>
+            </a>
+          </div>
+        </div>
       </div>
     </section>
 
     <!-- Concepts Grid -->
     <section class="max-w-6xl mx-auto px-6 pb-20">
+      <div class="flex items-center gap-3 mb-6">
+        <i data-lucide="palette" class="text-white/30 w-5 h-5"></i>
+        <h3 class="text-sm font-medium text-white/40 uppercase tracking-widest">Animation styles</h3>
+        <div class="flex-1 h-px bg-white/5"></div>
+      </div>
+      <p class="text-sm text-white/40 mb-6 max-w-3xl leading-relaxed">
+        Each concept uses a different visual approach — compare them side by side and pick what feels clearest for teaching.
+      </p>
+      <div class="anim-styles-grid mb-12">
+        <div class="anim-style-card"><span class="anim-style-dot cyan"></span><strong>Vertical stack</strong><span>Layers build top-to-bottom with cascading packets</span></div>
+        <div class="anim-style-card"><span class="anim-style-dot emerald"></span><strong>Flow diagram</strong><span>Nodes + traveling packets along curved paths</span></div>
+        <div class="anim-style-card"><span class="anim-style-dot violet"></span><strong>Ping-pong lanes</strong><span>Separate request/response tracks</span></div>
+        <div class="anim-style-card"><span class="anim-style-dot amber"></span><strong>Branch paths</strong><span>Green hit vs orange miss routes</span></div>
+        <div class="anim-style-card"><span class="anim-style-dot rose"></span><strong>Fan-out</strong><span>Load balancer distributes to server pool</span></div>
+      </div>
+
       <div class="flex items-center gap-3 mb-8">
         <i data-lucide="layers" class="text-white/30 w-5 h-5"></i>
         <h3 class="text-sm font-medium text-white/40 uppercase tracking-widest">Concepts</h3>
@@ -85,18 +132,40 @@
 
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
 
-        <!-- Authentication — Active -->
+        <!-- 01 — Client, Server & Database -->
+        <a href="concepts/client-server-database/index.html" class="concept-card group block p-6 no-underline">
+          <div class="relative z-10">
+            <div class="flex items-start justify-between mb-5">
+              <div class="w-12 h-12 rounded-2xl bg-cyan-500/15 border border-cyan-500/25 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                <i data-lucide="layers" class="text-cyan-400 lucide-icon-lg"></i>
+              </div>
+              <span class="text-xs font-mono text-cyan-400/70 bg-cyan-500/10 px-2 py-1 rounded-md border border-cyan-500/20">01</span>
+            </div>
+            <span class="anim-style-tag">Vertical stack</span>
+            <h4 class="text-xl font-semibold text-white mb-2 group-hover:text-cyan-300 transition-colors">Client, Server & Database</h4>
+            <p class="text-sm text-white/45 leading-relaxed mb-5">
+              Start here. The three layers behind every web app — watch data cascade down the stack and back up again.
+            </p>
+            <div class="flex items-center gap-2 text-sm text-cyan-400/80 font-medium">
+              <span>Start learning</span>
+              <i data-lucide="arrow-right" class="w-4 h-4 group-hover:translate-x-1 transition-transform"></i>
+            </div>
+          </div>
+        </a>
+
+        <!-- 02 — Authentication -->
         <a href="concepts/authentication/index.html" class="concept-card group block p-6 no-underline">
           <div class="relative z-10">
             <div class="flex items-start justify-between mb-5">
               <div class="w-12 h-12 rounded-2xl bg-emerald-500/15 border border-emerald-500/25 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
                 <i data-lucide="shield-check" class="text-emerald-400 lucide-icon-lg"></i>
               </div>
-              <span class="text-xs font-mono text-emerald-400/70 bg-emerald-500/10 px-2 py-1 rounded-md border border-emerald-500/20">01</span>
+              <span class="text-xs font-mono text-emerald-400/70 bg-emerald-500/10 px-2 py-1 rounded-md border border-emerald-500/20">02</span>
             </div>
+            <span class="anim-style-tag">Flow diagram</span>
             <h4 class="text-xl font-semibold text-white mb-2 group-hover:text-emerald-300 transition-colors">Authentication</h4>
             <p class="text-sm text-white/45 leading-relaxed mb-5">
-              Sessions, JWT, OAuth & API keys — each method explained step-by-step with real HTTP examples, analogies, and animated flows between client, server, and identity providers.
+              Sessions, JWT, OAuth & API keys — step-by-step flows with traveling packets between nodes.
             </p>
             <div class="flex items-center gap-2 text-sm text-emerald-400/80 font-medium">
               <span>Explore</span>
@@ -105,51 +174,70 @@
           </div>
         </a>
 
-        <!-- Coming Soon placeholders -->
-        <div class="concept-card coming-soon p-6">
-          <div class="flex items-start justify-between mb-5">
-            <div class="w-12 h-12 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center">
-              <i data-lucide="database" class="text-white/25 lucide-icon-lg"></i>
+        <!-- 03 — HTTP & REST -->
+        <a href="concepts/http-rest/index.html" class="concept-card group block p-6 no-underline">
+          <div class="relative z-10">
+            <div class="flex items-start justify-between mb-5">
+              <div class="w-12 h-12 rounded-2xl bg-violet-500/15 border border-violet-500/25 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                <i data-lucide="globe" class="text-violet-400 lucide-icon-lg"></i>
+              </div>
+              <span class="text-xs font-mono text-violet-400/70 bg-violet-500/10 px-2 py-1 rounded-md border border-violet-500/20">03</span>
             </div>
-            <span class="text-xs font-mono text-white/20 bg-white/5 px-2 py-1 rounded-md">02</span>
-          </div>
-          <h4 class="text-xl font-semibold text-white/40 mb-2">Database Patterns</h4>
-          <p class="text-sm text-white/25 leading-relaxed">Coming soon</p>
-        </div>
-
-        <div class="concept-card coming-soon p-6">
-          <div class="flex items-start justify-between mb-5">
-            <div class="w-12 h-12 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center">
-              <i data-lucide="git-branch" class="text-white/25 lucide-icon-lg"></i>
+            <span class="anim-style-tag">Ping-pong lanes</span>
+            <h4 class="text-xl font-semibold text-white mb-2 group-hover:text-violet-300 transition-colors">HTTP & REST APIs</h4>
+            <p class="text-sm text-white/45 leading-relaxed mb-5">
+              GET, POST, status codes — requests and responses on separate lanes so direction is never ambiguous.
+            </p>
+            <div class="flex items-center gap-2 text-sm text-violet-400/80 font-medium">
+              <span>Explore</span>
+              <i data-lucide="arrow-right" class="w-4 h-4 group-hover:translate-x-1 transition-transform"></i>
             </div>
-            <span class="text-xs font-mono text-white/20 bg-white/5 px-2 py-1 rounded-md">03</span>
           </div>
-          <h4 class="text-xl font-semibold text-white/40 mb-2">API Design</h4>
-          <p class="text-sm text-white/25 leading-relaxed">Coming soon</p>
-        </div>
+        </a>
 
-        <div class="concept-card coming-soon p-6">
-          <div class="flex items-start justify-between mb-5">
-            <div class="w-12 h-12 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center">
-              <i data-lucide="boxes" class="text-white/25 lucide-icon-lg"></i>
+        <!-- 04 — Caching -->
+        <a href="concepts/caching/index.html" class="concept-card group block p-6 no-underline">
+          <div class="relative z-10">
+            <div class="flex items-start justify-between mb-5">
+              <div class="w-12 h-12 rounded-2xl bg-amber-500/15 border border-amber-500/25 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                <i data-lucide="zap" class="text-amber-400 lucide-icon-lg"></i>
+              </div>
+              <span class="text-xs font-mono text-amber-400/70 bg-amber-500/10 px-2 py-1 rounded-md border border-amber-500/20">04</span>
             </div>
-            <span class="text-xs font-mono text-white/20 bg-white/5 px-2 py-1 rounded-md">04</span>
-          </div>
-          <h4 class="text-xl font-semibold text-white/40 mb-2">State Management</h4>
-          <p class="text-sm text-white/25 leading-relaxed">Coming soon</p>
-        </div>
-
-        <div class="concept-card coming-soon p-6">
-          <div class="flex items-start justify-between mb-5">
-            <div class="w-12 h-12 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center">
-              <i data-lucide="network" class="text-white/25 lucide-icon-lg"></i>
+            <span class="anim-style-tag">Branch paths</span>
+            <h4 class="text-xl font-semibold text-white mb-2 group-hover:text-amber-300 transition-colors">Caching</h4>
+            <p class="text-sm text-white/45 leading-relaxed mb-5">
+              Cache hits vs misses — green fast path or orange slow path through server and database.
+            </p>
+            <div class="flex items-center gap-2 text-sm text-amber-400/80 font-medium">
+              <span>Explore</span>
+              <i data-lucide="arrow-right" class="w-4 h-4 group-hover:translate-x-1 transition-transform"></i>
             </div>
-            <span class="text-xs font-mono text-white/20 bg-white/5 px-2 py-1 rounded-md">05</span>
           </div>
-          <h4 class="text-xl font-semibold text-white/40 mb-2">Networking</h4>
-          <p class="text-sm text-white/25 leading-relaxed">Coming soon</p>
-        </div>
+        </a>
 
+        <!-- 05 — Load Balancing -->
+        <a href="concepts/load-balancing/index.html" class="concept-card group block p-6 no-underline">
+          <div class="relative z-10">
+            <div class="flex items-start justify-between mb-5">
+              <div class="w-12 h-12 rounded-2xl bg-rose-500/15 border border-rose-500/25 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                <i data-lucide="share-2" class="text-rose-400 lucide-icon-lg"></i>
+              </div>
+              <span class="text-xs font-mono text-rose-400/70 bg-rose-500/10 px-2 py-1 rounded-md border border-rose-500/20">05</span>
+            </div>
+            <span class="anim-style-tag">Fan-out</span>
+            <h4 class="text-xl font-semibold text-white mb-2 group-hover:text-rose-300 transition-colors">Load Balancing</h4>
+            <p class="text-sm text-white/45 leading-relaxed mb-5">
+              Round-robin traffic distribution — one load balancer fans requests across a pool of servers.
+            </p>
+            <div class="flex items-center gap-2 text-sm text-rose-400/80 font-medium">
+              <span>Explore</span>
+              <i data-lucide="arrow-right" class="w-4 h-4 group-hover:translate-x-1 transition-transform"></i>
+            </div>
+          </div>
+        </a>
+
+        <!-- Coming Soon -->
         <div class="concept-card coming-soon p-6">
           <div class="flex items-start justify-between mb-5">
             <div class="w-12 h-12 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center">
@@ -168,7 +256,7 @@
     <footer class="border-t border-white/5 py-8">
       <div class="max-w-6xl mx-auto px-6 flex items-center justify-between text-xs text-white/25">
         <span>Concept Lab — Learn by seeing</span>
-        <span class="font-mono">v0.1</span>
+        <span class="font-mono">v0.2</span>
       </div>
     </footer>
   </div>

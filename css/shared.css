@@ -138,6 +138,157 @@ body {
   pointer-events: none;
 }
 
+/* Animation style label on concept cards */
+.anim-style-tag {
+  display: inline-block;
+  font-size: 0.625rem;
+  font-family: 'JetBrains Mono', monospace;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: rgba(255, 255, 255, 0.35);
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  padding: 0.2rem 0.5rem;
+  border-radius: 0.375rem;
+  margin-bottom: 0.625rem;
+}
+
+/* Learning path on index */
+.learning-path {
+  padding: 1.25rem 1.5rem;
+  border-radius: 1rem;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  background: rgba(26, 26, 38, 0.4);
+}
+
+.path-track {
+  display: flex;
+  align-items: center;
+  gap: 0.375rem;
+  flex-wrap: wrap;
+}
+
+.path-step {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 0.75rem;
+  border-radius: 0.625rem;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(255, 255, 255, 0.03);
+  text-decoration: none;
+  transition: all 0.25s ease;
+}
+
+.path-step:hover {
+  border-color: rgba(99, 102, 241, 0.35);
+  background: rgba(99, 102, 241, 0.08);
+  transform: translateY(-1px);
+}
+
+.path-step.start-here {
+  border-color: rgba(34, 211, 238, 0.35);
+  background: rgba(34, 211, 238, 0.08);
+}
+
+.path-step.start-here:hover {
+  border-color: rgba(34, 211, 238, 0.55);
+}
+
+.path-num {
+  font-size: 0.625rem;
+  font-family: 'JetBrains Mono', monospace;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.4);
+}
+
+.path-name {
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.7);
+  white-space: nowrap;
+}
+
+.path-arrow {
+  width: 0.875rem;
+  height: 0.875rem;
+  color: rgba(255, 255, 255, 0.15);
+  flex-shrink: 0;
+}
+
+[data-theme="light"] .learning-path {
+  background: var(--panel-bg);
+  border-color: var(--panel-border);
+}
+
+[data-theme="light"] .path-step {
+  background: var(--bg-card);
+  border-color: var(--panel-border);
+}
+
+[data-theme="light"] .path-name {
+  color: var(--text-primary);
+}
+
+[data-theme="light"] .anim-style-tag {
+  color: var(--text-muted);
+  background: rgba(15, 23, 42, 0.04);
+  border-color: var(--panel-border);
+}
+
+/* Animation style comparison grid */
+.anim-styles-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 0.625rem;
+}
+
+.anim-style-card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  padding: 0.875rem 1rem;
+  border-radius: 0.75rem;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  background: rgba(26, 26, 38, 0.35);
+  font-size: 0.6875rem;
+  color: rgba(255, 255, 255, 0.4);
+  line-height: 1.5;
+}
+
+.anim-style-card strong {
+  font-size: 0.75rem;
+  color: rgba(255, 255, 255, 0.75);
+  font-weight: 600;
+}
+
+.anim-style-dot {
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: 50%;
+  margin-bottom: 0.25rem;
+}
+
+.anim-style-dot.cyan { background: #22d3ee; box-shadow: 0 0 8px rgba(34, 211, 238, 0.5); }
+.anim-style-dot.emerald { background: #34d399; box-shadow: 0 0 8px rgba(52, 211, 153, 0.5); }
+.anim-style-dot.violet { background: #a78bfa; box-shadow: 0 0 8px rgba(167, 139, 250, 0.5); }
+.anim-style-dot.amber { background: #fbbf24; box-shadow: 0 0 8px rgba(251, 191, 36, 0.5); }
+.anim-style-dot.rose { background: #fb7185; box-shadow: 0 0 8px rgba(251, 113, 133, 0.5); }
+
+[data-theme="light"] .anim-style-card {
+  background: var(--panel-bg);
+  border-color: var(--panel-border);
+}
+
+[data-theme="light"] .anim-style-card strong {
+  color: var(--text-primary);
+}
+
+[data-theme="light"] .anim-style-card {
+  color: var(--text-secondary);
+}
+
 /* Lucide icon sizing */
 .lucide-icon {
   width: 24px;
