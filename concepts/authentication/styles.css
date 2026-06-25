@@ -1,0 +1,671 @@
+/* Authentication concept — diagram animations */
+
+.diagram-wrapper {
+  position: relative;
+}
+
+.diagram-canvas {
+  position: relative;
+  min-height: 520px;
+  height: clamp(520px, 58vh, 680px);
+  background: rgba(18, 18, 26, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 20px;
+  overflow: visible;
+}
+
+@media (min-width: 1280px) {
+  .diagram-canvas {
+    min-height: 580px;
+    height: clamp(580px, 62vh, 720px);
+  }
+}
+
+.diagram-canvas::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 20px;
+  background: radial-gradient(ellipse 70% 60% at 50% 45%, rgba(99, 102, 241, 0.07) 0%, transparent 70%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* SVG connection layer */
+.connection-layer {
+  position: absolute;
+  inset: 36px 24px 28px 24px;
+  width: auto;
+  height: auto;
+  z-index: 1;
+  overflow: visible;
+}
+
+.connection-hit {
+  fill: none;
+  stroke: transparent;
+  stroke-width: 24;
+  cursor: pointer;
+  pointer-events: stroke;
+}
+
+.connection-line {
+  fill: none;
+  stroke-width: 2.5;
+  stroke-linecap: round;
+  opacity: 0;
+  transition: opacity 0.5s ease, stroke-width 0.25s ease;
+  pointer-events: none;
+}
+
+.connection-line.active {
+  opacity: 1;
+}
+
+.connection-line-bg {
+  fill: none;
+  stroke: rgba(255, 255, 255, 0.06);
+  stroke-width: 2;
+  stroke-linecap: round;
+  pointer-events: none;
+}
+
+#nodes-container {
+  position: absolute;
+  inset: 36px 24px 28px 24px;
+}
+
+.connection-labels {
+  position: absolute;
+  inset: 36px 24px 28px 24px;
+  pointer-events: none;
+  z-index: 5;
+}
+
+.conn-label {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  font-size: 10px;
+  font-family: 'JetBrains Mono', monospace;
+  color: rgba(255, 255, 255, 0.38);
+  background: rgba(10, 10, 15, 0.75);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  padding: 3px 8px;
+  border-radius: 6px;
+  white-space: nowrap;
+  max-width: 160px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  opacity: 0.4;
+  transition: opacity 0.4s ease, color 0.25s ease, border-color 0.25s ease;
+  pointer-events: auto;
+  cursor: help;
+}
+
+.conn-label.active {
+  opacity: 1;
+  color: rgba(255, 255, 255, 0.75);
+  border-color: rgba(99, 102, 241, 0.35);
+}
+
+.conn-label:hover {
+  opacity: 1;
+  z-index: 20;
+  border-color: rgba(99, 102, 241, 0.5);
+  color: white;
+}
+
+/* Animated dash along path */
+.flow-particle {
+  fill: none;
+  stroke-width: 3;
+  stroke-linecap: round;
+  stroke-dasharray: 8 200;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.flow-particle.active {
+  opacity: 1;
+  animation: flow-along 2s linear infinite;
+}
+
+@keyframes flow-along {
+  to { stroke-dashoffset: -208; }
+}
+
+/* Node cards */
+.node-card {
+  position: absolute;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  transform: translate(-50%, -50%);
+  transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  opacity: 0;
+  scale: 0.85;
+  cursor: pointer;
+}
+
+.node-card.visible {
+  opacity: 1;
+  scale: 1;
+}
+
+.node-card.dimmed {
+  opacity: 0.35;
+  scale: 0.95;
+}
+
+.node-card.highlight {
+  opacity: 1;
+  scale: 1.08;
+  z-index: 15;
+}
+
+.node-card:hover {
+  z-index: 40 !important;
+  scale: 1.1;
+}
+
+.node-card:hover .node-icon-wrap {
+  border-color: rgba(99, 102, 241, 0.5) !important;
+  box-shadow: 0 0 28px rgba(99, 102, 241, 0.25), 0 12px 40px rgba(0, 0, 0, 0.45);
+}
+
+.node-card:hover .node-popup {
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(-50%) translateY(0);
+}
+
+.node-icon-wrap {
+  width: 72px;
+  height: 72px;
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(26, 26, 38, 0.95);
+  backdrop-filter: blur(8px);
+  transition: all 0.35s ease;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.35);
+}
+
+.node-card.highlight .node-icon-wrap {
+  box-shadow: 0 0 30px rgba(99, 102, 241, 0.3), 0 8px 32px rgba(0, 0, 0, 0.4);
+}
+
+.node-label {
+  font-size: 13px;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.8);
+  text-align: center;
+  white-space: nowrap;
+  letter-spacing: 0.02em;
+}
+
+.node-sublabel {
+  font-size: 10px;
+  font-family: 'JetBrains Mono', monospace;
+  color: rgba(255, 255, 255, 0.35);
+  text-align: center;
+  max-width: 140px;
+  line-height: 1.45;
+}
+
+/* Hover popup on nodes */
+.node-popup {
+  position: absolute;
+  bottom: calc(100% + 14px);
+  left: 50%;
+  transform: translateX(-50%) translateY(6px);
+  width: max-content;
+  max-width: 220px;
+  padding: 12px 14px;
+  background: rgba(18, 18, 28, 0.97);
+  border: 1px solid rgba(99, 102, 241, 0.35);
+  border-radius: 12px;
+  box-shadow: 0 16px 48px rgba(0, 0, 0, 0.55), 0 0 24px rgba(99, 102, 241, 0.12);
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  pointer-events: none;
+  z-index: 50;
+}
+
+.node-popup::after {
+  content: '';
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 7px solid transparent;
+  border-top-color: rgba(99, 102, 241, 0.35);
+}
+
+.node-popup strong {
+  display: block;
+  font-size: 12px;
+  font-weight: 600;
+  color: white;
+  margin-bottom: 5px;
+}
+
+.node-card.popup-below .node-popup {
+  bottom: auto;
+  top: calc(100% + 14px);
+  transform: translateX(-50%) translateY(-6px);
+}
+
+.node-card.popup-below .node-popup::after {
+  top: auto;
+  bottom: 100%;
+  border-top-color: transparent;
+  border-bottom-color: rgba(99, 102, 241, 0.35);
+}
+
+.node-card.popup-below:hover .node-popup {
+  transform: translateX(-50%) translateY(0);
+}
+
+/* Floating tooltip for connection lines */
+.diagram-tooltip {
+  position: fixed;
+  z-index: 9999;
+  max-width: 240px;
+  padding: 12px 14px;
+  background: rgba(18, 18, 28, 0.97);
+  border: 1px solid rgba(99, 102, 241, 0.4);
+  border-radius: 12px;
+  box-shadow: 0 16px 48px rgba(0, 0, 0, 0.6);
+  pointer-events: none;
+  transition: opacity 0.15s ease;
+}
+
+.diagram-tooltip.visible {
+  opacity: 1;
+}
+
+.diagram-tooltip.hidden {
+  opacity: 0;
+}
+
+.diagram-tooltip strong {
+  display: block;
+  font-size: 11px;
+  font-weight: 600;
+  color: #a5b4fc;
+  margin-bottom: 5px;
+  font-family: 'JetBrains Mono', monospace;
+}
+
+.diagram-tooltip p {
+  font-size: 11px;
+  color: rgba(255, 255, 255, 0.6);
+  line-height: 1.55;
+  margin: 0;
+}
+
+/* Floating data packet */
+.data-packet {
+  position: absolute;
+  z-index: 15;
+  padding: 4px 10px;
+  border-radius: 8px;
+  font-size: 10px;
+  font-family: 'JetBrains Mono', monospace;
+  font-weight: 500;
+  white-space: nowrap;
+  pointer-events: none;
+  opacity: 0;
+  transform: translate(-50%, -50%);
+  transition: opacity 0.3s ease;
+}
+
+.data-packet.show {
+  opacity: 1;
+}
+
+/* Approach selector tabs */
+.approach-tab {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 16px;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  background: rgba(26, 26, 38, 0.5);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-align: left;
+  width: 100%;
+}
+
+.approach-tab:hover {
+  border-color: rgba(255, 255, 255, 0.12);
+  background: rgba(26, 26, 38, 0.8);
+}
+
+.approach-tab.active {
+  border-color: rgba(99, 102, 241, 0.4);
+  background: rgba(99, 102, 241, 0.1);
+  box-shadow: 0 0 20px rgba(99, 102, 241, 0.1);
+}
+
+.approach-tab .tab-icon {
+  width: 36px;
+  height: 36px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: transform 0.3s ease;
+}
+
+.approach-tab.active .tab-icon {
+  transform: scale(1.1);
+}
+
+/* Step indicator */
+.step-bar {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  margin-top: 20px;
+}
+
+.step-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.15);
+  transition: all 0.4s ease;
+  flex-shrink: 0;
+}
+
+.step-dot.active {
+  background: var(--accent-indigo);
+  box-shadow: 0 0 12px rgba(99, 102, 241, 0.6);
+  transform: scale(1.3);
+}
+
+.step-dot.done {
+  background: var(--accent-emerald);
+}
+
+.step-line {
+  flex: 1;
+  height: 2px;
+  background: rgba(255, 255, 255, 0.08);
+  position: relative;
+  overflow: hidden;
+}
+
+.step-line-fill {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, var(--accent-indigo), var(--accent-violet));
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.6s ease;
+}
+
+.step-line-fill.filled {
+  transform: scaleX(1);
+}
+
+/* Info panel */
+.info-panel {
+  background: rgba(26, 26, 38, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 16px;
+  padding: 20px 24px;
+  transition: all 0.5s ease;
+}
+
+.info-panel .step-title {
+  font-size: 15px;
+  font-weight: 600;
+  color: white;
+  margin-bottom: 6px;
+  transition: opacity 0.3s ease;
+}
+
+.info-panel .step-subtitle {
+  font-size: 11px;
+  font-weight: 500;
+  color: rgba(165, 180, 252, 0.7);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  margin-bottom: 8px;
+  transition: opacity 0.3s ease;
+}
+
+.info-panel .step-desc {
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.55);
+  line-height: 1.7;
+  transition: opacity 0.3s ease;
+}
+
+.step-bullets {
+  margin-top: 14px;
+  padding-left: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.step-bullets li {
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.42);
+  line-height: 1.55;
+  padding-left: 18px;
+  position: relative;
+}
+
+.step-bullets li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 7px;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: rgba(99, 102, 241, 0.5);
+}
+
+.code-block {
+  margin-top: 14px;
+  padding: 12px 14px;
+  background: rgba(0, 0, 0, 0.35);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 10px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  line-height: 1.6;
+  color: #a5f3fc;
+  overflow-x: auto;
+  white-space: pre-wrap;
+  word-break: break-all;
+}
+
+.code-block .code-label {
+  display: block;
+  font-size: 9px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: rgba(255, 255, 255, 0.25);
+  margin-bottom: 6px;
+}
+
+.watch-callout {
+  margin-top: 14px;
+  padding: 10px 12px;
+  background: rgba(99, 102, 241, 0.08);
+  border: 1px solid rgba(99, 102, 241, 0.2);
+  border-radius: 10px;
+  font-size: 11px;
+  color: rgba(165, 180, 252, 0.85);
+  line-height: 1.55;
+  display: flex;
+  gap: 8px;
+  align-items: flex-start;
+  transition: opacity 0.3s ease;
+}
+
+.watch-callout svg,
+.watch-callout i {
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+
+.approach-summary {
+  background: rgba(26, 26, 38, 0.4);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 14px;
+  padding: 16px 18px;
+  margin-bottom: 16px;
+}
+
+.approach-summary h4 {
+  font-size: 14px;
+  font-weight: 600;
+  margin-bottom: 6px;
+}
+
+.approach-summary .overview {
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.5);
+  line-height: 1.65;
+  margin-bottom: 10px;
+}
+
+.approach-summary .when-to-use {
+  font-size: 11px;
+  color: rgba(255, 255, 255, 0.35);
+  line-height: 1.5;
+  padding-top: 10px;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.approach-summary .when-to-use strong {
+  color: rgba(255, 255, 255, 0.55);
+  font-weight: 500;
+}
+
+/* Hierarchy cards for comparison */
+.hierarchy-section {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 12px;
+  margin-top: 24px;
+}
+
+.hierarchy-card {
+  background: rgba(26, 26, 38, 0.5);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 14px;
+  padding: 16px;
+  transition: all 0.4s ease;
+  opacity: 0.5;
+}
+
+.hierarchy-card.active-h {
+  opacity: 1;
+  border-color: rgba(99, 102, 241, 0.3);
+  background: rgba(99, 102, 241, 0.08);
+}
+
+.hierarchy-card .h-icon {
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 10px;
+}
+
+.hierarchy-card h5 {
+  font-size: 13px;
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+
+.hierarchy-card p {
+  font-size: 11px;
+  color: rgba(255, 255, 255, 0.4);
+  line-height: 1.5;
+}
+
+/* Play controls */
+.play-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 20px;
+  border-radius: 10px;
+  font-size: 13px;
+  font-weight: 500;
+  border: 1px solid rgba(99, 102, 241, 0.3);
+  background: rgba(99, 102, 241, 0.15);
+  color: #a5b4fc;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+.play-btn:hover {
+  background: rgba(99, 102, 241, 0.25);
+  border-color: rgba(99, 102, 241, 0.5);
+}
+
+.play-btn.playing {
+  border-color: rgba(251, 113, 133, 0.3);
+  background: rgba(251, 113, 133, 0.1);
+  color: #fda4af;
+}
+
+/* Pulse ring on active node */
+@keyframes pulse-ring {
+  0% { transform: scale(1); opacity: 0.6; }
+  100% { transform: scale(1.5); opacity: 0; }
+}
+
+.pulse-ring {
+  position: absolute;
+  inset: -6px;
+  border-radius: 22px;
+  border: 2px solid currentColor;
+  animation: pulse-ring 1.5s ease-out infinite;
+  pointer-events: none;
+}
+
+/* Pros/cons tags */
+.tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 10px;
+  font-weight: 500;
+  padding: 3px 8px;
+  border-radius: 6px;
+}
+
+.tag-pro {
+  background: rgba(52, 211, 153, 0.1);
+  color: #6ee7b7;
+  border: 1px solid rgba(52, 211, 153, 0.2);
+}
+
+.tag-con {
+  background: rgba(251, 113, 133, 0.1);
+  color: #fda4af;
+  border: 1px solid rgba(251, 113, 133, 0.2);
+}

@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Concept Lab — Programming Concepts Visualized</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="css/shared.css">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            deep: '#0a0a0f',
+            surface: '#12121a',
+            card: '#1a1a26',
+          }
+        }
+      }
+    }
+  </script>
+</head>
+<body class="bg-deep text-white">
+  <div class="ambient-bg"></div>
+  <div class="grid-overlay"></div>
+
+  <div class="relative z-10 min-h-screen">
+    <!-- Header -->
+    <header class="border-b border-white/5 backdrop-blur-sm bg-deep/80 sticky top-0 z-50">
+      <div class="max-w-6xl mx-auto px-6 py-5 flex items-center justify-between">
+        <div class="flex items-center gap-3">
+          <div class="w-10 h-10 rounded-xl bg-indigo-500/20 border border-indigo-500/30 flex items-center justify-center">
+            <i data-lucide="brain-circuit" class="text-indigo-400"></i>
+          </div>
+          <div>
+            <h1 class="text-lg font-semibold tracking-tight">Concept Lab</h1>
+            <p class="text-xs text-white/40">Programming concepts, visualized</p>
+          </div>
+        </div>
+        <div class="flex items-center gap-2 text-xs text-white/30 font-mono">
+          <i data-lucide="code-2" class="w-3.5 h-3.5"></i>
+          HTML · Tailwind · Animation
+        </div>
+      </div>
+    </header>
+
+    <!-- Hero -->
+    <section class="max-w-6xl mx-auto px-6 pt-16 pb-10">
+      <div class="max-w-2xl">
+        <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-indigo-500/10 border border-indigo-500/20 text-indigo-300 text-xs font-medium mb-6">
+          <i data-lucide="sparkles" class="w-3.5 h-3.5"></i>
+          Interactive learning
+        </div>
+        <h2 class="text-4xl md:text-5xl font-bold tracking-tight leading-tight mb-4">
+          See how code
+          <span class="bg-gradient-to-r from-indigo-400 via-violet-400 to-cyan-400 bg-clip-text text-transparent">actually works</span>
+        </h2>
+        <p class="text-lg text-white/50 leading-relaxed">
+          Each concept lives in its own space — animated diagrams, flowing connections, and hierarchy cards that explain ideas on a single canvas. No slideshows, just clarity.
+        </p>
+      </div>
+    </section>
+
+    <!-- Concepts Grid -->
+    <section class="max-w-6xl mx-auto px-6 pb-20">
+      <div class="flex items-center gap-3 mb-8">
+        <i data-lucide="layers" class="text-white/30 w-5 h-5"></i>
+        <h3 class="text-sm font-medium text-white/40 uppercase tracking-widest">Concepts</h3>
+        <div class="flex-1 h-px bg-white/5"></div>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+
+        <!-- Authentication — Active -->
+        <a href="concepts/authentication/index.html" class="concept-card group block p-6 no-underline">
+          <div class="relative z-10">
+            <div class="flex items-start justify-between mb-5">
+              <div class="w-12 h-12 rounded-2xl bg-emerald-500/15 border border-emerald-500/25 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                <i data-lucide="shield-check" class="text-emerald-400 lucide-icon-lg"></i>
+              </div>
+              <span class="text-xs font-mono text-emerald-400/70 bg-emerald-500/10 px-2 py-1 rounded-md border border-emerald-500/20">01</span>
+            </div>
+            <h4 class="text-xl font-semibold text-white mb-2 group-hover:text-emerald-300 transition-colors">Authentication</h4>
+            <p class="text-sm text-white/45 leading-relaxed mb-5">
+              Sessions, JWT, OAuth & API keys — each method explained step-by-step with real HTTP examples, analogies, and animated flows between client, server, and identity providers.
+            </p>
+            <div class="flex items-center gap-2 text-sm text-emerald-400/80 font-medium">
+              <span>Explore</span>
+              <i data-lucide="arrow-right" class="w-4 h-4 group-hover:translate-x-1 transition-transform"></i>
+            </div>
+          </div>
+        </a>
+
+        <!-- Coming Soon placeholders -->
+        <div class="concept-card coming-soon p-6">
+          <div class="flex items-start justify-between mb-5">
+            <div class="w-12 h-12 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center">
+              <i data-lucide="database" class="text-white/25 lucide-icon-lg"></i>
+            </div>
+            <span class="text-xs font-mono text-white/20 bg-white/5 px-2 py-1 rounded-md">02</span>
+          </div>
+          <h4 class="text-xl font-semibold text-white/40 mb-2">Database Patterns</h4>
+          <p class="text-sm text-white/25 leading-relaxed">Coming soon</p>
+        </div>
+
+        <div class="concept-card coming-soon p-6">
+          <div class="flex items-start justify-between mb-5">
+            <div class="w-12 h-12 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center">
+              <i data-lucide="git-branch" class="text-white/25 lucide-icon-lg"></i>
+            </div>
+            <span class="text-xs font-mono text-white/20 bg-white/5 px-2 py-1 rounded-md">03</span>
+          </div>
+          <h4 class="text-xl font-semibold text-white/40 mb-2">API Design</h4>
+          <p class="text-sm text-white/25 leading-relaxed">Coming soon</p>
+        </div>
+
+        <div class="concept-card coming-soon p-6">
+          <div class="flex items-start justify-between mb-5">
+            <div class="w-12 h-12 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center">
+              <i data-lucide="boxes" class="text-white/25 lucide-icon-lg"></i>
+            </div>
+            <span class="text-xs font-mono text-white/20 bg-white/5 px-2 py-1 rounded-md">04</span>
+          </div>
+          <h4 class="text-xl font-semibold text-white/40 mb-2">State Management</h4>
+          <p class="text-sm text-white/25 leading-relaxed">Coming soon</p>
+        </div>
+
+        <div class="concept-card coming-soon p-6">
+          <div class="flex items-start justify-between mb-5">
+            <div class="w-12 h-12 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center">
+              <i data-lucide="network" class="text-white/25 lucide-icon-lg"></i>
+            </div>
+            <span class="text-xs font-mono text-white/20 bg-white/5 px-2 py-1 rounded-md">05</span>
+          </div>
+          <h4 class="text-xl font-semibold text-white/40 mb-2">Networking</h4>
+          <p class="text-sm text-white/25 leading-relaxed">Coming soon</p>
+        </div>
+
+        <div class="concept-card coming-soon p-6">
+          <div class="flex items-start justify-between mb-5">
+            <div class="w-12 h-12 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center">
+              <i data-lucide="lock" class="text-white/25 lucide-icon-lg"></i>
+            </div>
+            <span class="text-xs font-mono text-white/20 bg-white/5 px-2 py-1 rounded-md">06</span>
+          </div>
+          <h4 class="text-xl font-semibold text-white/40 mb-2">Encryption</h4>
+          <p class="text-sm text-white/25 leading-relaxed">Coming soon</p>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="border-t border-white/5 py-8">
+      <div class="max-w-6xl mx-auto px-6 flex items-center justify-between text-xs text-white/25">
+        <span>Concept Lab — Learn by seeing</span>
+        <span class="font-mono">v0.1</span>
+      </div>
+    </footer>
+  </div>
+
+  <script src="https://unpkg.com/lucide@0.469.0/dist/umd/lucide.min.js"></script>
+  <script>lucide.createIcons();</script>
+</body>
+</html>
