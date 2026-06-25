@@ -4,8 +4,16 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Concept Lab — Programming Concepts Visualized</title>
+  <script>
+    (function () {
+      if (localStorage.getItem('concept-lab-theme') === 'light') {
+        document.documentElement.setAttribute('data-theme', 'light');
+      }
+    })();
+  </script>
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="css/shared.css">
+  <link rel="stylesheet" href="css/theme.css">
   <script>
     tailwind.config = {
       theme: {
@@ -37,9 +45,15 @@
             <p class="text-xs text-white/40">Programming concepts, visualized</p>
           </div>
         </div>
-        <div class="flex items-center gap-2 text-xs text-white/30 font-mono">
-          <i data-lucide="code-2" class="w-3.5 h-3.5"></i>
-          HTML · Tailwind · Animation
+        <div class="flex items-center gap-3">
+          <button type="button" class="theme-toggle" data-theme-toggle aria-label="Switch to light theme">
+            <i data-theme-icon data-lucide="sun"></i>
+            <span data-theme-label>Light</span>
+          </button>
+          <div class="flex items-center gap-2 text-xs text-white/30 font-mono">
+            <i data-lucide="code-2" class="w-3.5 h-3.5"></i>
+            HTML · Tailwind · Animation
+          </div>
         </div>
       </div>
     </header>
@@ -160,6 +174,7 @@
   </div>
 
   <script src="https://unpkg.com/lucide@0.469.0/dist/umd/lucide.min.js"></script>
+  <script src="js/theme.js"></script>
   <script>lucide.createIcons();</script>
 </body>
 </html>

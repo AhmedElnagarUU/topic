@@ -1,0 +1,140 @@
+/* Concept Lab — light theme */
+
+[data-theme="light"] {
+  --bg-deep: #f4f6fb;
+  --bg-surface: #ffffff;
+  --bg-card: #ffffff;
+  --bg-card-hover: #eef1f8;
+  --border-subtle: rgba(15, 23, 42, 0.08);
+  --border-glow: rgba(79, 70, 229, 0.35);
+  --text-primary: #0f172a;
+  --text-secondary: #475569;
+  --text-muted: #94a3b8;
+  --header-bg: rgba(255, 255, 255, 0.85);
+  --shadow-card: 0 4px 24px rgba(15, 23, 42, 0.06);
+  --shadow-card-hover: 0 16px 40px rgba(15, 23, 42, 0.1), 0 0 0 1px rgba(79, 70, 229, 0.08);
+  --diagram-bg: rgba(255, 255, 255, 0.9);
+  --diagram-glow: rgba(99, 102, 241, 0.05);
+  --panel-bg: rgba(255, 255, 255, 0.95);
+  --panel-border: rgba(15, 23, 42, 0.08);
+  --node-bg: rgba(255, 255, 255, 0.98);
+  --node-shadow: 0 8px 24px rgba(15, 23, 42, 0.08);
+  --conn-bg: rgba(15, 23, 42, 0.06);
+  --label-bg: rgba(255, 255, 255, 0.95);
+  --label-text: rgba(15, 23, 42, 0.55);
+  --tooltip-bg: rgba(255, 255, 255, 0.98);
+  --code-bg: rgba(241, 245, 249, 0.9);
+  --code-text: #0e7490;
+}
+
+/* Ambient & grid — softer on light */
+[data-theme="light"] .ambient-bg::before {
+  background: radial-gradient(ellipse, rgba(99, 102, 241, 0.08) 0%, transparent 70%);
+}
+
+[data-theme="light"] .ambient-bg::after {
+  background: radial-gradient(ellipse, rgba(139, 92, 246, 0.06) 0%, transparent 70%);
+}
+
+[data-theme="light"] .grid-overlay {
+  background-image:
+    linear-gradient(rgba(15, 23, 42, 0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(15, 23, 42, 0.04) 1px, transparent 1px);
+}
+
+/* Concept cards */
+[data-theme="light"] .concept-card {
+  box-shadow: var(--shadow-card);
+}
+
+[data-theme="light"] .concept-card:hover {
+  box-shadow: var(--shadow-card-hover);
+}
+
+[data-theme="light"] .concept-card::before {
+  background: linear-gradient(135deg, rgba(99, 102, 241, 0.05) 0%, transparent 50%);
+}
+
+/* Tailwind utility overrides */
+[data-theme="light"] .bg-deep,
+[data-theme="light"] body.bg-deep {
+  background-color: var(--bg-deep) !important;
+}
+
+[data-theme="light"] .bg-deep\/80 {
+  background-color: var(--header-bg) !important;
+}
+
+[data-theme="light"] .text-white {
+  color: var(--text-primary) !important;
+}
+
+[data-theme="light"] .text-white\/70 {
+  color: var(--text-secondary) !important;
+}
+
+[data-theme="light"] .text-white\/50,
+[data-theme="light"] .text-white\/45 {
+  color: var(--text-secondary) !important;
+}
+
+[data-theme="light"] .text-white\/40,
+[data-theme="light"] .text-white\/35 {
+  color: var(--text-muted) !important;
+}
+
+[data-theme="light"] .text-white\/30,
+[data-theme="light"] .text-white\/25,
+[data-theme="light"] .text-white\/20 {
+  color: #b0bac9 !important;
+}
+
+[data-theme="light"] .border-white\/5,
+[data-theme="light"] .border-white\/10 {
+  border-color: var(--border-subtle) !important;
+}
+
+[data-theme="light"] .bg-white\/5 {
+  background-color: rgba(15, 23, 42, 0.04) !important;
+}
+
+[data-theme="light"] .bg-white\/10 {
+  background-color: rgba(15, 23, 42, 0.06) !important;
+}
+
+[data-theme="light"] header {
+  border-color: var(--border-subtle) !important;
+}
+
+[data-theme="light"] footer {
+  border-color: var(--border-subtle) !important;
+}
+
+/* Theme toggle button */
+.theme-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 7px 12px;
+  border-radius: 10px;
+  border: 1px solid var(--border-subtle);
+  background: var(--bg-card);
+  color: var(--text-secondary);
+  font-size: 12px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  flex-shrink: 0;
+}
+
+.theme-toggle:hover {
+  border-color: var(--border-glow);
+  color: var(--text-primary);
+  background: var(--bg-card-hover);
+}
+
+.theme-toggle svg,
+.theme-toggle i {
+  width: 15px;
+  height: 15px;
+}
