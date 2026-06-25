@@ -571,9 +571,7 @@ function showCompleteView() {
   document.getElementById('walkthrough-panel').classList.add('hidden');
   document.getElementById('phase-nav').classList.add('hidden');
   document.getElementById('phase-header').classList.add('hidden');
-  document.querySelector('.diagram-wrapper').classList.add('hidden');
   document.getElementById('compare-view').classList.add('hidden');
-  document.querySelector('.flex.items-center.justify-between.mb-6').classList.add('hidden');
   lucide.createIcons();
 }
 
@@ -582,8 +580,6 @@ function hideCompleteView() {
   document.getElementById('walkthrough-panel').classList.remove('hidden');
   document.getElementById('phase-nav').classList.remove('hidden');
   document.getElementById('phase-header').classList.remove('hidden');
-  document.querySelector('.diagram-wrapper').classList.remove('hidden');
-  document.querySelector('.flex.items-center.justify-between.mb-6').classList.remove('hidden');
 }
 
 // ─── Render phase ────────────────────────────────────────────────────────────
@@ -602,8 +598,6 @@ function getPhaseDiagramData(phase) {
 function renderPhase() {
   const phase = TUTORIAL_PHASES[currentPhaseIndex];
   const steps = getPhaseSteps(phase);
-
-  // Phase header
   document.getElementById('phase-eyebrow').textContent = phase.eyebrow;
   document.getElementById('phase-title').textContent = phase.title;
   document.getElementById('phase-desc').textContent = phase.description;
@@ -618,11 +612,13 @@ function renderPhase() {
     conn.classList.toggle('done', i < currentPhaseIndex || isComplete);
   });
 
-  // Compare view — hide diagram, show comparison cards
+  // Compare view — hide animation area during comparison phase
   const compareView = document.getElementById('compare-view');
   const isCompare = phase.type === 'compare';
+  const step = steps[currentStep];
+  const showVisual = !isCompare && (phase.type === 'walkthrough' || (phase.type === 'intro' && step.showDiagram === true));
   compareView.classList.toggle('hidden', !isCompare);
-  document.querySelector('.diagram-wrapper').classList.toggle('hidden', isCompare);
+  document.getElementById('tutorial-visual').classList.toggle('hidden', !showVisual);
 
   // Approach summary
   const summaryEl = document.getElementById('approach-summary');
@@ -1001,7 +997,11 @@ function openAdvanced(approachId) {
   advancedStep = 0;
 
   document.getElementById('complete-view').classList.add('hidden');
+  document.getElementById('walkthrough-panel').classList.add('hidden');
   document.getElementById('advanced-panel').classList.remove('hidden');
+  document.getElementById('tutorial-visual').classList.remove('hidden');
+  document.getElementById('step-controls').classList.add('hidden');
+  document.getElementById('adv-step-controls').classList.remove('hidden');
 
   const approach = APPROACHES[approachId];
   document.getElementById('advanced-name').textContent = approach.name;
@@ -1015,9 +1015,10 @@ function openAdvanced(approachId) {
     `<span class="tag tag-con"><i data-lucide="x" class="w-3 h-3"></i>${c}</span>`
   ).join('');
 
-  // Reuse main diagram for advanced
-  document.querySelector('.diagram-wrapper').classList.remove('hidden');
-  document.querySelector('.flex.items-center.justify-between.mb-6').classList.remove('hidden');
+  // Move animation below advanced explanation
+  const visual = document.getElementById('tutorial-visual');
+  const advancedPanel = document.getElementById('advanced-panel');
+  advancedPanel.insertAdjacentElement('afterend', visual);
 
   renderAdvancedDiagram();
   updateAdvancedStepUI();
@@ -1032,8 +1033,14 @@ function closeAdvanced() {
 
 function hideAdvancedPanel() {
   document.getElementById('advanced-panel').classList.add('hidden');
-  document.querySelector('.diagram-wrapper').classList.add('hidden');
-  document.querySelector('.flex.items-center.justify-between.mb-6').classList.add('hidden');
+  document.getElementById('tutorial-visual').classList.add('hidden');
+  document.getElementById('adv-step-controls').classList.add('hidden');
+  document.getElementById('step-controls').classList.remove('hidden');
+
+  // Restore animation inside walkthrough panel
+  const visual = document.getElementById('tutorial-visual');
+  const phaseActions = document.querySelector('#walkthrough-panel .phase-actions');
+  if (phaseActions) phaseActions.insertAdjacentElement('beforebegin', visual);
 }
 
 function renderAdvancedDiagram() {
