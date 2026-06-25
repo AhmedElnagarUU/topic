@@ -1,8 +1,8 @@
 const FAN_PATHS = {
-  'client-lb': 'M 10% 48% L 34% 48%',
-  'lb-s1': 'M 38% 48% Q 58% 48%, 72% 20%',
-  'lb-s2': 'M 38% 48% L 72% 48%',
-  'lb-s3': 'M 38% 48% Q 58% 48%, 72% 76%',
+  'client-lb': 'M 10 48 L 34 48',
+  'lb-s1': 'M 38 48 Q 58 48, 72 20',
+  'lb-s2': 'M 38 48 L 72 48',
+  'lb-s3': 'M 38 48 Q 58 48, 72 76',
 };
 
 const STEPS = [
@@ -69,6 +69,7 @@ let rrIndex = 0;
 
 function init() {
   const svg = document.getElementById('fan-svg');
+  svg.setAttribute('viewBox', '0 0 100 100');
   const ns = 'http://www.w3.org/2000/svg';
   Object.entries(FAN_PATHS).forEach(([id, d]) => {
     const p = document.createElementNS(ns, 'path');

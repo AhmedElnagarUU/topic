@@ -56,6 +56,12 @@
   opacity: 1;
   stroke-width: 3.5;
   filter: drop-shadow(0 0 6px currentColor);
+  stroke-dasharray: 8 6;
+  animation: branch-dash 1.4s linear infinite;
+}
+
+@keyframes branch-dash {
+  to { stroke-dashoffset: -14; }
 }
 
 .branch-packet {

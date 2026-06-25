@@ -1,11 +1,11 @@
 const NODES = ['client', 'cache', 'server', 'db'];
 const PATHS = {
-  'client-cache': { d: 'M 12% 48% Q 20% 28%, 32% 24%', color: '#34d399' },
-  'cache-client': { d: 'M 32% 24% Q 20% 28%, 12% 48%', color: '#34d399' },
-  'client-server': { d: 'M 12% 48% L 58% 48%', color: '#fb923c' },
-  'server-db': { d: 'M 58% 48% L 88% 48%', color: '#fb923c' },
-  'db-server': { d: 'M 88% 48% L 58% 48%', color: '#fb923c' },
-  'server-client': { d: 'M 58% 48% L 12% 48%', color: '#fb923c' },
+  'client-cache': { d: 'M 12 48 Q 20 28, 32 24', color: '#34d399' },
+  'cache-client': { d: 'M 32 24 Q 20 28, 12 48', color: '#34d399' },
+  'client-server': { d: 'M 12 48 L 58 48', color: '#fb923c' },
+  'server-db': { d: 'M 58 48 L 88 48', color: '#fb923c' },
+  'db-server': { d: 'M 88 48 L 58 48', color: '#fb923c' },
+  'server-client': { d: 'M 58 48 L 12 48', color: '#fb923c' },
 };
 
 const STEPS = [
@@ -86,6 +86,7 @@ function init() {
 
 function drawPaths() {
   const svg = document.getElementById('branch-svg');
+  svg.setAttribute('viewBox', '0 0 100 100');
   const ns = 'http://www.w3.org/2000/svg';
   Object.entries(PATHS).forEach(([id, p]) => {
     const path = document.createElementNS(ns, 'path');

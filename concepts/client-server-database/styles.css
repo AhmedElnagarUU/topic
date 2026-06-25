@@ -121,3 +121,46 @@
 .stack-packet.show {
   opacity: 1;
 }
+
+.stack-packet.returning {
+  color: #6ee7b7;
+  background: rgba(52, 211, 153, 0.15);
+  border-color: rgba(52, 211, 153, 0.45);
+}
+
+.stack-layer.visible .layer-icon {
+  animation: layer-pop 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) backwards;
+}
+
+.stack-layer.active .layer-icon {
+  animation: layer-glow 2s ease-in-out infinite;
+}
+
+@keyframes layer-pop {
+  from { transform: scale(0.7); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+@keyframes layer-glow {
+  0%, 100% { box-shadow: 0 0 0 rgba(34, 211, 238, 0); }
+  50% { box-shadow: 0 0 20px rgba(34, 211, 238, 0.35); }
+}
+
+.stack-empty {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 2rem;
+  z-index: 3;
+}
+
+.stack-empty p {
+  font-size: 0.8125rem;
+  color: rgba(255, 255, 255, 0.35);
+  max-width: 240px;
+  line-height: 1.6;
+}

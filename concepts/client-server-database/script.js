@@ -45,7 +45,11 @@ const STEPS = [
     hint: 'Packet goes down then back up — that\'s the full request/response cycle.',
     layers: ['client', 'server', 'database'],
     connectors: [0, 1],
-    packet: { label: '{ name: "You" }', from: 'database', to: 'client', roundTrip: true },
+    packet: {
+      label: '{ name: "You" }',
+      waypoints: ['client', 'server', 'database', 'server', 'client'],
+      roundTrip: true,
+    },
   },
 ];
 
@@ -131,15 +135,22 @@ function render() {
 
   document.getElementById('next-concept').classList.toggle('hidden', current < STEPS.length - 1);
 
-  ['client', 'server', 'database'].forEach(id => {
+  const layerOrder = ['client', 'server', 'database'];
+  layerOrder.forEach((id, i) => {
     const el = layerEls[id]();
     el.classList.remove('visible', 'active', 'dimmed');
+    el.style.transitionDelay = '';
     if (step.layers.includes(id)) {
+      el.style.transitionDelay = `${i * 120}ms`;
       el.classList.add('visible');
-      if (step.packet && (step.packet.from === id || step.packet.to === id)) el.classList.add('active');
+      const wp = step.packet?.waypoints;
+      if (wp?.includes(id)) el.classList.add('active');
+      else if (step.packet && (step.packet.from === id || step.packet.to === id)) el.classList.add('active');
       else if (step.layers.length > 1 && !step.packet) el.classList.add('active');
     }
   });
+
+  document.getElementById('stack-empty')?.classList.toggle('hidden', step.layers.length > 0);
 
   connectors().forEach((c, i) => {
     c.classList.remove('visible', 'active');
@@ -163,32 +174,39 @@ function layerCenter(id) {
 function startPacket(cfg) {
   const packet = document.getElementById('stack-packet');
   packet.textContent = cfg.label;
-  packet.classList.remove('hidden');
+  packet.classList.remove('hidden', 'returning');
   requestAnimationFrame(() => packet.classList.add('show'));
+
+  const duration = cfg.roundTrip ? 4800 : 2200;
+  let start = null;
+
+  if (cfg.waypoints?.length >= 2) {
+    const points = cfg.waypoints.map(layerCenter);
+    const segments = points.length - 1;
+
+    function tick(ts) {
+      if (!start) start = ts;
+      const t = ((ts - start) % duration) / duration;
+      const segT = t * segments;
+      const segIdx = Math.min(Math.floor(segT), segments - 1);
+      const local = segT - segIdx;
+      const a = points[segIdx];
+      const b = points[segIdx + 1];
+      packet.style.top = `${a.y + (b.y - a.y) * local}px`;
+      packet.classList.toggle('returning', segIdx >= 2);
+      packetAnim = requestAnimationFrame(tick);
+    }
+    packetAnim = requestAnimationFrame(tick);
+    return;
+  }
 
   const from = layerCenter(cfg.from);
   const to = layerCenter(cfg.to);
-  const duration = cfg.roundTrip ? 4000 : 2200;
-  let start = null;
 
   function tick(ts) {
     if (!start) start = ts;
     const t = ((ts - start) % duration) / duration;
-    let progress;
-    if (cfg.roundTrip) {
-      if (t < 0.25) progress = t / 0.25;
-      else if (t < 0.5) progress = 1 - (t - 0.25) / 0.25;
-      else if (t < 0.75) progress = (t - 0.5) / 0.25;
-      else progress = 1 - (t - 0.75) / 0.25;
-      const down = t < 0.5;
-      const y = down
-        ? from.y + (to.y - from.y) * (t < 0.25 ? t / 0.25 : 1 - (t - 0.25) / 0.25)
-        : to.y + (from.y - to.y) * ((t - 0.5) < 0.25 ? (t - 0.5) / 0.25 : 1 - (t - 0.75) / 0.25);
-      packet.style.top = `${y}px`;
-    } else {
-      progress = t;
-      packet.style.top = `${from.y + (to.y - from.y) * progress}px`;
-    }
+    packet.style.top = `${from.y + (to.y - from.y) * t}px`;
     packetAnim = requestAnimationFrame(tick);
   }
   packetAnim = requestAnimationFrame(tick);
@@ -199,7 +217,7 @@ function stopPacket() {
   packetAnim = null;
   const packet = document.getElementById('stack-packet');
   packet.classList.add('hidden');
-  packet.classList.remove('show');
+  packet.classList.remove('show', 'returning');
 }
 
 document.addEventListener('DOMContentLoaded', init);
