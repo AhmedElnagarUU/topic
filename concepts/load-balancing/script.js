@@ -163,6 +163,7 @@ function render() {
 
   if (step.anim) startAnim(step.anim);
   lucide.createIcons();
+  if (window.AnimTooltips) AnimTooltips.refresh();
 }
 
 function startAnim(cfg) {

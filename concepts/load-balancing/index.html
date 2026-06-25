@@ -20,7 +20,7 @@
     tailwind.config = { theme: { extend: { colors: { deep: '#0a0a0f' } } } };
   </script>
 </head>
-<body class="bg-deep text-white">
+<body class="bg-deep text-white" data-concept-id="load-balancing">
   <div class="ambient-bg"></div>
   <div class="grid-overlay"></div>
   <div class="relative z-10 min-h-screen">
@@ -69,11 +69,11 @@
           <p class="visual-kicker"><i data-lucide="share-2" class="w-3.5 h-3.5"></i> Fan-out distribution animation</p>
           <div id="flow-hint" class="flow-hint hidden"></div>
           <div id="anim-canvas" class="anim-canvas fan-canvas">
-            <div class="fan-node" id="fan-client"><i data-lucide="users"></i><span>Clients</span></div>
-            <div class="fan-node" id="fan-lb"><i data-lucide="shuffle"></i><span>Load Balancer</span></div>
-            <div class="fan-server" id="fan-s1"><i data-lucide="server"></i><span>Server 1</span></div>
-            <div class="fan-server" id="fan-s2"><i data-lucide="server"></i><span>Server 2</span></div>
-            <div class="fan-server" id="fan-s3"><i data-lucide="server"></i><span>Server 3</span></div>
+            <div class="fan-node" id="fan-client" data-tip-title="Clients" data-tip-text="Thousands of users hit one public URL — they never see individual backend servers."><i data-lucide="users"></i><span>Clients</span></div>
+            <div class="fan-node" id="fan-lb" data-tip-title="Load Balancer" data-tip-text="Distributes incoming requests using round-robin, least-connections, or health-aware routing."><i data-lucide="shuffle"></i><span>Load Balancer</span></div>
+            <div class="fan-server" id="fan-s1" data-tip-title="Server 1" data-tip-text="Identical copy of your app. Handles a share of traffic."><i data-lucide="server"></i><span>Server 1</span></div>
+            <div class="fan-server" id="fan-s2" data-tip-title="Server 2" data-tip-text="Receives the next request in round-robin rotation."><i data-lucide="server"></i><span>Server 2</span></div>
+            <div class="fan-server" id="fan-s3" data-tip-title="Server 3" data-tip-text="Removed from pool automatically when health checks fail."><i data-lucide="server"></i><span>Server 3</span></div>
             <svg class="fan-svg" id="fan-svg" preserveAspectRatio="none"></svg>
             <div id="fan-packet" class="fan-packet hidden"></div>
             <div id="fan-counter" class="fan-counter hidden">Round 1 → Server 1</div>
@@ -98,6 +98,9 @@
   </div>
   <script src="https://unpkg.com/lucide@0.469.0/dist/umd/lucide.min.js"></script>
   <script src="../../js/theme.js"></script>
+  <script src="../../js/concept-path.js"></script>
+  <script src="../../js/concept-nav.js"></script>
+  <script src="../../js/anim-tooltips.js"></script>
   <script src="script.js"></script>
 </body>
 </html>

@@ -101,6 +101,16 @@
               <span class="path-num">05</span>
               <span class="path-name">Load Balancing</span>
             </a>
+            <i data-lucide="chevron-right" class="path-arrow"></i>
+            <a href="concepts/websockets/index.html" class="path-step">
+              <span class="path-num">06</span>
+              <span class="path-name">WebSockets</span>
+            </a>
+            <i data-lucide="chevron-right" class="path-arrow"></i>
+            <a href="concepts/encryption/index.html" class="path-step">
+              <span class="path-num">07</span>
+              <span class="path-name">Encryption</span>
+            </a>
           </div>
         </div>
       </div>
@@ -122,6 +132,8 @@
         <div class="anim-style-card"><span class="anim-style-dot violet"></span><strong>Ping-pong lanes</strong><span>Separate request/response tracks</span></div>
         <div class="anim-style-card"><span class="anim-style-dot amber"></span><strong>Branch paths</strong><span>Green hit vs orange miss routes</span></div>
         <div class="anim-style-card"><span class="anim-style-dot rose"></span><strong>Fan-out</strong><span>Load balancer distributes to server pool</span></div>
+        <div class="anim-style-card"><span class="anim-style-dot sky"></span><strong>Broadcast ripple</strong><span>Server pushes waves to all connected clients</span></div>
+        <div class="anim-style-card"><span class="anim-style-dot lime"></span><strong>TLS tunnel</strong><span>Plaintext transforms to ciphertext in transit</span></div>
       </div>
 
       <div class="flex items-center gap-3 mb-8">
@@ -237,15 +249,57 @@
           </div>
         </a>
 
+        <!-- 06 — WebSockets -->
+        <a href="concepts/websockets/index.html" class="concept-card group block p-6 no-underline">
+          <div class="relative z-10">
+            <div class="flex items-start justify-between mb-5">
+              <div class="w-12 h-12 rounded-2xl bg-sky-500/15 border border-sky-500/25 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                <i data-lucide="radio" class="text-sky-400 lucide-icon-lg"></i>
+              </div>
+              <span class="text-xs font-mono text-sky-400/70 bg-sky-500/10 px-2 py-1 rounded-md border border-sky-500/20">06</span>
+            </div>
+            <span class="anim-style-tag">Broadcast ripple</span>
+            <h4 class="text-xl font-semibold text-white mb-2 group-hover:text-sky-300 transition-colors">WebSockets</h4>
+            <p class="text-sm text-white/45 leading-relaxed mb-5">
+              Real-time push without polling — watch ripple rings broadcast from server to every connected client.
+            </p>
+            <div class="flex items-center gap-2 text-sm text-sky-400/80 font-medium">
+              <span>Explore</span>
+              <i data-lucide="arrow-right" class="w-4 h-4 group-hover:translate-x-1 transition-transform"></i>
+            </div>
+          </div>
+        </a>
+
+        <!-- 07 — Encryption -->
+        <a href="concepts/encryption/index.html" class="concept-card group block p-6 no-underline">
+          <div class="relative z-10">
+            <div class="flex items-start justify-between mb-5">
+              <div class="w-12 h-12 rounded-2xl bg-lime-500/15 border border-lime-500/25 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                <i data-lucide="lock" class="text-lime-400 lucide-icon-lg"></i>
+              </div>
+              <span class="text-xs font-mono text-lime-400/70 bg-lime-500/10 px-2 py-1 rounded-md border border-lime-500/20">07</span>
+            </div>
+            <span class="anim-style-tag">TLS tunnel</span>
+            <h4 class="text-xl font-semibold text-white mb-2 group-hover:text-lime-300 transition-colors">Encryption & HTTPS</h4>
+            <p class="text-sm text-white/45 leading-relaxed mb-5">
+              See plain HTTP vs HTTPS — packets morph inside the TLS tunnel while snoopers read only gibberish.
+            </p>
+            <div class="flex items-center gap-2 text-sm text-lime-400/80 font-medium">
+              <span>Explore</span>
+              <i data-lucide="arrow-right" class="w-4 h-4 group-hover:translate-x-1 transition-transform"></i>
+            </div>
+          </div>
+        </a>
+
         <!-- Coming Soon -->
         <div class="concept-card coming-soon p-6">
           <div class="flex items-start justify-between mb-5">
             <div class="w-12 h-12 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center">
-              <i data-lucide="lock" class="text-white/25 lucide-icon-lg"></i>
+              <i data-lucide="boxes" class="text-white/25 lucide-icon-lg"></i>
             </div>
-            <span class="text-xs font-mono text-white/20 bg-white/5 px-2 py-1 rounded-md">06</span>
+            <span class="text-xs font-mono text-white/20 bg-white/5 px-2 py-1 rounded-md">08</span>
           </div>
-          <h4 class="text-xl font-semibold text-white/40 mb-2">Encryption</h4>
+          <h4 class="text-xl font-semibold text-white/40 mb-2">State Management</h4>
           <p class="text-sm text-white/25 leading-relaxed">Coming soon</p>
         </div>
 
@@ -256,7 +310,7 @@
     <footer class="border-t border-white/5 py-8">
       <div class="max-w-6xl mx-auto px-6 flex items-center justify-between text-xs text-white/25">
         <span>Concept Lab — Learn by seeing</span>
-        <span class="font-mono">v0.2</span>
+        <span class="font-mono">v0.3</span>
       </div>
     </footer>
   </div>

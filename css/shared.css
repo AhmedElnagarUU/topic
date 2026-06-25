@@ -275,6 +275,8 @@ body {
 .anim-style-dot.violet { background: #a78bfa; box-shadow: 0 0 8px rgba(167, 139, 250, 0.5); }
 .anim-style-dot.amber { background: #fbbf24; box-shadow: 0 0 8px rgba(251, 191, 36, 0.5); }
 .anim-style-dot.rose { background: #fb7185; box-shadow: 0 0 8px rgba(251, 113, 133, 0.5); }
+.anim-style-dot.sky { background: #38bdf8; box-shadow: 0 0 8px rgba(56, 189, 248, 0.5); }
+.anim-style-dot.lime { background: #a3e635; box-shadow: 0 0 8px rgba(163, 230, 53, 0.5); }
 
 [data-theme="light"] .anim-style-card {
   background: var(--panel-bg);

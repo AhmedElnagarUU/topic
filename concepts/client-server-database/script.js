@@ -161,6 +161,7 @@ function render() {
 
   if (step.packet) startPacket(step.packet);
   lucide.createIcons();
+  if (window.AnimTooltips) AnimTooltips.refresh();
 }
 
 function layerCenter(id) {

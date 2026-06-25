@@ -20,7 +20,7 @@
     tailwind.config = { theme: { extend: { colors: { deep: '#0a0a0f' } } } };
   </script>
 </head>
-<body class="bg-deep text-white">
+<body class="bg-deep text-white" data-concept-id="client-server-database">
   <div class="ambient-bg"></div>
   <div class="grid-overlay"></div>
   <div class="relative z-10 min-h-screen">
@@ -73,17 +73,27 @@
               <p>Layers build one at a time — client, server, then database.</p>
             </div>
             <div class="stack-lane">
-              <div class="stack-layer" id="layer-client" data-layer="client">
+              <div class="stack-layer" id="layer-client" data-layer="client"
+                data-tip-title="Client"
+                data-tip-text="Browser or mobile app on the user's device. Sends requests and renders the UI — never talks to the database directly.">
                 <div class="layer-icon"><i data-lucide="monitor-smartphone"></i></div>
                 <div class="layer-text"><strong>Client</strong><span>Browser / mobile app</span></div>
               </div>
-              <div class="stack-connector" id="conn-down"></div>
-              <div class="stack-layer" id="layer-server" data-layer="server">
+              <div class="stack-connector" id="conn-down"
+                data-tip-title="HTTP request"
+                data-tip-text="The client sends a request downward to the server over the network (HTTP/HTTPS)."></div>
+              <div class="stack-layer" id="layer-server" data-layer="server"
+                data-tip-title="Server"
+                data-tip-text="Backend application that validates requests, runs business logic, and talks to the database.">
                 <div class="layer-icon"><i data-lucide="server"></i></div>
                 <div class="layer-text"><strong>Server</strong><span>Backend logic & APIs</span></div>
               </div>
-              <div class="stack-connector" id="conn-down-2"></div>
-              <div class="stack-layer" id="layer-database" data-layer="database">
+              <div class="stack-connector" id="conn-down-2"
+                data-tip-title="Database query"
+                data-tip-text="The server reads or writes data — SQL queries, document lookups, etc."></div>
+              <div class="stack-layer" id="layer-database" data-layer="database"
+                data-tip-title="Database"
+                data-tip-text="Persistent storage for users, posts, orders. Only the server has credentials to access it.">
                 <div class="layer-icon"><i data-lucide="database"></i></div>
                 <div class="layer-text"><strong>Database</strong><span>Persistent storage</span></div>
               </div>
@@ -110,6 +120,9 @@
   </div>
   <script src="https://unpkg.com/lucide@0.469.0/dist/umd/lucide.min.js"></script>
   <script src="../../js/theme.js"></script>
+  <script src="../../js/concept-path.js"></script>
+  <script src="../../js/concept-nav.js"></script>
+  <script src="../../js/anim-tooltips.js"></script>
   <script src="script.js"></script>
 </body>
 </html>
