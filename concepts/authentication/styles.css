@@ -1061,3 +1061,231 @@
   color: #fda4af;
   border: 1px solid rgba(251, 113, 133, 0.2);
 }
+
+/* ─── Light theme overrides ─────────────────────────────────────────────── */
+
+[data-theme="light"] .diagram-canvas {
+  background: var(--diagram-bg);
+  border-color: var(--panel-border);
+  box-shadow: var(--shadow-card);
+}
+
+[data-theme="light"] .diagram-canvas::before {
+  background: radial-gradient(ellipse 70% 60% at 50% 45%, var(--diagram-glow) 0%, transparent 70%);
+}
+
+[data-theme="light"] .connection-line-bg {
+  stroke: var(--conn-bg);
+}
+
+[data-theme="light"] .conn-label {
+  color: var(--label-text);
+  background: var(--label-bg);
+  border-color: var(--panel-border);
+}
+
+[data-theme="light"] .conn-label.active {
+  color: var(--text-primary);
+  border-color: rgba(99, 102, 241, 0.35);
+}
+
+[data-theme="light"] .node-icon-wrap {
+  background: var(--node-bg);
+  border-color: var(--panel-border);
+  box-shadow: var(--node-shadow);
+}
+
+[data-theme="light"] .node-label {
+  color: var(--text-primary);
+}
+
+[data-theme="light"] .node-sublabel {
+  color: var(--text-muted);
+}
+
+[data-theme="light"] .node-popup,
+[data-theme="light"] .diagram-tooltip {
+  background: var(--tooltip-bg);
+  border-color: rgba(99, 102, 241, 0.25);
+  box-shadow: 0 12px 40px rgba(15, 23, 42, 0.12);
+}
+
+[data-theme="light"] .node-popup strong,
+[data-theme="light"] .diagram-tooltip strong {
+  color: #4f46e5;
+}
+
+[data-theme="light"] .node-popup p,
+[data-theme="light"] .diagram-tooltip p {
+  color: var(--text-secondary);
+}
+
+[data-theme="light"] .phase-pill {
+  background: var(--bg-card);
+  border-color: var(--panel-border);
+}
+
+[data-theme="light"] .phase-pill:hover:not(.locked) {
+  background: var(--bg-card-hover);
+  border-color: rgba(15, 23, 42, 0.12);
+}
+
+[data-theme="light"] .phase-pill.active {
+  background: rgba(99, 102, 241, 0.08);
+}
+
+[data-theme="light"] .phase-num {
+  background: rgba(15, 23, 42, 0.06);
+  color: var(--text-muted);
+}
+
+[data-theme="light"] .phase-label {
+  color: var(--text-secondary);
+}
+
+[data-theme="light"] .compare-card {
+  background: var(--panel-bg);
+  border-color: var(--panel-border);
+  box-shadow: var(--shadow-card);
+}
+
+[data-theme="light"] .compare-session.active {
+  background: rgba(52, 211, 153, 0.06);
+}
+
+[data-theme="light"] .compare-jwt.active {
+  background: rgba(99, 102, 241, 0.06);
+}
+
+[data-theme="light"] .compare-analogy,
+[data-theme="light"] .compare-points li {
+  color: var(--text-secondary);
+}
+
+[data-theme="light"] .compare-points strong {
+  color: var(--text-primary);
+}
+
+[data-theme="light"] .info-panel,
+[data-theme="light"] .approach-summary {
+  background: var(--panel-bg);
+  border-color: var(--panel-border);
+  box-shadow: var(--shadow-card);
+}
+
+[data-theme="light"] .info-panel .step-title,
+[data-theme="light"] .approach-summary h4,
+[data-theme="light"] .complete-card h2 {
+  color: var(--text-primary);
+}
+
+[data-theme="light"] .info-panel .step-desc,
+[data-theme="light"] .approach-summary .overview,
+[data-theme="light"] .complete-card p {
+  color: var(--text-secondary);
+}
+
+[data-theme="light"] .info-panel .step-subtitle {
+  color: #4f46e5;
+}
+
+[data-theme="light"] .step-bullets li {
+  color: var(--text-secondary);
+}
+
+[data-theme="light"] .code-block {
+  background: var(--code-bg);
+  border-color: var(--panel-border);
+  color: var(--code-text);
+}
+
+[data-theme="light"] .watch-callout {
+  background: rgba(99, 102, 241, 0.06);
+  border-color: rgba(99, 102, 241, 0.15);
+  color: #4338ca;
+}
+
+[data-theme="light"] .visual-label {
+  color: #6366f1;
+}
+
+[data-theme="light"] .diagram-empty p {
+  color: var(--text-muted);
+}
+
+[data-theme="light"] .nav-btn {
+  background: var(--bg-card);
+  border-color: var(--panel-border);
+  color: var(--text-muted);
+}
+
+[data-theme="light"] .nav-btn:hover {
+  background: var(--bg-card-hover);
+  color: var(--text-primary);
+}
+
+[data-theme="light"] .play-btn {
+  background: rgba(99, 102, 241, 0.1);
+  color: #4f46e5;
+}
+
+[data-theme="light"] .phase-action-btn.secondary {
+  background: var(--bg-card);
+  border-color: var(--panel-border);
+  color: var(--text-secondary);
+}
+
+[data-theme="light"] .complete-card {
+  background: var(--panel-bg);
+  border-color: rgba(52, 211, 153, 0.25);
+  box-shadow: var(--shadow-card);
+}
+
+[data-theme="light"] .advanced-card {
+  background: var(--panel-bg);
+  border-color: var(--panel-border);
+  box-shadow: var(--shadow-card);
+}
+
+[data-theme="light"] .advanced-card:hover {
+  background: var(--bg-card-hover);
+}
+
+[data-theme="light"] .tag-pro {
+  color: #059669;
+  background: rgba(52, 211, 153, 0.12);
+}
+
+[data-theme="light"] .tag-con {
+  color: #e11d48;
+  background: rgba(251, 113, 133, 0.1);
+}
+
+[data-theme="light"] .tutorial-visual {
+  border-top-color: var(--panel-border);
+}
+
+[data-theme="light"] .phase-connector {
+  background: rgba(15, 23, 42, 0.08);
+}
+
+[data-theme="light"] .step-dot {
+  background: rgba(15, 23, 42, 0.15);
+}
+
+[data-theme="light"] .step-line {
+  background: rgba(15, 23, 42, 0.08);
+}
+
+[data-theme="light"] #phase-eyebrow {
+  color: #4f46e5;
+}
+
+[data-theme="light"] #phase-title {
+  color: var(--text-primary);
+}
+
+[data-theme="light"] #phase-desc {
+  color: var(--text-secondary);
+}
+
