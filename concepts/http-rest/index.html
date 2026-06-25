@@ -20,7 +20,7 @@
     tailwind.config = { theme: { extend: { colors: { deep: '#0a0a0f' } } } };
   </script>
 </head>
-<body class="bg-deep text-white">
+<body class="bg-deep text-white" data-concept-id="http-rest">
   <div class="ambient-bg"></div>
   <div class="grid-overlay"></div>
   <div class="relative z-10 min-h-screen">
@@ -69,17 +69,25 @@
           <p class="visual-kicker"><i data-lucide="repeat" class="w-3.5 h-3.5"></i> Ping-pong lanes animation</p>
           <div id="flow-hint" class="flow-hint hidden"></div>
           <div id="anim-canvas" class="anim-canvas ping-canvas">
-            <div class="ping-endpoint client-end" id="ep-client">
+            <div class="ping-endpoint client-end" id="ep-client"
+              data-tip-title="Client"
+              data-tip-text="Browser or app that sends HTTP requests — GET to read, POST to create, etc.">
               <i data-lucide="monitor-smartphone"></i><span>Client</span>
             </div>
-            <div class="ping-endpoint server-end" id="ep-server">
+            <div class="ping-endpoint server-end" id="ep-server"
+              data-tip-title="API Server"
+              data-tip-text="Receives requests, runs logic, returns status code + JSON body.">
               <i data-lucide="server"></i><span>API Server</span>
             </div>
-            <div class="ping-lane request-lane" id="lane-request">
+            <div class="ping-lane request-lane" id="lane-request"
+              data-tip-title="Request lane"
+              data-tip-text="Outbound traffic: client → server. Carries method, URL, headers, and optional body.">
               <span class="lane-label">Request →</span>
               <div class="lane-track"></div>
             </div>
-            <div class="ping-lane response-lane" id="lane-response">
+            <div class="ping-lane response-lane" id="lane-response"
+              data-tip-title="Response lane"
+              data-tip-text="Return traffic: server → client. Carries status (200, 404…) and response body.">
               <span class="lane-label">← Response</span>
               <div class="lane-track"></div>
             </div>
@@ -105,6 +113,9 @@
   </div>
   <script src="https://unpkg.com/lucide@0.469.0/dist/umd/lucide.min.js"></script>
   <script src="../../js/theme.js"></script>
+  <script src="../../js/concept-path.js"></script>
+  <script src="../../js/concept-nav.js"></script>
+  <script src="../../js/anim-tooltips.js"></script>
   <script src="script.js"></script>
 </body>
 </html>

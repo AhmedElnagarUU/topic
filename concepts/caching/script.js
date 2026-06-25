@@ -172,6 +172,7 @@ function render() {
 
   if (step.activePaths?.length) startPathAnim(step);
   lucide.createIcons();
+  if (window.AnimTooltips) AnimTooltips.refresh();
 }
 
 function startPathAnim(step) {

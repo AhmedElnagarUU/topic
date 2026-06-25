@@ -375,3 +375,148 @@
   border-color: rgba(99, 102, 241, 0.15);
   color: #4338ca;
 }
+
+/* Concept prev/next pager */
+.concept-pager {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  margin-top: 2rem;
+  padding: 1rem 1.125rem;
+  border-radius: 1rem;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(26, 26, 38, 0.5);
+}
+
+.concept-pager-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 0.875rem;
+  border-radius: 0.625rem;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.04);
+  color: rgba(255, 255, 255, 0.65);
+  text-decoration: none;
+  font-size: 0.75rem;
+  font-weight: 500;
+  transition: all 0.25s ease;
+  max-width: 42%;
+}
+
+.concept-pager-btn:hover {
+  border-color: rgba(99, 102, 241, 0.35);
+  background: rgba(99, 102, 241, 0.1);
+  color: white;
+  transform: translateY(-1px);
+}
+
+.concept-pager-btn.muted {
+  opacity: 0.7;
+}
+
+.concept-pager-btn .pager-label {
+  display: flex;
+  flex-direction: column;
+  gap: 0.125rem;
+  line-height: 1.3;
+}
+
+.concept-pager-btn.prev .pager-label {
+  align-items: flex-start;
+}
+
+.concept-pager-btn.next .pager-label {
+  align-items: flex-end;
+}
+
+.concept-pager-current {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.125rem;
+  text-align: center;
+  flex-shrink: 0;
+}
+
+.concept-pager-current .pager-num,
+.pager-num {
+  font-size: 0.625rem;
+  font-family: 'JetBrains Mono', monospace;
+  color: rgba(165, 180, 252, 0.7);
+}
+
+.concept-pager-current .pager-name {
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: white;
+}
+
+@media (max-width: 640px) {
+  .concept-pager-btn .pager-label span:not(.pager-num) {
+    display: none;
+  }
+  .concept-pager-current .pager-name {
+    font-size: 0.75rem;
+  }
+}
+
+/* Hover tooltips on animation elements */
+.anim-hover-tip {
+  position: fixed;
+  z-index: 9999;
+  max-width: 260px;
+  padding: 0.75rem 0.875rem;
+  border-radius: 0.75rem;
+  background: rgba(18, 18, 28, 0.97);
+  border: 1px solid rgba(99, 102, 241, 0.35);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.45);
+  pointer-events: none;
+  font-size: 0.75rem;
+  line-height: 1.55;
+}
+
+.anim-hover-tip strong {
+  display: block;
+  color: white;
+  font-size: 0.8125rem;
+  margin-bottom: 0.25rem;
+}
+
+.anim-hover-tip p {
+  color: rgba(255, 255, 255, 0.55);
+  margin: 0;
+}
+
+[data-tip-title] {
+  cursor: help;
+}
+
+[data-theme="light"] .concept-pager {
+  background: var(--panel-bg);
+  border-color: var(--panel-border);
+}
+
+[data-theme="light"] .concept-pager-btn {
+  background: var(--bg-card);
+  border-color: var(--panel-border);
+  color: var(--text-secondary);
+}
+
+[data-theme="light"] .concept-pager-current .pager-name {
+  color: var(--text-primary);
+}
+
+[data-theme="light"] .anim-hover-tip {
+  background: var(--tooltip-bg);
+  border-color: rgba(99, 102, 241, 0.25);
+}
+
+[data-theme="light"] .anim-hover-tip strong {
+  color: var(--text-primary);
+}
+
+[data-theme="light"] .anim-hover-tip p {
+  color: var(--text-secondary);
+}

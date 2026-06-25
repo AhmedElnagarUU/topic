@@ -514,7 +514,15 @@ function init() {
   document.getElementById('adv-next').addEventListener('click', () => goToAdvancedStep(advancedStep + 1));
 
   renderPhase();
+  syncSvgLayer();
+  window.addEventListener('resize', () => {
+    if (currentDiagramData) {
+      renderedPhaseKey = null;
+      renderDiagram(TUTORIAL_PHASES[currentPhaseIndex]);
+    }
+  });
   lucide.createIcons();
+  if (window.AnimTooltips) AnimTooltips.refresh();
 }
 
 // ─── Phase navigation ────────────────────────────────────────────────────────
@@ -690,6 +698,8 @@ function renderDiagram(phase) {
   emptyEl.classList.toggle('hidden', showDiagram || phase.type === 'compare');
   if (phase.type === 'compare') return;
 
+  syncSvgLayer();
+
   const diagramData = currentDiagramData;
   if (!diagramData || !showDiagram) return;
 
@@ -713,7 +723,8 @@ function renderDiagram(phase) {
 
     el.innerHTML = `
       ${popupHtml}
-      <div class="node-icon-wrap relative" style="border-color: ${accent}33">
+      <div class="node-icon-wrap relative" style="border-color: ${accent}33" tabindex="0"
+        ${node.tooltip ? `data-tip-title="${escapeHtml(node.label)}" data-tip-text="${escapeHtml(node.tooltip)}"` : ''}>
         <i data-lucide="${node.icon}" class="lucide-icon-xl" style="color: ${accent}"></i>
       </div>
       <span class="node-label">${node.label}</span>
@@ -779,6 +790,7 @@ function renderDiagram(phase) {
   });
 
   lucide.createIcons();
+  if (window.AnimTooltips) AnimTooltips.bind(nodesContainer);
   requestAnimationFrame(() => updateDiagramHighlights(phase, step));
 }
 
@@ -1228,6 +1240,7 @@ function renderAdvancedDiagram() {
   }
 
   renderedPhaseKey = phaseKey;
+  syncSvgLayer();
   stopPacketAnimations();
   currentDiagramData = approach;
 
@@ -1247,7 +1260,9 @@ function renderAdvancedDiagram() {
     el.style.top = `${node.y}%`;
     if (node.y < 35) el.classList.add('popup-below');
     el.innerHTML = `
-      <div class="node-icon-wrap relative" style="border-color: ${accent}33">
+      ${node.tooltip ? `<div class="node-popup"><strong>${escapeHtml(node.label)}</strong><p>${escapeHtml(node.tooltip)}</p></div>` : ''}
+      <div class="node-icon-wrap relative" style="border-color: ${accent}33" tabindex="0"
+        ${node.tooltip ? `data-tip-title="${escapeHtml(node.label)}" data-tip-text="${escapeHtml(node.tooltip)}"` : ''}>
         <i data-lucide="${node.icon}" class="lucide-icon-xl" style="color: ${accent}"></i>
       </div>
       <span class="node-label">${node.label}</span>
@@ -1297,6 +1312,7 @@ function renderAdvancedDiagram() {
   });
 
   lucide.createIcons();
+  if (window.AnimTooltips) AnimTooltips.bind(nodesContainer);
   requestAnimationFrame(() => {
     updateDiagramHighlights({ type: 'walkthrough', approach: advancedApproach }, step, advancedStep);
   });
@@ -1361,8 +1377,14 @@ function computePath(from, to, conn, index) {
   const mx = (fx + tx) / 2, my = (fy + ty) / 2;
   const curve = conn.curve ?? (index % 2 === 0 ? -14 : 14);
   const cy = my + curve;
-  if (Math.abs(fy - ty) < 8) return `M ${fx}% ${fy}% Q ${mx}% ${cy}% ${tx}% ${ty}%`;
-  return `M ${fx}% ${fy}% C ${fx}% ${cy}%, ${tx}% ${cy}%, ${tx}% ${ty}%`;
+  if (Math.abs(fy - ty) < 8) return `M ${fx} ${fy} Q ${mx} ${cy} ${tx} ${ty}`;
+  return `M ${fx} ${fy} C ${fx} ${cy} ${tx} ${cy} ${tx} ${ty}`;
+}
+
+function syncSvgLayer() {
+  if (!svgLayer) return;
+  svgLayer.setAttribute('viewBox', '0 0 100 100');
+  svgLayer.setAttribute('preserveAspectRatio', 'none');
 }
 
 function showDiagramTooltip(e, title, text) {

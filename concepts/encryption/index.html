@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Caching — Concept Lab</title>
+  <title>Encryption & HTTPS — Concept Lab</title>
   <script>
     (function () {
       if (localStorage.getItem('concept-lab-theme') === 'light') {
@@ -16,11 +16,9 @@
   <link rel="stylesheet" href="../../css/theme.css">
   <link rel="stylesheet" href="../../css/concept-base.css">
   <link rel="stylesheet" href="styles.css">
-  <script>
-    tailwind.config = { theme: { extend: { colors: { deep: '#0a0a0f' } } } };
-  </script>
+  <script>tailwind.config = { theme: { extend: { colors: { deep: '#0a0a0f' } } } };</script>
 </head>
-<body class="bg-deep text-white" data-concept-id="caching">
+<body class="bg-deep text-white" data-concept-id="encryption">
   <div class="ambient-bg"></div>
   <div class="grid-overlay"></div>
   <div class="relative z-10 min-h-screen">
@@ -30,15 +28,15 @@
           <a href="../../index.html" class="flex items-center gap-2 text-white/40 hover:text-white/70 transition-colors text-sm no-underline">
             <i data-lucide="arrow-left" class="w-4 h-4"></i> Concepts
           </a>
-          <a href="../http-rest/index.html" class="hidden sm:flex text-xs text-white/25 hover:text-white/50 no-underline">← 03 HTTP</a>
+          <a href="../websockets/index.html" class="hidden sm:flex text-xs text-white/25 hover:text-white/50 no-underline">← 06 WebSockets</a>
           <div class="w-px h-5 bg-white/10"></div>
           <div class="flex items-center gap-3">
-            <div class="w-9 h-9 rounded-xl bg-amber-500/15 border border-amber-500/25 flex items-center justify-center">
-              <i data-lucide="zap" class="text-amber-400 w-5 h-5"></i>
+            <div class="w-9 h-9 rounded-xl bg-lime-500/15 border border-lime-500/25 flex items-center justify-center">
+              <i data-lucide="lock" class="text-lime-400 w-5 h-5"></i>
             </div>
             <div>
-              <h1 class="text-base font-semibold">Caching</h1>
-              <p class="text-xs text-white/35">Hit vs miss branch paths</p>
+              <h1 class="text-base font-semibold">Encryption & HTTPS</h1>
+              <p class="text-xs text-white/35">TLS tunnel transform</p>
             </div>
           </div>
         </div>
@@ -46,7 +44,7 @@
           <button type="button" class="theme-toggle" data-theme-toggle aria-label="Switch theme">
             <i data-theme-icon data-lucide="sun"></i><span data-theme-label>Light</span>
           </button>
-          <span class="concept-badge">04</span>
+          <span class="concept-badge">07</span>
         </div>
       </div>
     </header>
@@ -54,8 +52,8 @@
     <main class="concept-main">
       <nav id="step-nav" class="step-nav" aria-label="Steps"></nav>
       <p class="concept-eyebrow" id="concept-eyebrow">Step 1 of 5</p>
-      <h2 class="concept-heading" id="concept-heading">Store answers to go faster</h2>
-      <p class="concept-intro" id="concept-intro">Caching saves copies of expensive results. A cache hit takes the fast path; a miss falls through to the server and database.</p>
+      <h2 class="concept-heading">Protect data in transit</h2>
+      <p class="concept-intro">HTTP sends plain text anyone on the network can read. HTTPS wraps traffic in a TLS tunnel so passwords and cookies stay secret.</p>
 
       <div class="tutorial-layout">
         <div class="info-panel">
@@ -66,16 +64,18 @@
         </div>
 
         <div class="visual-panel">
-          <p class="visual-kicker"><i data-lucide="git-branch" class="w-3.5 h-3.5"></i> Branch path animation</p>
+          <p class="visual-kicker"><i data-lucide="lock" class="w-3.5 h-3.5"></i> TLS tunnel transform animation</p>
           <div id="flow-hint" class="flow-hint hidden"></div>
-          <div id="anim-canvas" class="anim-canvas branch-canvas">
-            <div class="branch-node" id="node-client" data-tip-title="Client" data-tip-text="Requests a resource. The cache is checked first before hitting the origin server."><i data-lucide="monitor"></i><span>Client</span></div>
-            <div class="branch-node" id="node-cache" data-tip-title="Cache (Redis / CDN)" data-tip-text="Fast in-memory or edge storage. Returns cached responses in milliseconds on a hit."><i data-lucide="zap"></i><span>Cache</span></div>
-            <div class="branch-node" id="node-server" data-tip-title="Origin Server" data-tip-text="Runs application logic when the cache misses — slower but authoritative."><i data-lucide="server"></i><span>Server</span></div>
-            <div class="branch-node" id="node-db" data-tip-title="Database" data-tip-text="Queried on cache miss. Result may be stored in cache for next time."><i data-lucide="database"></i><span>Database</span></div>
-            <svg class="branch-svg" id="branch-svg" preserveAspectRatio="none"></svg>
-            <div id="branch-packet" class="branch-packet hidden"></div>
-            <div id="branch-badge" class="branch-badge hidden">HIT</div>
+          <div id="anim-canvas" class="anim-canvas tunnel-canvas">
+            <div class="tunnel-end client-side" id="tn-client" data-tip-title="Client (Browser)" data-tip-text="Sends requests. With HTTPS, the browser encrypts data before it leaves your device."><i data-lucide="monitor-smartphone"></i><span>Client</span></div>
+            <div class="tunnel-zone" id="tn-tunnel" data-tip-title="TLS Tunnel" data-tip-text="Encrypted channel between client and server. Attackers on the network see only scrambled bytes.">
+              <div class="tunnel-glow"></div>
+              <i data-lucide="lock" class="tunnel-lock"></i>
+              <span class="tunnel-label">TLS</span>
+            </div>
+            <div class="tunnel-end server-side" id="tn-server" data-tip-title="Server" data-tip-text="Decrypts the request, processes it, and encrypts the response before sending it back."><i data-lucide="server"></i><span>Server</span></div>
+            <div class="tunnel-attacker" id="tn-attacker" data-tip-title="Attacker on network" data-tip-text="On public Wi‑Fi, a snooper can read plain HTTP. HTTPS makes the payload unreadable."><i data-lucide="eye-off"></i><span>Snooper</span></div>
+            <div id="tunnel-packet" class="tunnel-packet hidden">password=123</div>
           </div>
           <div class="anim-controls">
             <div class="flex gap-2">
@@ -89,10 +89,6 @@
           </div>
         </div>
       </div>
-
-      <a href="../load-balancing/index.html" id="next-concept" class="next-concept-link hidden">
-        Next concept: Load Balancing <i data-lucide="arrow-right" class="w-4 h-4"></i>
-      </a>
     </main>
   </div>
   <script src="https://unpkg.com/lucide@0.469.0/dist/umd/lucide.min.js"></script>
