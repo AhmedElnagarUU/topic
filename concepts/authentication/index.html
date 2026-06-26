@@ -14,315 +14,50 @@
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="../../css/shared.css">
   <link rel="stylesheet" href="../../css/theme.css">
-  <link rel="stylesheet" href="../../css/concept-base.css">
-  <link rel="stylesheet" href="styles.css">
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          colors: {
-            deep: '#0a0a0f',
-            surface: '#12121a',
-            card: '#1a1a26',
-          }
-        }
-      }
-    }
-  </script>
+  <link rel="stylesheet" href="../../css/docs.css">
+  <script>tailwind.config = { theme: { extend: { colors: { deep: '#0a0a0f' } } } };</script>
 </head>
 <body class="bg-deep text-white" data-concept-id="authentication">
   <div class="ambient-bg"></div>
   <div class="grid-overlay"></div>
-
   <div class="relative z-10 min-h-screen">
-    <!-- Header -->
     <header class="border-b border-white/5 backdrop-blur-sm bg-deep/80 sticky top-0 z-50">
-      <div class="max-w-5xl mx-auto px-6 py-4 flex items-center justify-between">
+      <div class="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between gap-4">
         <div class="flex items-center gap-4">
           <a href="../../index.html" class="flex items-center gap-2 text-white/40 hover:text-white/70 transition-colors text-sm no-underline">
-            <i data-lucide="arrow-left" class="w-4 h-4"></i>
-            Concepts
+            <i data-lucide="arrow-left" class="w-4 h-4"></i> All concepts
           </a>
-          <a href="../client-server-database/index.html" class="hidden sm:flex text-xs text-white/25 hover:text-white/50 no-underline">← 01 Foundations</a>
-          <div class="w-px h-5 bg-white/10"></div>
-          <div class="flex items-center gap-3">
-            <div class="w-9 h-9 rounded-xl bg-emerald-500/15 border border-emerald-500/25 flex items-center justify-center">
-              <i data-lucide="shield-check" class="text-emerald-400 w-5 h-5"></i>
-            </div>
-            <div>
-              <h1 class="text-base font-semibold">Authentication</h1>
-              <p class="text-xs text-white/35">Prove who you are</p>
-            </div>
-          </div>
         </div>
         <div class="flex items-center gap-3">
-          <button type="button" class="theme-toggle" data-theme-toggle aria-label="Switch to light theme">
-            <i data-theme-icon data-lucide="sun"></i>
-            <span data-theme-label>Light</span>
+          <div id="header-search" class="header-search search-wrap">
+            <i data-lucide="search" class="search-icon"></i>
+            <input type="search" class="search-input" placeholder="Search…" aria-label="Search concepts" autocomplete="off">
+            <div class="search-results" role="listbox"></div>
+          </div>
+          <button type="button" class="theme-toggle" data-theme-toggle aria-label="Switch theme">
+            <i data-theme-icon data-lucide="sun"></i><span data-theme-label>Light</span>
           </button>
-          <span class="text-xs font-mono text-white/25 bg-white/5 px-2.5 py-1 rounded-md border border-white/5">02</span>
         </div>
       </div>
     </header>
-
-    <main class="max-w-5xl mx-auto px-6 py-8">
-      <!-- Phase progress -->
-      <nav id="phase-nav" class="phase-nav mb-8" aria-label="Tutorial progress">
-        <div class="phase-track">
-          <button type="button" class="phase-pill active" data-phase="0">
-            <span class="phase-num">1</span>
-            <span class="phase-label">Two Approaches</span>
-          </button>
-          <div class="phase-connector"></div>
-          <button type="button" class="phase-pill" data-phase="1">
-            <span class="phase-num">2</span>
-            <span class="phase-label">Sessions</span>
-          </button>
-          <div class="phase-connector"></div>
-          <button type="button" class="phase-pill" data-phase="2">
-            <span class="phase-num">3</span>
-            <span class="phase-label">JWT</span>
-          </button>
-        </div>
-      </nav>
-
-      <!-- Phase header -->
-      <div id="phase-header" class="mb-6">
-        <p id="phase-eyebrow" class="text-xs font-medium text-indigo-300/70 uppercase tracking-widest mb-2">Part 1 of 3</p>
-        <h2 id="phase-title" class="text-xl font-semibold text-white mb-2">Two Ways to Prove Identity</h2>
-        <p id="phase-desc" class="text-sm text-white/45 leading-relaxed max-w-2xl">
-          Every auth system answers one question: after login, where does the proof of identity live?
-        </p>
-      </div>
-
-      <!-- Comparison view (shown during the Two Approaches phase) -->
-      <div id="compare-view" class="compare-view hidden mb-6">
-        <div class="compare-grid">
-          <div id="compare-session" class="compare-card compare-session">
-            <div class="compare-card-header">
-              <i data-lucide="cookie" class="w-5 h-5 text-emerald-400"></i>
-              <h3>Session-Based</h3>
-            </div>
-            <p class="compare-analogy">Like a coat-check ticket — the server keeps your identity and gives you a small ticket number.</p>
-            <ul class="compare-points">
-              <li><strong>Client holds:</strong> Cookie with session ID</li>
-              <li><strong>Server stores:</strong> Your identity in a database</li>
-              <li><strong>Each request:</strong> Server looks you up</li>
-            </ul>
-          </div>
-          <div id="compare-jwt" class="compare-card compare-jwt">
-            <div class="compare-card-header">
-              <i data-lucide="key-round" class="w-5 h-5 text-indigo-400"></i>
-              <h3>JWT Token</h3>
-            </div>
-            <p class="compare-analogy">Like a signed letter — proof of who you are travels with every request.</p>
-            <ul class="compare-points">
-              <li><strong>Client holds:</strong> The full signed token</li>
-              <li><strong>Server stores:</strong> Nothing about you</li>
-              <li><strong>Each request:</strong> Server verifies the signature</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-
-      <!-- Walkthrough: explanation first, animation below -->
-      <div id="walkthrough-panel" class="walkthrough-panel">
-        <!-- Approach summary (shown during session/jwt phases) -->
-        <div id="approach-summary" class="approach-summary hidden">
-          <h4 id="approach-name">Session-Based Auth</h4>
-          <p id="approach-overview" class="overview"></p>
-        </div>
-
-        <div class="step-nav-shell">
-          <button type="button" id="prev-step-side" class="step-side-nav" aria-label="Previous step">
-            <i data-lucide="chevron-left" class="w-5 h-5"></i>
-          </button>
-
-          <div class="info-panel step-nav-content">
-            <div class="flex items-center gap-2 mb-2">
-              <i data-lucide="circle-dot" class="w-4 h-4 text-indigo-400"></i>
-              <span class="text-xs text-indigo-300/70 font-mono">Step <span id="step-num">1</span> of <span id="step-total">4</span></span>
-            </div>
-            <p id="step-subtitle" class="step-subtitle"></p>
-            <h3 id="step-title" class="step-title"></h3>
-            <p id="step-desc" class="step-desc"></p>
-            <ul id="step-bullets" class="step-bullets"></ul>
-            <div id="step-code" class="code-block hidden"></div>
-            <div id="step-watch" class="watch-callout hidden">
-              <i data-lucide="eye" class="w-3.5 h-3.5"></i>
-              <span id="step-watch-text"></span>
-            </div>
-          </div>
-
-          <button type="button" id="next-step-side" class="step-side-nav" aria-label="Next step">
-            <i data-lucide="chevron-right" class="w-5 h-5"></i>
-          </button>
-        </div>
-
-        <!-- Animation window (below explanation) -->
-        <div id="tutorial-visual" class="tutorial-visual">
-          <p class="visual-label">
-            <i data-lucide="play-circle" class="w-3.5 h-3.5"></i>
-            Watch the flow
-          </p>
-          <div class="diagram-wrapper">
-            <div id="flow-legend" class="flow-legend hidden" aria-live="polite">
-              <span class="flow-legend-badge">
-                <i data-lucide="arrow-right" class="w-3 h-3"></i>
-                In this step
-              </span>
-              <span id="flow-legend-text" class="flow-legend-text"></span>
-            </div>
-            <div id="diagram-canvas" class="diagram-canvas relative">
-              <svg id="connection-layer" class="connection-layer" preserveAspectRatio="none"></svg>
-              <div id="connection-labels" class="connection-labels"></div>
-              <div id="packets-container" class="packets-container hidden" aria-hidden="true"></div>
-              <div id="nodes-container" class="nodes-layer"></div>
-              <div id="diagram-empty" class="diagram-empty hidden">
-                <i data-lucide="lightbulb" class="w-8 h-8 text-indigo-400/50 mb-3"></i>
-                <p>We'll build the diagram step by step — one piece at a time.</p>
-              </div>
-            </div>
-            <div id="diagram-tooltip" class="diagram-tooltip hidden" role="tooltip"></div>
-          </div>
-
-          <div id="step-controls" class="step-controls">
-            <div class="flex items-center gap-2">
-              <button type="button" id="play-btn" class="play-btn hidden">
-                <i data-lucide="play" class="w-4 h-4"></i>
-                Play Flow
-              </button>
-              <button type="button" id="prev-step" class="nav-btn" title="Previous step">
-                <i data-lucide="chevron-left" class="w-4 h-4"></i>
-              </button>
-              <button type="button" id="next-step" class="nav-btn" title="Next step">
-                <i data-lucide="chevron-right" class="w-4 h-4"></i>
-              </button>
-            </div>
-            <div id="step-bar" class="step-bar flex-1 max-w-sm ml-4"></div>
-          </div>
-
-          <div id="adv-step-controls" class="step-controls hidden">
-            <div class="flex items-center gap-2">
-              <button type="button" id="adv-prev" class="nav-btn"><i data-lucide="chevron-left" class="w-4 h-4"></i></button>
-              <button type="button" id="adv-next" class="nav-btn"><i data-lucide="chevron-right" class="w-4 h-4"></i></button>
-            </div>
-            <div id="adv-step-bar" class="step-bar flex-1 max-w-sm ml-4"></div>
-          </div>
-        </div>
-
-        <!-- Phase navigation -->
-        <div class="phase-actions">
-          <button type="button" id="phase-back" class="phase-action-btn secondary hidden">
-            <i data-lucide="arrow-left" class="w-4 h-4"></i>
-            Previous section
-          </button>
-          <button type="button" id="phase-continue" class="phase-action-btn primary">
-            Continue
-            <i data-lucide="arrow-right" class="w-4 h-4"></i>
-          </button>
-        </div>
-      </div>
-
-      <!-- Completion screen -->
-      <div id="complete-view" class="complete-view hidden">
-        <div class="complete-card">
-          <div class="complete-icon">
-            <i data-lucide="party-popper" class="w-8 h-8 text-emerald-400"></i>
-          </div>
-          <h2>You've learned the two core patterns!</h2>
-          <p>Session-based and JWT are the foundation of almost every login system. You now understand where identity lives and what travels over the network.</p>
-          <div class="complete-actions">
-            <button type="button" id="restart-btn" class="phase-action-btn secondary">
-              <i data-lucide="rotate-ccw" class="w-4 h-4"></i>
-              Start over
-            </button>
-          </div>
-        </div>
-
-        <!-- Advanced approaches -->
-        <div class="advanced-section">
-          <a href="../http-rest/index.html" class="next-concept-link" style="margin-top:0;margin-bottom:1.5rem;">
-            Next in path: HTTP & REST APIs <i data-lucide="arrow-right" class="w-4 h-4"></i>
-          </a>
-          <p class="text-xs font-medium text-white/30 uppercase tracking-widest mb-4">Go deeper — other approaches</p>
-          <div class="advanced-grid">
-            <button type="button" class="advanced-card" data-approach="oauth">
-              <div class="advanced-icon bg-violet-500/15 border border-violet-500/25">
-                <i data-lucide="share-2" class="text-violet-400 w-5 h-5"></i>
-              </div>
-              <div>
-                <div class="text-sm font-medium">OAuth 2.0</div>
-                <div class="text-xs text-white/35">"Sign in with Google" — no password stored</div>
-              </div>
-            </button>
-            <button type="button" class="advanced-card" data-approach="apikey">
-              <div class="advanced-icon bg-amber-500/15 border border-amber-500/25">
-                <i data-lucide="hash" class="text-amber-400 w-5 h-5"></i>
-              </div>
-              <div>
-                <div class="text-sm font-medium">API Key</div>
-                <div class="text-xs text-white/35">Static secret for apps & scripts</div>
-              </div>
-            </button>
-          </div>
-        </div>
-      </div>
-
-      <!-- Advanced walkthrough (hidden until user picks OAuth/API Key) -->
-      <div id="advanced-panel" class="advanced-panel hidden">
-        <button type="button" id="back-to-complete" class="text-sm text-white/40 hover:text-white/70 flex items-center gap-2 mb-6 transition-colors">
-          <i data-lucide="arrow-left" class="w-4 h-4"></i>
-          Back to summary
-        </button>
-        <div id="advanced-summary" class="approach-summary mb-5">
-          <h4 id="advanced-name"></h4>
-          <p id="advanced-overview" class="overview"></p>
-          <p id="advanced-when" class="when-to-use"></p>
-        </div>
-        <div class="step-nav-shell mb-5">
-          <button type="button" id="adv-prev-side" class="step-side-nav" aria-label="Previous step">
-            <i data-lucide="chevron-left" class="w-5 h-5"></i>
-          </button>
-          <div class="info-panel step-nav-content" id="advanced-info">
-            <div class="flex items-center gap-2 mb-2">
-              <i data-lucide="circle-dot" class="w-4 h-4 text-indigo-400"></i>
-              <span class="text-xs text-indigo-300/70 font-mono">Step <span id="adv-step-num">1</span> of <span id="adv-step-total">4</span></span>
-            </div>
-            <p id="adv-step-subtitle" class="step-subtitle"></p>
-            <h3 id="adv-step-title" class="step-title"></h3>
-            <p id="adv-step-desc" class="step-desc"></p>
-            <ul id="adv-step-bullets" class="step-bullets"></ul>
-            <div id="adv-step-code" class="code-block hidden"></div>
-          </div>
-          <button type="button" id="adv-next-side" class="step-side-nav" aria-label="Next step">
-            <i data-lucide="chevron-right" class="w-5 h-5"></i>
-          </button>
-        </div>
-        <div class="space-y-4 mb-5">
-          <div>
-            <p class="text-xs text-white/30 mb-2 flex items-center gap-1.5">
-              <i data-lucide="thumbs-up" class="w-3.5 h-3.5"></i> Pros
-            </p>
-            <div id="adv-pros-list" class="flex flex-wrap gap-1.5"></div>
-          </div>
-          <div>
-            <p class="text-xs text-white/30 mb-2 flex items-center gap-1.5">
-              <i data-lucide="thumbs-down" class="w-3.5 h-3.5"></i> Cons
-            </p>
-            <div id="adv-cons-list" class="flex flex-wrap gap-1.5"></div>
-          </div>
-        </div>
-      </div>
-    </main>
+    <div class="doc-layout">
+      <aside id="doc-toc"></aside>
+      <div id="doc-article" class="doc-article"></div>
+    </div>
+    <footer class="border-t border-white/5 py-8 mt-8">
+      <div class="max-w-6xl mx-auto px-6 text-xs text-white/25">Concept Lab — Authentication</div>
+    </footer>
   </div>
-
   <script src="https://unpkg.com/lucide@0.469.0/dist/umd/lucide.min.js"></script>
+  <script src="../../js/concepts-data.js"></script>
+  <script src="../../js/search.js"></script>
+  <script src="../../js/doc-page.js"></script>
   <script src="../../js/theme.js"></script>
-  <script src="../../js/concept-path.js"></script>
-  <script src="../../js/concept-nav.js"></script>
-  <script src="../../js/anim-tooltips.js"></script>
-  <script src="diagram-engine.js"></script>
-  <script src="script.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const el = document.getElementById('header-search');
+      if (el) ConceptSearch.init(el, { basePath: '../../' });
+    });
+  </script>
 </body>
 </html>
