@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Concept Lab — Programming Concepts Explained</title>
+  <title>Concept Lab — My Programming Notes</title>
   <script>
     (function () {
       if (localStorage.getItem('concept-lab-theme') === 'light') {
@@ -32,17 +32,21 @@
 <body class="bg-deep text-white">
   <div class="ambient-bg"></div>
   <div class="grid-overlay"></div>
+  <div id="sidebar-overlay" class="sidebar-overlay"></div>
 
   <div class="relative z-10 min-h-screen">
     <header class="border-b border-white/5 backdrop-blur-sm bg-deep/80 sticky top-0 z-50">
-      <div class="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between gap-4">
+      <div class="max-w-[90rem] mx-auto px-4 sm:px-6 py-4 flex items-center justify-between gap-4">
         <div class="flex items-center gap-3">
+          <button type="button" id="sidebar-toggle" class="sidebar-toggle" aria-label="Open topic list">
+            <i data-lucide="panel-left"></i>
+          </button>
           <div class="w-10 h-10 rounded-xl bg-indigo-500/20 border border-indigo-500/30 flex items-center justify-center">
             <i data-lucide="book-open" class="text-indigo-400"></i>
           </div>
           <div>
             <h1 class="text-lg font-semibold tracking-tight">Concept Lab</h1>
-            <p class="text-xs text-white/40">Programming concepts, explained</p>
+            <p class="text-xs text-white/40">What I learn — documented</p>
           </div>
         </div>
         <div class="flex items-center gap-3">
@@ -59,44 +63,51 @@
       </div>
     </header>
 
-    <section class="max-w-6xl mx-auto px-6 pt-14 pb-6">
-      <div class="doc-hero-index">
-        <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-indigo-500/10 border border-indigo-500/20 text-indigo-300 text-xs font-medium mb-6">
-          <i data-lucide="graduation-cap" class="w-3.5 h-3.5"></i>
-          Step-by-step documentation
-        </div>
-        <h2>
-          Your Programming
-          <span class="bg-gradient-to-r from-indigo-400 via-violet-400 to-cyan-400 bg-clip-text text-transparent">Knowledge Index</span>
-        </h2>
-        <p>
-          A structured map of everything to learn — from core fundamentals to Next.js, MongoDB, Three.js, and engineering mindset. Search any topic, read step by step, grow over time.
-        </p>
+    <div class="site-layout">
+      <aside id="sidebar-nav" class="sidebar-nav"></aside>
 
-        <div id="hero-search" class="search-wrap">
-          <i data-lucide="search" class="search-icon"></i>
-          <input type="search" class="search-input" placeholder="Search topics — try &quot;client&quot;, &quot;jwt&quot;, or &quot;cache&quot;…" aria-label="Search concepts" autocomplete="off">
-          <div class="search-results" role="listbox"></div>
-        </div>
+      <main class="site-main">
+        <section class="px-4 sm:px-6 pt-10 pb-6">
+          <div class="doc-hero-index max-w-3xl">
+            <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-indigo-500/10 border border-indigo-500/20 text-indigo-300 text-xs font-medium mb-6">
+              <i data-lucide="notebook-pen" class="w-3.5 h-3.5"></i>
+              Personal documentation
+            </div>
+            <h2>
+              My Programming
+              <span class="bg-gradient-to-r from-indigo-400 via-violet-400 to-cyan-400 bg-clip-text text-transparent">Knowledge Index</span>
+            </h2>
+            <p>
+              Concepts I study — explained in my own words, with source links I can add or remove anytime. Use the sidebar to jump to any topic.
+            </p>
 
-        <div class="doc-stats" id="doc-stats"></div>
-      </div>
-    </section>
+            <div id="hero-search" class="search-wrap">
+              <i data-lucide="search" class="search-icon"></i>
+              <input type="search" class="search-input" placeholder="Search — try &quot;event loop&quot;, &quot;jwt&quot;, &quot;mongodb&quot;…" aria-label="Search concepts" autocomplete="off">
+              <div class="search-results" role="listbox"></div>
+            </div>
 
-    <section class="max-w-6xl mx-auto px-6 pb-20">
-      <div id="categories-container"></div>
-    </section>
+            <div class="doc-stats" id="doc-stats"></div>
+          </div>
+        </section>
+
+        <section class="px-4 sm:px-6 pb-20">
+          <div id="categories-container"></div>
+        </section>
+      </main>
+    </div>
 
     <footer class="border-t border-white/5 py-8">
-      <div class="max-w-6xl mx-auto px-6 flex items-center justify-between text-xs text-white/25">
-        <span>Concept Lab — Programming Knowledge Index</span>
-        <span class="font-mono">v0.5</span>
+      <div class="max-w-[90rem] mx-auto px-6 flex items-center justify-between text-xs text-white/25">
+        <span>Concept Lab — My learning notes</span>
+        <span class="font-mono">v0.6</span>
       </div>
     </footer>
   </div>
 
   <script src="https://unpkg.com/lucide@0.469.0/dist/umd/lucide.min.js"></script>
   <script src="js/concepts-data.js"></script>
+  <script src="js/sidebar-nav.js"></script>
   <script src="js/search.js"></script>
   <script src="js/index-page.js"></script>
   <script src="js/theme.js"></script>

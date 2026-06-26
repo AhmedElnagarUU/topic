@@ -4,6 +4,8 @@
  */
 const fs = require('fs');
 const path = require('path');
+const { explainTopic } = require('./explain-topic');
+const TOPIC_SOURCES = require('./topic-sources');
 
 const CATEGORIES = [
   { id: 'core-fundamentals', name: 'Core Programming Fundamentals', description: 'Variables, functions, scope, memory — the thinking skills behind every language.', icon: 'brain', color: 'cyan', order: 1 },
@@ -168,39 +170,18 @@ function slugify(title) {
   return title.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
 }
 
-function defaultSteps(topic) {
+function defaultSteps(topic, category) {
   const custom = TOPIC_CONTENT[topic.id];
-  if (custom) return custom.steps;
-
-  return [
-    {
-      kicker: 'What it is',
-      title: `Understanding ${topic.title}`,
-      desc: `${topic.summary} This is a core topic in your learning path — understand the idea before memorizing syntax.`,
-      bullets: [`Part of: ${CATEGORIES.find((c) => c.id === topic.category)?.name}`, 'Read the steps, then try explaining it out loud', topic.important ? '⚠️ Marked as especially important' : 'Build a small example in your own project'].filter(Boolean),
-      icon: topic.icon,
-    },
-    {
-      kicker: 'Why it matters',
-      title: 'Why you need this',
-      desc: `Weak mental models here make everything built on top harder. ${topic.title} connects to real work in Next.js, MongoDB, and backend projects you're already building.`,
-      bullets: ['Strong engineers explain concepts clearly', 'Interviewers test fundamentals, not just frameworks', 'Deep understanding beats copy-paste solutions'],
-      icon: 'lightbulb',
-    },
-    {
-      kicker: 'Next step',
-      title: 'How to learn it deeply',
-      desc: 'Pick one resource, build one tiny example, then explain it without looking at notes — like a mock interview.',
-      bullets: ['Step 1: Read and take notes', 'Step 2: Code a minimal example', 'Step 3: Explain out loud in English'],
-      icon: 'target',
-    },
-  ];
+  if (custom?.steps) return custom.steps;
+  return explainTopic(topic, category).steps;
 }
 
 function buildConcept(topic, index) {
   const cat = CATEGORIES.find((c) => c.id === topic.category);
   const full = FULL_DOCS[topic.id];
   const custom = TOPIC_CONTENT[topic.id];
+  const explained = explainTopic(topic, cat);
+  const sources = TOPIC_SOURCES[topic.id] || custom?.sources || [];
 
   return {
     id: topic.id,
@@ -213,9 +194,10 @@ function buildConcept(topic, index) {
     color: cat.color,
     tags: topic.tags,
     important: topic.important || false,
-    intro: full?.intro || custom?.intro || `${topic.summary} Part of your Programming Knowledge Index — ${cat.name}.`,
+    sources,
+    intro: full?.intro || custom?.intro || explained.intro,
     ...(full?.sections ? { sections: full.sections } : {}),
-    ...(full?.steps ? { steps: full.steps } : { steps: defaultSteps(topic) }),
+    ...(full?.steps ? { steps: full.steps } : { steps: defaultSteps(topic, cat) }),
   };
 }
 
@@ -347,12 +329,18 @@ const template = (id, title) => `<!DOCTYPE html>
 <body class="bg-deep text-white" data-concept-id="${id}">
   <div class="ambient-bg"></div>
   <div class="grid-overlay"></div>
+  <div id="sidebar-overlay" class="sidebar-overlay"></div>
   <div class="relative z-10 min-h-screen">
     <header class="border-b border-white/5 backdrop-blur-sm bg-deep/80 sticky top-0 z-50">
-      <div class="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between gap-4">
-        <a href="../../index.html" class="flex items-center gap-2 text-white/40 hover:text-white/70 transition-colors text-sm no-underline">
-          <i data-lucide="arrow-left" class="w-4 h-4"></i> Knowledge Index
-        </a>
+      <div class="max-w-[90rem] mx-auto px-4 sm:px-6 py-4 flex items-center justify-between gap-4">
+        <div class="flex items-center gap-3">
+          <button type="button" id="sidebar-toggle" class="sidebar-toggle" aria-label="Open topic list">
+            <i data-lucide="panel-left"></i>
+          </button>
+          <a href="../../index.html" class="flex items-center gap-2 text-white/40 hover:text-white/70 transition-colors text-sm no-underline">
+            <i data-lucide="arrow-left" class="w-4 h-4"></i> Index
+          </a>
+        </div>
         <div class="flex items-center gap-3">
           <div id="header-search" class="header-search search-wrap">
             <i data-lucide="search" class="search-icon"></i>
@@ -365,16 +353,22 @@ const template = (id, title) => `<!DOCTYPE html>
         </div>
       </div>
     </header>
-    <div class="doc-layout">
-      <aside id="doc-toc"></aside>
-      <div id="doc-article" class="doc-article"></div>
+    <div class="site-layout">
+      <aside id="sidebar-nav" class="sidebar-nav"></aside>
+      <div class="site-main">
+        <div class="doc-layout">
+          <aside id="doc-toc"></aside>
+          <div id="doc-article" class="doc-article"></div>
+        </div>
+      </div>
     </div>
     <footer class="border-t border-white/5 py-8 mt-8">
-      <div class="max-w-6xl mx-auto px-6 text-xs text-white/25">Concept Lab — ${title}</div>
+      <div class="max-w-[90rem] mx-auto px-6 text-xs text-white/25">Concept Lab — ${title}</div>
     </footer>
   </div>
   <script src="https://unpkg.com/lucide@0.469.0/dist/umd/lucide.min.js"></script>
   <script src="../../js/concepts-data.js"></script>
+  <script src="../../js/sidebar-nav.js"></script>
   <script src="../../js/search.js"></script>
   <script src="../../js/doc-page.js"></script>
   <script src="../../js/theme.js"></script>
@@ -382,6 +376,8 @@ const template = (id, title) => `<!DOCTYPE html>
     document.addEventListener('DOMContentLoaded', () => {
       const el = document.getElementById('header-search');
       if (el) ConceptSearch.init(el, { basePath: '../../' });
+      SidebarNav.render({ basePath: '../../', activeId: '${id}' });
+      SidebarNav.initMobileToggle();
     });
   </script>
 </body>

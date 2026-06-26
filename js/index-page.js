@@ -59,4 +59,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const headerSearch = document.getElementById('header-search');
   if (heroSearch) ConceptSearch.init(heroSearch);
   if (headerSearch) ConceptSearch.init(headerSearch);
+
+  SidebarNav.render({ basePath: '' });
+  SidebarNav.initMobileToggle();
 });
