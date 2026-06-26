@@ -226,7 +226,7 @@ const DocPage = (function () {
           <i data-lucide="${concept.icon}" class="w-4 h-4"></i>
           ${escapeHtml(category?.name || '')} · ${concept.num}
         </div>
-        <h1>${escapeHtml(concept.title)}</h1>
+        <h1>${escapeHtml(concept.title)}${concept.important ? ' <span class="doc-important-badge">Important</span>' : ''}</h1>
         <p class="doc-hero-intro">${escapeHtml(concept.intro)}</p>
       </header>
       ${stepsHtml}
