@@ -33,6 +33,7 @@ function explainTopic(topic, category) {
       desc: s,
       bullets: buildDefinitionBullets(topic, cat),
       icon: topic.icon,
+      visual: { type: 'definition', icon: topic.icon, title: t, bullets: buildDefinitionBullets(topic, cat) },
     },
     {
       kicker: 'How it works',
@@ -40,6 +41,7 @@ function explainTopic(topic, category) {
       desc: buildHowItWorksDesc(topic, cat),
       bullets: buildHowItWorksBullets(topic, cat),
       icon: 'cog',
+      visual: { type: 'mechanism' },
     },
     {
       kicker: 'In your stack',
@@ -47,6 +49,7 @@ function explainTopic(topic, category) {
       desc: buildStackDesc(topic, cat),
       bullets: buildStackBullets(topic, cat),
       icon: 'layers',
+      visual: { type: 'integration', category: cat.id, title: t },
     },
   ];
 

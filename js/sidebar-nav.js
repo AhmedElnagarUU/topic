@@ -1,8 +1,9 @@
 /**
- * Concept Lab — Collapsible sidebar navigation (categories + all topics)
+ * Concept Lab — Collapsible sidebar navigation (index page only)
  */
 const SidebarNav = (function () {
   const STORAGE_KEY = 'concept-lab-sidebar-open';
+  const COLLAPSED_KEY = 'concept-lab-sidebar-collapsed';
 
   function getOpenCategories() {
     try {
@@ -15,6 +16,17 @@ const SidebarNav = (function () {
 
   function saveOpenCategories(ids) {
     localStorage.setItem(STORAGE_KEY, JSON.stringify(ids));
+  }
+
+  function isCollapsed() {
+    return localStorage.getItem(COLLAPSED_KEY) === 'true';
+  }
+
+  function setCollapsed(collapsed) {
+    localStorage.setItem(COLLAPSED_KEY, collapsed ? 'true' : 'false');
+    document.body.classList.toggle('sidebar-collapsed', collapsed);
+    const reopen = document.getElementById('sidebar-reopen');
+    if (reopen) reopen.classList.toggle('visible', collapsed);
   }
 
   function escapeHtml(str) {
@@ -36,16 +48,19 @@ const SidebarNav = (function () {
 
     const saved = getOpenCategories();
     const categories = [...CONCEPT_CATEGORIES].sort((a, b) => a.order - b.order);
-
-    // Default: open category containing active topic, or first category
     const defaultOpen = activeCategoryId || (activeId && CONCEPTS.find((c) => c.id === activeId)?.category) || categories[0]?.id;
-    const openSet = new Set(saved || [defaultOpen]);
+    const openSet = new Set(saved || categories.map((c) => c.id));
 
     let html = `
       <nav class="sidebar-nav-inner" aria-label="All topics">
         <div class="sidebar-nav-header">
-          <i data-lucide="list-tree" class="w-4 h-4"></i>
-          <span>All topics</span>
+          <div class="sidebar-nav-title">
+            <i data-lucide="list-tree" class="w-4 h-4"></i>
+            <span>All topics</span>
+          </div>
+          <button type="button" id="sidebar-close" class="sidebar-close-btn" aria-label="Close topic list" title="Close list">
+            <i data-lucide="chevron-left"></i>
+          </button>
         </div>
         <ul class="sidebar-category-list">`;
 
@@ -81,40 +96,49 @@ const SidebarNav = (function () {
         const catId = btn.dataset.toggle;
         const list = btn.parentElement.querySelector('.sidebar-topic-list');
         const nowOpen = !btn.classList.contains('open');
-
         btn.classList.toggle('open', nowOpen);
         btn.setAttribute('aria-expanded', String(nowOpen));
         list.classList.toggle('open', nowOpen);
-
         if (nowOpen) openSet.add(catId);
         else openSet.delete(catId);
         saveOpenCategories([...openSet]);
       });
     });
 
+    document.getElementById('sidebar-close')?.addEventListener('click', () => setCollapsed(true));
+
+    if (isCollapsed()) setCollapsed(true);
+
     if (window.lucide) lucide.createIcons();
   }
 
   function initMobileToggle() {
     const toggle = document.getElementById('sidebar-toggle');
+    const reopen = document.getElementById('sidebar-reopen');
     const sidebar = document.getElementById('sidebar-nav');
     const overlay = document.getElementById('sidebar-overlay');
-    if (!toggle || !sidebar) return;
+    if (!sidebar) return;
 
-    function close() {
+    function closeMobile() {
       sidebar.classList.remove('mobile-open');
       overlay?.classList.remove('open');
       document.body.classList.remove('sidebar-open');
     }
 
-    toggle.addEventListener('click', () => {
+    toggle?.addEventListener('click', () => {
+      if (document.body.classList.contains('sidebar-collapsed')) {
+        setCollapsed(false);
+        return;
+      }
       const open = sidebar.classList.toggle('mobile-open');
       overlay?.classList.toggle('open', open);
       document.body.classList.toggle('sidebar-open', open);
     });
 
-    overlay?.addEventListener('click', close);
+    reopen?.addEventListener('click', () => setCollapsed(false));
+
+    overlay?.addEventListener('click', closeMobile);
   }
 
-  return { render, initMobileToggle };
+  return { render, initMobileToggle, setCollapsed };
 })();

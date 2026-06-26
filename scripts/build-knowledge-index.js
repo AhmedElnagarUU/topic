@@ -306,7 +306,7 @@ function getKnowledgeStats() {
 fs.writeFileSync(path.join(__dirname, '../js/concepts-data.js'), output);
 console.log(`Generated ${concepts.length} concepts in ${CATEGORIES.length} categories`);
 
-// Generate concept HTML pages
+// Generate concept HTML pages (no sidebar — list is index only)
 const template = (id, title) => `<!DOCTYPE html>
 <html lang="en">
 <head>
@@ -329,18 +329,12 @@ const template = (id, title) => `<!DOCTYPE html>
 <body class="bg-deep text-white" data-concept-id="${id}">
   <div class="ambient-bg"></div>
   <div class="grid-overlay"></div>
-  <div id="sidebar-overlay" class="sidebar-overlay"></div>
   <div class="relative z-10 min-h-screen">
     <header class="border-b border-white/5 backdrop-blur-sm bg-deep/80 sticky top-0 z-50">
-      <div class="max-w-[90rem] mx-auto px-4 sm:px-6 py-4 flex items-center justify-between gap-4">
-        <div class="flex items-center gap-3">
-          <button type="button" id="sidebar-toggle" class="sidebar-toggle" aria-label="Open topic list">
-            <i data-lucide="panel-left"></i>
-          </button>
-          <a href="../../index.html" class="flex items-center gap-2 text-white/40 hover:text-white/70 transition-colors text-sm no-underline">
-            <i data-lucide="arrow-left" class="w-4 h-4"></i> Index
-          </a>
-        </div>
+      <div class="max-w-5xl mx-auto px-4 sm:px-6 py-4 flex items-center justify-between gap-4">
+        <a href="../../index.html" class="flex items-center gap-2 text-white/40 hover:text-white/70 transition-colors text-sm no-underline">
+          <i data-lucide="arrow-left" class="w-4 h-4"></i> Back to index
+        </a>
         <div class="flex items-center gap-3">
           <div id="header-search" class="header-search search-wrap">
             <i data-lucide="search" class="search-icon"></i>
@@ -353,22 +347,17 @@ const template = (id, title) => `<!DOCTYPE html>
         </div>
       </div>
     </header>
-    <div class="site-layout">
-      <aside id="sidebar-nav" class="sidebar-nav"></aside>
-      <div class="site-main">
-        <div class="doc-layout">
-          <aside id="doc-toc"></aside>
-          <div id="doc-article" class="doc-article"></div>
-        </div>
-      </div>
+    <div class="doc-layout doc-layout-page">
+      <aside id="doc-toc"></aside>
+      <div id="doc-article" class="doc-article"></div>
     </div>
     <footer class="border-t border-white/5 py-8 mt-8">
-      <div class="max-w-[90rem] mx-auto px-6 text-xs text-white/25">Concept Lab — ${title}</div>
+      <div class="max-w-5xl mx-auto px-6 text-xs text-white/25">Concept Lab — ${title}</div>
     </footer>
   </div>
   <script src="https://unpkg.com/lucide@0.469.0/dist/umd/lucide.min.js"></script>
   <script src="../../js/concepts-data.js"></script>
-  <script src="../../js/sidebar-nav.js"></script>
+  <script src="../../js/visual-engine.js"></script>
   <script src="../../js/search.js"></script>
   <script src="../../js/doc-page.js"></script>
   <script src="../../js/theme.js"></script>
@@ -376,8 +365,6 @@ const template = (id, title) => `<!DOCTYPE html>
     document.addEventListener('DOMContentLoaded', () => {
       const el = document.getElementById('header-search');
       if (el) ConceptSearch.init(el, { basePath: '../../' });
-      SidebarNav.render({ basePath: '../../', activeId: '${id}' });
-      SidebarNav.initMobileToggle();
     });
   </script>
 </body>

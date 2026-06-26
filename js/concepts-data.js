@@ -200,7 +200,17 @@ const CONCEPTS = [
           "Shows up in every function, component, and API you build",
           "Related ideas: if, else, switch"
         ],
-        "icon": "git-branch"
+        "icon": "git-branch",
+        "visual": {
+          "type": "definition",
+          "icon": "git-branch",
+          "title": "Control Flow",
+          "bullets": [
+            "Foundation for reading and writing any programming language",
+            "Shows up in every function, component, and API you build",
+            "Related ideas: if, else, switch"
+          ]
+        }
       },
       {
         "kicker": "How it works",
@@ -212,6 +222,9 @@ const CONCEPTS = [
           "Truthy/falsy: 0, \"\", null, undefined, NaN are falsy"
         ],
         "icon": "cog",
+        "visual": {
+          "type": "mechanism"
+        },
         "code": "if (score >= 60) {\n  console.log(\"Pass\");\n} else {\n  console.log(\"Fail\");\n}"
       },
       {
@@ -223,7 +236,12 @@ const CONCEPTS = [
           "Shows up when building real features, not toy examples",
           "Combine with other topics in this index for full picture"
         ],
-        "icon": "layers"
+        "icon": "layers",
+        "visual": {
+          "type": "integration",
+          "category": "core-fundamentals",
+          "title": "Control Flow"
+        }
       }
     ]
   },
@@ -255,7 +273,17 @@ const CONCEPTS = [
           "Shows up in every function, component, and API you build",
           "Related ideas: for, while, iteration"
         ],
-        "icon": "repeat"
+        "icon": "repeat",
+        "visual": {
+          "type": "definition",
+          "icon": "repeat",
+          "title": "Loops",
+          "bullets": [
+            "Foundation for reading and writing any programming language",
+            "Shows up in every function, component, and API you build",
+            "Related ideas: for, while, iteration"
+          ]
+        }
       },
       {
         "kicker": "How it works",
@@ -267,6 +295,9 @@ const CONCEPTS = [
           "for (const item of array) — iterate values safely"
         ],
         "icon": "cog",
+        "visual": {
+          "type": "mechanism"
+        },
         "code": "for (const item of items) {\n  console.log(item);\n}"
       },
       {
@@ -278,7 +309,12 @@ const CONCEPTS = [
           "Shows up when building real features, not toy examples",
           "Combine with other topics in this index for full picture"
         ],
-        "icon": "layers"
+        "icon": "layers",
+        "visual": {
+          "type": "integration",
+          "category": "core-fundamentals",
+          "title": "Loops"
+        }
       }
     ]
   },
@@ -310,7 +346,17 @@ const CONCEPTS = [
           "Shows up in every function, component, and API you build",
           "Related ideas: functions, pure, impure"
         ],
-        "icon": "function-square"
+        "icon": "function-square",
+        "visual": {
+          "type": "definition",
+          "icon": "function-square",
+          "title": "Functions",
+          "bullets": [
+            "Foundation for reading and writing any programming language",
+            "Shows up in every function, component, and API you build",
+            "Related ideas: functions, pure, impure"
+          ]
+        }
       },
       {
         "kicker": "How it works",
@@ -322,6 +368,9 @@ const CONCEPTS = [
           "Return early to reduce nesting"
         ],
         "icon": "cog",
+        "visual": {
+          "type": "mechanism"
+        },
         "code": "function greet(name) {\n  return `Hello, ${name}`;\n}"
       },
       {
@@ -333,7 +382,12 @@ const CONCEPTS = [
           "Shows up when building real features, not toy examples",
           "Combine with other topics in this index for full picture"
         ],
-        "icon": "layers"
+        "icon": "layers",
+        "visual": {
+          "type": "integration",
+          "category": "core-fundamentals",
+          "title": "Functions"
+        }
       }
     ]
   },
@@ -424,7 +478,17 @@ const CONCEPTS = [
           "Shows up in every function, component, and API you build",
           "Related ideas: stack, heap, memory"
         ],
-        "icon": "cpu"
+        "icon": "cpu",
+        "visual": {
+          "type": "definition",
+          "icon": "cpu",
+          "title": "Memory Basics",
+          "bullets": [
+            "Foundation for reading and writing any programming language",
+            "Shows up in every function, component, and API you build",
+            "Related ideas: stack, heap, memory"
+          ]
+        }
       },
       {
         "kicker": "How it works",
@@ -435,7 +499,10 @@ const CONCEPTS = [
           "Common in core programming fundamentals work",
           "See code example below when applicable"
         ],
-        "icon": "cog"
+        "icon": "cog",
+        "visual": {
+          "type": "mechanism"
+        }
       },
       {
         "kicker": "In your stack",
@@ -446,7 +513,12 @@ const CONCEPTS = [
           "Shows up when building real features, not toy examples",
           "Combine with other topics in this index for full picture"
         ],
-        "icon": "layers"
+        "icon": "layers",
+        "visual": {
+          "type": "integration",
+          "category": "core-fundamentals",
+          "title": "Memory Basics"
+        }
       }
     ]
   },
@@ -478,7 +550,17 @@ const CONCEPTS = [
           "Shows up in every function, component, and API you build",
           "Related ideas: errors, try, catch"
         ],
-        "icon": "alert-circle"
+        "icon": "alert-circle",
+        "visual": {
+          "type": "definition",
+          "icon": "alert-circle",
+          "title": "Error Handling",
+          "bullets": [
+            "Foundation for reading and writing any programming language",
+            "Shows up in every function, component, and API you build",
+            "Related ideas: errors, try, catch"
+          ]
+        }
       },
       {
         "kicker": "How it works",
@@ -489,7 +571,10 @@ const CONCEPTS = [
           "Common in core programming fundamentals work",
           "See code example below when applicable"
         ],
-        "icon": "cog"
+        "icon": "cog",
+        "visual": {
+          "type": "mechanism"
+        }
       },
       {
         "kicker": "In your stack",
@@ -500,7 +585,12 @@ const CONCEPTS = [
           "Shows up when building real features, not toy examples",
           "Combine with other topics in this index for full picture"
         ],
-        "icon": "layers"
+        "icon": "layers",
+        "visual": {
+          "type": "integration",
+          "category": "core-fundamentals",
+          "title": "Error Handling"
+        }
       }
     ]
   },
@@ -531,7 +621,17 @@ const CONCEPTS = [
           "Understanding runtime behavior prevents subtle async bugs",
           "Key terms: execution, context, hoisting"
         ],
-        "icon": "play-circle"
+        "icon": "play-circle",
+        "visual": {
+          "type": "definition",
+          "icon": "play-circle",
+          "title": "Execution Context",
+          "bullets": [
+            "Runs in browsers and Node.js — same language, different APIs",
+            "Understanding runtime behavior prevents subtle async bugs",
+            "Key terms: execution, context, hoisting"
+          ]
+        }
       },
       {
         "kicker": "How it works",
@@ -542,7 +642,10 @@ const CONCEPTS = [
           "Common in javascript deep understanding work",
           "See code example below when applicable"
         ],
-        "icon": "cog"
+        "icon": "cog",
+        "visual": {
+          "type": "mechanism"
+        }
       },
       {
         "kicker": "In your stack",
@@ -553,7 +656,12 @@ const CONCEPTS = [
           "Shows up when building real features, not toy examples",
           "Combine with other topics in this index for full picture"
         ],
-        "icon": "layers"
+        "icon": "layers",
+        "visual": {
+          "type": "integration",
+          "category": "javascript",
+          "title": "Execution Context"
+        }
       }
     ]
   },
@@ -584,7 +692,17 @@ const CONCEPTS = [
           "Understanding runtime behavior prevents subtle async bugs",
           "Key terms: call stack, stack overflow, functions"
         ],
-        "icon": "layers"
+        "icon": "layers",
+        "visual": {
+          "type": "definition",
+          "icon": "layers",
+          "title": "Call Stack",
+          "bullets": [
+            "Runs in browsers and Node.js — same language, different APIs",
+            "Understanding runtime behavior prevents subtle async bugs",
+            "Key terms: call stack, stack overflow, functions"
+          ]
+        }
       },
       {
         "kicker": "How it works",
@@ -595,7 +713,10 @@ const CONCEPTS = [
           "Common in javascript deep understanding work",
           "See code example below when applicable"
         ],
-        "icon": "cog"
+        "icon": "cog",
+        "visual": {
+          "type": "mechanism"
+        }
       },
       {
         "kicker": "In your stack",
@@ -606,7 +727,12 @@ const CONCEPTS = [
           "Shows up when building real features, not toy examples",
           "Combine with other topics in this index for full picture"
         ],
-        "icon": "layers"
+        "icon": "layers",
+        "visual": {
+          "type": "integration",
+          "category": "javascript",
+          "title": "Call Stack"
+        }
       }
     ]
   },
@@ -706,7 +832,17 @@ const CONCEPTS = [
           "Understanding runtime behavior prevents subtle async bugs",
           "Key terms: promises, async, await, then"
         ],
-        "icon": "timer"
+        "icon": "timer",
+        "visual": {
+          "type": "definition",
+          "icon": "timer",
+          "title": "Promises & async/await",
+          "bullets": [
+            "Runs in browsers and Node.js — same language, different APIs",
+            "Understanding runtime behavior prevents subtle async bugs",
+            "Key terms: promises, async, await, then"
+          ]
+        }
       },
       {
         "kicker": "How it works",
@@ -718,6 +854,9 @@ const CONCEPTS = [
           "See code example below when applicable"
         ],
         "icon": "cog",
+        "visual": {
+          "type": "mechanism"
+        },
         "code": "async function fetchUser(id) {\n  const res = await fetch(`/api/users/${id}`);\n  return res.json();\n}"
       },
       {
@@ -729,7 +868,12 @@ const CONCEPTS = [
           "Shows up when building real features, not toy examples",
           "Combine with other topics in this index for full picture"
         ],
-        "icon": "layers"
+        "icon": "layers",
+        "visual": {
+          "type": "integration",
+          "category": "javascript",
+          "title": "Promises & async/await"
+        }
       }
     ]
   },
@@ -760,7 +904,17 @@ const CONCEPTS = [
           "Understanding runtime behavior prevents subtle async bugs",
           "Key terms: closures, callbacks, private"
         ],
-        "icon": "lock"
+        "icon": "lock",
+        "visual": {
+          "type": "definition",
+          "icon": "lock",
+          "title": "Closures (Deep Dive)",
+          "bullets": [
+            "Runs in browsers and Node.js — same language, different APIs",
+            "Understanding runtime behavior prevents subtle async bugs",
+            "Key terms: closures, callbacks, private"
+          ]
+        }
       },
       {
         "kicker": "How it works",
@@ -771,7 +925,10 @@ const CONCEPTS = [
           "Common in javascript deep understanding work",
           "See code example below when applicable"
         ],
-        "icon": "cog"
+        "icon": "cog",
+        "visual": {
+          "type": "mechanism"
+        }
       },
       {
         "kicker": "In your stack",
@@ -782,7 +939,12 @@ const CONCEPTS = [
           "Shows up when building real features, not toy examples",
           "Combine with other topics in this index for full picture"
         ],
-        "icon": "layers"
+        "icon": "layers",
+        "visual": {
+          "type": "integration",
+          "category": "javascript",
+          "title": "Closures (Deep Dive)"
+        }
       }
     ]
   },
@@ -813,7 +975,17 @@ const CONCEPTS = [
           "Understanding runtime behavior prevents subtle async bugs",
           "Key terms: prototypes, inheritance, class"
         ],
-        "icon": "git-merge"
+        "icon": "git-merge",
+        "visual": {
+          "type": "definition",
+          "icon": "git-merge",
+          "title": "Prototypes & Inheritance",
+          "bullets": [
+            "Runs in browsers and Node.js — same language, different APIs",
+            "Understanding runtime behavior prevents subtle async bugs",
+            "Key terms: prototypes, inheritance, class"
+          ]
+        }
       },
       {
         "kicker": "How it works",
@@ -824,7 +996,10 @@ const CONCEPTS = [
           "Common in javascript deep understanding work",
           "See code example below when applicable"
         ],
-        "icon": "cog"
+        "icon": "cog",
+        "visual": {
+          "type": "mechanism"
+        }
       },
       {
         "kicker": "In your stack",
@@ -835,7 +1010,12 @@ const CONCEPTS = [
           "Shows up when building real features, not toy examples",
           "Combine with other topics in this index for full picture"
         ],
-        "icon": "layers"
+        "icon": "layers",
+        "visual": {
+          "type": "integration",
+          "category": "javascript",
+          "title": "Prototypes & Inheritance"
+        }
       }
     ]
   },
@@ -867,7 +1047,17 @@ const CONCEPTS = [
           "Understanding runtime behavior prevents subtle async bugs",
           "Key terms: this, bind, call, apply"
         ],
-        "icon": "target"
+        "icon": "target",
+        "visual": {
+          "type": "definition",
+          "icon": "target",
+          "title": "The this Keyword",
+          "bullets": [
+            "Runs in browsers and Node.js — same language, different APIs",
+            "Understanding runtime behavior prevents subtle async bugs",
+            "Key terms: this, bind, call, apply"
+          ]
+        }
       },
       {
         "kicker": "How it works",
@@ -878,7 +1068,10 @@ const CONCEPTS = [
           "Common in javascript deep understanding work",
           "See code example below when applicable"
         ],
-        "icon": "cog"
+        "icon": "cog",
+        "visual": {
+          "type": "mechanism"
+        }
       },
       {
         "kicker": "In your stack",
@@ -889,7 +1082,12 @@ const CONCEPTS = [
           "Shows up when building real features, not toy examples",
           "Combine with other topics in this index for full picture"
         ],
-        "icon": "layers"
+        "icon": "layers",
+        "visual": {
+          "type": "integration",
+          "category": "javascript",
+          "title": "The this Keyword"
+        }
       }
     ]
   },
@@ -921,7 +1119,17 @@ const CONCEPTS = [
           "Understanding runtime behavior prevents subtle async bugs",
           "Key terms: esm, commonjs, import, export"
         ],
-        "icon": "package"
+        "icon": "package",
+        "visual": {
+          "type": "definition",
+          "icon": "package",
+          "title": "Modules (ESM vs CommonJS)",
+          "bullets": [
+            "Runs in browsers and Node.js — same language, different APIs",
+            "Understanding runtime behavior prevents subtle async bugs",
+            "Key terms: esm, commonjs, import, export"
+          ]
+        }
       },
       {
         "kicker": "How it works",
@@ -932,7 +1140,10 @@ const CONCEPTS = [
           "Common in javascript deep understanding work",
           "See code example below when applicable"
         ],
-        "icon": "cog"
+        "icon": "cog",
+        "visual": {
+          "type": "mechanism"
+        }
       },
       {
         "kicker": "In your stack",
@@ -943,7 +1154,12 @@ const CONCEPTS = [
           "Shows up when building real features, not toy examples",
           "Combine with other topics in this index for full picture"
         ],
-        "icon": "layers"
+        "icon": "layers",
+        "visual": {
+          "type": "integration",
+          "category": "javascript",
+          "title": "Modules (ESM vs CommonJS)"
+        }
       }
     ]
   },
@@ -974,7 +1190,17 @@ const CONCEPTS = [
           "Types document what functions expect and return",
           "Works alongside JavaScript — gradual adoption is fine"
         ],
-        "icon": "file-type"
+        "icon": "file-type",
+        "visual": {
+          "type": "definition",
+          "icon": "file-type",
+          "title": "Types vs Interfaces",
+          "bullets": [
+            "Compile-time checks — errors caught before users see them",
+            "Types document what functions expect and return",
+            "Works alongside JavaScript — gradual adoption is fine"
+          ]
+        }
       },
       {
         "kicker": "How it works",
@@ -986,6 +1212,9 @@ const CONCEPTS = [
           "See code example below when applicable"
         ],
         "icon": "cog",
+        "visual": {
+          "type": "mechanism"
+        },
         "code": "interface User { id: string; name: string; }\ntype Role = \"admin\" | \"user\";"
       },
       {
@@ -997,7 +1226,12 @@ const CONCEPTS = [
           "Shows up when building real features, not toy examples",
           "Combine with other topics in this index for full picture"
         ],
-        "icon": "layers"
+        "icon": "layers",
+        "visual": {
+          "type": "integration",
+          "category": "typescript",
+          "title": "Types vs Interfaces"
+        }
       }
     ]
   },
@@ -1027,7 +1261,17 @@ const CONCEPTS = [
           "Types document what functions expect and return",
           "Works alongside JavaScript — gradual adoption is fine"
         ],
-        "icon": "boxes"
+        "icon": "boxes",
+        "visual": {
+          "type": "definition",
+          "icon": "boxes",
+          "title": "Generics",
+          "bullets": [
+            "Compile-time checks — errors caught before users see them",
+            "Types document what functions expect and return",
+            "Works alongside JavaScript — gradual adoption is fine"
+          ]
+        }
       },
       {
         "kicker": "How it works",
@@ -1039,6 +1283,9 @@ const CONCEPTS = [
           "Generics keep types flexible without using any"
         ],
         "icon": "cog",
+        "visual": {
+          "type": "mechanism"
+        },
         "code": "type ApiResponse<T> = { data: T; error?: string };"
       },
       {
@@ -1050,7 +1297,12 @@ const CONCEPTS = [
           "Shows up when building real features, not toy examples",
           "Combine with other topics in this index for full picture"
         ],
-        "icon": "layers"
+        "icon": "layers",
+        "visual": {
+          "type": "integration",
+          "category": "typescript",
+          "title": "Generics"
+        }
       }
     ]
   },
@@ -1082,7 +1334,17 @@ const CONCEPTS = [
           "Types document what functions expect and return",
           "Works alongside JavaScript — gradual adoption is fine"
         ],
-        "icon": "wrench"
+        "icon": "wrench",
+        "visual": {
+          "type": "definition",
+          "icon": "wrench",
+          "title": "Utility Types",
+          "bullets": [
+            "Compile-time checks — errors caught before users see them",
+            "Types document what functions expect and return",
+            "Works alongside JavaScript — gradual adoption is fine"
+          ]
+        }
       },
       {
         "kicker": "How it works",
@@ -1093,7 +1355,10 @@ const CONCEPTS = [
           "Common in typescript work",
           "See code example below when applicable"
         ],
-        "icon": "cog"
+        "icon": "cog",
+        "visual": {
+          "type": "mechanism"
+        }
       },
       {
         "kicker": "In your stack",
@@ -1104,7 +1369,12 @@ const CONCEPTS = [
           "Shows up when building real features, not toy examples",
           "Combine with other topics in this index for full picture"
         ],
-        "icon": "layers"
+        "icon": "layers",
+        "visual": {
+          "type": "integration",
+          "category": "typescript",
+          "title": "Utility Types"
+        }
       }
     ]
   },
@@ -1135,7 +1405,17 @@ const CONCEPTS = [
           "Types document what functions expect and return",
           "Works alongside JavaScript — gradual adoption is fine"
         ],
-        "icon": "scan"
+        "icon": "scan",
+        "visual": {
+          "type": "definition",
+          "icon": "scan",
+          "title": "Type Inference",
+          "bullets": [
+            "Compile-time checks — errors caught before users see them",
+            "Types document what functions expect and return",
+            "Works alongside JavaScript — gradual adoption is fine"
+          ]
+        }
       },
       {
         "kicker": "How it works",
@@ -1146,7 +1426,10 @@ const CONCEPTS = [
           "Common in typescript work",
           "See code example below when applicable"
         ],
-        "icon": "cog"
+        "icon": "cog",
+        "visual": {
+          "type": "mechanism"
+        }
       },
       {
         "kicker": "In your stack",
@@ -1157,7 +1440,12 @@ const CONCEPTS = [
           "Shows up when building real features, not toy examples",
           "Combine with other topics in this index for full picture"
         ],
-        "icon": "layers"
+        "icon": "layers",
+        "visual": {
+          "type": "integration",
+          "category": "typescript",
+          "title": "Type Inference"
+        }
       }
     ]
   },
@@ -1188,7 +1476,17 @@ const CONCEPTS = [
           "Types document what functions expect and return",
           "Works alongside JavaScript — gradual adoption is fine"
         ],
-        "icon": "filter"
+        "icon": "filter",
+        "visual": {
+          "type": "definition",
+          "icon": "filter",
+          "title": "Narrowing",
+          "bullets": [
+            "Compile-time checks — errors caught before users see them",
+            "Types document what functions expect and return",
+            "Works alongside JavaScript — gradual adoption is fine"
+          ]
+        }
       },
       {
         "kicker": "How it works",
@@ -1199,7 +1497,10 @@ const CONCEPTS = [
           "Common in typescript work",
           "See code example below when applicable"
         ],
-        "icon": "cog"
+        "icon": "cog",
+        "visual": {
+          "type": "mechanism"
+        }
       },
       {
         "kicker": "In your stack",
@@ -1210,7 +1511,12 @@ const CONCEPTS = [
           "Shows up when building real features, not toy examples",
           "Combine with other topics in this index for full picture"
         ],
-        "icon": "layers"
+        "icon": "layers",
+        "visual": {
+          "type": "integration",
+          "category": "typescript",
+          "title": "Narrowing"
+        }
       }
     ]
   },
@@ -1242,7 +1548,17 @@ const CONCEPTS = [
           "Types document what functions expect and return",
           "Works alongside JavaScript — gradual adoption is fine"
         ],
-        "icon": "shield"
+        "icon": "shield",
+        "visual": {
+          "type": "definition",
+          "icon": "shield",
+          "title": "Type Safety in APIs",
+          "bullets": [
+            "Compile-time checks — errors caught before users see them",
+            "Types document what functions expect and return",
+            "Works alongside JavaScript — gradual adoption is fine"
+          ]
+        }
       },
       {
         "kicker": "How it works",
@@ -1253,7 +1569,10 @@ const CONCEPTS = [
           "Common in typescript work",
           "See code example below when applicable"
         ],
-        "icon": "cog"
+        "icon": "cog",
+        "visual": {
+          "type": "mechanism"
+        }
       },
       {
         "kicker": "In your stack",
@@ -1264,7 +1583,12 @@ const CONCEPTS = [
           "Shows up when building real features, not toy examples",
           "Combine with other topics in this index for full picture"
         ],
-        "icon": "layers"
+        "icon": "layers",
+        "visual": {
+          "type": "integration",
+          "category": "typescript",
+          "title": "Type Safety in APIs"
+        }
       }
     ]
   },
@@ -1295,7 +1619,17 @@ const CONCEPTS = [
           "Components compose into trees — props flow down, events bubble up",
           "Used in your Next.js App Router pages and client components"
         ],
-        "icon": "code"
+        "icon": "code",
+        "visual": {
+          "type": "definition",
+          "icon": "code",
+          "title": "JSX",
+          "bullets": [
+            "UI = f(state) — when state changes, React re-renders",
+            "Components compose into trees — props flow down, events bubble up",
+            "Used in your Next.js App Router pages and client components"
+          ]
+        }
       },
       {
         "kicker": "How it works",
@@ -1307,6 +1641,9 @@ const CONCEPTS = [
           "See code example below when applicable"
         ],
         "icon": "cog",
+        "visual": {
+          "type": "mechanism"
+        },
         "code": "function Card({ title }) {\n  return <div className=\"card\"><h2>{title}</h2></div>;\n}"
       },
       {
@@ -1318,7 +1655,12 @@ const CONCEPTS = [
           "Pairs with Next.js App Router",
           "Hooks replace class lifecycle methods"
         ],
-        "icon": "layers"
+        "icon": "layers",
+        "visual": {
+          "type": "integration",
+          "category": "react",
+          "title": "JSX"
+        }
       }
     ]
   },
@@ -1349,7 +1691,17 @@ const CONCEPTS = [
           "Components compose into trees — props flow down, events bubble up",
           "Used in your Next.js App Router pages and client components"
         ],
-        "icon": "arrow-right-left"
+        "icon": "arrow-right-left",
+        "visual": {
+          "type": "definition",
+          "icon": "arrow-right-left",
+          "title": "Props",
+          "bullets": [
+            "UI = f(state) — when state changes, React re-renders",
+            "Components compose into trees — props flow down, events bubble up",
+            "Used in your Next.js App Router pages and client components"
+          ]
+        }
       },
       {
         "kicker": "How it works",
@@ -1361,6 +1713,9 @@ const CONCEPTS = [
           "See code example below when applicable"
         ],
         "icon": "cog",
+        "visual": {
+          "type": "mechanism"
+        },
         "code": "<Button label=\"Save\" onClick={handleSave} />"
       },
       {
@@ -1372,7 +1727,12 @@ const CONCEPTS = [
           "Pairs with Next.js App Router",
           "Hooks replace class lifecycle methods"
         ],
-        "icon": "layers"
+        "icon": "layers",
+        "visual": {
+          "type": "integration",
+          "category": "react",
+          "title": "Props"
+        }
       }
     ]
   },
@@ -1403,7 +1763,17 @@ const CONCEPTS = [
           "Components compose into trees — props flow down, events bubble up",
           "Used in your Next.js App Router pages and client components"
         ],
-        "icon": "toggle-left"
+        "icon": "toggle-left",
+        "visual": {
+          "type": "definition",
+          "icon": "toggle-left",
+          "title": "State",
+          "bullets": [
+            "UI = f(state) — when state changes, React re-renders",
+            "Components compose into trees — props flow down, events bubble up",
+            "Used in your Next.js App Router pages and client components"
+          ]
+        }
       },
       {
         "kicker": "How it works",
@@ -1415,6 +1785,9 @@ const CONCEPTS = [
           "See code example below when applicable"
         ],
         "icon": "cog",
+        "visual": {
+          "type": "mechanism"
+        },
         "code": "const [count, setCount] = useState(0);\nsetCount(count + 1);"
       },
       {
@@ -1426,7 +1799,12 @@ const CONCEPTS = [
           "Pairs with Next.js App Router",
           "Hooks replace class lifecycle methods"
         ],
-        "icon": "layers"
+        "icon": "layers",
+        "visual": {
+          "type": "integration",
+          "category": "react",
+          "title": "State"
+        }
       }
     ]
   },
@@ -1457,7 +1835,17 @@ const CONCEPTS = [
           "Components compose into trees — props flow down, events bubble up",
           "Used in your Next.js App Router pages and client components"
         ],
-        "icon": "share-2"
+        "icon": "share-2",
+        "visual": {
+          "type": "definition",
+          "icon": "share-2",
+          "title": "Context API",
+          "bullets": [
+            "UI = f(state) — when state changes, React re-renders",
+            "Components compose into trees — props flow down, events bubble up",
+            "Used in your Next.js App Router pages and client components"
+          ]
+        }
       },
       {
         "kicker": "How it works",
@@ -1468,7 +1856,10 @@ const CONCEPTS = [
           "<Provider value={data}> wraps the tree",
           "useContext(ctx) reads the value in any descendant"
         ],
-        "icon": "cog"
+        "icon": "cog",
+        "visual": {
+          "type": "mechanism"
+        }
       },
       {
         "kicker": "In your stack",
@@ -1479,7 +1870,12 @@ const CONCEPTS = [
           "Pairs with Next.js App Router",
           "Hooks replace class lifecycle methods"
         ],
-        "icon": "layers"
+        "icon": "layers",
+        "visual": {
+          "type": "integration",
+          "category": "react",
+          "title": "Context API"
+        }
       }
     ]
   },
@@ -1510,7 +1906,17 @@ const CONCEPTS = [
           "Components compose into trees — props flow down, events bubble up",
           "Used in your Next.js App Router pages and client components"
         ],
-        "icon": "monitor-smartphone"
+        "icon": "monitor-smartphone",
+        "visual": {
+          "type": "definition",
+          "icon": "monitor-smartphone",
+          "title": "Server vs Client Components",
+          "bullets": [
+            "UI = f(state) — when state changes, React re-renders",
+            "Components compose into trees — props flow down, events bubble up",
+            "Used in your Next.js App Router pages and client components"
+          ]
+        }
       },
       {
         "kicker": "How it works",
@@ -1521,7 +1927,10 @@ const CONCEPTS = [
           "Common in react work",
           "See code example below when applicable"
         ],
-        "icon": "cog"
+        "icon": "cog",
+        "visual": {
+          "type": "mechanism"
+        }
       },
       {
         "kicker": "In your stack",
@@ -1532,7 +1941,12 @@ const CONCEPTS = [
           "Pairs with Next.js App Router",
           "Hooks replace class lifecycle methods"
         ],
-        "icon": "layers"
+        "icon": "layers",
+        "visual": {
+          "type": "integration",
+          "category": "react",
+          "title": "Server vs Client Components"
+        }
       }
     ]
   },
@@ -1563,7 +1977,17 @@ const CONCEPTS = [
           "Components compose into trees — props flow down, events bubble up",
           "Used in your Next.js App Router pages and client components"
         ],
-        "icon": "eye"
+        "icon": "eye",
+        "visual": {
+          "type": "definition",
+          "icon": "eye",
+          "title": "Rendering Behavior",
+          "bullets": [
+            "UI = f(state) — when state changes, React re-renders",
+            "Components compose into trees — props flow down, events bubble up",
+            "Used in your Next.js App Router pages and client components"
+          ]
+        }
       },
       {
         "kicker": "How it works",
@@ -1574,7 +1998,10 @@ const CONCEPTS = [
           "Common in react work",
           "See code example below when applicable"
         ],
-        "icon": "cog"
+        "icon": "cog",
+        "visual": {
+          "type": "mechanism"
+        }
       },
       {
         "kicker": "In your stack",
@@ -1585,7 +2012,12 @@ const CONCEPTS = [
           "Pairs with Next.js App Router",
           "Hooks replace class lifecycle methods"
         ],
-        "icon": "layers"
+        "icon": "layers",
+        "visual": {
+          "type": "integration",
+          "category": "react",
+          "title": "Rendering Behavior"
+        }
       }
     ]
   },
@@ -1617,7 +2049,17 @@ const CONCEPTS = [
           "Components compose into trees — props flow down, events bubble up",
           "Used in your Next.js App Router pages and client components"
         ],
-        "icon": "zap"
+        "icon": "zap",
+        "visual": {
+          "type": "definition",
+          "icon": "zap",
+          "title": "Re-renders & Optimization",
+          "bullets": [
+            "UI = f(state) — when state changes, React re-renders",
+            "Components compose into trees — props flow down, events bubble up",
+            "Used in your Next.js App Router pages and client components"
+          ]
+        }
       },
       {
         "kicker": "How it works",
@@ -1628,7 +2070,10 @@ const CONCEPTS = [
           "Common in react work",
           "See code example below when applicable"
         ],
-        "icon": "cog"
+        "icon": "cog",
+        "visual": {
+          "type": "mechanism"
+        }
       },
       {
         "kicker": "In your stack",
@@ -1639,7 +2084,12 @@ const CONCEPTS = [
           "Pairs with Next.js App Router",
           "Hooks replace class lifecycle methods"
         ],
-        "icon": "layers"
+        "icon": "layers",
+        "visual": {
+          "type": "integration",
+          "category": "react",
+          "title": "Re-renders & Optimization"
+        }
       }
     ]
   },
@@ -1671,7 +2121,17 @@ const CONCEPTS = [
           "Components compose into trees — props flow down, events bubble up",
           "Used in your Next.js App Router pages and client components"
         ],
-        "icon": "anchor"
+        "icon": "anchor",
+        "visual": {
+          "type": "definition",
+          "icon": "anchor",
+          "title": "Hooks",
+          "bullets": [
+            "UI = f(state) — when state changes, React re-renders",
+            "Components compose into trees — props flow down, events bubble up",
+            "Used in your Next.js App Router pages and client components"
+          ]
+        }
       },
       {
         "kicker": "How it works",
@@ -1682,7 +2142,10 @@ const CONCEPTS = [
           "Common in react work",
           "See code example below when applicable"
         ],
-        "icon": "cog"
+        "icon": "cog",
+        "visual": {
+          "type": "mechanism"
+        }
       },
       {
         "kicker": "In your stack",
@@ -1693,7 +2156,12 @@ const CONCEPTS = [
           "Pairs with Next.js App Router",
           "Hooks replace class lifecycle methods"
         ],
-        "icon": "layers"
+        "icon": "layers",
+        "visual": {
+          "type": "integration",
+          "category": "react",
+          "title": "Hooks"
+        }
       }
     ]
   },
@@ -1725,7 +2193,17 @@ const CONCEPTS = [
           "Components compose into trees — props flow down, events bubble up",
           "Used in your Next.js App Router pages and client components"
         ],
-        "icon": "form-input"
+        "icon": "form-input",
+        "visual": {
+          "type": "definition",
+          "icon": "form-input",
+          "title": "Controlled vs Uncontrolled Forms",
+          "bullets": [
+            "UI = f(state) — when state changes, React re-renders",
+            "Components compose into trees — props flow down, events bubble up",
+            "Used in your Next.js App Router pages and client components"
+          ]
+        }
       },
       {
         "kicker": "How it works",
@@ -1736,7 +2214,10 @@ const CONCEPTS = [
           "Common in react work",
           "See code example below when applicable"
         ],
-        "icon": "cog"
+        "icon": "cog",
+        "visual": {
+          "type": "mechanism"
+        }
       },
       {
         "kicker": "In your stack",
@@ -1747,7 +2228,12 @@ const CONCEPTS = [
           "Pairs with Next.js App Router",
           "Hooks replace class lifecycle methods"
         ],
-        "icon": "layers"
+        "icon": "layers",
+        "visual": {
+          "type": "integration",
+          "category": "react",
+          "title": "Controlled vs Uncontrolled Forms"
+        }
       }
     ]
   },
@@ -1783,7 +2269,17 @@ const CONCEPTS = [
           "App Router is the modern default (app/ directory)",
           "Server Components run on the server; Client Components use \"use client\""
         ],
-        "icon": "route"
+        "icon": "route",
+        "visual": {
+          "type": "definition",
+          "icon": "route",
+          "title": "App Router",
+          "bullets": [
+            "Built on React — adds file-based routing and server features",
+            "App Router is the modern default (app/ directory)",
+            "Server Components run on the server; Client Components use \"use client\""
+          ]
+        }
       },
       {
         "kicker": "How it works",
@@ -1794,7 +2290,10 @@ const CONCEPTS = [
           "Common in next.js work",
           "See code example below when applicable"
         ],
-        "icon": "cog"
+        "icon": "cog",
+        "visual": {
+          "type": "mechanism"
+        }
       },
       {
         "kicker": "In your stack",
@@ -1805,7 +2304,12 @@ const CONCEPTS = [
           "Combines with Kinde/NextAuth for login",
           "Server Actions replace many API routes"
         ],
-        "icon": "layers"
+        "icon": "layers",
+        "visual": {
+          "type": "integration",
+          "category": "nextjs",
+          "title": "App Router"
+        }
       }
     ]
   },
@@ -1841,7 +2345,17 @@ const CONCEPTS = [
           "App Router is the modern default (app/ directory)",
           "Server Components run on the server; Client Components use \"use client\""
         ],
-        "icon": "server"
+        "icon": "server",
+        "visual": {
+          "type": "definition",
+          "icon": "server",
+          "title": "Server Actions",
+          "bullets": [
+            "Built on React — adds file-based routing and server features",
+            "App Router is the modern default (app/ directory)",
+            "Server Components run on the server; Client Components use \"use client\""
+          ]
+        }
       },
       {
         "kicker": "How it works",
@@ -1853,6 +2367,9 @@ const CONCEPTS = [
           "See code example below when applicable"
         ],
         "icon": "cog",
+        "visual": {
+          "type": "mechanism"
+        },
         "code": "\"use server\"\nexport async function createPost(formData) {\n  await db.posts.insertOne({ title: formData.get(\"title\") });\n}"
       },
       {
@@ -1864,7 +2381,12 @@ const CONCEPTS = [
           "Combines with Kinde/NextAuth for login",
           "Server Actions replace many API routes"
         ],
-        "icon": "layers"
+        "icon": "layers",
+        "visual": {
+          "type": "integration",
+          "category": "nextjs",
+          "title": "Server Actions"
+        }
       }
     ]
   },
@@ -1895,7 +2417,17 @@ const CONCEPTS = [
           "App Router is the modern default (app/ directory)",
           "Server Components run on the server; Client Components use \"use client\""
         ],
-        "icon": "layout-template"
+        "icon": "layout-template",
+        "visual": {
+          "type": "definition",
+          "icon": "layout-template",
+          "title": "Routing & Layouts",
+          "bullets": [
+            "Built on React — adds file-based routing and server features",
+            "App Router is the modern default (app/ directory)",
+            "Server Components run on the server; Client Components use \"use client\""
+          ]
+        }
       },
       {
         "kicker": "How it works",
@@ -1906,7 +2438,10 @@ const CONCEPTS = [
           "Common in next.js work",
           "See code example below when applicable"
         ],
-        "icon": "cog"
+        "icon": "cog",
+        "visual": {
+          "type": "mechanism"
+        }
       },
       {
         "kicker": "In your stack",
@@ -1917,7 +2452,12 @@ const CONCEPTS = [
           "Combines with Kinde/NextAuth for login",
           "Server Actions replace many API routes"
         ],
-        "icon": "layers"
+        "icon": "layers",
+        "visual": {
+          "type": "integration",
+          "category": "nextjs",
+          "title": "Routing & Layouts"
+        }
       }
     ]
   },
@@ -1948,7 +2488,17 @@ const CONCEPTS = [
           "App Router is the modern default (app/ directory)",
           "Server Components run on the server; Client Components use \"use client\""
         ],
-        "icon": "download"
+        "icon": "download",
+        "visual": {
+          "type": "definition",
+          "icon": "download",
+          "title": "Data Fetching Patterns",
+          "bullets": [
+            "Built on React — adds file-based routing and server features",
+            "App Router is the modern default (app/ directory)",
+            "Server Components run on the server; Client Components use \"use client\""
+          ]
+        }
       },
       {
         "kicker": "How it works",
@@ -1959,7 +2509,10 @@ const CONCEPTS = [
           "Common in next.js work",
           "See code example below when applicable"
         ],
-        "icon": "cog"
+        "icon": "cog",
+        "visual": {
+          "type": "mechanism"
+        }
       },
       {
         "kicker": "In your stack",
@@ -1970,7 +2523,12 @@ const CONCEPTS = [
           "Combines with Kinde/NextAuth for login",
           "Server Actions replace many API routes"
         ],
-        "icon": "layers"
+        "icon": "layers",
+        "visual": {
+          "type": "integration",
+          "category": "nextjs",
+          "title": "Data Fetching Patterns"
+        }
       }
     ]
   },
@@ -2001,7 +2559,17 @@ const CONCEPTS = [
           "App Router is the modern default (app/ directory)",
           "Server Components run on the server; Client Components use \"use client\""
         ],
-        "icon": "hard-drive"
+        "icon": "hard-drive",
+        "visual": {
+          "type": "definition",
+          "icon": "hard-drive",
+          "title": "Caching & Revalidation",
+          "bullets": [
+            "Built on React — adds file-based routing and server features",
+            "App Router is the modern default (app/ directory)",
+            "Server Components run on the server; Client Components use \"use client\""
+          ]
+        }
       },
       {
         "kicker": "How it works",
@@ -2012,7 +2580,10 @@ const CONCEPTS = [
           "Common in next.js work",
           "See code example below when applicable"
         ],
-        "icon": "cog"
+        "icon": "cog",
+        "visual": {
+          "type": "mechanism"
+        }
       },
       {
         "kicker": "In your stack",
@@ -2023,7 +2594,12 @@ const CONCEPTS = [
           "Combines with Kinde/NextAuth for login",
           "Server Actions replace many API routes"
         ],
-        "icon": "layers"
+        "icon": "layers",
+        "visual": {
+          "type": "integration",
+          "category": "nextjs",
+          "title": "Caching & Revalidation"
+        }
       }
     ]
   },
@@ -2055,7 +2631,17 @@ const CONCEPTS = [
           "App Router is the modern default (app/ directory)",
           "Server Components run on the server; Client Components use \"use client\""
         ],
-        "icon": "key"
+        "icon": "key",
+        "visual": {
+          "type": "definition",
+          "icon": "key",
+          "title": "Authentication in Next.js",
+          "bullets": [
+            "Built on React — adds file-based routing and server features",
+            "App Router is the modern default (app/ directory)",
+            "Server Components run on the server; Client Components use \"use client\""
+          ]
+        }
       },
       {
         "kicker": "How it works",
@@ -2066,7 +2652,10 @@ const CONCEPTS = [
           "Common in next.js work",
           "See code example below when applicable"
         ],
-        "icon": "cog"
+        "icon": "cog",
+        "visual": {
+          "type": "mechanism"
+        }
       },
       {
         "kicker": "In your stack",
@@ -2077,7 +2666,12 @@ const CONCEPTS = [
           "Combines with Kinde/NextAuth for login",
           "Server Actions replace many API routes"
         ],
-        "icon": "layers"
+        "icon": "layers",
+        "visual": {
+          "type": "integration",
+          "category": "nextjs",
+          "title": "Authentication in Next.js"
+        }
       }
     ]
   },
@@ -2108,7 +2702,17 @@ const CONCEPTS = [
           "App Router is the modern default (app/ directory)",
           "Server Components run on the server; Client Components use \"use client\""
         ],
-        "icon": "git-compare"
+        "icon": "git-compare",
+        "visual": {
+          "type": "definition",
+          "icon": "git-compare",
+          "title": "API Routes vs Server Actions",
+          "bullets": [
+            "Built on React — adds file-based routing and server features",
+            "App Router is the modern default (app/ directory)",
+            "Server Components run on the server; Client Components use \"use client\""
+          ]
+        }
       },
       {
         "kicker": "How it works",
@@ -2119,7 +2723,10 @@ const CONCEPTS = [
           "Common in next.js work",
           "See code example below when applicable"
         ],
-        "icon": "cog"
+        "icon": "cog",
+        "visual": {
+          "type": "mechanism"
+        }
       },
       {
         "kicker": "In your stack",
@@ -2130,7 +2737,12 @@ const CONCEPTS = [
           "Combines with Kinde/NextAuth for login",
           "Server Actions replace many API routes"
         ],
-        "icon": "layers"
+        "icon": "layers",
+        "visual": {
+          "type": "integration",
+          "category": "nextjs",
+          "title": "API Routes vs Server Actions"
+        }
       }
     ]
   },
@@ -2162,7 +2774,17 @@ const CONCEPTS = [
           "Handles validation, business rules, and security",
           "Your Express/Next.js API routes and Server Actions are backend code"
         ],
-        "icon": "layout-grid"
+        "icon": "layout-grid",
+        "visual": {
+          "type": "definition",
+          "icon": "layout-grid",
+          "title": "MVC Pattern",
+          "bullets": [
+            "Sits between the client and database",
+            "Handles validation, business rules, and security",
+            "Your Express/Next.js API routes and Server Actions are backend code"
+          ]
+        }
       },
       {
         "kicker": "How it works",
@@ -2173,7 +2795,10 @@ const CONCEPTS = [
           "View: what the user sees (HTML/React)",
           "Controller: receives input, updates model, picks view"
         ],
-        "icon": "cog"
+        "icon": "cog",
+        "visual": {
+          "type": "mechanism"
+        }
       },
       {
         "kicker": "In your stack",
@@ -2184,7 +2809,12 @@ const CONCEPTS = [
           "Shows up when building real features, not toy examples",
           "Combine with other topics in this index for full picture"
         ],
-        "icon": "layers"
+        "icon": "layers",
+        "visual": {
+          "type": "integration",
+          "category": "backend",
+          "title": "MVC Pattern"
+        }
       }
     ]
   },
@@ -2215,7 +2845,17 @@ const CONCEPTS = [
           "Handles validation, business rules, and security",
           "Your Express/Next.js API routes and Server Actions are backend code"
         ],
-        "icon": "cog"
+        "icon": "cog",
+        "visual": {
+          "type": "definition",
+          "icon": "cog",
+          "title": "Services Layer",
+          "bullets": [
+            "Sits between the client and database",
+            "Handles validation, business rules, and security",
+            "Your Express/Next.js API routes and Server Actions are backend code"
+          ]
+        }
       },
       {
         "kicker": "How it works",
@@ -2226,7 +2866,10 @@ const CONCEPTS = [
           "Common in backend & web architecture work",
           "See code example below when applicable"
         ],
-        "icon": "cog"
+        "icon": "cog",
+        "visual": {
+          "type": "mechanism"
+        }
       },
       {
         "kicker": "In your stack",
@@ -2237,7 +2880,12 @@ const CONCEPTS = [
           "Shows up when building real features, not toy examples",
           "Combine with other topics in this index for full picture"
         ],
-        "icon": "layers"
+        "icon": "layers",
+        "visual": {
+          "type": "integration",
+          "category": "backend",
+          "title": "Services Layer"
+        }
       }
     ]
   },
@@ -2268,7 +2916,17 @@ const CONCEPTS = [
           "Handles validation, business rules, and security",
           "Your Express/Next.js API routes and Server Actions are backend code"
         ],
-        "icon": "radio"
+        "icon": "radio",
+        "visual": {
+          "type": "definition",
+          "icon": "radio",
+          "title": "Controllers",
+          "bullets": [
+            "Sits between the client and database",
+            "Handles validation, business rules, and security",
+            "Your Express/Next.js API routes and Server Actions are backend code"
+          ]
+        }
       },
       {
         "kicker": "How it works",
@@ -2279,7 +2937,10 @@ const CONCEPTS = [
           "Common in backend & web architecture work",
           "See code example below when applicable"
         ],
-        "icon": "cog"
+        "icon": "cog",
+        "visual": {
+          "type": "mechanism"
+        }
       },
       {
         "kicker": "In your stack",
@@ -2290,7 +2951,12 @@ const CONCEPTS = [
           "Shows up when building real features, not toy examples",
           "Combine with other topics in this index for full picture"
         ],
-        "icon": "layers"
+        "icon": "layers",
+        "visual": {
+          "type": "integration",
+          "category": "backend",
+          "title": "Controllers"
+        }
       }
     ]
   },
@@ -2321,7 +2987,17 @@ const CONCEPTS = [
           "Handles validation, business rules, and security",
           "Your Express/Next.js API routes and Server Actions are backend code"
         ],
-        "icon": "arrow-left-right"
+        "icon": "arrow-left-right",
+        "visual": {
+          "type": "definition",
+          "icon": "arrow-left-right",
+          "title": "DTOs & Mappers",
+          "bullets": [
+            "Sits between the client and database",
+            "Handles validation, business rules, and security",
+            "Your Express/Next.js API routes and Server Actions are backend code"
+          ]
+        }
       },
       {
         "kicker": "How it works",
@@ -2332,7 +3008,10 @@ const CONCEPTS = [
           "Common in backend & web architecture work",
           "See code example below when applicable"
         ],
-        "icon": "cog"
+        "icon": "cog",
+        "visual": {
+          "type": "mechanism"
+        }
       },
       {
         "kicker": "In your stack",
@@ -2343,7 +3022,12 @@ const CONCEPTS = [
           "Shows up when building real features, not toy examples",
           "Combine with other topics in this index for full picture"
         ],
-        "icon": "layers"
+        "icon": "layers",
+        "visual": {
+          "type": "integration",
+          "category": "backend",
+          "title": "DTOs & Mappers"
+        }
       }
     ]
   },
@@ -2375,7 +3059,17 @@ const CONCEPTS = [
           "Handles validation, business rules, and security",
           "Your Express/Next.js API routes and Server Actions are backend code"
         ],
-        "icon": "check-square"
+        "icon": "check-square",
+        "visual": {
+          "type": "definition",
+          "icon": "check-square",
+          "title": "Validation",
+          "bullets": [
+            "Sits between the client and database",
+            "Handles validation, business rules, and security",
+            "Your Express/Next.js API routes and Server Actions are backend code"
+          ]
+        }
       },
       {
         "kicker": "How it works",
@@ -2386,7 +3080,10 @@ const CONCEPTS = [
           "Common in backend & web architecture work",
           "See code example below when applicable"
         ],
-        "icon": "cog"
+        "icon": "cog",
+        "visual": {
+          "type": "mechanism"
+        }
       },
       {
         "kicker": "In your stack",
@@ -2397,7 +3094,12 @@ const CONCEPTS = [
           "Shows up when building real features, not toy examples",
           "Combine with other topics in this index for full picture"
         ],
-        "icon": "layers"
+        "icon": "layers",
+        "visual": {
+          "type": "integration",
+          "category": "backend",
+          "title": "Validation"
+        }
       }
     ]
   },
@@ -2428,7 +3130,17 @@ const CONCEPTS = [
           "Handles validation, business rules, and security",
           "Your Express/Next.js API routes and Server Actions are backend code"
         ],
-        "icon": "alert-triangle"
+        "icon": "alert-triangle",
+        "visual": {
+          "type": "definition",
+          "icon": "alert-triangle",
+          "title": "Error Handling",
+          "bullets": [
+            "Sits between the client and database",
+            "Handles validation, business rules, and security",
+            "Your Express/Next.js API routes and Server Actions are backend code"
+          ]
+        }
       },
       {
         "kicker": "How it works",
@@ -2439,7 +3151,10 @@ const CONCEPTS = [
           "Common in backend & web architecture work",
           "See code example below when applicable"
         ],
-        "icon": "cog"
+        "icon": "cog",
+        "visual": {
+          "type": "mechanism"
+        }
       },
       {
         "kicker": "In your stack",
@@ -2450,7 +3165,12 @@ const CONCEPTS = [
           "Shows up when building real features, not toy examples",
           "Combine with other topics in this index for full picture"
         ],
-        "icon": "layers"
+        "icon": "layers",
+        "visual": {
+          "type": "integration",
+          "category": "backend",
+          "title": "Error Handling"
+        }
       }
     ]
   },
@@ -2481,7 +3201,17 @@ const CONCEPTS = [
           "Handles validation, business rules, and security",
           "Your Express/Next.js API routes and Server Actions are backend code"
         ],
-        "icon": "building"
+        "icon": "building",
+        "visual": {
+          "type": "definition",
+          "icon": "building",
+          "title": "Clean Architecture Basics",
+          "bullets": [
+            "Sits between the client and database",
+            "Handles validation, business rules, and security",
+            "Your Express/Next.js API routes and Server Actions are backend code"
+          ]
+        }
       },
       {
         "kicker": "How it works",
@@ -2492,7 +3222,10 @@ const CONCEPTS = [
           "Common in backend & web architecture work",
           "See code example below when applicable"
         ],
-        "icon": "cog"
+        "icon": "cog",
+        "visual": {
+          "type": "mechanism"
+        }
       },
       {
         "kicker": "In your stack",
@@ -2503,7 +3236,12 @@ const CONCEPTS = [
           "Shows up when building real features, not toy examples",
           "Combine with other topics in this index for full picture"
         ],
-        "icon": "layers"
+        "icon": "layers",
+        "visual": {
+          "type": "integration",
+          "category": "backend",
+          "title": "Clean Architecture Basics"
+        }
       }
     ]
   },
@@ -3041,7 +3779,17 @@ const CONCEPTS = [
           "Schema design affects query speed and data consistency",
           "Indexes speed reads; aggregation pipelines transform data"
         ],
-        "icon": "pen-line"
+        "icon": "pen-line",
+        "visual": {
+          "type": "definition",
+          "icon": "pen-line",
+          "title": "CRUD Operations",
+          "bullets": [
+            "MongoDB stores documents (JSON-like) in collections",
+            "Schema design affects query speed and data consistency",
+            "Indexes speed reads; aggregation pipelines transform data"
+          ]
+        }
       },
       {
         "kicker": "How it works",
@@ -3053,6 +3801,9 @@ const CONCEPTS = [
           "See code example below when applicable"
         ],
         "icon": "cog",
+        "visual": {
+          "type": "mechanism"
+        },
         "code": "await db.users.insertOne({ name: \"Ada\" });\nawait db.users.findOne({ email: \"a@b.com\" });"
       },
       {
@@ -3064,7 +3815,12 @@ const CONCEPTS = [
           "Mongoose or native driver in Node",
           "Schema matches how you query in the app"
         ],
-        "icon": "layers"
+        "icon": "layers",
+        "visual": {
+          "type": "integration",
+          "category": "database",
+          "title": "CRUD Operations"
+        }
       }
     ]
   },
@@ -3095,7 +3851,17 @@ const CONCEPTS = [
           "Schema design affects query speed and data consistency",
           "Indexes speed reads; aggregation pipelines transform data"
         ],
-        "icon": "table"
+        "icon": "table",
+        "visual": {
+          "type": "definition",
+          "icon": "table",
+          "title": "Schema Design",
+          "bullets": [
+            "MongoDB stores documents (JSON-like) in collections",
+            "Schema design affects query speed and data consistency",
+            "Indexes speed reads; aggregation pipelines transform data"
+          ]
+        }
       },
       {
         "kicker": "How it works",
@@ -3106,7 +3872,10 @@ const CONCEPTS = [
           "Common in database (mongodb & concepts) work",
           "See code example below when applicable"
         ],
-        "icon": "cog"
+        "icon": "cog",
+        "visual": {
+          "type": "mechanism"
+        }
       },
       {
         "kicker": "In your stack",
@@ -3117,7 +3886,12 @@ const CONCEPTS = [
           "Mongoose or native driver in Node",
           "Schema matches how you query in the app"
         ],
-        "icon": "layers"
+        "icon": "layers",
+        "visual": {
+          "type": "integration",
+          "category": "database",
+          "title": "Schema Design"
+        }
       }
     ]
   },
@@ -3148,7 +3922,17 @@ const CONCEPTS = [
           "Schema design affects query speed and data consistency",
           "Indexes speed reads; aggregation pipelines transform data"
         ],
-        "icon": "link"
+        "icon": "link",
+        "visual": {
+          "type": "definition",
+          "icon": "link",
+          "title": "Relations in NoSQL",
+          "bullets": [
+            "MongoDB stores documents (JSON-like) in collections",
+            "Schema design affects query speed and data consistency",
+            "Indexes speed reads; aggregation pipelines transform data"
+          ]
+        }
       },
       {
         "kicker": "How it works",
@@ -3159,7 +3943,10 @@ const CONCEPTS = [
           "Common in database (mongodb & concepts) work",
           "See code example below when applicable"
         ],
-        "icon": "cog"
+        "icon": "cog",
+        "visual": {
+          "type": "mechanism"
+        }
       },
       {
         "kicker": "In your stack",
@@ -3170,7 +3957,12 @@ const CONCEPTS = [
           "Mongoose or native driver in Node",
           "Schema matches how you query in the app"
         ],
-        "icon": "layers"
+        "icon": "layers",
+        "visual": {
+          "type": "integration",
+          "category": "database",
+          "title": "Relations in NoSQL"
+        }
       }
     ]
   },
@@ -3201,7 +3993,17 @@ const CONCEPTS = [
           "Schema design affects query speed and data consistency",
           "Indexes speed reads; aggregation pipelines transform data"
         ],
-        "icon": "search"
+        "icon": "search",
+        "visual": {
+          "type": "definition",
+          "icon": "search",
+          "title": "Indexing",
+          "bullets": [
+            "MongoDB stores documents (JSON-like) in collections",
+            "Schema design affects query speed and data consistency",
+            "Indexes speed reads; aggregation pipelines transform data"
+          ]
+        }
       },
       {
         "kicker": "How it works",
@@ -3212,7 +4014,10 @@ const CONCEPTS = [
           "Compound index: { userId: 1, createdAt: -1 }",
           "Queries without matching indexes scan every document"
         ],
-        "icon": "cog"
+        "icon": "cog",
+        "visual": {
+          "type": "mechanism"
+        }
       },
       {
         "kicker": "In your stack",
@@ -3223,7 +4028,12 @@ const CONCEPTS = [
           "Mongoose or native driver in Node",
           "Schema matches how you query in the app"
         ],
-        "icon": "layers"
+        "icon": "layers",
+        "visual": {
+          "type": "integration",
+          "category": "database",
+          "title": "Indexing"
+        }
       }
     ]
   },
@@ -3254,7 +4064,17 @@ const CONCEPTS = [
           "Schema design affects query speed and data consistency",
           "Indexes speed reads; aggregation pipelines transform data"
         ],
-        "icon": "bar-chart"
+        "icon": "bar-chart",
+        "visual": {
+          "type": "definition",
+          "icon": "bar-chart",
+          "title": "Aggregation Basics",
+          "bullets": [
+            "MongoDB stores documents (JSON-like) in collections",
+            "Schema design affects query speed and data consistency",
+            "Indexes speed reads; aggregation pipelines transform data"
+          ]
+        }
       },
       {
         "kicker": "How it works",
@@ -3265,7 +4085,10 @@ const CONCEPTS = [
           "Common in database (mongodb & concepts) work",
           "See code example below when applicable"
         ],
-        "icon": "cog"
+        "icon": "cog",
+        "visual": {
+          "type": "mechanism"
+        }
       },
       {
         "kicker": "In your stack",
@@ -3276,7 +4099,12 @@ const CONCEPTS = [
           "Mongoose or native driver in Node",
           "Schema matches how you query in the app"
         ],
-        "icon": "layers"
+        "icon": "layers",
+        "visual": {
+          "type": "integration",
+          "category": "database",
+          "title": "Aggregation Basics"
+        }
       }
     ]
   },
@@ -3307,7 +4135,17 @@ const CONCEPTS = [
           "Schema design affects query speed and data consistency",
           "Indexes speed reads; aggregation pipelines transform data"
         ],
-        "icon": "scale"
+        "icon": "scale",
+        "visual": {
+          "type": "definition",
+          "icon": "scale",
+          "title": "Normalization vs Denormalization",
+          "bullets": [
+            "MongoDB stores documents (JSON-like) in collections",
+            "Schema design affects query speed and data consistency",
+            "Indexes speed reads; aggregation pipelines transform data"
+          ]
+        }
       },
       {
         "kicker": "How it works",
@@ -3318,7 +4156,10 @@ const CONCEPTS = [
           "Common in database (mongodb & concepts) work",
           "See code example below when applicable"
         ],
-        "icon": "cog"
+        "icon": "cog",
+        "visual": {
+          "type": "mechanism"
+        }
       },
       {
         "kicker": "In your stack",
@@ -3329,7 +4170,12 @@ const CONCEPTS = [
           "Mongoose or native driver in Node",
           "Schema matches how you query in the app"
         ],
-        "icon": "layers"
+        "icon": "layers",
+        "visual": {
+          "type": "integration",
+          "category": "database",
+          "title": "Normalization vs Denormalization"
+        }
       }
     ]
   },
@@ -3360,7 +4206,17 @@ const CONCEPTS = [
           "Client validation improves UX; server validation is mandatory",
           "FormData API sends files and fields in multipart requests"
         ],
-        "icon": "file-input"
+        "icon": "file-input",
+        "visual": {
+          "type": "definition",
+          "icon": "file-input",
+          "title": "FormData",
+          "bullets": [
+            "HTML forms or React controlled inputs collect user data",
+            "Client validation improves UX; server validation is mandatory",
+            "FormData API sends files and fields in multipart requests"
+          ]
+        }
       },
       {
         "kicker": "How it works",
@@ -3372,6 +4228,9 @@ const CONCEPTS = [
           "See code example below when applicable"
         ],
         "icon": "cog",
+        "visual": {
+          "type": "mechanism"
+        },
         "code": "const fd = new FormData(form);\nawait fetch(\"/api/upload\", { method: \"POST\", body: fd });"
       },
       {
@@ -3383,7 +4242,12 @@ const CONCEPTS = [
           "Shows up when building real features, not toy examples",
           "Combine with other topics in this index for full picture"
         ],
-        "icon": "layers"
+        "icon": "layers",
+        "visual": {
+          "type": "integration",
+          "category": "forms",
+          "title": "FormData"
+        }
       }
     ]
   },
@@ -3415,7 +4279,17 @@ const CONCEPTS = [
           "Client validation improves UX; server validation is mandatory",
           "FormData API sends files and fields in multipart requests"
         ],
-        "icon": "shield-check"
+        "icon": "shield-check",
+        "visual": {
+          "type": "definition",
+          "icon": "shield-check",
+          "title": "Validation (Client + Server)",
+          "bullets": [
+            "HTML forms or React controlled inputs collect user data",
+            "Client validation improves UX; server validation is mandatory",
+            "FormData API sends files and fields in multipart requests"
+          ]
+        }
       },
       {
         "kicker": "How it works",
@@ -3426,7 +4300,10 @@ const CONCEPTS = [
           "Common in forms & data flow work",
           "See code example below when applicable"
         ],
-        "icon": "cog"
+        "icon": "cog",
+        "visual": {
+          "type": "mechanism"
+        }
       },
       {
         "kicker": "In your stack",
@@ -3437,7 +4314,12 @@ const CONCEPTS = [
           "Shows up when building real features, not toy examples",
           "Combine with other topics in this index for full picture"
         ],
-        "icon": "layers"
+        "icon": "layers",
+        "visual": {
+          "type": "integration",
+          "category": "forms",
+          "title": "Validation (Client + Server)"
+        }
       }
     ]
   },
@@ -3469,7 +4351,17 @@ const CONCEPTS = [
           "Client validation improves UX; server validation is mandatory",
           "FormData API sends files and fields in multipart requests"
         ],
-        "icon": "upload"
+        "icon": "upload",
+        "visual": {
+          "type": "definition",
+          "icon": "upload",
+          "title": "File Uploads",
+          "bullets": [
+            "HTML forms or React controlled inputs collect user data",
+            "Client validation improves UX; server validation is mandatory",
+            "FormData API sends files and fields in multipart requests"
+          ]
+        }
       },
       {
         "kicker": "How it works",
@@ -3480,7 +4372,10 @@ const CONCEPTS = [
           "Common in forms & data flow work",
           "See code example below when applicable"
         ],
-        "icon": "cog"
+        "icon": "cog",
+        "visual": {
+          "type": "mechanism"
+        }
       },
       {
         "kicker": "In your stack",
@@ -3491,7 +4386,12 @@ const CONCEPTS = [
           "Shows up when building real features, not toy examples",
           "Combine with other topics in this index for full picture"
         ],
-        "icon": "layers"
+        "icon": "layers",
+        "visual": {
+          "type": "integration",
+          "category": "forms",
+          "title": "File Uploads"
+        }
       }
     ]
   },
@@ -3523,7 +4423,17 @@ const CONCEPTS = [
           "Client validation improves UX; server validation is mandatory",
           "FormData API sends files and fields in multipart requests"
         ],
-        "icon": "send"
+        "icon": "send",
+        "visual": {
+          "type": "definition",
+          "icon": "send",
+          "title": "API Communication",
+          "bullets": [
+            "HTML forms or React controlled inputs collect user data",
+            "Client validation improves UX; server validation is mandatory",
+            "FormData API sends files and fields in multipart requests"
+          ]
+        }
       },
       {
         "kicker": "How it works",
@@ -3534,7 +4444,10 @@ const CONCEPTS = [
           "Common in forms & data flow work",
           "See code example below when applicable"
         ],
-        "icon": "cog"
+        "icon": "cog",
+        "visual": {
+          "type": "mechanism"
+        }
       },
       {
         "kicker": "In your stack",
@@ -3545,7 +4458,12 @@ const CONCEPTS = [
           "Shows up when building real features, not toy examples",
           "Combine with other topics in this index for full picture"
         ],
-        "icon": "layers"
+        "icon": "layers",
+        "visual": {
+          "type": "integration",
+          "category": "forms",
+          "title": "API Communication"
+        }
       }
     ]
   },
@@ -3577,7 +4495,17 @@ const CONCEPTS = [
           "Client validation improves UX; server validation is mandatory",
           "FormData API sends files and fields in multipart requests"
         ],
-        "icon": "refresh-cw"
+        "icon": "refresh-cw",
+        "visual": {
+          "type": "definition",
+          "icon": "refresh-cw",
+          "title": "State Syncing",
+          "bullets": [
+            "HTML forms or React controlled inputs collect user data",
+            "Client validation improves UX; server validation is mandatory",
+            "FormData API sends files and fields in multipart requests"
+          ]
+        }
       },
       {
         "kicker": "How it works",
@@ -3588,7 +4516,10 @@ const CONCEPTS = [
           "Common in forms & data flow work",
           "See code example below when applicable"
         ],
-        "icon": "cog"
+        "icon": "cog",
+        "visual": {
+          "type": "mechanism"
+        }
       },
       {
         "kicker": "In your stack",
@@ -3599,7 +4530,12 @@ const CONCEPTS = [
           "Shows up when building real features, not toy examples",
           "Combine with other topics in this index for full picture"
         ],
-        "icon": "layers"
+        "icon": "layers",
+        "visual": {
+          "type": "integration",
+          "category": "forms",
+          "title": "State Syncing"
+        }
       }
     ]
   },
@@ -3631,7 +4567,17 @@ const CONCEPTS = [
           "Sessions, JWT, and OAuth solve login in different ways",
           "Always use HTTPS; protect cookies; validate on the server"
         ],
-        "icon": "git-compare"
+        "icon": "git-compare",
+        "visual": {
+          "type": "definition",
+          "icon": "git-compare",
+          "title": "Sessions vs JWT",
+          "bullets": [
+            "Authentication = who are you; Authorization = what can you do",
+            "Sessions, JWT, and OAuth solve login in different ways",
+            "Always use HTTPS; protect cookies; validate on the server"
+          ]
+        }
       },
       {
         "kicker": "How it works",
@@ -3642,7 +4588,10 @@ const CONCEPTS = [
           "Common in authentication & security work",
           "See code example below when applicable"
         ],
-        "icon": "cog"
+        "icon": "cog",
+        "visual": {
+          "type": "mechanism"
+        }
       },
       {
         "kicker": "In your stack",
@@ -3653,7 +4602,12 @@ const CONCEPTS = [
           "Middleware protects /dashboard routes",
           "Cookies store session tokens securely"
         ],
-        "icon": "layers"
+        "icon": "layers",
+        "visual": {
+          "type": "integration",
+          "category": "auth-security",
+          "title": "Sessions vs JWT"
+        }
       }
     ]
   },
@@ -3855,7 +4809,17 @@ const CONCEPTS = [
           "Sessions, JWT, and OAuth solve login in different ways",
           "Always use HTTPS; protect cookies; validate on the server"
         ],
-        "icon": "shield-check"
+        "icon": "shield-check",
+        "visual": {
+          "type": "definition",
+          "icon": "shield-check",
+          "title": "Authentication Deep Dive",
+          "bullets": [
+            "Authentication = who are you; Authorization = what can you do",
+            "Sessions, JWT, and OAuth solve login in different ways",
+            "Always use HTTPS; protect cookies; validate on the server"
+          ]
+        }
       },
       {
         "kicker": "How it works",
@@ -3866,7 +4830,10 @@ const CONCEPTS = [
           "Common in authentication & security work",
           "See code example below when applicable"
         ],
-        "icon": "cog"
+        "icon": "cog",
+        "visual": {
+          "type": "mechanism"
+        }
       },
       {
         "kicker": "In your stack",
@@ -3877,7 +4844,12 @@ const CONCEPTS = [
           "Middleware protects /dashboard routes",
           "Cookies store session tokens securely"
         ],
-        "icon": "layers"
+        "icon": "layers",
+        "visual": {
+          "type": "integration",
+          "category": "auth-security",
+          "title": "Authentication Deep Dive"
+        }
       }
     ]
   },
@@ -3914,7 +4886,17 @@ const CONCEPTS = [
           "Sessions, JWT, and OAuth solve login in different ways",
           "Always use HTTPS; protect cookies; validate on the server"
         ],
-        "icon": "fingerprint"
+        "icon": "fingerprint",
+        "visual": {
+          "type": "definition",
+          "icon": "fingerprint",
+          "title": "OAuth 2.0",
+          "bullets": [
+            "Authentication = who are you; Authorization = what can you do",
+            "Sessions, JWT, and OAuth solve login in different ways",
+            "Always use HTTPS; protect cookies; validate on the server"
+          ]
+        }
       },
       {
         "kicker": "How it works",
@@ -3925,7 +4907,10 @@ const CONCEPTS = [
           "Redirect to provider → login + consent",
           "Provider redirects back with code → exchange for access token"
         ],
-        "icon": "cog"
+        "icon": "cog",
+        "visual": {
+          "type": "mechanism"
+        }
       },
       {
         "kicker": "In your stack",
@@ -3936,7 +4921,12 @@ const CONCEPTS = [
           "Middleware protects /dashboard routes",
           "Cookies store session tokens securely"
         ],
-        "icon": "layers"
+        "icon": "layers",
+        "visual": {
+          "type": "integration",
+          "category": "auth-security",
+          "title": "OAuth 2.0"
+        }
       }
     ]
   },
@@ -3968,7 +4958,17 @@ const CONCEPTS = [
           "Sessions, JWT, and OAuth solve login in different ways",
           "Always use HTTPS; protect cookies; validate on the server"
         ],
-        "icon": "cookie"
+        "icon": "cookie",
+        "visual": {
+          "type": "definition",
+          "icon": "cookie",
+          "title": "Cookies",
+          "bullets": [
+            "Authentication = who are you; Authorization = what can you do",
+            "Sessions, JWT, and OAuth solve login in different ways",
+            "Always use HTTPS; protect cookies; validate on the server"
+          ]
+        }
       },
       {
         "kicker": "How it works",
@@ -3979,7 +4979,10 @@ const CONCEPTS = [
           "Common in authentication & security work",
           "See code example below when applicable"
         ],
-        "icon": "cog"
+        "icon": "cog",
+        "visual": {
+          "type": "mechanism"
+        }
       },
       {
         "kicker": "In your stack",
@@ -3990,7 +4993,12 @@ const CONCEPTS = [
           "Middleware protects /dashboard routes",
           "Cookies store session tokens securely"
         ],
-        "icon": "layers"
+        "icon": "layers",
+        "visual": {
+          "type": "integration",
+          "category": "auth-security",
+          "title": "Cookies"
+        }
       }
     ]
   },
@@ -4022,7 +5030,17 @@ const CONCEPTS = [
           "Sessions, JWT, and OAuth solve login in different ways",
           "Always use HTTPS; protect cookies; validate on the server"
         ],
-        "icon": "lock"
+        "icon": "lock",
+        "visual": {
+          "type": "definition",
+          "icon": "lock",
+          "title": "Protected Routes",
+          "bullets": [
+            "Authentication = who are you; Authorization = what can you do",
+            "Sessions, JWT, and OAuth solve login in different ways",
+            "Always use HTTPS; protect cookies; validate on the server"
+          ]
+        }
       },
       {
         "kicker": "How it works",
@@ -4033,7 +5051,10 @@ const CONCEPTS = [
           "Common in authentication & security work",
           "See code example below when applicable"
         ],
-        "icon": "cog"
+        "icon": "cog",
+        "visual": {
+          "type": "mechanism"
+        }
       },
       {
         "kicker": "In your stack",
@@ -4044,7 +5065,12 @@ const CONCEPTS = [
           "Middleware protects /dashboard routes",
           "Cookies store session tokens securely"
         ],
-        "icon": "layers"
+        "icon": "layers",
+        "visual": {
+          "type": "integration",
+          "category": "auth-security",
+          "title": "Protected Routes"
+        }
       }
     ]
   },
@@ -4076,7 +5102,17 @@ const CONCEPTS = [
           "Sessions, JWT, and OAuth solve login in different ways",
           "Always use HTTPS; protect cookies; validate on the server"
         ],
-        "icon": "shield-alert"
+        "icon": "shield-alert",
+        "visual": {
+          "type": "definition",
+          "icon": "shield-alert",
+          "title": "XSS & CSRF Basics",
+          "bullets": [
+            "Authentication = who are you; Authorization = what can you do",
+            "Sessions, JWT, and OAuth solve login in different ways",
+            "Always use HTTPS; protect cookies; validate on the server"
+          ]
+        }
       },
       {
         "kicker": "How it works",
@@ -4087,7 +5123,10 @@ const CONCEPTS = [
           "Common in authentication & security work",
           "See code example below when applicable"
         ],
-        "icon": "cog"
+        "icon": "cog",
+        "visual": {
+          "type": "mechanism"
+        }
       },
       {
         "kicker": "In your stack",
@@ -4098,7 +5137,12 @@ const CONCEPTS = [
           "Middleware protects /dashboard routes",
           "Cookies store session tokens securely"
         ],
-        "icon": "layers"
+        "icon": "layers",
+        "visual": {
+          "type": "integration",
+          "category": "auth-security",
+          "title": "XSS & CSRF Basics"
+        }
       }
     ]
   },
@@ -4225,7 +5269,17 @@ const CONCEPTS = [
           "Responsive layouts work on phone, tablet, and desktop",
           "Accessibility helps everyone, not just screen reader users"
         ],
-        "icon": "smartphone"
+        "icon": "smartphone",
+        "visual": {
+          "type": "definition",
+          "icon": "smartphone",
+          "title": "Responsive Design",
+          "bullets": [
+            "Users judge apps in seconds — clarity beats decoration",
+            "Responsive layouts work on phone, tablet, and desktop",
+            "Accessibility helps everyone, not just screen reader users"
+          ]
+        }
       },
       {
         "kicker": "How it works",
@@ -4236,7 +5290,10 @@ const CONCEPTS = [
           "Common in ui / ux & product thinking work",
           "See code example below when applicable"
         ],
-        "icon": "cog"
+        "icon": "cog",
+        "visual": {
+          "type": "mechanism"
+        }
       },
       {
         "kicker": "In your stack",
@@ -4247,7 +5304,12 @@ const CONCEPTS = [
           "Shows up when building real features, not toy examples",
           "Combine with other topics in this index for full picture"
         ],
-        "icon": "layers"
+        "icon": "layers",
+        "visual": {
+          "type": "integration",
+          "category": "ui-ux",
+          "title": "Responsive Design"
+        }
       }
     ]
   },
@@ -4278,7 +5340,17 @@ const CONCEPTS = [
           "Responsive layouts work on phone, tablet, and desktop",
           "Accessibility helps everyone, not just screen reader users"
         ],
-        "icon": "component"
+        "icon": "component",
+        "visual": {
+          "type": "definition",
+          "icon": "component",
+          "title": "Component Design",
+          "bullets": [
+            "Users judge apps in seconds — clarity beats decoration",
+            "Responsive layouts work on phone, tablet, and desktop",
+            "Accessibility helps everyone, not just screen reader users"
+          ]
+        }
       },
       {
         "kicker": "How it works",
@@ -4289,7 +5361,10 @@ const CONCEPTS = [
           "Common in ui / ux & product thinking work",
           "See code example below when applicable"
         ],
-        "icon": "cog"
+        "icon": "cog",
+        "visual": {
+          "type": "mechanism"
+        }
       },
       {
         "kicker": "In your stack",
@@ -4300,7 +5375,12 @@ const CONCEPTS = [
           "Shows up when building real features, not toy examples",
           "Combine with other topics in this index for full picture"
         ],
-        "icon": "layers"
+        "icon": "layers",
+        "visual": {
+          "type": "integration",
+          "category": "ui-ux",
+          "title": "Component Design"
+        }
       }
     ]
   },
@@ -4331,7 +5411,17 @@ const CONCEPTS = [
           "Responsive layouts work on phone, tablet, and desktop",
           "Accessibility helps everyone, not just screen reader users"
         ],
-        "icon": "copy"
+        "icon": "copy",
+        "visual": {
+          "type": "definition",
+          "icon": "copy",
+          "title": "Reusability",
+          "bullets": [
+            "Users judge apps in seconds — clarity beats decoration",
+            "Responsive layouts work on phone, tablet, and desktop",
+            "Accessibility helps everyone, not just screen reader users"
+          ]
+        }
       },
       {
         "kicker": "How it works",
@@ -4342,7 +5432,10 @@ const CONCEPTS = [
           "Common in ui / ux & product thinking work",
           "See code example below when applicable"
         ],
-        "icon": "cog"
+        "icon": "cog",
+        "visual": {
+          "type": "mechanism"
+        }
       },
       {
         "kicker": "In your stack",
@@ -4353,7 +5446,12 @@ const CONCEPTS = [
           "Shows up when building real features, not toy examples",
           "Combine with other topics in this index for full picture"
         ],
-        "icon": "layers"
+        "icon": "layers",
+        "visual": {
+          "type": "integration",
+          "category": "ui-ux",
+          "title": "Reusability"
+        }
       }
     ]
   },
@@ -4385,7 +5483,17 @@ const CONCEPTS = [
           "Responsive layouts work on phone, tablet, and desktop",
           "Accessibility helps everyone, not just screen reader users"
         ],
-        "icon": "accessibility"
+        "icon": "accessibility",
+        "visual": {
+          "type": "definition",
+          "icon": "accessibility",
+          "title": "Accessibility Basics",
+          "bullets": [
+            "Users judge apps in seconds — clarity beats decoration",
+            "Responsive layouts work on phone, tablet, and desktop",
+            "Accessibility helps everyone, not just screen reader users"
+          ]
+        }
       },
       {
         "kicker": "How it works",
@@ -4396,7 +5504,10 @@ const CONCEPTS = [
           "Common in ui / ux & product thinking work",
           "See code example below when applicable"
         ],
-        "icon": "cog"
+        "icon": "cog",
+        "visual": {
+          "type": "mechanism"
+        }
       },
       {
         "kicker": "In your stack",
@@ -4407,7 +5518,12 @@ const CONCEPTS = [
           "Shows up when building real features, not toy examples",
           "Combine with other topics in this index for full picture"
         ],
-        "icon": "layers"
+        "icon": "layers",
+        "visual": {
+          "type": "integration",
+          "category": "ui-ux",
+          "title": "Accessibility Basics"
+        }
       }
     ]
   },
@@ -4439,7 +5555,17 @@ const CONCEPTS = [
           "Responsive layouts work on phone, tablet, and desktop",
           "Accessibility helps everyone, not just screen reader users"
         ],
-        "icon": "map"
+        "icon": "map",
+        "visual": {
+          "type": "definition",
+          "icon": "map",
+          "title": "UX Flow",
+          "bullets": [
+            "Users judge apps in seconds — clarity beats decoration",
+            "Responsive layouts work on phone, tablet, and desktop",
+            "Accessibility helps everyone, not just screen reader users"
+          ]
+        }
       },
       {
         "kicker": "How it works",
@@ -4450,7 +5576,10 @@ const CONCEPTS = [
           "Common in ui / ux & product thinking work",
           "See code example below when applicable"
         ],
-        "icon": "cog"
+        "icon": "cog",
+        "visual": {
+          "type": "mechanism"
+        }
       },
       {
         "kicker": "In your stack",
@@ -4461,7 +5590,12 @@ const CONCEPTS = [
           "Shows up when building real features, not toy examples",
           "Combine with other topics in this index for full picture"
         ],
-        "icon": "layers"
+        "icon": "layers",
+        "visual": {
+          "type": "integration",
+          "category": "ui-ux",
+          "title": "UX Flow"
+        }
       }
     ]
   },
@@ -4497,7 +5631,17 @@ const CONCEPTS = [
           "Models load as GLTF from Blender or other 3D tools",
           "Performance matters — too many draw calls drops frame rate"
         ],
-        "icon": "box"
+        "icon": "box",
+        "visual": {
+          "type": "definition",
+          "icon": "box",
+          "title": "Three.js Basics",
+          "bullets": [
+            "WebGL draws triangles; Three.js abstracts scenes and cameras",
+            "Models load as GLTF from Blender or other 3D tools",
+            "Performance matters — too many draw calls drops frame rate"
+          ]
+        }
       },
       {
         "kicker": "How it works",
@@ -4508,7 +5652,10 @@ const CONCEPTS = [
           "Common in 3d & advanced frontend work",
           "See code example below when applicable"
         ],
-        "icon": "cog"
+        "icon": "cog",
+        "visual": {
+          "type": "mechanism"
+        }
       },
       {
         "kicker": "In your stack",
@@ -4519,7 +5666,12 @@ const CONCEPTS = [
           "Load GLTF models from /public folder",
           "Use useFrame for animation loops"
         ],
-        "icon": "layers"
+        "icon": "layers",
+        "visual": {
+          "type": "integration",
+          "category": "threejs",
+          "title": "Three.js Basics"
+        }
       }
     ]
   },
@@ -4550,7 +5702,17 @@ const CONCEPTS = [
           "Models load as GLTF from Blender or other 3D tools",
           "Performance matters — too many draw calls drops frame rate"
         ],
-        "icon": "camera"
+        "icon": "camera",
+        "visual": {
+          "type": "definition",
+          "icon": "camera",
+          "title": "Scene, Camera & Renderer",
+          "bullets": [
+            "WebGL draws triangles; Three.js abstracts scenes and cameras",
+            "Models load as GLTF from Blender or other 3D tools",
+            "Performance matters — too many draw calls drops frame rate"
+          ]
+        }
       },
       {
         "kicker": "How it works",
@@ -4561,7 +5723,10 @@ const CONCEPTS = [
           "Common in 3d & advanced frontend work",
           "See code example below when applicable"
         ],
-        "icon": "cog"
+        "icon": "cog",
+        "visual": {
+          "type": "mechanism"
+        }
       },
       {
         "kicker": "In your stack",
@@ -4572,7 +5737,12 @@ const CONCEPTS = [
           "Load GLTF models from /public folder",
           "Use useFrame for animation loops"
         ],
-        "icon": "layers"
+        "icon": "layers",
+        "visual": {
+          "type": "integration",
+          "category": "threejs",
+          "title": "Scene, Camera & Renderer"
+        }
       }
     ]
   },
@@ -4604,7 +5774,17 @@ const CONCEPTS = [
           "Models load as GLTF from Blender or other 3D tools",
           "Performance matters — too many draw calls drops frame rate"
         ],
-        "icon": "file-box"
+        "icon": "file-box",
+        "visual": {
+          "type": "definition",
+          "icon": "file-box",
+          "title": "Models (GLTF & Blender)",
+          "bullets": [
+            "WebGL draws triangles; Three.js abstracts scenes and cameras",
+            "Models load as GLTF from Blender or other 3D tools",
+            "Performance matters — too many draw calls drops frame rate"
+          ]
+        }
       },
       {
         "kicker": "How it works",
@@ -4615,7 +5795,10 @@ const CONCEPTS = [
           "Common in 3d & advanced frontend work",
           "See code example below when applicable"
         ],
-        "icon": "cog"
+        "icon": "cog",
+        "visual": {
+          "type": "mechanism"
+        }
       },
       {
         "kicker": "In your stack",
@@ -4626,7 +5809,12 @@ const CONCEPTS = [
           "Load GLTF models from /public folder",
           "Use useFrame for animation loops"
         ],
-        "icon": "layers"
+        "icon": "layers",
+        "visual": {
+          "type": "integration",
+          "category": "threejs",
+          "title": "Models (GLTF & Blender)"
+        }
       }
     ]
   },
@@ -4657,7 +5845,17 @@ const CONCEPTS = [
           "Models load as GLTF from Blender or other 3D tools",
           "Performance matters — too many draw calls drops frame rate"
         ],
-        "icon": "play"
+        "icon": "play",
+        "visual": {
+          "type": "definition",
+          "icon": "play",
+          "title": "Animations",
+          "bullets": [
+            "WebGL draws triangles; Three.js abstracts scenes and cameras",
+            "Models load as GLTF from Blender or other 3D tools",
+            "Performance matters — too many draw calls drops frame rate"
+          ]
+        }
       },
       {
         "kicker": "How it works",
@@ -4668,7 +5866,10 @@ const CONCEPTS = [
           "Common in 3d & advanced frontend work",
           "See code example below when applicable"
         ],
-        "icon": "cog"
+        "icon": "cog",
+        "visual": {
+          "type": "mechanism"
+        }
       },
       {
         "kicker": "In your stack",
@@ -4679,7 +5880,12 @@ const CONCEPTS = [
           "Load GLTF models from /public folder",
           "Use useFrame for animation loops"
         ],
-        "icon": "layers"
+        "icon": "layers",
+        "visual": {
+          "type": "integration",
+          "category": "threejs",
+          "title": "Animations"
+        }
       }
     ]
   },
@@ -4711,7 +5917,17 @@ const CONCEPTS = [
           "Models load as GLTF from Blender or other 3D tools",
           "Performance matters — too many draw calls drops frame rate"
         ],
-        "icon": "gauge"
+        "icon": "gauge",
+        "visual": {
+          "type": "definition",
+          "icon": "gauge",
+          "title": "Performance Optimization",
+          "bullets": [
+            "WebGL draws triangles; Three.js abstracts scenes and cameras",
+            "Models load as GLTF from Blender or other 3D tools",
+            "Performance matters — too many draw calls drops frame rate"
+          ]
+        }
       },
       {
         "kicker": "How it works",
@@ -4722,7 +5938,10 @@ const CONCEPTS = [
           "Common in 3d & advanced frontend work",
           "See code example below when applicable"
         ],
-        "icon": "cog"
+        "icon": "cog",
+        "visual": {
+          "type": "mechanism"
+        }
       },
       {
         "kicker": "In your stack",
@@ -4733,7 +5952,12 @@ const CONCEPTS = [
           "Load GLTF models from /public folder",
           "Use useFrame for animation loops"
         ],
-        "icon": "layers"
+        "icon": "layers",
+        "visual": {
+          "type": "integration",
+          "category": "threejs",
+          "title": "Performance Optimization"
+        }
       }
     ]
   },
@@ -4770,7 +5994,17 @@ const CONCEPTS = [
           "npm/pnpm install packages; lockfiles pin exact versions",
           "Docker packages app + dependencies into reproducible containers"
         ],
-        "icon": "git-branch"
+        "icon": "git-branch",
+        "visual": {
+          "type": "definition",
+          "icon": "git-branch",
+          "title": "Git & GitHub",
+          "bullets": [
+            "Git tracks every code change — branches isolate features",
+            "npm/pnpm install packages; lockfiles pin exact versions",
+            "Docker packages app + dependencies into reproducible containers"
+          ]
+        }
       },
       {
         "kicker": "How it works",
@@ -4781,7 +6015,10 @@ const CONCEPTS = [
           "git branch feature → git checkout feature",
           "git push origin feature → open Pull Request on GitHub"
         ],
-        "icon": "cog"
+        "icon": "cog",
+        "visual": {
+          "type": "mechanism"
+        }
       },
       {
         "kicker": "In your stack",
@@ -4792,7 +6029,12 @@ const CONCEPTS = [
           "pnpm for faster installs",
           "Docker for consistent deploy environments"
         ],
-        "icon": "layers"
+        "icon": "layers",
+        "visual": {
+          "type": "integration",
+          "category": "tools",
+          "title": "Git & GitHub"
+        }
       }
     ]
   },
@@ -4828,7 +6070,17 @@ const CONCEPTS = [
           "npm/pnpm install packages; lockfiles pin exact versions",
           "Docker packages app + dependencies into reproducible containers"
         ],
-        "icon": "container"
+        "icon": "container",
+        "visual": {
+          "type": "definition",
+          "icon": "container",
+          "title": "Docker",
+          "bullets": [
+            "Git tracks every code change — branches isolate features",
+            "npm/pnpm install packages; lockfiles pin exact versions",
+            "Docker packages app + dependencies into reproducible containers"
+          ]
+        }
       },
       {
         "kicker": "How it works",
@@ -4839,7 +6091,10 @@ const CONCEPTS = [
           "Common in tools & ecosystem work",
           "See code example below when applicable"
         ],
-        "icon": "cog"
+        "icon": "cog",
+        "visual": {
+          "type": "mechanism"
+        }
       },
       {
         "kicker": "In your stack",
@@ -4850,7 +6105,12 @@ const CONCEPTS = [
           "pnpm for faster installs",
           "Docker for consistent deploy environments"
         ],
-        "icon": "layers"
+        "icon": "layers",
+        "visual": {
+          "type": "integration",
+          "category": "tools",
+          "title": "Docker"
+        }
       }
     ]
   },
@@ -4882,7 +6142,17 @@ const CONCEPTS = [
           "npm/pnpm install packages; lockfiles pin exact versions",
           "Docker packages app + dependencies into reproducible containers"
         ],
-        "icon": "package"
+        "icon": "package",
+        "visual": {
+          "type": "definition",
+          "icon": "package",
+          "title": "npm & pnpm",
+          "bullets": [
+            "Git tracks every code change — branches isolate features",
+            "npm/pnpm install packages; lockfiles pin exact versions",
+            "Docker packages app + dependencies into reproducible containers"
+          ]
+        }
       },
       {
         "kicker": "How it works",
@@ -4893,7 +6163,10 @@ const CONCEPTS = [
           "Common in tools & ecosystem work",
           "See code example below when applicable"
         ],
-        "icon": "cog"
+        "icon": "cog",
+        "visual": {
+          "type": "mechanism"
+        }
       },
       {
         "kicker": "In your stack",
@@ -4904,7 +6177,12 @@ const CONCEPTS = [
           "pnpm for faster installs",
           "Docker for consistent deploy environments"
         ],
-        "icon": "layers"
+        "icon": "layers",
+        "visual": {
+          "type": "integration",
+          "category": "tools",
+          "title": "npm & pnpm"
+        }
       }
     ]
   },
@@ -4936,7 +6214,17 @@ const CONCEPTS = [
           "npm/pnpm install packages; lockfiles pin exact versions",
           "Docker packages app + dependencies into reproducible containers"
         ],
-        "icon": "hammer"
+        "icon": "hammer",
+        "visual": {
+          "type": "definition",
+          "icon": "hammer",
+          "title": "Build Tools",
+          "bullets": [
+            "Git tracks every code change — branches isolate features",
+            "npm/pnpm install packages; lockfiles pin exact versions",
+            "Docker packages app + dependencies into reproducible containers"
+          ]
+        }
       },
       {
         "kicker": "How it works",
@@ -4947,7 +6235,10 @@ const CONCEPTS = [
           "Common in tools & ecosystem work",
           "See code example below when applicable"
         ],
-        "icon": "cog"
+        "icon": "cog",
+        "visual": {
+          "type": "mechanism"
+        }
       },
       {
         "kicker": "In your stack",
@@ -4958,7 +6249,12 @@ const CONCEPTS = [
           "pnpm for faster installs",
           "Docker for consistent deploy environments"
         ],
-        "icon": "layers"
+        "icon": "layers",
+        "visual": {
+          "type": "integration",
+          "category": "tools",
+          "title": "Build Tools"
+        }
       }
     ]
   },
@@ -4989,7 +6285,17 @@ const CONCEPTS = [
           "Every architecture choice is a trade-off, not a silver bullet",
           "Debug systematically: reproduce → isolate → fix → verify"
         ],
-        "icon": "bug"
+        "icon": "bug",
+        "visual": {
+          "type": "definition",
+          "icon": "bug",
+          "title": "Debugging Strategy",
+          "bullets": [
+            "Code is read more than written — optimize for clarity",
+            "Every architecture choice is a trade-off, not a silver bullet",
+            "Debug systematically: reproduce → isolate → fix → verify"
+          ]
+        }
       },
       {
         "kicker": "How it works",
@@ -5000,7 +6306,10 @@ const CONCEPTS = [
           "Common in software engineering mindset work",
           "See code example below when applicable"
         ],
-        "icon": "cog"
+        "icon": "cog",
+        "visual": {
+          "type": "mechanism"
+        }
       },
       {
         "kicker": "In your stack",
@@ -5011,7 +6320,12 @@ const CONCEPTS = [
           "Shows up when building real features, not toy examples",
           "Combine with other topics in this index for full picture"
         ],
-        "icon": "layers"
+        "icon": "layers",
+        "visual": {
+          "type": "integration",
+          "category": "mindset",
+          "title": "Debugging Strategy"
+        }
       }
     ]
   },
@@ -5042,7 +6356,17 @@ const CONCEPTS = [
           "Every architecture choice is a trade-off, not a silver bullet",
           "Debug systematically: reproduce → isolate → fix → verify"
         ],
-        "icon": "book-open"
+        "icon": "book-open",
+        "visual": {
+          "type": "definition",
+          "icon": "book-open",
+          "title": "Code Readability",
+          "bullets": [
+            "Code is read more than written — optimize for clarity",
+            "Every architecture choice is a trade-off, not a silver bullet",
+            "Debug systematically: reproduce → isolate → fix → verify"
+          ]
+        }
       },
       {
         "kicker": "How it works",
@@ -5053,7 +6377,10 @@ const CONCEPTS = [
           "Common in software engineering mindset work",
           "See code example below when applicable"
         ],
-        "icon": "cog"
+        "icon": "cog",
+        "visual": {
+          "type": "mechanism"
+        }
       },
       {
         "kicker": "In your stack",
@@ -5064,7 +6391,12 @@ const CONCEPTS = [
           "Shows up when building real features, not toy examples",
           "Combine with other topics in this index for full picture"
         ],
-        "icon": "layers"
+        "icon": "layers",
+        "visual": {
+          "type": "integration",
+          "category": "mindset",
+          "title": "Code Readability"
+        }
       }
     ]
   },
@@ -5095,7 +6427,17 @@ const CONCEPTS = [
           "Every architecture choice is a trade-off, not a silver bullet",
           "Debug systematically: reproduce → isolate → fix → verify"
         ],
-        "icon": "split"
+        "icon": "split",
+        "visual": {
+          "type": "definition",
+          "icon": "split",
+          "title": "Separation of Concerns",
+          "bullets": [
+            "Code is read more than written — optimize for clarity",
+            "Every architecture choice is a trade-off, not a silver bullet",
+            "Debug systematically: reproduce → isolate → fix → verify"
+          ]
+        }
       },
       {
         "kicker": "How it works",
@@ -5106,7 +6448,10 @@ const CONCEPTS = [
           "Common in software engineering mindset work",
           "See code example below when applicable"
         ],
-        "icon": "cog"
+        "icon": "cog",
+        "visual": {
+          "type": "mechanism"
+        }
       },
       {
         "kicker": "In your stack",
@@ -5117,7 +6462,12 @@ const CONCEPTS = [
           "Shows up when building real features, not toy examples",
           "Combine with other topics in this index for full picture"
         ],
-        "icon": "layers"
+        "icon": "layers",
+        "visual": {
+          "type": "integration",
+          "category": "mindset",
+          "title": "Separation of Concerns"
+        }
       }
     ]
   },
@@ -5148,7 +6498,17 @@ const CONCEPTS = [
           "Every architecture choice is a trade-off, not a silver bullet",
           "Debug systematically: reproduce → isolate → fix → verify"
         ],
-        "icon": "zap"
+        "icon": "zap",
+        "visual": {
+          "type": "definition",
+          "icon": "zap",
+          "title": "Performance Thinking",
+          "bullets": [
+            "Code is read more than written — optimize for clarity",
+            "Every architecture choice is a trade-off, not a silver bullet",
+            "Debug systematically: reproduce → isolate → fix → verify"
+          ]
+        }
       },
       {
         "kicker": "How it works",
@@ -5159,7 +6519,10 @@ const CONCEPTS = [
           "Common in software engineering mindset work",
           "See code example below when applicable"
         ],
-        "icon": "cog"
+        "icon": "cog",
+        "visual": {
+          "type": "mechanism"
+        }
       },
       {
         "kicker": "In your stack",
@@ -5170,7 +6533,12 @@ const CONCEPTS = [
           "Shows up when building real features, not toy examples",
           "Combine with other topics in this index for full picture"
         ],
-        "icon": "layers"
+        "icon": "layers",
+        "visual": {
+          "type": "integration",
+          "category": "mindset",
+          "title": "Performance Thinking"
+        }
       }
     ]
   },
@@ -5201,7 +6569,17 @@ const CONCEPTS = [
           "Every architecture choice is a trade-off, not a silver bullet",
           "Debug systematically: reproduce → isolate → fix → verify"
         ],
-        "icon": "scale"
+        "icon": "scale",
+        "visual": {
+          "type": "definition",
+          "icon": "scale",
+          "title": "Trade-offs",
+          "bullets": [
+            "Code is read more than written — optimize for clarity",
+            "Every architecture choice is a trade-off, not a silver bullet",
+            "Debug systematically: reproduce → isolate → fix → verify"
+          ]
+        }
       },
       {
         "kicker": "How it works",
@@ -5212,7 +6590,10 @@ const CONCEPTS = [
           "Common in software engineering mindset work",
           "See code example below when applicable"
         ],
-        "icon": "cog"
+        "icon": "cog",
+        "visual": {
+          "type": "mechanism"
+        }
       },
       {
         "kicker": "In your stack",
@@ -5223,7 +6604,12 @@ const CONCEPTS = [
           "Shows up when building real features, not toy examples",
           "Combine with other topics in this index for full picture"
         ],
-        "icon": "layers"
+        "icon": "layers",
+        "visual": {
+          "type": "integration",
+          "category": "mindset",
+          "title": "Trade-offs"
+        }
       }
     ]
   }
