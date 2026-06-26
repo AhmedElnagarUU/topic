@@ -128,6 +128,12 @@ const CONCEPTS = [
       "boolean"
     ],
     "important": false,
+    "sources": [
+      {
+        "title": "MDN — JavaScript data types",
+        "url": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Grammar_and_types#declarations"
+      }
+    ],
     "intro": "Before loops, functions, or frameworks — you store and manipulate values. Understanding data types is the first mental model every programmer needs.",
     "steps": [
       {
@@ -182,40 +188,42 @@ const CONCEPTS = [
       "conditions"
     ],
     "important": false,
-    "intro": "if/else and switch — branching logic based on conditions. Part of your Programming Knowledge Index — Core Programming Fundamentals.",
+    "sources": [],
+    "intro": "if/else and switch — branching logic based on conditions. Core building blocks that every language shares. Strong fundamentals make frameworks easier to reason about.",
     "steps": [
       {
-        "kicker": "What it is",
-        "title": "Understanding Control Flow",
-        "desc": "if/else and switch — branching logic based on conditions. This is a core topic in your learning path — understand the idea before memorizing syntax.",
+        "kicker": "Definition",
+        "title": "What is Control Flow?",
+        "desc": "if/else and switch — branching logic based on conditions.",
         "bullets": [
-          "Part of: Core Programming Fundamentals",
-          "Read the steps, then try explaining it out loud",
-          "Build a small example in your own project"
+          "Foundation for reading and writing any programming language",
+          "Shows up in every function, component, and API you build",
+          "Related ideas: if, else, switch"
         ],
         "icon": "git-branch"
       },
       {
-        "kicker": "Why it matters",
-        "title": "Why you need this",
-        "desc": "Weak mental models here make everything built on top harder. Control Flow connects to real work in Next.js, MongoDB, and backend projects you're already building.",
+        "kicker": "How it works",
+        "title": "How Control Flow works in practice",
+        "desc": "Programs branch based on conditions. if/else runs one path or another. switch matches a value against multiple cases — cleaner than long if chains when comparing one variable.",
         "bullets": [
-          "Strong engineers explain concepts clearly",
-          "Interviewers test fundamentals, not just frameworks",
-          "Deep understanding beats copy-paste solutions"
+          "if (condition) { } else { }",
+          "switch (value) { case x: break; default: }",
+          "Truthy/falsy: 0, \"\", null, undefined, NaN are falsy"
         ],
-        "icon": "lightbulb"
+        "icon": "cog",
+        "code": "if (score >= 60) {\n  console.log(\"Pass\");\n} else {\n  console.log(\"Fail\");\n}"
       },
       {
-        "kicker": "Next step",
-        "title": "How to learn it deeply",
-        "desc": "Pick one resource, build one tiny example, then explain it without looking at notes — like a mock interview.",
+        "kicker": "In your stack",
+        "title": "Where Control Flow fits in real projects",
+        "desc": "In your Next.js + MongoDB projects, control flow connects to features you build daily — API routes, React components, auth flows, and database queries. Recognizing the pattern helps you debug faster and design cleaner modules.",
         "bullets": [
-          "Step 1: Read and take notes",
-          "Step 2: Code a minimal example",
-          "Step 3: Explain out loud in English"
+          "Applies across frontend and backend code",
+          "Shows up when building real features, not toy examples",
+          "Combine with other topics in this index for full picture"
         ],
-        "icon": "target"
+        "icon": "layers"
       }
     ]
   },
@@ -235,40 +243,42 @@ const CONCEPTS = [
       "loop"
     ],
     "important": false,
-    "intro": "for and while loops — repeating work without copy-pasting code. Part of your Programming Knowledge Index — Core Programming Fundamentals.",
+    "sources": [],
+    "intro": "for and while loops — repeating work without copy-pasting code. Core building blocks that every language shares. Strong fundamentals make frameworks easier to reason about.",
     "steps": [
       {
-        "kicker": "What it is",
-        "title": "Understanding Loops",
-        "desc": "for and while loops — repeating work without copy-pasting code. This is a core topic in your learning path — understand the idea before memorizing syntax.",
+        "kicker": "Definition",
+        "title": "What is Loops?",
+        "desc": "for and while loops — repeating work without copy-pasting code.",
         "bullets": [
-          "Part of: Core Programming Fundamentals",
-          "Read the steps, then try explaining it out loud",
-          "Build a small example in your own project"
+          "Foundation for reading and writing any programming language",
+          "Shows up in every function, component, and API you build",
+          "Related ideas: for, while, iteration"
         ],
         "icon": "repeat"
       },
       {
-        "kicker": "Why it matters",
-        "title": "Why you need this",
-        "desc": "Weak mental models here make everything built on top harder. Loops connects to real work in Next.js, MongoDB, and backend projects you're already building.",
+        "kicker": "How it works",
+        "title": "How Loops works in practice",
+        "desc": "Loops repeat a block until a condition is false (while) or for a set count (for). for...of iterates arrays; for...in iterates object keys. break exits early; continue skips to the next iteration.",
         "bullets": [
-          "Strong engineers explain concepts clearly",
-          "Interviewers test fundamentals, not just frameworks",
-          "Deep understanding beats copy-paste solutions"
+          "for (let i = 0; i < n; i++) — classic counted loop",
+          "while (condition) — runs until condition is false",
+          "for (const item of array) — iterate values safely"
         ],
-        "icon": "lightbulb"
+        "icon": "cog",
+        "code": "for (const item of items) {\n  console.log(item);\n}"
       },
       {
-        "kicker": "Next step",
-        "title": "How to learn it deeply",
-        "desc": "Pick one resource, build one tiny example, then explain it without looking at notes — like a mock interview.",
+        "kicker": "In your stack",
+        "title": "Where Loops fits in real projects",
+        "desc": "In your Next.js + MongoDB projects, loops connects to features you build daily — API routes, React components, auth flows, and database queries. Recognizing the pattern helps you debug faster and design cleaner modules.",
         "bullets": [
-          "Step 1: Read and take notes",
-          "Step 2: Code a minimal example",
-          "Step 3: Explain out loud in English"
+          "Applies across frontend and backend code",
+          "Shows up when building real features, not toy examples",
+          "Combine with other topics in this index for full picture"
         ],
-        "icon": "target"
+        "icon": "layers"
       }
     ]
   },
@@ -288,40 +298,42 @@ const CONCEPTS = [
       "parameters"
     ],
     "important": false,
-    "intro": "Pure vs impure functions — reusable blocks of logic with inputs and outputs. Part of your Programming Knowledge Index — Core Programming Fundamentals.",
+    "sources": [],
+    "intro": "Pure vs impure functions — reusable blocks of logic with inputs and outputs. Core building blocks that every language shares. Strong fundamentals make frameworks easier to reason about.",
     "steps": [
       {
-        "kicker": "What it is",
-        "title": "Understanding Functions",
-        "desc": "Pure vs impure functions — reusable blocks of logic with inputs and outputs. This is a core topic in your learning path — understand the idea before memorizing syntax.",
+        "kicker": "Definition",
+        "title": "What is Functions?",
+        "desc": "Pure vs impure functions — reusable blocks of logic with inputs and outputs.",
         "bullets": [
-          "Part of: Core Programming Fundamentals",
-          "Read the steps, then try explaining it out loud",
-          "Build a small example in your own project"
+          "Foundation for reading and writing any programming language",
+          "Shows up in every function, component, and API you build",
+          "Related ideas: functions, pure, impure"
         ],
         "icon": "function-square"
       },
       {
-        "kicker": "Why it matters",
-        "title": "Why you need this",
-        "desc": "Weak mental models here make everything built on top harder. Functions connects to real work in Next.js, MongoDB, and backend projects you're already building.",
+        "kicker": "How it works",
+        "title": "How Functions works in practice",
+        "desc": "A function takes inputs (parameters), runs logic, and returns an output. Pure functions always return the same output for the same input and cause no side effects. Impure functions read/write external state — database calls, DOM updates, etc.",
         "bullets": [
-          "Strong engineers explain concepts clearly",
-          "Interviewers test fundamentals, not just frameworks",
-          "Deep understanding beats copy-paste solutions"
+          "function add(a, b) { return a + b; }",
+          "Arrow: const add = (a, b) => a + b",
+          "Return early to reduce nesting"
         ],
-        "icon": "lightbulb"
+        "icon": "cog",
+        "code": "function greet(name) {\n  return `Hello, ${name}`;\n}"
       },
       {
-        "kicker": "Next step",
-        "title": "How to learn it deeply",
-        "desc": "Pick one resource, build one tiny example, then explain it without looking at notes — like a mock interview.",
+        "kicker": "In your stack",
+        "title": "Where Functions fits in real projects",
+        "desc": "In your Next.js + MongoDB projects, functions connects to features you build daily — API routes, React components, auth flows, and database queries. Recognizing the pattern helps you debug faster and design cleaner modules.",
         "bullets": [
-          "Step 1: Read and take notes",
-          "Step 2: Code a minimal example",
-          "Step 3: Explain out loud in English"
+          "Applies across frontend and backend code",
+          "Shows up when building real features, not toy examples",
+          "Combine with other topics in this index for full picture"
         ],
-        "icon": "target"
+        "icon": "layers"
       }
     ]
   },
@@ -341,6 +353,12 @@ const CONCEPTS = [
       "important"
     ],
     "important": true,
+    "sources": [
+      {
+        "title": "MDN — Closures",
+        "url": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Closures"
+      }
+    ],
     "intro": "Scope decides where variables are visible. Closures let functions remember variables from where they were created — not where they were called.",
     "steps": [
       {
@@ -394,40 +412,41 @@ const CONCEPTS = [
       "allocation"
     ],
     "important": false,
-    "intro": "Stack vs heap — how programs store values and objects in memory. Part of your Programming Knowledge Index — Core Programming Fundamentals.",
+    "sources": [],
+    "intro": "Stack vs heap — how programs store values and objects in memory. Core building blocks that every language shares. Strong fundamentals make frameworks easier to reason about.",
     "steps": [
       {
-        "kicker": "What it is",
-        "title": "Understanding Memory Basics",
-        "desc": "Stack vs heap — how programs store values and objects in memory. This is a core topic in your learning path — understand the idea before memorizing syntax.",
+        "kicker": "Definition",
+        "title": "What is Memory Basics?",
+        "desc": "Stack vs heap — how programs store values and objects in memory.",
         "bullets": [
-          "Part of: Core Programming Fundamentals",
-          "Read the steps, then try explaining it out loud",
-          "Build a small example in your own project"
+          "Foundation for reading and writing any programming language",
+          "Shows up in every function, component, and API you build",
+          "Related ideas: stack, heap, memory"
         ],
         "icon": "cpu"
       },
       {
-        "kicker": "Why it matters",
-        "title": "Why you need this",
-        "desc": "Weak mental models here make everything built on top harder. Memory Basics connects to real work in Next.js, MongoDB, and backend projects you're already building.",
+        "kicker": "How it works",
+        "title": "How Memory Basics works in practice",
+        "desc": "Memory Basics works by applying clear rules in code. Stack vs heap — how programs store values and objects in memory. The mechanics depend on your language and framework, but the underlying idea stays the same across projects.",
         "bullets": [
-          "Strong engineers explain concepts clearly",
-          "Interviewers test fundamentals, not just frameworks",
-          "Deep understanding beats copy-paste solutions"
+          "Core mechanism behind memory basics",
+          "Common in core programming fundamentals work",
+          "See code example below when applicable"
         ],
-        "icon": "lightbulb"
+        "icon": "cog"
       },
       {
-        "kicker": "Next step",
-        "title": "How to learn it deeply",
-        "desc": "Pick one resource, build one tiny example, then explain it without looking at notes — like a mock interview.",
+        "kicker": "In your stack",
+        "title": "Where Memory Basics fits in real projects",
+        "desc": "In your Next.js + MongoDB projects, memory basics connects to features you build daily — API routes, React components, auth flows, and database queries. Recognizing the pattern helps you debug faster and design cleaner modules.",
         "bullets": [
-          "Step 1: Read and take notes",
-          "Step 2: Code a minimal example",
-          "Step 3: Explain out loud in English"
+          "Applies across frontend and backend code",
+          "Shows up when building real features, not toy examples",
+          "Combine with other topics in this index for full picture"
         ],
-        "icon": "target"
+        "icon": "layers"
       }
     ]
   },
@@ -447,40 +466,41 @@ const CONCEPTS = [
       "exceptions"
     ],
     "important": false,
-    "intro": "try/catch, throwing errors, and failing gracefully instead of crashing. Part of your Programming Knowledge Index — Core Programming Fundamentals.",
+    "sources": [],
+    "intro": "try/catch, throwing errors, and failing gracefully instead of crashing. Core building blocks that every language shares. Strong fundamentals make frameworks easier to reason about.",
     "steps": [
       {
-        "kicker": "What it is",
-        "title": "Understanding Error Handling",
-        "desc": "try/catch, throwing errors, and failing gracefully instead of crashing. This is a core topic in your learning path — understand the idea before memorizing syntax.",
+        "kicker": "Definition",
+        "title": "What is Error Handling?",
+        "desc": "try/catch, throwing errors, and failing gracefully instead of crashing.",
         "bullets": [
-          "Part of: Core Programming Fundamentals",
-          "Read the steps, then try explaining it out loud",
-          "Build a small example in your own project"
+          "Foundation for reading and writing any programming language",
+          "Shows up in every function, component, and API you build",
+          "Related ideas: errors, try, catch"
         ],
         "icon": "alert-circle"
       },
       {
-        "kicker": "Why it matters",
-        "title": "Why you need this",
-        "desc": "Weak mental models here make everything built on top harder. Error Handling connects to real work in Next.js, MongoDB, and backend projects you're already building.",
+        "kicker": "How it works",
+        "title": "How Error Handling works in practice",
+        "desc": "Error Handling works by applying clear rules in code. try/catch, throwing errors, and failing gracefully instead of crashing. The mechanics depend on your language and framework, but the underlying idea stays the same across projects.",
         "bullets": [
-          "Strong engineers explain concepts clearly",
-          "Interviewers test fundamentals, not just frameworks",
-          "Deep understanding beats copy-paste solutions"
+          "Core mechanism behind error handling",
+          "Common in core programming fundamentals work",
+          "See code example below when applicable"
         ],
-        "icon": "lightbulb"
+        "icon": "cog"
       },
       {
-        "kicker": "Next step",
-        "title": "How to learn it deeply",
-        "desc": "Pick one resource, build one tiny example, then explain it without looking at notes — like a mock interview.",
+        "kicker": "In your stack",
+        "title": "Where Error Handling fits in real projects",
+        "desc": "In your Next.js + MongoDB projects, error handling connects to features you build daily — API routes, React components, auth flows, and database queries. Recognizing the pattern helps you debug faster and design cleaner modules.",
         "bullets": [
-          "Step 1: Read and take notes",
-          "Step 2: Code a minimal example",
-          "Step 3: Explain out loud in English"
+          "Applies across frontend and backend code",
+          "Shows up when building real features, not toy examples",
+          "Combine with other topics in this index for full picture"
         ],
-        "icon": "target"
+        "icon": "layers"
       }
     ]
   },
@@ -499,40 +519,41 @@ const CONCEPTS = [
       "hoisting"
     ],
     "important": false,
-    "intro": "How JavaScript creates an environment when code runs. Part of your Programming Knowledge Index — JavaScript Deep Understanding.",
+    "sources": [],
+    "intro": "How JavaScript creates an environment when code runs. JavaScript runtime behavior — how code executes, handles async work, and manages memory.",
     "steps": [
       {
-        "kicker": "What it is",
-        "title": "Understanding Execution Context",
-        "desc": "How JavaScript creates an environment when code runs. This is a core topic in your learning path — understand the idea before memorizing syntax.",
+        "kicker": "Definition",
+        "title": "What is Execution Context?",
+        "desc": "How JavaScript creates an environment when code runs.",
         "bullets": [
-          "Part of: JavaScript Deep Understanding",
-          "Read the steps, then try explaining it out loud",
-          "Build a small example in your own project"
+          "Runs in browsers and Node.js — same language, different APIs",
+          "Understanding runtime behavior prevents subtle async bugs",
+          "Key terms: execution, context, hoisting"
         ],
         "icon": "play-circle"
       },
       {
-        "kicker": "Why it matters",
-        "title": "Why you need this",
-        "desc": "Weak mental models here make everything built on top harder. Execution Context connects to real work in Next.js, MongoDB, and backend projects you're already building.",
+        "kicker": "How it works",
+        "title": "How Execution Context works in practice",
+        "desc": "Execution Context works by applying clear rules in code. How JavaScript creates an environment when code runs. The mechanics depend on your language and framework, but the underlying idea stays the same across projects.",
         "bullets": [
-          "Strong engineers explain concepts clearly",
-          "Interviewers test fundamentals, not just frameworks",
-          "Deep understanding beats copy-paste solutions"
+          "Core mechanism behind execution context",
+          "Common in javascript deep understanding work",
+          "See code example below when applicable"
         ],
-        "icon": "lightbulb"
+        "icon": "cog"
       },
       {
-        "kicker": "Next step",
-        "title": "How to learn it deeply",
-        "desc": "Pick one resource, build one tiny example, then explain it without looking at notes — like a mock interview.",
+        "kicker": "In your stack",
+        "title": "Where Execution Context fits in real projects",
+        "desc": "In your Next.js + MongoDB projects, execution context connects to features you build daily — API routes, React components, auth flows, and database queries. Recognizing the pattern helps you debug faster and design cleaner modules.",
         "bullets": [
-          "Step 1: Read and take notes",
-          "Step 2: Code a minimal example",
-          "Step 3: Explain out loud in English"
+          "Applies across frontend and backend code",
+          "Shows up when building real features, not toy examples",
+          "Combine with other topics in this index for full picture"
         ],
-        "icon": "target"
+        "icon": "layers"
       }
     ]
   },
@@ -551,40 +572,41 @@ const CONCEPTS = [
       "functions"
     ],
     "important": false,
-    "intro": "The stack of functions waiting to finish — last in, first out. Part of your Programming Knowledge Index — JavaScript Deep Understanding.",
+    "sources": [],
+    "intro": "The stack of functions waiting to finish — last in, first out. JavaScript runtime behavior — how code executes, handles async work, and manages memory.",
     "steps": [
       {
-        "kicker": "What it is",
-        "title": "Understanding Call Stack",
-        "desc": "The stack of functions waiting to finish — last in, first out. This is a core topic in your learning path — understand the idea before memorizing syntax.",
+        "kicker": "Definition",
+        "title": "What is Call Stack?",
+        "desc": "The stack of functions waiting to finish — last in, first out.",
         "bullets": [
-          "Part of: JavaScript Deep Understanding",
-          "Read the steps, then try explaining it out loud",
-          "Build a small example in your own project"
+          "Runs in browsers and Node.js — same language, different APIs",
+          "Understanding runtime behavior prevents subtle async bugs",
+          "Key terms: call stack, stack overflow, functions"
         ],
         "icon": "layers"
       },
       {
-        "kicker": "Why it matters",
-        "title": "Why you need this",
-        "desc": "Weak mental models here make everything built on top harder. Call Stack connects to real work in Next.js, MongoDB, and backend projects you're already building.",
+        "kicker": "How it works",
+        "title": "How Call Stack works in practice",
+        "desc": "Call Stack works by applying clear rules in code. The stack of functions waiting to finish — last in, first out. The mechanics depend on your language and framework, but the underlying idea stays the same across projects.",
         "bullets": [
-          "Strong engineers explain concepts clearly",
-          "Interviewers test fundamentals, not just frameworks",
-          "Deep understanding beats copy-paste solutions"
+          "Core mechanism behind call stack",
+          "Common in javascript deep understanding work",
+          "See code example below when applicable"
         ],
-        "icon": "lightbulb"
+        "icon": "cog"
       },
       {
-        "kicker": "Next step",
-        "title": "How to learn it deeply",
-        "desc": "Pick one resource, build one tiny example, then explain it without looking at notes — like a mock interview.",
+        "kicker": "In your stack",
+        "title": "Where Call Stack fits in real projects",
+        "desc": "In your Next.js + MongoDB projects, call stack connects to features you build daily — API routes, React components, auth flows, and database queries. Recognizing the pattern helps you debug faster and design cleaner modules.",
         "bullets": [
-          "Step 1: Read and take notes",
-          "Step 2: Code a minimal example",
-          "Step 3: Explain out loud in English"
+          "Applies across frontend and backend code",
+          "Shows up when building real features, not toy examples",
+          "Combine with other topics in this index for full picture"
         ],
-        "icon": "target"
+        "icon": "layers"
       }
     ]
   },
@@ -604,6 +626,16 @@ const CONCEPTS = [
       "important"
     ],
     "important": true,
+    "sources": [
+      {
+        "title": "MDN — Event Loop",
+        "url": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Event_loop"
+      },
+      {
+        "title": "Loupe — Event loop visualizer",
+        "url": "http://latentflip.com/loupe/"
+      }
+    ],
     "intro": "The event loop is the reason JavaScript can be non-blocking with a single thread. If this is fuzzy, async code will always feel like magic instead of logic.",
     "steps": [
       {
@@ -657,40 +689,47 @@ const CONCEPTS = [
       "then"
     ],
     "important": false,
-    "intro": "Handling future results without blocking the main thread. Part of your Programming Knowledge Index — JavaScript Deep Understanding.",
+    "sources": [
+      {
+        "title": "MDN — async/await",
+        "url": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/async_function"
+      }
+    ],
+    "intro": "Handling future results without blocking the main thread. JavaScript runtime behavior — how code executes, handles async work, and manages memory.",
     "steps": [
       {
-        "kicker": "What it is",
-        "title": "Understanding Promises & async/await",
-        "desc": "Handling future results without blocking the main thread. This is a core topic in your learning path — understand the idea before memorizing syntax.",
+        "kicker": "Definition",
+        "title": "What is Promises & async/await?",
+        "desc": "Handling future results without blocking the main thread.",
         "bullets": [
-          "Part of: JavaScript Deep Understanding",
-          "Read the steps, then try explaining it out loud",
-          "Build a small example in your own project"
+          "Runs in browsers and Node.js — same language, different APIs",
+          "Understanding runtime behavior prevents subtle async bugs",
+          "Key terms: promises, async, await, then"
         ],
         "icon": "timer"
       },
       {
-        "kicker": "Why it matters",
-        "title": "Why you need this",
-        "desc": "Weak mental models here make everything built on top harder. Promises & async/await connects to real work in Next.js, MongoDB, and backend projects you're already building.",
+        "kicker": "How it works",
+        "title": "How Promises & async/await works in practice",
+        "desc": "A Promise represents a value that will exist later. .then() runs on success; .catch() on failure. async/await is syntactic sugar — await pauses the function until the Promise settles, without blocking the main thread.",
         "bullets": [
-          "Strong engineers explain concepts clearly",
-          "Interviewers test fundamentals, not just frameworks",
-          "Deep understanding beats copy-paste solutions"
+          "Core mechanism behind promises & async/await",
+          "Common in javascript deep understanding work",
+          "See code example below when applicable"
         ],
-        "icon": "lightbulb"
+        "icon": "cog",
+        "code": "async function fetchUser(id) {\n  const res = await fetch(`/api/users/${id}`);\n  return res.json();\n}"
       },
       {
-        "kicker": "Next step",
-        "title": "How to learn it deeply",
-        "desc": "Pick one resource, build one tiny example, then explain it without looking at notes — like a mock interview.",
+        "kicker": "In your stack",
+        "title": "Where Promises & async/await fits in real projects",
+        "desc": "In your Next.js + MongoDB projects, promises & async/await connects to features you build daily — API routes, React components, auth flows, and database queries. Recognizing the pattern helps you debug faster and design cleaner modules.",
         "bullets": [
-          "Step 1: Read and take notes",
-          "Step 2: Code a minimal example",
-          "Step 3: Explain out loud in English"
+          "Applies across frontend and backend code",
+          "Shows up when building real features, not toy examples",
+          "Combine with other topics in this index for full picture"
         ],
-        "icon": "target"
+        "icon": "layers"
       }
     ]
   },
@@ -709,40 +748,41 @@ const CONCEPTS = [
       "private"
     ],
     "important": false,
-    "intro": "Functions that close over variables — factories, privacy, and callbacks. Part of your Programming Knowledge Index — JavaScript Deep Understanding.",
+    "sources": [],
+    "intro": "Functions that close over variables — factories, privacy, and callbacks. JavaScript runtime behavior — how code executes, handles async work, and manages memory.",
     "steps": [
       {
-        "kicker": "What it is",
-        "title": "Understanding Closures (Deep Dive)",
-        "desc": "Functions that close over variables — factories, privacy, and callbacks. This is a core topic in your learning path — understand the idea before memorizing syntax.",
+        "kicker": "Definition",
+        "title": "What is Closures (Deep Dive)?",
+        "desc": "Functions that close over variables — factories, privacy, and callbacks.",
         "bullets": [
-          "Part of: JavaScript Deep Understanding",
-          "Read the steps, then try explaining it out loud",
-          "Build a small example in your own project"
+          "Runs in browsers and Node.js — same language, different APIs",
+          "Understanding runtime behavior prevents subtle async bugs",
+          "Key terms: closures, callbacks, private"
         ],
         "icon": "lock"
       },
       {
-        "kicker": "Why it matters",
-        "title": "Why you need this",
-        "desc": "Weak mental models here make everything built on top harder. Closures (Deep Dive) connects to real work in Next.js, MongoDB, and backend projects you're already building.",
+        "kicker": "How it works",
+        "title": "How Closures (Deep Dive) works in practice",
+        "desc": "Closures (Deep Dive) works by applying clear rules in code. Functions that close over variables — factories, privacy, and callbacks. The mechanics depend on your language and framework, but the underlying idea stays the same across projects.",
         "bullets": [
-          "Strong engineers explain concepts clearly",
-          "Interviewers test fundamentals, not just frameworks",
-          "Deep understanding beats copy-paste solutions"
+          "Core mechanism behind closures (deep dive)",
+          "Common in javascript deep understanding work",
+          "See code example below when applicable"
         ],
-        "icon": "lightbulb"
+        "icon": "cog"
       },
       {
-        "kicker": "Next step",
-        "title": "How to learn it deeply",
-        "desc": "Pick one resource, build one tiny example, then explain it without looking at notes — like a mock interview.",
+        "kicker": "In your stack",
+        "title": "Where Closures (Deep Dive) fits in real projects",
+        "desc": "In your Next.js + MongoDB projects, closures (deep dive) connects to features you build daily — API routes, React components, auth flows, and database queries. Recognizing the pattern helps you debug faster and design cleaner modules.",
         "bullets": [
-          "Step 1: Read and take notes",
-          "Step 2: Code a minimal example",
-          "Step 3: Explain out loud in English"
+          "Applies across frontend and backend code",
+          "Shows up when building real features, not toy examples",
+          "Combine with other topics in this index for full picture"
         ],
-        "icon": "target"
+        "icon": "layers"
       }
     ]
   },
@@ -761,40 +801,41 @@ const CONCEPTS = [
       "class"
     ],
     "important": false,
-    "intro": "How objects inherit behavior through the prototype chain. Part of your Programming Knowledge Index — JavaScript Deep Understanding.",
+    "sources": [],
+    "intro": "How objects inherit behavior through the prototype chain. JavaScript runtime behavior — how code executes, handles async work, and manages memory.",
     "steps": [
       {
-        "kicker": "What it is",
-        "title": "Understanding Prototypes & Inheritance",
-        "desc": "How objects inherit behavior through the prototype chain. This is a core topic in your learning path — understand the idea before memorizing syntax.",
+        "kicker": "Definition",
+        "title": "What is Prototypes & Inheritance?",
+        "desc": "How objects inherit behavior through the prototype chain.",
         "bullets": [
-          "Part of: JavaScript Deep Understanding",
-          "Read the steps, then try explaining it out loud",
-          "Build a small example in your own project"
+          "Runs in browsers and Node.js — same language, different APIs",
+          "Understanding runtime behavior prevents subtle async bugs",
+          "Key terms: prototypes, inheritance, class"
         ],
         "icon": "git-merge"
       },
       {
-        "kicker": "Why it matters",
-        "title": "Why you need this",
-        "desc": "Weak mental models here make everything built on top harder. Prototypes & Inheritance connects to real work in Next.js, MongoDB, and backend projects you're already building.",
+        "kicker": "How it works",
+        "title": "How Prototypes & Inheritance works in practice",
+        "desc": "Prototypes & Inheritance works by applying clear rules in code. How objects inherit behavior through the prototype chain. The mechanics depend on your language and framework, but the underlying idea stays the same across projects.",
         "bullets": [
-          "Strong engineers explain concepts clearly",
-          "Interviewers test fundamentals, not just frameworks",
-          "Deep understanding beats copy-paste solutions"
+          "Core mechanism behind prototypes & inheritance",
+          "Common in javascript deep understanding work",
+          "See code example below when applicable"
         ],
-        "icon": "lightbulb"
+        "icon": "cog"
       },
       {
-        "kicker": "Next step",
-        "title": "How to learn it deeply",
-        "desc": "Pick one resource, build one tiny example, then explain it without looking at notes — like a mock interview.",
+        "kicker": "In your stack",
+        "title": "Where Prototypes & Inheritance fits in real projects",
+        "desc": "In your Next.js + MongoDB projects, prototypes & inheritance connects to features you build daily — API routes, React components, auth flows, and database queries. Recognizing the pattern helps you debug faster and design cleaner modules.",
         "bullets": [
-          "Step 1: Read and take notes",
-          "Step 2: Code a minimal example",
-          "Step 3: Explain out loud in English"
+          "Applies across frontend and backend code",
+          "Shows up when building real features, not toy examples",
+          "Combine with other topics in this index for full picture"
         ],
-        "icon": "target"
+        "icon": "layers"
       }
     ]
   },
@@ -814,40 +855,41 @@ const CONCEPTS = [
       "apply"
     ],
     "important": false,
-    "intro": "What \"this\" refers to — and why it changes with call site and bind. Part of your Programming Knowledge Index — JavaScript Deep Understanding.",
+    "sources": [],
+    "intro": "What \"this\" refers to — and why it changes with call site and bind. JavaScript runtime behavior — how code executes, handles async work, and manages memory.",
     "steps": [
       {
-        "kicker": "What it is",
-        "title": "Understanding The this Keyword",
-        "desc": "What \"this\" refers to — and why it changes with call site and bind. This is a core topic in your learning path — understand the idea before memorizing syntax.",
+        "kicker": "Definition",
+        "title": "What is The this Keyword?",
+        "desc": "What \"this\" refers to — and why it changes with call site and bind.",
         "bullets": [
-          "Part of: JavaScript Deep Understanding",
-          "Read the steps, then try explaining it out loud",
-          "Build a small example in your own project"
+          "Runs in browsers and Node.js — same language, different APIs",
+          "Understanding runtime behavior prevents subtle async bugs",
+          "Key terms: this, bind, call, apply"
         ],
         "icon": "target"
       },
       {
-        "kicker": "Why it matters",
-        "title": "Why you need this",
-        "desc": "Weak mental models here make everything built on top harder. The this Keyword connects to real work in Next.js, MongoDB, and backend projects you're already building.",
+        "kicker": "How it works",
+        "title": "How The this Keyword works in practice",
+        "desc": "The this Keyword works by applying clear rules in code. What \"this\" refers to — and why it changes with call site and bind. The mechanics depend on your language and framework, but the underlying idea stays the same across projects.",
         "bullets": [
-          "Strong engineers explain concepts clearly",
-          "Interviewers test fundamentals, not just frameworks",
-          "Deep understanding beats copy-paste solutions"
+          "Core mechanism behind the this keyword",
+          "Common in javascript deep understanding work",
+          "See code example below when applicable"
         ],
-        "icon": "lightbulb"
+        "icon": "cog"
       },
       {
-        "kicker": "Next step",
-        "title": "How to learn it deeply",
-        "desc": "Pick one resource, build one tiny example, then explain it without looking at notes — like a mock interview.",
+        "kicker": "In your stack",
+        "title": "Where The this Keyword fits in real projects",
+        "desc": "In your Next.js + MongoDB projects, the this keyword connects to features you build daily — API routes, React components, auth flows, and database queries. Recognizing the pattern helps you debug faster and design cleaner modules.",
         "bullets": [
-          "Step 1: Read and take notes",
-          "Step 2: Code a minimal example",
-          "Step 3: Explain out loud in English"
+          "Applies across frontend and backend code",
+          "Shows up when building real features, not toy examples",
+          "Combine with other topics in this index for full picture"
         ],
-        "icon": "target"
+        "icon": "layers"
       }
     ]
   },
@@ -867,40 +909,41 @@ const CONCEPTS = [
       "export"
     ],
     "important": false,
-    "intro": "import/export vs require — splitting code into reusable files. Part of your Programming Knowledge Index — JavaScript Deep Understanding.",
+    "sources": [],
+    "intro": "import/export vs require — splitting code into reusable files. JavaScript runtime behavior — how code executes, handles async work, and manages memory.",
     "steps": [
       {
-        "kicker": "What it is",
-        "title": "Understanding Modules (ESM vs CommonJS)",
-        "desc": "import/export vs require — splitting code into reusable files. This is a core topic in your learning path — understand the idea before memorizing syntax.",
+        "kicker": "Definition",
+        "title": "What is Modules (ESM vs CommonJS)?",
+        "desc": "import/export vs require — splitting code into reusable files.",
         "bullets": [
-          "Part of: JavaScript Deep Understanding",
-          "Read the steps, then try explaining it out loud",
-          "Build a small example in your own project"
+          "Runs in browsers and Node.js — same language, different APIs",
+          "Understanding runtime behavior prevents subtle async bugs",
+          "Key terms: esm, commonjs, import, export"
         ],
         "icon": "package"
       },
       {
-        "kicker": "Why it matters",
-        "title": "Why you need this",
-        "desc": "Weak mental models here make everything built on top harder. Modules (ESM vs CommonJS) connects to real work in Next.js, MongoDB, and backend projects you're already building.",
+        "kicker": "How it works",
+        "title": "How Modules (ESM vs CommonJS) works in practice",
+        "desc": "Modules (ESM vs CommonJS) works by applying clear rules in code. import/export vs require — splitting code into reusable files. The mechanics depend on your language and framework, but the underlying idea stays the same across projects.",
         "bullets": [
-          "Strong engineers explain concepts clearly",
-          "Interviewers test fundamentals, not just frameworks",
-          "Deep understanding beats copy-paste solutions"
+          "Core mechanism behind modules (esm vs commonjs)",
+          "Common in javascript deep understanding work",
+          "See code example below when applicable"
         ],
-        "icon": "lightbulb"
+        "icon": "cog"
       },
       {
-        "kicker": "Next step",
-        "title": "How to learn it deeply",
-        "desc": "Pick one resource, build one tiny example, then explain it without looking at notes — like a mock interview.",
+        "kicker": "In your stack",
+        "title": "Where Modules (ESM vs CommonJS) fits in real projects",
+        "desc": "In your Next.js + MongoDB projects, modules (esm vs commonjs) connects to features you build daily — API routes, React components, auth flows, and database queries. Recognizing the pattern helps you debug faster and design cleaner modules.",
         "bullets": [
-          "Step 1: Read and take notes",
-          "Step 2: Code a minimal example",
-          "Step 3: Explain out loud in English"
+          "Applies across frontend and backend code",
+          "Shows up when building real features, not toy examples",
+          "Combine with other topics in this index for full picture"
         ],
-        "icon": "target"
+        "icon": "layers"
       }
     ]
   },
@@ -919,40 +962,42 @@ const CONCEPTS = [
       "typescript"
     ],
     "important": false,
-    "intro": "When to use type aliases vs interfaces for shapes and contracts. Part of your Programming Knowledge Index — TypeScript.",
+    "sources": [],
+    "intro": "When to use type aliases vs interfaces for shapes and contracts. Static types on top of JavaScript — catching mistakes before runtime and documenting contracts.",
     "steps": [
       {
-        "kicker": "What it is",
-        "title": "Understanding Types vs Interfaces",
-        "desc": "When to use type aliases vs interfaces for shapes and contracts. This is a core topic in your learning path — understand the idea before memorizing syntax.",
+        "kicker": "Definition",
+        "title": "What is Types vs Interfaces?",
+        "desc": "When to use type aliases vs interfaces for shapes and contracts.",
         "bullets": [
-          "Part of: TypeScript",
-          "Read the steps, then try explaining it out loud",
-          "Build a small example in your own project"
+          "Compile-time checks — errors caught before users see them",
+          "Types document what functions expect and return",
+          "Works alongside JavaScript — gradual adoption is fine"
         ],
         "icon": "file-type"
       },
       {
-        "kicker": "Why it matters",
-        "title": "Why you need this",
-        "desc": "Weak mental models here make everything built on top harder. Types vs Interfaces connects to real work in Next.js, MongoDB, and backend projects you're already building.",
+        "kicker": "How it works",
+        "title": "How Types vs Interfaces works in practice",
+        "desc": "Types vs Interfaces works by applying clear rules in code. When to use type aliases vs interfaces for shapes and contracts. The mechanics depend on your language and framework, but the underlying idea stays the same across projects.",
         "bullets": [
-          "Strong engineers explain concepts clearly",
-          "Interviewers test fundamentals, not just frameworks",
-          "Deep understanding beats copy-paste solutions"
+          "Core mechanism behind types vs interfaces",
+          "Common in typescript work",
+          "See code example below when applicable"
         ],
-        "icon": "lightbulb"
+        "icon": "cog",
+        "code": "interface User { id: string; name: string; }\ntype Role = \"admin\" | \"user\";"
       },
       {
-        "kicker": "Next step",
-        "title": "How to learn it deeply",
-        "desc": "Pick one resource, build one tiny example, then explain it without looking at notes — like a mock interview.",
+        "kicker": "In your stack",
+        "title": "Where Types vs Interfaces fits in real projects",
+        "desc": "In your Next.js + MongoDB projects, types vs interfaces connects to features you build daily — API routes, React components, auth flows, and database queries. Recognizing the pattern helps you debug faster and design cleaner modules.",
         "bullets": [
-          "Step 1: Read and take notes",
-          "Step 2: Code a minimal example",
-          "Step 3: Explain out loud in English"
+          "Applies across frontend and backend code",
+          "Shows up when building real features, not toy examples",
+          "Combine with other topics in this index for full picture"
         ],
-        "icon": "target"
+        "icon": "layers"
       }
     ]
   },
@@ -970,40 +1015,42 @@ const CONCEPTS = [
       "type parameters"
     ],
     "important": false,
-    "intro": "Reusable types that work with many different values — Array<T>, Promise<T>. Part of your Programming Knowledge Index — TypeScript.",
+    "sources": [],
+    "intro": "Reusable types that work with many different values — Array<T>, Promise<T>. Static types on top of JavaScript — catching mistakes before runtime and documenting contracts.",
     "steps": [
       {
-        "kicker": "What it is",
-        "title": "Understanding Generics",
-        "desc": "Reusable types that work with many different values — Array<T>, Promise<T>. This is a core topic in your learning path — understand the idea before memorizing syntax.",
+        "kicker": "Definition",
+        "title": "What is Generics?",
+        "desc": "Reusable types that work with many different values — Array<T>, Promise<T>.",
         "bullets": [
-          "Part of: TypeScript",
-          "Read the steps, then try explaining it out loud",
-          "Build a small example in your own project"
+          "Compile-time checks — errors caught before users see them",
+          "Types document what functions expect and return",
+          "Works alongside JavaScript — gradual adoption is fine"
         ],
         "icon": "boxes"
       },
       {
-        "kicker": "Why it matters",
-        "title": "Why you need this",
-        "desc": "Weak mental models here make everything built on top harder. Generics connects to real work in Next.js, MongoDB, and backend projects you're already building.",
+        "kicker": "How it works",
+        "title": "How Generics works in practice",
+        "desc": "Generics works by applying clear rules in code. Reusable types that work with many different values — Array<T>, Promise<T>. The mechanics depend on your language and framework, but the underlying idea stays the same across projects.",
         "bullets": [
-          "Strong engineers explain concepts clearly",
-          "Interviewers test fundamentals, not just frameworks",
-          "Deep understanding beats copy-paste solutions"
+          "function identity<T>(arg: T): T { return arg; }",
+          "Array<string> means array of strings",
+          "Generics keep types flexible without using any"
         ],
-        "icon": "lightbulb"
+        "icon": "cog",
+        "code": "type ApiResponse<T> = { data: T; error?: string };"
       },
       {
-        "kicker": "Next step",
-        "title": "How to learn it deeply",
-        "desc": "Pick one resource, build one tiny example, then explain it without looking at notes — like a mock interview.",
+        "kicker": "In your stack",
+        "title": "Where Generics fits in real projects",
+        "desc": "In your Next.js + MongoDB projects, generics connects to features you build daily — API routes, React components, auth flows, and database queries. Recognizing the pattern helps you debug faster and design cleaner modules.",
         "bullets": [
-          "Step 1: Read and take notes",
-          "Step 2: Code a minimal example",
-          "Step 3: Explain out loud in English"
+          "Applies across frontend and backend code",
+          "Shows up when building real features, not toy examples",
+          "Combine with other topics in this index for full picture"
         ],
-        "icon": "target"
+        "icon": "layers"
       }
     ]
   },
@@ -1023,40 +1070,41 @@ const CONCEPTS = [
       "utility"
     ],
     "important": false,
-    "intro": "Partial, Pick, Omit, Record — built-in type transformers. Part of your Programming Knowledge Index — TypeScript.",
+    "sources": [],
+    "intro": "Partial, Pick, Omit, Record — built-in type transformers. Static types on top of JavaScript — catching mistakes before runtime and documenting contracts.",
     "steps": [
       {
-        "kicker": "What it is",
-        "title": "Understanding Utility Types",
-        "desc": "Partial, Pick, Omit, Record — built-in type transformers. This is a core topic in your learning path — understand the idea before memorizing syntax.",
+        "kicker": "Definition",
+        "title": "What is Utility Types?",
+        "desc": "Partial, Pick, Omit, Record — built-in type transformers.",
         "bullets": [
-          "Part of: TypeScript",
-          "Read the steps, then try explaining it out loud",
-          "Build a small example in your own project"
+          "Compile-time checks — errors caught before users see them",
+          "Types document what functions expect and return",
+          "Works alongside JavaScript — gradual adoption is fine"
         ],
         "icon": "wrench"
       },
       {
-        "kicker": "Why it matters",
-        "title": "Why you need this",
-        "desc": "Weak mental models here make everything built on top harder. Utility Types connects to real work in Next.js, MongoDB, and backend projects you're already building.",
+        "kicker": "How it works",
+        "title": "How Utility Types works in practice",
+        "desc": "Utility Types works by applying clear rules in code. Partial, Pick, Omit, Record — built-in type transformers. The mechanics depend on your language and framework, but the underlying idea stays the same across projects.",
         "bullets": [
-          "Strong engineers explain concepts clearly",
-          "Interviewers test fundamentals, not just frameworks",
-          "Deep understanding beats copy-paste solutions"
+          "Core mechanism behind utility types",
+          "Common in typescript work",
+          "See code example below when applicable"
         ],
-        "icon": "lightbulb"
+        "icon": "cog"
       },
       {
-        "kicker": "Next step",
-        "title": "How to learn it deeply",
-        "desc": "Pick one resource, build one tiny example, then explain it without looking at notes — like a mock interview.",
+        "kicker": "In your stack",
+        "title": "Where Utility Types fits in real projects",
+        "desc": "In your Next.js + MongoDB projects, utility types connects to features you build daily — API routes, React components, auth flows, and database queries. Recognizing the pattern helps you debug faster and design cleaner modules.",
         "bullets": [
-          "Step 1: Read and take notes",
-          "Step 2: Code a minimal example",
-          "Step 3: Explain out loud in English"
+          "Applies across frontend and backend code",
+          "Shows up when building real features, not toy examples",
+          "Combine with other topics in this index for full picture"
         ],
-        "icon": "target"
+        "icon": "layers"
       }
     ]
   },
@@ -1075,40 +1123,41 @@ const CONCEPTS = [
       "types"
     ],
     "important": false,
-    "intro": "How TypeScript figures out types without you writing them. Part of your Programming Knowledge Index — TypeScript.",
+    "sources": [],
+    "intro": "How TypeScript figures out types without you writing them. Static types on top of JavaScript — catching mistakes before runtime and documenting contracts.",
     "steps": [
       {
-        "kicker": "What it is",
-        "title": "Understanding Type Inference",
-        "desc": "How TypeScript figures out types without you writing them. This is a core topic in your learning path — understand the idea before memorizing syntax.",
+        "kicker": "Definition",
+        "title": "What is Type Inference?",
+        "desc": "How TypeScript figures out types without you writing them.",
         "bullets": [
-          "Part of: TypeScript",
-          "Read the steps, then try explaining it out loud",
-          "Build a small example in your own project"
+          "Compile-time checks — errors caught before users see them",
+          "Types document what functions expect and return",
+          "Works alongside JavaScript — gradual adoption is fine"
         ],
         "icon": "scan"
       },
       {
-        "kicker": "Why it matters",
-        "title": "Why you need this",
-        "desc": "Weak mental models here make everything built on top harder. Type Inference connects to real work in Next.js, MongoDB, and backend projects you're already building.",
+        "kicker": "How it works",
+        "title": "How Type Inference works in practice",
+        "desc": "Type Inference works by applying clear rules in code. How TypeScript figures out types without you writing them. The mechanics depend on your language and framework, but the underlying idea stays the same across projects.",
         "bullets": [
-          "Strong engineers explain concepts clearly",
-          "Interviewers test fundamentals, not just frameworks",
-          "Deep understanding beats copy-paste solutions"
+          "Core mechanism behind type inference",
+          "Common in typescript work",
+          "See code example below when applicable"
         ],
-        "icon": "lightbulb"
+        "icon": "cog"
       },
       {
-        "kicker": "Next step",
-        "title": "How to learn it deeply",
-        "desc": "Pick one resource, build one tiny example, then explain it without looking at notes — like a mock interview.",
+        "kicker": "In your stack",
+        "title": "Where Type Inference fits in real projects",
+        "desc": "In your Next.js + MongoDB projects, type inference connects to features you build daily — API routes, React components, auth flows, and database queries. Recognizing the pattern helps you debug faster and design cleaner modules.",
         "bullets": [
-          "Step 1: Read and take notes",
-          "Step 2: Code a minimal example",
-          "Step 3: Explain out loud in English"
+          "Applies across frontend and backend code",
+          "Shows up when building real features, not toy examples",
+          "Combine with other topics in this index for full picture"
         ],
-        "icon": "target"
+        "icon": "layers"
       }
     ]
   },
@@ -1127,40 +1176,41 @@ const CONCEPTS = [
       "unions"
     ],
     "important": false,
-    "intro": "Refining union types inside if blocks — typeof, in, discriminated unions. Part of your Programming Knowledge Index — TypeScript.",
+    "sources": [],
+    "intro": "Refining union types inside if blocks — typeof, in, discriminated unions. Static types on top of JavaScript — catching mistakes before runtime and documenting contracts.",
     "steps": [
       {
-        "kicker": "What it is",
-        "title": "Understanding Narrowing",
-        "desc": "Refining union types inside if blocks — typeof, in, discriminated unions. This is a core topic in your learning path — understand the idea before memorizing syntax.",
+        "kicker": "Definition",
+        "title": "What is Narrowing?",
+        "desc": "Refining union types inside if blocks — typeof, in, discriminated unions.",
         "bullets": [
-          "Part of: TypeScript",
-          "Read the steps, then try explaining it out loud",
-          "Build a small example in your own project"
+          "Compile-time checks — errors caught before users see them",
+          "Types document what functions expect and return",
+          "Works alongside JavaScript — gradual adoption is fine"
         ],
         "icon": "filter"
       },
       {
-        "kicker": "Why it matters",
-        "title": "Why you need this",
-        "desc": "Weak mental models here make everything built on top harder. Narrowing connects to real work in Next.js, MongoDB, and backend projects you're already building.",
+        "kicker": "How it works",
+        "title": "How Narrowing works in practice",
+        "desc": "Narrowing works by applying clear rules in code. Refining union types inside if blocks — typeof, in, discriminated unions. The mechanics depend on your language and framework, but the underlying idea stays the same across projects.",
         "bullets": [
-          "Strong engineers explain concepts clearly",
-          "Interviewers test fundamentals, not just frameworks",
-          "Deep understanding beats copy-paste solutions"
+          "Core mechanism behind narrowing",
+          "Common in typescript work",
+          "See code example below when applicable"
         ],
-        "icon": "lightbulb"
+        "icon": "cog"
       },
       {
-        "kicker": "Next step",
-        "title": "How to learn it deeply",
-        "desc": "Pick one resource, build one tiny example, then explain it without looking at notes — like a mock interview.",
+        "kicker": "In your stack",
+        "title": "Where Narrowing fits in real projects",
+        "desc": "In your Next.js + MongoDB projects, narrowing connects to features you build daily — API routes, React components, auth flows, and database queries. Recognizing the pattern helps you debug faster and design cleaner modules.",
         "bullets": [
-          "Step 1: Read and take notes",
-          "Step 2: Code a minimal example",
-          "Step 3: Explain out loud in English"
+          "Applies across frontend and backend code",
+          "Shows up when building real features, not toy examples",
+          "Combine with other topics in this index for full picture"
         ],
-        "icon": "target"
+        "icon": "layers"
       }
     ]
   },
@@ -1180,40 +1230,41 @@ const CONCEPTS = [
       "validation"
     ],
     "important": false,
-    "intro": "Typing request/response shapes so frontend and backend agree. Part of your Programming Knowledge Index — TypeScript.",
+    "sources": [],
+    "intro": "Typing request/response shapes so frontend and backend agree. Static types on top of JavaScript — catching mistakes before runtime and documenting contracts.",
     "steps": [
       {
-        "kicker": "What it is",
-        "title": "Understanding Type Safety in APIs",
-        "desc": "Typing request/response shapes so frontend and backend agree. This is a core topic in your learning path — understand the idea before memorizing syntax.",
+        "kicker": "Definition",
+        "title": "What is Type Safety in APIs?",
+        "desc": "Typing request/response shapes so frontend and backend agree.",
         "bullets": [
-          "Part of: TypeScript",
-          "Read the steps, then try explaining it out loud",
-          "Build a small example in your own project"
+          "Compile-time checks — errors caught before users see them",
+          "Types document what functions expect and return",
+          "Works alongside JavaScript — gradual adoption is fine"
         ],
         "icon": "shield"
       },
       {
-        "kicker": "Why it matters",
-        "title": "Why you need this",
-        "desc": "Weak mental models here make everything built on top harder. Type Safety in APIs connects to real work in Next.js, MongoDB, and backend projects you're already building.",
+        "kicker": "How it works",
+        "title": "How Type Safety in APIs works in practice",
+        "desc": "Type Safety in APIs works by applying clear rules in code. Typing request/response shapes so frontend and backend agree. The mechanics depend on your language and framework, but the underlying idea stays the same across projects.",
         "bullets": [
-          "Strong engineers explain concepts clearly",
-          "Interviewers test fundamentals, not just frameworks",
-          "Deep understanding beats copy-paste solutions"
+          "Core mechanism behind type safety in apis",
+          "Common in typescript work",
+          "See code example below when applicable"
         ],
-        "icon": "lightbulb"
+        "icon": "cog"
       },
       {
-        "kicker": "Next step",
-        "title": "How to learn it deeply",
-        "desc": "Pick one resource, build one tiny example, then explain it without looking at notes — like a mock interview.",
+        "kicker": "In your stack",
+        "title": "Where Type Safety in APIs fits in real projects",
+        "desc": "In your Next.js + MongoDB projects, type safety in apis connects to features you build daily — API routes, React components, auth flows, and database queries. Recognizing the pattern helps you debug faster and design cleaner modules.",
         "bullets": [
-          "Step 1: Read and take notes",
-          "Step 2: Code a minimal example",
-          "Step 3: Explain out loud in English"
+          "Applies across frontend and backend code",
+          "Shows up when building real features, not toy examples",
+          "Combine with other topics in this index for full picture"
         ],
-        "icon": "target"
+        "icon": "layers"
       }
     ]
   },
@@ -1232,40 +1283,42 @@ const CONCEPTS = [
       "components"
     ],
     "important": false,
-    "intro": "HTML-like syntax inside JavaScript for describing UI. Part of your Programming Knowledge Index — React.",
+    "sources": [],
+    "intro": "HTML-like syntax inside JavaScript for describing UI. React models UI as a function of state. Components re-render when data changes.",
     "steps": [
       {
-        "kicker": "What it is",
-        "title": "Understanding JSX",
-        "desc": "HTML-like syntax inside JavaScript for describing UI. This is a core topic in your learning path — understand the idea before memorizing syntax.",
+        "kicker": "Definition",
+        "title": "What is JSX?",
+        "desc": "HTML-like syntax inside JavaScript for describing UI.",
         "bullets": [
-          "Part of: React",
-          "Read the steps, then try explaining it out loud",
-          "Build a small example in your own project"
+          "UI = f(state) — when state changes, React re-renders",
+          "Components compose into trees — props flow down, events bubble up",
+          "Used in your Next.js App Router pages and client components"
         ],
         "icon": "code"
       },
       {
-        "kicker": "Why it matters",
-        "title": "Why you need this",
-        "desc": "Weak mental models here make everything built on top harder. JSX connects to real work in Next.js, MongoDB, and backend projects you're already building.",
+        "kicker": "How it works",
+        "title": "How JSX works in practice",
+        "desc": "JSX looks like HTML but compiles to JavaScript function calls: React.createElement(type, props, children). You must close tags, use className instead of class, and wrap multiple elements in a fragment <>...</>.",
         "bullets": [
-          "Strong engineers explain concepts clearly",
-          "Interviewers test fundamentals, not just frameworks",
-          "Deep understanding beats copy-paste solutions"
+          "Core mechanism behind jsx",
+          "Common in react work",
+          "See code example below when applicable"
         ],
-        "icon": "lightbulb"
+        "icon": "cog",
+        "code": "function Card({ title }) {\n  return <div className=\"card\"><h2>{title}</h2></div>;\n}"
       },
       {
-        "kicker": "Next step",
-        "title": "How to learn it deeply",
-        "desc": "Pick one resource, build one tiny example, then explain it without looking at notes — like a mock interview.",
+        "kicker": "In your stack",
+        "title": "Where JSX fits in real projects",
+        "desc": "In your Next.js + MongoDB projects, jsx connects to features you build daily — API routes, React components, auth flows, and database queries. Recognizing the pattern helps you debug faster and design cleaner modules.",
         "bullets": [
-          "Step 1: Read and take notes",
-          "Step 2: Code a minimal example",
-          "Step 3: Explain out loud in English"
+          "Used in every component you write",
+          "Pairs with Next.js App Router",
+          "Hooks replace class lifecycle methods"
         ],
-        "icon": "target"
+        "icon": "layers"
       }
     ]
   },
@@ -1284,40 +1337,42 @@ const CONCEPTS = [
       "child"
     ],
     "important": false,
-    "intro": "Passing data from parent to child components — read-only inputs. Part of your Programming Knowledge Index — React.",
+    "sources": [],
+    "intro": "Passing data from parent to child components — read-only inputs. React models UI as a function of state. Components re-render when data changes.",
     "steps": [
       {
-        "kicker": "What it is",
-        "title": "Understanding Props",
-        "desc": "Passing data from parent to child components — read-only inputs. This is a core topic in your learning path — understand the idea before memorizing syntax.",
+        "kicker": "Definition",
+        "title": "What is Props?",
+        "desc": "Passing data from parent to child components — read-only inputs.",
         "bullets": [
-          "Part of: React",
-          "Read the steps, then try explaining it out loud",
-          "Build a small example in your own project"
+          "UI = f(state) — when state changes, React re-renders",
+          "Components compose into trees — props flow down, events bubble up",
+          "Used in your Next.js App Router pages and client components"
         ],
         "icon": "arrow-right-left"
       },
       {
-        "kicker": "Why it matters",
-        "title": "Why you need this",
-        "desc": "Weak mental models here make everything built on top harder. Props connects to real work in Next.js, MongoDB, and backend projects you're already building.",
+        "kicker": "How it works",
+        "title": "How Props works in practice",
+        "desc": "Props are read-only inputs passed from parent to child. <UserCard name=\"Ada\" age={42} /> — the child receives { name: \"Ada\", age: 42 }. Changing props in the child does not affect the parent.",
         "bullets": [
-          "Strong engineers explain concepts clearly",
-          "Interviewers test fundamentals, not just frameworks",
-          "Deep understanding beats copy-paste solutions"
+          "Core mechanism behind props",
+          "Common in react work",
+          "See code example below when applicable"
         ],
-        "icon": "lightbulb"
+        "icon": "cog",
+        "code": "<Button label=\"Save\" onClick={handleSave} />"
       },
       {
-        "kicker": "Next step",
-        "title": "How to learn it deeply",
-        "desc": "Pick one resource, build one tiny example, then explain it without looking at notes — like a mock interview.",
+        "kicker": "In your stack",
+        "title": "Where Props fits in real projects",
+        "desc": "In your Next.js + MongoDB projects, props connects to features you build daily — API routes, React components, auth flows, and database queries. Recognizing the pattern helps you debug faster and design cleaner modules.",
         "bullets": [
-          "Step 1: Read and take notes",
-          "Step 2: Code a minimal example",
-          "Step 3: Explain out loud in English"
+          "Used in every component you write",
+          "Pairs with Next.js App Router",
+          "Hooks replace class lifecycle methods"
         ],
-        "icon": "target"
+        "icon": "layers"
       }
     ]
   },
@@ -1336,40 +1391,42 @@ const CONCEPTS = [
       "reactive"
     ],
     "important": false,
-    "intro": "Data that changes over time and triggers re-renders when updated. Part of your Programming Knowledge Index — React.",
+    "sources": [],
+    "intro": "Data that changes over time and triggers re-renders when updated. React models UI as a function of state. Components re-render when data changes.",
     "steps": [
       {
-        "kicker": "What it is",
-        "title": "Understanding State",
-        "desc": "Data that changes over time and triggers re-renders when updated. This is a core topic in your learning path — understand the idea before memorizing syntax.",
+        "kicker": "Definition",
+        "title": "What is State?",
+        "desc": "Data that changes over time and triggers re-renders when updated.",
         "bullets": [
-          "Part of: React",
-          "Read the steps, then try explaining it out loud",
-          "Build a small example in your own project"
+          "UI = f(state) — when state changes, React re-renders",
+          "Components compose into trees — props flow down, events bubble up",
+          "Used in your Next.js App Router pages and client components"
         ],
         "icon": "toggle-left"
       },
       {
-        "kicker": "Why it matters",
-        "title": "Why you need this",
-        "desc": "Weak mental models here make everything built on top harder. State connects to real work in Next.js, MongoDB, and backend projects you're already building.",
+        "kicker": "How it works",
+        "title": "How State works in practice",
+        "desc": "useState returns [value, setValue]. Calling setValue triggers a re-render with the new value. State updates are asynchronous and batched — never mutate state directly; always use the setter.",
         "bullets": [
-          "Strong engineers explain concepts clearly",
-          "Interviewers test fundamentals, not just frameworks",
-          "Deep understanding beats copy-paste solutions"
+          "Core mechanism behind state",
+          "Common in react work",
+          "See code example below when applicable"
         ],
-        "icon": "lightbulb"
+        "icon": "cog",
+        "code": "const [count, setCount] = useState(0);\nsetCount(count + 1);"
       },
       {
-        "kicker": "Next step",
-        "title": "How to learn it deeply",
-        "desc": "Pick one resource, build one tiny example, then explain it without looking at notes — like a mock interview.",
+        "kicker": "In your stack",
+        "title": "Where State fits in real projects",
+        "desc": "In your Next.js + MongoDB projects, state connects to features you build daily — API routes, React components, auth flows, and database queries. Recognizing the pattern helps you debug faster and design cleaner modules.",
         "bullets": [
-          "Step 1: Read and take notes",
-          "Step 2: Code a minimal example",
-          "Step 3: Explain out loud in English"
+          "Used in every component you write",
+          "Pairs with Next.js App Router",
+          "Hooks replace class lifecycle methods"
         ],
-        "icon": "target"
+        "icon": "layers"
       }
     ]
   },
@@ -1388,40 +1445,41 @@ const CONCEPTS = [
       "consumer"
     ],
     "important": false,
-    "intro": "Sharing data across the tree without prop drilling. Part of your Programming Knowledge Index — React.",
+    "sources": [],
+    "intro": "Sharing data across the tree without prop drilling. React models UI as a function of state. Components re-render when data changes.",
     "steps": [
       {
-        "kicker": "What it is",
-        "title": "Understanding Context API",
-        "desc": "Sharing data across the tree without prop drilling. This is a core topic in your learning path — understand the idea before memorizing syntax.",
+        "kicker": "Definition",
+        "title": "What is Context API?",
+        "desc": "Sharing data across the tree without prop drilling.",
         "bullets": [
-          "Part of: React",
-          "Read the steps, then try explaining it out loud",
-          "Build a small example in your own project"
+          "UI = f(state) — when state changes, React re-renders",
+          "Components compose into trees — props flow down, events bubble up",
+          "Used in your Next.js App Router pages and client components"
         ],
         "icon": "share-2"
       },
       {
-        "kicker": "Why it matters",
-        "title": "Why you need this",
-        "desc": "Weak mental models here make everything built on top harder. Context API connects to real work in Next.js, MongoDB, and backend projects you're already building.",
+        "kicker": "How it works",
+        "title": "How Context API works in practice",
+        "desc": "Context API works by applying clear rules in code. Sharing data across the tree without prop drilling. The mechanics depend on your language and framework, but the underlying idea stays the same across projects.",
         "bullets": [
-          "Strong engineers explain concepts clearly",
-          "Interviewers test fundamentals, not just frameworks",
-          "Deep understanding beats copy-paste solutions"
+          "createContext(defaultValue) defines the context",
+          "<Provider value={data}> wraps the tree",
+          "useContext(ctx) reads the value in any descendant"
         ],
-        "icon": "lightbulb"
+        "icon": "cog"
       },
       {
-        "kicker": "Next step",
-        "title": "How to learn it deeply",
-        "desc": "Pick one resource, build one tiny example, then explain it without looking at notes — like a mock interview.",
+        "kicker": "In your stack",
+        "title": "Where Context API fits in real projects",
+        "desc": "In your Next.js + MongoDB projects, context api connects to features you build daily — API routes, React components, auth flows, and database queries. Recognizing the pattern helps you debug faster and design cleaner modules.",
         "bullets": [
-          "Step 1: Read and take notes",
-          "Step 2: Code a minimal example",
-          "Step 3: Explain out loud in English"
+          "Used in every component you write",
+          "Pairs with Next.js App Router",
+          "Hooks replace class lifecycle methods"
         ],
-        "icon": "target"
+        "icon": "layers"
       }
     ]
   },
@@ -1440,40 +1498,41 @@ const CONCEPTS = [
       "client components"
     ],
     "important": false,
-    "intro": "What runs on the server vs the browser in modern React apps. Part of your Programming Knowledge Index — React.",
+    "sources": [],
+    "intro": "What runs on the server vs the browser in modern React apps. React models UI as a function of state. Components re-render when data changes.",
     "steps": [
       {
-        "kicker": "What it is",
-        "title": "Understanding Server vs Client Components",
-        "desc": "What runs on the server vs the browser in modern React apps. This is a core topic in your learning path — understand the idea before memorizing syntax.",
+        "kicker": "Definition",
+        "title": "What is Server vs Client Components?",
+        "desc": "What runs on the server vs the browser in modern React apps.",
         "bullets": [
-          "Part of: React",
-          "Read the steps, then try explaining it out loud",
-          "Build a small example in your own project"
+          "UI = f(state) — when state changes, React re-renders",
+          "Components compose into trees — props flow down, events bubble up",
+          "Used in your Next.js App Router pages and client components"
         ],
         "icon": "monitor-smartphone"
       },
       {
-        "kicker": "Why it matters",
-        "title": "Why you need this",
-        "desc": "Weak mental models here make everything built on top harder. Server vs Client Components connects to real work in Next.js, MongoDB, and backend projects you're already building.",
+        "kicker": "How it works",
+        "title": "How Server vs Client Components works in practice",
+        "desc": "Server vs Client Components works by applying clear rules in code. What runs on the server vs the browser in modern React apps. The mechanics depend on your language and framework, but the underlying idea stays the same across projects.",
         "bullets": [
-          "Strong engineers explain concepts clearly",
-          "Interviewers test fundamentals, not just frameworks",
-          "Deep understanding beats copy-paste solutions"
+          "Core mechanism behind server vs client components",
+          "Common in react work",
+          "See code example below when applicable"
         ],
-        "icon": "lightbulb"
+        "icon": "cog"
       },
       {
-        "kicker": "Next step",
-        "title": "How to learn it deeply",
-        "desc": "Pick one resource, build one tiny example, then explain it without looking at notes — like a mock interview.",
+        "kicker": "In your stack",
+        "title": "Where Server vs Client Components fits in real projects",
+        "desc": "In your Next.js + MongoDB projects, server vs client components connects to features you build daily — API routes, React components, auth flows, and database queries. Recognizing the pattern helps you debug faster and design cleaner modules.",
         "bullets": [
-          "Step 1: Read and take notes",
-          "Step 2: Code a minimal example",
-          "Step 3: Explain out loud in English"
+          "Used in every component you write",
+          "Pairs with Next.js App Router",
+          "Hooks replace class lifecycle methods"
         ],
-        "icon": "target"
+        "icon": "layers"
       }
     ]
   },
@@ -1492,40 +1551,41 @@ const CONCEPTS = [
       "virtual dom"
     ],
     "important": false,
-    "intro": "When and why React re-renders — reconciliation and the virtual DOM. Part of your Programming Knowledge Index — React.",
+    "sources": [],
+    "intro": "When and why React re-renders — reconciliation and the virtual DOM. React models UI as a function of state. Components re-render when data changes.",
     "steps": [
       {
-        "kicker": "What it is",
-        "title": "Understanding Rendering Behavior",
-        "desc": "When and why React re-renders — reconciliation and the virtual DOM. This is a core topic in your learning path — understand the idea before memorizing syntax.",
+        "kicker": "Definition",
+        "title": "What is Rendering Behavior?",
+        "desc": "When and why React re-renders — reconciliation and the virtual DOM.",
         "bullets": [
-          "Part of: React",
-          "Read the steps, then try explaining it out loud",
-          "Build a small example in your own project"
+          "UI = f(state) — when state changes, React re-renders",
+          "Components compose into trees — props flow down, events bubble up",
+          "Used in your Next.js App Router pages and client components"
         ],
         "icon": "eye"
       },
       {
-        "kicker": "Why it matters",
-        "title": "Why you need this",
-        "desc": "Weak mental models here make everything built on top harder. Rendering Behavior connects to real work in Next.js, MongoDB, and backend projects you're already building.",
+        "kicker": "How it works",
+        "title": "How Rendering Behavior works in practice",
+        "desc": "Rendering Behavior works by applying clear rules in code. When and why React re-renders — reconciliation and the virtual DOM. The mechanics depend on your language and framework, but the underlying idea stays the same across projects.",
         "bullets": [
-          "Strong engineers explain concepts clearly",
-          "Interviewers test fundamentals, not just frameworks",
-          "Deep understanding beats copy-paste solutions"
+          "Core mechanism behind rendering behavior",
+          "Common in react work",
+          "See code example below when applicable"
         ],
-        "icon": "lightbulb"
+        "icon": "cog"
       },
       {
-        "kicker": "Next step",
-        "title": "How to learn it deeply",
-        "desc": "Pick one resource, build one tiny example, then explain it without looking at notes — like a mock interview.",
+        "kicker": "In your stack",
+        "title": "Where Rendering Behavior fits in real projects",
+        "desc": "In your Next.js + MongoDB projects, rendering behavior connects to features you build daily — API routes, React components, auth flows, and database queries. Recognizing the pattern helps you debug faster and design cleaner modules.",
         "bullets": [
-          "Step 1: Read and take notes",
-          "Step 2: Code a minimal example",
-          "Step 3: Explain out loud in English"
+          "Used in every component you write",
+          "Pairs with Next.js App Router",
+          "Hooks replace class lifecycle methods"
         ],
-        "icon": "target"
+        "icon": "layers"
       }
     ]
   },
@@ -1545,40 +1605,41 @@ const CONCEPTS = [
       "performance"
     ],
     "important": false,
-    "intro": "useMemo, useCallback, React.memo — avoiding unnecessary work. Part of your Programming Knowledge Index — React.",
+    "sources": [],
+    "intro": "useMemo, useCallback, React.memo — avoiding unnecessary work. React models UI as a function of state. Components re-render when data changes.",
     "steps": [
       {
-        "kicker": "What it is",
-        "title": "Understanding Re-renders & Optimization",
-        "desc": "useMemo, useCallback, React.memo — avoiding unnecessary work. This is a core topic in your learning path — understand the idea before memorizing syntax.",
+        "kicker": "Definition",
+        "title": "What is Re-renders & Optimization?",
+        "desc": "useMemo, useCallback, React.memo — avoiding unnecessary work.",
         "bullets": [
-          "Part of: React",
-          "Read the steps, then try explaining it out loud",
-          "Build a small example in your own project"
+          "UI = f(state) — when state changes, React re-renders",
+          "Components compose into trees — props flow down, events bubble up",
+          "Used in your Next.js App Router pages and client components"
         ],
         "icon": "zap"
       },
       {
-        "kicker": "Why it matters",
-        "title": "Why you need this",
-        "desc": "Weak mental models here make everything built on top harder. Re-renders & Optimization connects to real work in Next.js, MongoDB, and backend projects you're already building.",
+        "kicker": "How it works",
+        "title": "How Re-renders & Optimization works in practice",
+        "desc": "Re-renders & Optimization works by applying clear rules in code. useMemo, useCallback, React.memo — avoiding unnecessary work. The mechanics depend on your language and framework, but the underlying idea stays the same across projects.",
         "bullets": [
-          "Strong engineers explain concepts clearly",
-          "Interviewers test fundamentals, not just frameworks",
-          "Deep understanding beats copy-paste solutions"
+          "Core mechanism behind re-renders & optimization",
+          "Common in react work",
+          "See code example below when applicable"
         ],
-        "icon": "lightbulb"
+        "icon": "cog"
       },
       {
-        "kicker": "Next step",
-        "title": "How to learn it deeply",
-        "desc": "Pick one resource, build one tiny example, then explain it without looking at notes — like a mock interview.",
+        "kicker": "In your stack",
+        "title": "Where Re-renders & Optimization fits in real projects",
+        "desc": "In your Next.js + MongoDB projects, re-renders & optimization connects to features you build daily — API routes, React components, auth flows, and database queries. Recognizing the pattern helps you debug faster and design cleaner modules.",
         "bullets": [
-          "Step 1: Read and take notes",
-          "Step 2: Code a minimal example",
-          "Step 3: Explain out loud in English"
+          "Used in every component you write",
+          "Pairs with Next.js App Router",
+          "Hooks replace class lifecycle methods"
         ],
-        "icon": "target"
+        "icon": "layers"
       }
     ]
   },
@@ -1598,40 +1659,41 @@ const CONCEPTS = [
       "usecallback"
     ],
     "important": false,
-    "intro": "useEffect, useMemo, useCallback — attaching logic to components. Part of your Programming Knowledge Index — React.",
+    "sources": [],
+    "intro": "useEffect, useMemo, useCallback — attaching logic to components. React models UI as a function of state. Components re-render when data changes.",
     "steps": [
       {
-        "kicker": "What it is",
-        "title": "Understanding Hooks",
-        "desc": "useEffect, useMemo, useCallback — attaching logic to components. This is a core topic in your learning path — understand the idea before memorizing syntax.",
+        "kicker": "Definition",
+        "title": "What is Hooks?",
+        "desc": "useEffect, useMemo, useCallback — attaching logic to components.",
         "bullets": [
-          "Part of: React",
-          "Read the steps, then try explaining it out loud",
-          "Build a small example in your own project"
+          "UI = f(state) — when state changes, React re-renders",
+          "Components compose into trees — props flow down, events bubble up",
+          "Used in your Next.js App Router pages and client components"
         ],
         "icon": "anchor"
       },
       {
-        "kicker": "Why it matters",
-        "title": "Why you need this",
-        "desc": "Weak mental models here make everything built on top harder. Hooks connects to real work in Next.js, MongoDB, and backend projects you're already building.",
+        "kicker": "How it works",
+        "title": "How Hooks works in practice",
+        "desc": "Hooks works by applying clear rules in code. useEffect, useMemo, useCallback — attaching logic to components. The mechanics depend on your language and framework, but the underlying idea stays the same across projects.",
         "bullets": [
-          "Strong engineers explain concepts clearly",
-          "Interviewers test fundamentals, not just frameworks",
-          "Deep understanding beats copy-paste solutions"
+          "Core mechanism behind hooks",
+          "Common in react work",
+          "See code example below when applicable"
         ],
-        "icon": "lightbulb"
+        "icon": "cog"
       },
       {
-        "kicker": "Next step",
-        "title": "How to learn it deeply",
-        "desc": "Pick one resource, build one tiny example, then explain it without looking at notes — like a mock interview.",
+        "kicker": "In your stack",
+        "title": "Where Hooks fits in real projects",
+        "desc": "In your Next.js + MongoDB projects, hooks connects to features you build daily — API routes, React components, auth flows, and database queries. Recognizing the pattern helps you debug faster and design cleaner modules.",
         "bullets": [
-          "Step 1: Read and take notes",
-          "Step 2: Code a minimal example",
-          "Step 3: Explain out loud in English"
+          "Used in every component you write",
+          "Pairs with Next.js App Router",
+          "Hooks replace class lifecycle methods"
         ],
-        "icon": "target"
+        "icon": "layers"
       }
     ]
   },
@@ -1651,40 +1713,41 @@ const CONCEPTS = [
       "refs"
     ],
     "important": false,
-    "intro": "React state drives inputs vs the DOM holds the value. Part of your Programming Knowledge Index — React.",
+    "sources": [],
+    "intro": "React state drives inputs vs the DOM holds the value. React models UI as a function of state. Components re-render when data changes.",
     "steps": [
       {
-        "kicker": "What it is",
-        "title": "Understanding Controlled vs Uncontrolled Forms",
-        "desc": "React state drives inputs vs the DOM holds the value. This is a core topic in your learning path — understand the idea before memorizing syntax.",
+        "kicker": "Definition",
+        "title": "What is Controlled vs Uncontrolled Forms?",
+        "desc": "React state drives inputs vs the DOM holds the value.",
         "bullets": [
-          "Part of: React",
-          "Read the steps, then try explaining it out loud",
-          "Build a small example in your own project"
+          "UI = f(state) — when state changes, React re-renders",
+          "Components compose into trees — props flow down, events bubble up",
+          "Used in your Next.js App Router pages and client components"
         ],
         "icon": "form-input"
       },
       {
-        "kicker": "Why it matters",
-        "title": "Why you need this",
-        "desc": "Weak mental models here make everything built on top harder. Controlled vs Uncontrolled Forms connects to real work in Next.js, MongoDB, and backend projects you're already building.",
+        "kicker": "How it works",
+        "title": "How Controlled vs Uncontrolled Forms works in practice",
+        "desc": "Controlled vs Uncontrolled Forms works by applying clear rules in code. React state drives inputs vs the DOM holds the value. The mechanics depend on your language and framework, but the underlying idea stays the same across projects.",
         "bullets": [
-          "Strong engineers explain concepts clearly",
-          "Interviewers test fundamentals, not just frameworks",
-          "Deep understanding beats copy-paste solutions"
+          "Core mechanism behind controlled vs uncontrolled forms",
+          "Common in react work",
+          "See code example below when applicable"
         ],
-        "icon": "lightbulb"
+        "icon": "cog"
       },
       {
-        "kicker": "Next step",
-        "title": "How to learn it deeply",
-        "desc": "Pick one resource, build one tiny example, then explain it without looking at notes — like a mock interview.",
+        "kicker": "In your stack",
+        "title": "Where Controlled vs Uncontrolled Forms fits in real projects",
+        "desc": "In your Next.js + MongoDB projects, controlled vs uncontrolled forms connects to features you build daily — API routes, React components, auth flows, and database queries. Recognizing the pattern helps you debug faster and design cleaner modules.",
         "bullets": [
-          "Step 1: Read and take notes",
-          "Step 2: Code a minimal example",
-          "Step 3: Explain out loud in English"
+          "Used in every component you write",
+          "Pairs with Next.js App Router",
+          "Hooks replace class lifecycle methods"
         ],
-        "icon": "target"
+        "icon": "layers"
       }
     ]
   },
@@ -1703,40 +1766,46 @@ const CONCEPTS = [
       "layouts"
     ],
     "important": false,
-    "intro": "File-based routing with layouts, loading, and error boundaries. Part of your Programming Knowledge Index — Next.js.",
+    "sources": [
+      {
+        "title": "Next.js — App Router",
+        "url": "https://nextjs.org/docs/app"
+      }
+    ],
+    "intro": "File-based routing with layouts, loading, and error boundaries. Next.js adds routing, server rendering, and data patterns on top of React.",
     "steps": [
       {
-        "kicker": "What it is",
-        "title": "Understanding App Router",
-        "desc": "File-based routing with layouts, loading, and error boundaries. This is a core topic in your learning path — understand the idea before memorizing syntax.",
+        "kicker": "Definition",
+        "title": "What is App Router?",
+        "desc": "File-based routing with layouts, loading, and error boundaries.",
         "bullets": [
-          "Part of: Next.js",
-          "Read the steps, then try explaining it out loud",
-          "Build a small example in your own project"
+          "Built on React — adds file-based routing and server features",
+          "App Router is the modern default (app/ directory)",
+          "Server Components run on the server; Client Components use \"use client\""
         ],
         "icon": "route"
       },
       {
-        "kicker": "Why it matters",
-        "title": "Why you need this",
-        "desc": "Weak mental models here make everything built on top harder. App Router connects to real work in Next.js, MongoDB, and backend projects you're already building.",
+        "kicker": "How it works",
+        "title": "How App Router works in practice",
+        "desc": "Files in app/ define routes. page.tsx is the UI; layout.tsx wraps children; loading.tsx shows while fetching. Folders create URL segments — app/blog/[slug]/page.tsx matches /blog/hello.",
         "bullets": [
-          "Strong engineers explain concepts clearly",
-          "Interviewers test fundamentals, not just frameworks",
-          "Deep understanding beats copy-paste solutions"
+          "Core mechanism behind app router",
+          "Common in next.js work",
+          "See code example below when applicable"
         ],
-        "icon": "lightbulb"
+        "icon": "cog"
       },
       {
-        "kicker": "Next step",
-        "title": "How to learn it deeply",
-        "desc": "Pick one resource, build one tiny example, then explain it without looking at notes — like a mock interview.",
+        "kicker": "In your stack",
+        "title": "Where App Router fits in real projects",
+        "desc": "In your Next.js + MongoDB projects, app router connects to features you build daily — API routes, React components, auth flows, and database queries. Recognizing the pattern helps you debug faster and design cleaner modules.",
         "bullets": [
-          "Step 1: Read and take notes",
-          "Step 2: Code a minimal example",
-          "Step 3: Explain out loud in English"
+          "Your main framework for full-stack apps",
+          "Combines with Kinde/NextAuth for login",
+          "Server Actions replace many API routes"
         ],
-        "icon": "target"
+        "icon": "layers"
       }
     ]
   },
@@ -1755,40 +1824,47 @@ const CONCEPTS = [
       "forms"
     ],
     "important": false,
-    "intro": "Call server functions directly from forms and components. Part of your Programming Knowledge Index — Next.js.",
+    "sources": [
+      {
+        "title": "Next.js — Server Actions",
+        "url": "https://nextjs.org/docs/app/building-your-application/data-fetching/server-actions-and-mutations"
+      }
+    ],
+    "intro": "Call server functions directly from forms and components. Next.js adds routing, server rendering, and data patterns on top of React.",
     "steps": [
       {
-        "kicker": "What it is",
-        "title": "Understanding Server Actions",
-        "desc": "Call server functions directly from forms and components. This is a core topic in your learning path — understand the idea before memorizing syntax.",
+        "kicker": "Definition",
+        "title": "What is Server Actions?",
+        "desc": "Call server functions directly from forms and components.",
         "bullets": [
-          "Part of: Next.js",
-          "Read the steps, then try explaining it out loud",
-          "Build a small example in your own project"
+          "Built on React — adds file-based routing and server features",
+          "App Router is the modern default (app/ directory)",
+          "Server Components run on the server; Client Components use \"use client\""
         ],
         "icon": "server"
       },
       {
-        "kicker": "Why it matters",
-        "title": "Why you need this",
-        "desc": "Weak mental models here make everything built on top harder. Server Actions connects to real work in Next.js, MongoDB, and backend projects you're already building.",
+        "kicker": "How it works",
+        "title": "How Server Actions works in practice",
+        "desc": "A Server Action is an async function marked \"use server\". Forms can call it directly via action={fn}. It runs on the server — safe for database writes and secrets. No API route boilerplate needed.",
         "bullets": [
-          "Strong engineers explain concepts clearly",
-          "Interviewers test fundamentals, not just frameworks",
-          "Deep understanding beats copy-paste solutions"
+          "Core mechanism behind server actions",
+          "Common in next.js work",
+          "See code example below when applicable"
         ],
-        "icon": "lightbulb"
+        "icon": "cog",
+        "code": "\"use server\"\nexport async function createPost(formData) {\n  await db.posts.insertOne({ title: formData.get(\"title\") });\n}"
       },
       {
-        "kicker": "Next step",
-        "title": "How to learn it deeply",
-        "desc": "Pick one resource, build one tiny example, then explain it without looking at notes — like a mock interview.",
+        "kicker": "In your stack",
+        "title": "Where Server Actions fits in real projects",
+        "desc": "In your Next.js + MongoDB projects, server actions connects to features you build daily — API routes, React components, auth flows, and database queries. Recognizing the pattern helps you debug faster and design cleaner modules.",
         "bullets": [
-          "Step 1: Read and take notes",
-          "Step 2: Code a minimal example",
-          "Step 3: Explain out loud in English"
+          "Your main framework for full-stack apps",
+          "Combines with Kinde/NextAuth for login",
+          "Server Actions replace many API routes"
         ],
-        "icon": "target"
+        "icon": "layers"
       }
     ]
   },
@@ -1807,40 +1883,41 @@ const CONCEPTS = [
       "routes"
     ],
     "important": false,
-    "intro": "Nested routes, shared layouts, and parallel routes. Part of your Programming Knowledge Index — Next.js.",
+    "sources": [],
+    "intro": "Nested routes, shared layouts, and parallel routes. Next.js adds routing, server rendering, and data patterns on top of React.",
     "steps": [
       {
-        "kicker": "What it is",
-        "title": "Understanding Routing & Layouts",
-        "desc": "Nested routes, shared layouts, and parallel routes. This is a core topic in your learning path — understand the idea before memorizing syntax.",
+        "kicker": "Definition",
+        "title": "What is Routing & Layouts?",
+        "desc": "Nested routes, shared layouts, and parallel routes.",
         "bullets": [
-          "Part of: Next.js",
-          "Read the steps, then try explaining it out loud",
-          "Build a small example in your own project"
+          "Built on React — adds file-based routing and server features",
+          "App Router is the modern default (app/ directory)",
+          "Server Components run on the server; Client Components use \"use client\""
         ],
         "icon": "layout-template"
       },
       {
-        "kicker": "Why it matters",
-        "title": "Why you need this",
-        "desc": "Weak mental models here make everything built on top harder. Routing & Layouts connects to real work in Next.js, MongoDB, and backend projects you're already building.",
+        "kicker": "How it works",
+        "title": "How Routing & Layouts works in practice",
+        "desc": "Routing & Layouts works by applying clear rules in code. Nested routes, shared layouts, and parallel routes. The mechanics depend on your language and framework, but the underlying idea stays the same across projects.",
         "bullets": [
-          "Strong engineers explain concepts clearly",
-          "Interviewers test fundamentals, not just frameworks",
-          "Deep understanding beats copy-paste solutions"
+          "Core mechanism behind routing & layouts",
+          "Common in next.js work",
+          "See code example below when applicable"
         ],
-        "icon": "lightbulb"
+        "icon": "cog"
       },
       {
-        "kicker": "Next step",
-        "title": "How to learn it deeply",
-        "desc": "Pick one resource, build one tiny example, then explain it without looking at notes — like a mock interview.",
+        "kicker": "In your stack",
+        "title": "Where Routing & Layouts fits in real projects",
+        "desc": "In your Next.js + MongoDB projects, routing & layouts connects to features you build daily — API routes, React components, auth flows, and database queries. Recognizing the pattern helps you debug faster and design cleaner modules.",
         "bullets": [
-          "Step 1: Read and take notes",
-          "Step 2: Code a minimal example",
-          "Step 3: Explain out loud in English"
+          "Your main framework for full-stack apps",
+          "Combines with Kinde/NextAuth for login",
+          "Server Actions replace many API routes"
         ],
-        "icon": "target"
+        "icon": "layers"
       }
     ]
   },
@@ -1859,40 +1936,41 @@ const CONCEPTS = [
       "streaming"
     ],
     "important": false,
-    "intro": "fetch in Server Components, loading states, and streaming. Part of your Programming Knowledge Index — Next.js.",
+    "sources": [],
+    "intro": "fetch in Server Components, loading states, and streaming. Next.js adds routing, server rendering, and data patterns on top of React.",
     "steps": [
       {
-        "kicker": "What it is",
-        "title": "Understanding Data Fetching Patterns",
-        "desc": "fetch in Server Components, loading states, and streaming. This is a core topic in your learning path — understand the idea before memorizing syntax.",
+        "kicker": "Definition",
+        "title": "What is Data Fetching Patterns?",
+        "desc": "fetch in Server Components, loading states, and streaming.",
         "bullets": [
-          "Part of: Next.js",
-          "Read the steps, then try explaining it out loud",
-          "Build a small example in your own project"
+          "Built on React — adds file-based routing and server features",
+          "App Router is the modern default (app/ directory)",
+          "Server Components run on the server; Client Components use \"use client\""
         ],
         "icon": "download"
       },
       {
-        "kicker": "Why it matters",
-        "title": "Why you need this",
-        "desc": "Weak mental models here make everything built on top harder. Data Fetching Patterns connects to real work in Next.js, MongoDB, and backend projects you're already building.",
+        "kicker": "How it works",
+        "title": "How Data Fetching Patterns works in practice",
+        "desc": "Data Fetching Patterns works by applying clear rules in code. fetch in Server Components, loading states, and streaming. The mechanics depend on your language and framework, but the underlying idea stays the same across projects.",
         "bullets": [
-          "Strong engineers explain concepts clearly",
-          "Interviewers test fundamentals, not just frameworks",
-          "Deep understanding beats copy-paste solutions"
+          "Core mechanism behind data fetching patterns",
+          "Common in next.js work",
+          "See code example below when applicable"
         ],
-        "icon": "lightbulb"
+        "icon": "cog"
       },
       {
-        "kicker": "Next step",
-        "title": "How to learn it deeply",
-        "desc": "Pick one resource, build one tiny example, then explain it without looking at notes — like a mock interview.",
+        "kicker": "In your stack",
+        "title": "Where Data Fetching Patterns fits in real projects",
+        "desc": "In your Next.js + MongoDB projects, data fetching patterns connects to features you build daily — API routes, React components, auth flows, and database queries. Recognizing the pattern helps you debug faster and design cleaner modules.",
         "bullets": [
-          "Step 1: Read and take notes",
-          "Step 2: Code a minimal example",
-          "Step 3: Explain out loud in English"
+          "Your main framework for full-stack apps",
+          "Combines with Kinde/NextAuth for login",
+          "Server Actions replace many API routes"
         ],
-        "icon": "target"
+        "icon": "layers"
       }
     ]
   },
@@ -1911,40 +1989,41 @@ const CONCEPTS = [
       "revalidate"
     ],
     "important": false,
-    "intro": "Next.js cache layers, ISR, and on-demand revalidation. Part of your Programming Knowledge Index — Next.js.",
+    "sources": [],
+    "intro": "Next.js cache layers, ISR, and on-demand revalidation. Next.js adds routing, server rendering, and data patterns on top of React.",
     "steps": [
       {
-        "kicker": "What it is",
-        "title": "Understanding Caching & Revalidation",
-        "desc": "Next.js cache layers, ISR, and on-demand revalidation. This is a core topic in your learning path — understand the idea before memorizing syntax.",
+        "kicker": "Definition",
+        "title": "What is Caching & Revalidation?",
+        "desc": "Next.js cache layers, ISR, and on-demand revalidation.",
         "bullets": [
-          "Part of: Next.js",
-          "Read the steps, then try explaining it out loud",
-          "Build a small example in your own project"
+          "Built on React — adds file-based routing and server features",
+          "App Router is the modern default (app/ directory)",
+          "Server Components run on the server; Client Components use \"use client\""
         ],
         "icon": "hard-drive"
       },
       {
-        "kicker": "Why it matters",
-        "title": "Why you need this",
-        "desc": "Weak mental models here make everything built on top harder. Caching & Revalidation connects to real work in Next.js, MongoDB, and backend projects you're already building.",
+        "kicker": "How it works",
+        "title": "How Caching & Revalidation works in practice",
+        "desc": "Caching & Revalidation works by applying clear rules in code. Next.js cache layers, ISR, and on-demand revalidation. The mechanics depend on your language and framework, but the underlying idea stays the same across projects.",
         "bullets": [
-          "Strong engineers explain concepts clearly",
-          "Interviewers test fundamentals, not just frameworks",
-          "Deep understanding beats copy-paste solutions"
+          "Core mechanism behind caching & revalidation",
+          "Common in next.js work",
+          "See code example below when applicable"
         ],
-        "icon": "lightbulb"
+        "icon": "cog"
       },
       {
-        "kicker": "Next step",
-        "title": "How to learn it deeply",
-        "desc": "Pick one resource, build one tiny example, then explain it without looking at notes — like a mock interview.",
+        "kicker": "In your stack",
+        "title": "Where Caching & Revalidation fits in real projects",
+        "desc": "In your Next.js + MongoDB projects, caching & revalidation connects to features you build daily — API routes, React components, auth flows, and database queries. Recognizing the pattern helps you debug faster and design cleaner modules.",
         "bullets": [
-          "Step 1: Read and take notes",
-          "Step 2: Code a minimal example",
-          "Step 3: Explain out loud in English"
+          "Your main framework for full-stack apps",
+          "Combines with Kinde/NextAuth for login",
+          "Server Actions replace many API routes"
         ],
-        "icon": "target"
+        "icon": "layers"
       }
     ]
   },
@@ -1964,40 +2043,41 @@ const CONCEPTS = [
       "auth"
     ],
     "important": false,
-    "intro": "NextAuth, Kinde, middleware — protecting routes and sessions. Part of your Programming Knowledge Index — Next.js.",
+    "sources": [],
+    "intro": "NextAuth, Kinde, middleware — protecting routes and sessions. Next.js adds routing, server rendering, and data patterns on top of React.",
     "steps": [
       {
-        "kicker": "What it is",
-        "title": "Understanding Authentication in Next.js",
-        "desc": "NextAuth, Kinde, middleware — protecting routes and sessions. This is a core topic in your learning path — understand the idea before memorizing syntax.",
+        "kicker": "Definition",
+        "title": "What is Authentication in Next.js?",
+        "desc": "NextAuth, Kinde, middleware — protecting routes and sessions.",
         "bullets": [
-          "Part of: Next.js",
-          "Read the steps, then try explaining it out loud",
-          "Build a small example in your own project"
+          "Built on React — adds file-based routing and server features",
+          "App Router is the modern default (app/ directory)",
+          "Server Components run on the server; Client Components use \"use client\""
         ],
         "icon": "key"
       },
       {
-        "kicker": "Why it matters",
-        "title": "Why you need this",
-        "desc": "Weak mental models here make everything built on top harder. Authentication in Next.js connects to real work in Next.js, MongoDB, and backend projects you're already building.",
+        "kicker": "How it works",
+        "title": "How Authentication in Next.js works in practice",
+        "desc": "Authentication in Next.js works by applying clear rules in code. NextAuth, Kinde, middleware — protecting routes and sessions. The mechanics depend on your language and framework, but the underlying idea stays the same across projects.",
         "bullets": [
-          "Strong engineers explain concepts clearly",
-          "Interviewers test fundamentals, not just frameworks",
-          "Deep understanding beats copy-paste solutions"
+          "Core mechanism behind authentication in next.js",
+          "Common in next.js work",
+          "See code example below when applicable"
         ],
-        "icon": "lightbulb"
+        "icon": "cog"
       },
       {
-        "kicker": "Next step",
-        "title": "How to learn it deeply",
-        "desc": "Pick one resource, build one tiny example, then explain it without looking at notes — like a mock interview.",
+        "kicker": "In your stack",
+        "title": "Where Authentication in Next.js fits in real projects",
+        "desc": "In your Next.js + MongoDB projects, authentication in next.js connects to features you build daily — API routes, React components, auth flows, and database queries. Recognizing the pattern helps you debug faster and design cleaner modules.",
         "bullets": [
-          "Step 1: Read and take notes",
-          "Step 2: Code a minimal example",
-          "Step 3: Explain out loud in English"
+          "Your main framework for full-stack apps",
+          "Combines with Kinde/NextAuth for login",
+          "Server Actions replace many API routes"
         ],
-        "icon": "target"
+        "icon": "layers"
       }
     ]
   },
@@ -2016,40 +2096,41 @@ const CONCEPTS = [
       "handlers"
     ],
     "important": false,
-    "intro": "When to use route handlers vs server actions for mutations. Part of your Programming Knowledge Index — Next.js.",
+    "sources": [],
+    "intro": "When to use route handlers vs server actions for mutations. Next.js adds routing, server rendering, and data patterns on top of React.",
     "steps": [
       {
-        "kicker": "What it is",
-        "title": "Understanding API Routes vs Server Actions",
-        "desc": "When to use route handlers vs server actions for mutations. This is a core topic in your learning path — understand the idea before memorizing syntax.",
+        "kicker": "Definition",
+        "title": "What is API Routes vs Server Actions?",
+        "desc": "When to use route handlers vs server actions for mutations.",
         "bullets": [
-          "Part of: Next.js",
-          "Read the steps, then try explaining it out loud",
-          "Build a small example in your own project"
+          "Built on React — adds file-based routing and server features",
+          "App Router is the modern default (app/ directory)",
+          "Server Components run on the server; Client Components use \"use client\""
         ],
         "icon": "git-compare"
       },
       {
-        "kicker": "Why it matters",
-        "title": "Why you need this",
-        "desc": "Weak mental models here make everything built on top harder. API Routes vs Server Actions connects to real work in Next.js, MongoDB, and backend projects you're already building.",
+        "kicker": "How it works",
+        "title": "How API Routes vs Server Actions works in practice",
+        "desc": "API Routes vs Server Actions works by applying clear rules in code. When to use route handlers vs server actions for mutations. The mechanics depend on your language and framework, but the underlying idea stays the same across projects.",
         "bullets": [
-          "Strong engineers explain concepts clearly",
-          "Interviewers test fundamentals, not just frameworks",
-          "Deep understanding beats copy-paste solutions"
+          "Core mechanism behind api routes vs server actions",
+          "Common in next.js work",
+          "See code example below when applicable"
         ],
-        "icon": "lightbulb"
+        "icon": "cog"
       },
       {
-        "kicker": "Next step",
-        "title": "How to learn it deeply",
-        "desc": "Pick one resource, build one tiny example, then explain it without looking at notes — like a mock interview.",
+        "kicker": "In your stack",
+        "title": "Where API Routes vs Server Actions fits in real projects",
+        "desc": "In your Next.js + MongoDB projects, api routes vs server actions connects to features you build daily — API routes, React components, auth flows, and database queries. Recognizing the pattern helps you debug faster and design cleaner modules.",
         "bullets": [
-          "Step 1: Read and take notes",
-          "Step 2: Code a minimal example",
-          "Step 3: Explain out loud in English"
+          "Your main framework for full-stack apps",
+          "Combines with Kinde/NextAuth for login",
+          "Server Actions replace many API routes"
         ],
-        "icon": "target"
+        "icon": "layers"
       }
     ]
   },
@@ -2069,40 +2150,41 @@ const CONCEPTS = [
       "controller"
     ],
     "important": false,
-    "intro": "Model, View, Controller — separating data, UI, and request handling. Part of your Programming Knowledge Index — Backend & Web Architecture.",
+    "sources": [],
+    "intro": "Model, View, Controller — separating data, UI, and request handling. Backend code receives requests, applies rules, talks to databases, and returns responses.",
     "steps": [
       {
-        "kicker": "What it is",
-        "title": "Understanding MVC Pattern",
-        "desc": "Model, View, Controller — separating data, UI, and request handling. This is a core topic in your learning path — understand the idea before memorizing syntax.",
+        "kicker": "Definition",
+        "title": "What is MVC Pattern?",
+        "desc": "Model, View, Controller — separating data, UI, and request handling.",
         "bullets": [
-          "Part of: Backend & Web Architecture",
-          "Read the steps, then try explaining it out loud",
-          "Build a small example in your own project"
+          "Sits between the client and database",
+          "Handles validation, business rules, and security",
+          "Your Express/Next.js API routes and Server Actions are backend code"
         ],
         "icon": "layout-grid"
       },
       {
-        "kicker": "Why it matters",
-        "title": "Why you need this",
-        "desc": "Weak mental models here make everything built on top harder. MVC Pattern connects to real work in Next.js, MongoDB, and backend projects you're already building.",
+        "kicker": "How it works",
+        "title": "How MVC Pattern works in practice",
+        "desc": "MVC Pattern works by applying clear rules in code. Model, View, Controller — separating data, UI, and request handling. The mechanics depend on your language and framework, but the underlying idea stays the same across projects.",
         "bullets": [
-          "Strong engineers explain concepts clearly",
-          "Interviewers test fundamentals, not just frameworks",
-          "Deep understanding beats copy-paste solutions"
+          "Model: data + business rules",
+          "View: what the user sees (HTML/React)",
+          "Controller: receives input, updates model, picks view"
         ],
-        "icon": "lightbulb"
+        "icon": "cog"
       },
       {
-        "kicker": "Next step",
-        "title": "How to learn it deeply",
-        "desc": "Pick one resource, build one tiny example, then explain it without looking at notes — like a mock interview.",
+        "kicker": "In your stack",
+        "title": "Where MVC Pattern fits in real projects",
+        "desc": "In your Next.js + MongoDB projects, mvc pattern connects to features you build daily — API routes, React components, auth flows, and database queries. Recognizing the pattern helps you debug faster and design cleaner modules.",
         "bullets": [
-          "Step 1: Read and take notes",
-          "Step 2: Code a minimal example",
-          "Step 3: Explain out loud in English"
+          "Applies across frontend and backend code",
+          "Shows up when building real features, not toy examples",
+          "Combine with other topics in this index for full picture"
         ],
-        "icon": "target"
+        "icon": "layers"
       }
     ]
   },
@@ -2121,40 +2203,41 @@ const CONCEPTS = [
       "layer"
     ],
     "important": false,
-    "intro": "Business logic isolated from HTTP — reusable across controllers. Part of your Programming Knowledge Index — Backend & Web Architecture.",
+    "sources": [],
+    "intro": "Business logic isolated from HTTP — reusable across controllers. Backend code receives requests, applies rules, talks to databases, and returns responses.",
     "steps": [
       {
-        "kicker": "What it is",
-        "title": "Understanding Services Layer",
-        "desc": "Business logic isolated from HTTP — reusable across controllers. This is a core topic in your learning path — understand the idea before memorizing syntax.",
+        "kicker": "Definition",
+        "title": "What is Services Layer?",
+        "desc": "Business logic isolated from HTTP — reusable across controllers.",
         "bullets": [
-          "Part of: Backend & Web Architecture",
-          "Read the steps, then try explaining it out loud",
-          "Build a small example in your own project"
+          "Sits between the client and database",
+          "Handles validation, business rules, and security",
+          "Your Express/Next.js API routes and Server Actions are backend code"
         ],
         "icon": "cog"
       },
       {
-        "kicker": "Why it matters",
-        "title": "Why you need this",
-        "desc": "Weak mental models here make everything built on top harder. Services Layer connects to real work in Next.js, MongoDB, and backend projects you're already building.",
+        "kicker": "How it works",
+        "title": "How Services Layer works in practice",
+        "desc": "Services Layer works by applying clear rules in code. Business logic isolated from HTTP — reusable across controllers. The mechanics depend on your language and framework, but the underlying idea stays the same across projects.",
         "bullets": [
-          "Strong engineers explain concepts clearly",
-          "Interviewers test fundamentals, not just frameworks",
-          "Deep understanding beats copy-paste solutions"
+          "Core mechanism behind services layer",
+          "Common in backend & web architecture work",
+          "See code example below when applicable"
         ],
-        "icon": "lightbulb"
+        "icon": "cog"
       },
       {
-        "kicker": "Next step",
-        "title": "How to learn it deeply",
-        "desc": "Pick one resource, build one tiny example, then explain it without looking at notes — like a mock interview.",
+        "kicker": "In your stack",
+        "title": "Where Services Layer fits in real projects",
+        "desc": "In your Next.js + MongoDB projects, services layer connects to features you build daily — API routes, React components, auth flows, and database queries. Recognizing the pattern helps you debug faster and design cleaner modules.",
         "bullets": [
-          "Step 1: Read and take notes",
-          "Step 2: Code a minimal example",
-          "Step 3: Explain out loud in English"
+          "Applies across frontend and backend code",
+          "Shows up when building real features, not toy examples",
+          "Combine with other topics in this index for full picture"
         ],
-        "icon": "target"
+        "icon": "layers"
       }
     ]
   },
@@ -2173,40 +2256,41 @@ const CONCEPTS = [
       "routes"
     ],
     "important": false,
-    "intro": "Thin handlers that parse requests and call services. Part of your Programming Knowledge Index — Backend & Web Architecture.",
+    "sources": [],
+    "intro": "Thin handlers that parse requests and call services. Backend code receives requests, applies rules, talks to databases, and returns responses.",
     "steps": [
       {
-        "kicker": "What it is",
-        "title": "Understanding Controllers",
-        "desc": "Thin handlers that parse requests and call services. This is a core topic in your learning path — understand the idea before memorizing syntax.",
+        "kicker": "Definition",
+        "title": "What is Controllers?",
+        "desc": "Thin handlers that parse requests and call services.",
         "bullets": [
-          "Part of: Backend & Web Architecture",
-          "Read the steps, then try explaining it out loud",
-          "Build a small example in your own project"
+          "Sits between the client and database",
+          "Handles validation, business rules, and security",
+          "Your Express/Next.js API routes and Server Actions are backend code"
         ],
         "icon": "radio"
       },
       {
-        "kicker": "Why it matters",
-        "title": "Why you need this",
-        "desc": "Weak mental models here make everything built on top harder. Controllers connects to real work in Next.js, MongoDB, and backend projects you're already building.",
+        "kicker": "How it works",
+        "title": "How Controllers works in practice",
+        "desc": "Controllers works by applying clear rules in code. Thin handlers that parse requests and call services. The mechanics depend on your language and framework, but the underlying idea stays the same across projects.",
         "bullets": [
-          "Strong engineers explain concepts clearly",
-          "Interviewers test fundamentals, not just frameworks",
-          "Deep understanding beats copy-paste solutions"
+          "Core mechanism behind controllers",
+          "Common in backend & web architecture work",
+          "See code example below when applicable"
         ],
-        "icon": "lightbulb"
+        "icon": "cog"
       },
       {
-        "kicker": "Next step",
-        "title": "How to learn it deeply",
-        "desc": "Pick one resource, build one tiny example, then explain it without looking at notes — like a mock interview.",
+        "kicker": "In your stack",
+        "title": "Where Controllers fits in real projects",
+        "desc": "In your Next.js + MongoDB projects, controllers connects to features you build daily — API routes, React components, auth flows, and database queries. Recognizing the pattern helps you debug faster and design cleaner modules.",
         "bullets": [
-          "Step 1: Read and take notes",
-          "Step 2: Code a minimal example",
-          "Step 3: Explain out loud in English"
+          "Applies across frontend and backend code",
+          "Shows up when building real features, not toy examples",
+          "Combine with other topics in this index for full picture"
         ],
-        "icon": "target"
+        "icon": "layers"
       }
     ]
   },
@@ -2225,40 +2309,41 @@ const CONCEPTS = [
       "transform"
     ],
     "important": false,
-    "intro": "Data Transfer Objects — shaping data between layers safely. Part of your Programming Knowledge Index — Backend & Web Architecture.",
+    "sources": [],
+    "intro": "Data Transfer Objects — shaping data between layers safely. Backend code receives requests, applies rules, talks to databases, and returns responses.",
     "steps": [
       {
-        "kicker": "What it is",
-        "title": "Understanding DTOs & Mappers",
-        "desc": "Data Transfer Objects — shaping data between layers safely. This is a core topic in your learning path — understand the idea before memorizing syntax.",
+        "kicker": "Definition",
+        "title": "What is DTOs & Mappers?",
+        "desc": "Data Transfer Objects — shaping data between layers safely.",
         "bullets": [
-          "Part of: Backend & Web Architecture",
-          "Read the steps, then try explaining it out loud",
-          "Build a small example in your own project"
+          "Sits between the client and database",
+          "Handles validation, business rules, and security",
+          "Your Express/Next.js API routes and Server Actions are backend code"
         ],
         "icon": "arrow-left-right"
       },
       {
-        "kicker": "Why it matters",
-        "title": "Why you need this",
-        "desc": "Weak mental models here make everything built on top harder. DTOs & Mappers connects to real work in Next.js, MongoDB, and backend projects you're already building.",
+        "kicker": "How it works",
+        "title": "How DTOs & Mappers works in practice",
+        "desc": "DTOs & Mappers works by applying clear rules in code. Data Transfer Objects — shaping data between layers safely. The mechanics depend on your language and framework, but the underlying idea stays the same across projects.",
         "bullets": [
-          "Strong engineers explain concepts clearly",
-          "Interviewers test fundamentals, not just frameworks",
-          "Deep understanding beats copy-paste solutions"
+          "Core mechanism behind dtos & mappers",
+          "Common in backend & web architecture work",
+          "See code example below when applicable"
         ],
-        "icon": "lightbulb"
+        "icon": "cog"
       },
       {
-        "kicker": "Next step",
-        "title": "How to learn it deeply",
-        "desc": "Pick one resource, build one tiny example, then explain it without looking at notes — like a mock interview.",
+        "kicker": "In your stack",
+        "title": "Where DTOs & Mappers fits in real projects",
+        "desc": "In your Next.js + MongoDB projects, dtos & mappers connects to features you build daily — API routes, React components, auth flows, and database queries. Recognizing the pattern helps you debug faster and design cleaner modules.",
         "bullets": [
-          "Step 1: Read and take notes",
-          "Step 2: Code a minimal example",
-          "Step 3: Explain out loud in English"
+          "Applies across frontend and backend code",
+          "Shows up when building real features, not toy examples",
+          "Combine with other topics in this index for full picture"
         ],
-        "icon": "target"
+        "icon": "layers"
       }
     ]
   },
@@ -2278,40 +2363,41 @@ const CONCEPTS = [
       "schema"
     ],
     "important": false,
-    "intro": "Rejecting bad input at the boundary before it hits business logic. Part of your Programming Knowledge Index — Backend & Web Architecture.",
+    "sources": [],
+    "intro": "Rejecting bad input at the boundary before it hits business logic. Backend code receives requests, applies rules, talks to databases, and returns responses.",
     "steps": [
       {
-        "kicker": "What it is",
-        "title": "Understanding Validation",
-        "desc": "Rejecting bad input at the boundary before it hits business logic. This is a core topic in your learning path — understand the idea before memorizing syntax.",
+        "kicker": "Definition",
+        "title": "What is Validation?",
+        "desc": "Rejecting bad input at the boundary before it hits business logic.",
         "bullets": [
-          "Part of: Backend & Web Architecture",
-          "Read the steps, then try explaining it out loud",
-          "Build a small example in your own project"
+          "Sits between the client and database",
+          "Handles validation, business rules, and security",
+          "Your Express/Next.js API routes and Server Actions are backend code"
         ],
         "icon": "check-square"
       },
       {
-        "kicker": "Why it matters",
-        "title": "Why you need this",
-        "desc": "Weak mental models here make everything built on top harder. Validation connects to real work in Next.js, MongoDB, and backend projects you're already building.",
+        "kicker": "How it works",
+        "title": "How Validation works in practice",
+        "desc": "Validation works by applying clear rules in code. Rejecting bad input at the boundary before it hits business logic. The mechanics depend on your language and framework, but the underlying idea stays the same across projects.",
         "bullets": [
-          "Strong engineers explain concepts clearly",
-          "Interviewers test fundamentals, not just frameworks",
-          "Deep understanding beats copy-paste solutions"
+          "Core mechanism behind validation",
+          "Common in backend & web architecture work",
+          "See code example below when applicable"
         ],
-        "icon": "lightbulb"
+        "icon": "cog"
       },
       {
-        "kicker": "Next step",
-        "title": "How to learn it deeply",
-        "desc": "Pick one resource, build one tiny example, then explain it without looking at notes — like a mock interview.",
+        "kicker": "In your stack",
+        "title": "Where Validation fits in real projects",
+        "desc": "In your Next.js + MongoDB projects, validation connects to features you build daily — API routes, React components, auth flows, and database queries. Recognizing the pattern helps you debug faster and design cleaner modules.",
         "bullets": [
-          "Step 1: Read and take notes",
-          "Step 2: Code a minimal example",
-          "Step 3: Explain out loud in English"
+          "Applies across frontend and backend code",
+          "Shows up when building real features, not toy examples",
+          "Combine with other topics in this index for full picture"
         ],
-        "icon": "target"
+        "icon": "layers"
       }
     ]
   },
@@ -2330,40 +2416,41 @@ const CONCEPTS = [
       "logging"
     ],
     "important": false,
-    "intro": "Consistent error responses, status codes, and logging. Part of your Programming Knowledge Index — Backend & Web Architecture.",
+    "sources": [],
+    "intro": "Consistent error responses, status codes, and logging. Backend code receives requests, applies rules, talks to databases, and returns responses.",
     "steps": [
       {
-        "kicker": "What it is",
-        "title": "Understanding Error Handling",
-        "desc": "Consistent error responses, status codes, and logging. This is a core topic in your learning path — understand the idea before memorizing syntax.",
+        "kicker": "Definition",
+        "title": "What is Error Handling?",
+        "desc": "Consistent error responses, status codes, and logging.",
         "bullets": [
-          "Part of: Backend & Web Architecture",
-          "Read the steps, then try explaining it out loud",
-          "Build a small example in your own project"
+          "Sits between the client and database",
+          "Handles validation, business rules, and security",
+          "Your Express/Next.js API routes and Server Actions are backend code"
         ],
         "icon": "alert-triangle"
       },
       {
-        "kicker": "Why it matters",
-        "title": "Why you need this",
-        "desc": "Weak mental models here make everything built on top harder. Error Handling connects to real work in Next.js, MongoDB, and backend projects you're already building.",
+        "kicker": "How it works",
+        "title": "How Error Handling works in practice",
+        "desc": "Error Handling works by applying clear rules in code. Consistent error responses, status codes, and logging. The mechanics depend on your language and framework, but the underlying idea stays the same across projects.",
         "bullets": [
-          "Strong engineers explain concepts clearly",
-          "Interviewers test fundamentals, not just frameworks",
-          "Deep understanding beats copy-paste solutions"
+          "Core mechanism behind error handling",
+          "Common in backend & web architecture work",
+          "See code example below when applicable"
         ],
-        "icon": "lightbulb"
+        "icon": "cog"
       },
       {
-        "kicker": "Next step",
-        "title": "How to learn it deeply",
-        "desc": "Pick one resource, build one tiny example, then explain it without looking at notes — like a mock interview.",
+        "kicker": "In your stack",
+        "title": "Where Error Handling fits in real projects",
+        "desc": "In your Next.js + MongoDB projects, error handling connects to features you build daily — API routes, React components, auth flows, and database queries. Recognizing the pattern helps you debug faster and design cleaner modules.",
         "bullets": [
-          "Step 1: Read and take notes",
-          "Step 2: Code a minimal example",
-          "Step 3: Explain out loud in English"
+          "Applies across frontend and backend code",
+          "Shows up when building real features, not toy examples",
+          "Combine with other topics in this index for full picture"
         ],
-        "icon": "target"
+        "icon": "layers"
       }
     ]
   },
@@ -2382,40 +2469,41 @@ const CONCEPTS = [
       "domain"
     ],
     "important": false,
-    "intro": "Dependencies point inward — domain at the center, frameworks at the edge. Part of your Programming Knowledge Index — Backend & Web Architecture.",
+    "sources": [],
+    "intro": "Dependencies point inward — domain at the center, frameworks at the edge. Backend code receives requests, applies rules, talks to databases, and returns responses.",
     "steps": [
       {
-        "kicker": "What it is",
-        "title": "Understanding Clean Architecture Basics",
-        "desc": "Dependencies point inward — domain at the center, frameworks at the edge. This is a core topic in your learning path — understand the idea before memorizing syntax.",
+        "kicker": "Definition",
+        "title": "What is Clean Architecture Basics?",
+        "desc": "Dependencies point inward — domain at the center, frameworks at the edge.",
         "bullets": [
-          "Part of: Backend & Web Architecture",
-          "Read the steps, then try explaining it out loud",
-          "Build a small example in your own project"
+          "Sits between the client and database",
+          "Handles validation, business rules, and security",
+          "Your Express/Next.js API routes and Server Actions are backend code"
         ],
         "icon": "building"
       },
       {
-        "kicker": "Why it matters",
-        "title": "Why you need this",
-        "desc": "Weak mental models here make everything built on top harder. Clean Architecture Basics connects to real work in Next.js, MongoDB, and backend projects you're already building.",
+        "kicker": "How it works",
+        "title": "How Clean Architecture Basics works in practice",
+        "desc": "Clean Architecture Basics works by applying clear rules in code. Dependencies point inward — domain at the center, frameworks at the edge. The mechanics depend on your language and framework, but the underlying idea stays the same across projects.",
         "bullets": [
-          "Strong engineers explain concepts clearly",
-          "Interviewers test fundamentals, not just frameworks",
-          "Deep understanding beats copy-paste solutions"
+          "Core mechanism behind clean architecture basics",
+          "Common in backend & web architecture work",
+          "See code example below when applicable"
         ],
-        "icon": "lightbulb"
+        "icon": "cog"
       },
       {
-        "kicker": "Next step",
-        "title": "How to learn it deeply",
-        "desc": "Pick one resource, build one tiny example, then explain it without looking at notes — like a mock interview.",
+        "kicker": "In your stack",
+        "title": "Where Clean Architecture Basics fits in real projects",
+        "desc": "In your Next.js + MongoDB projects, clean architecture basics connects to features you build daily — API routes, React components, auth flows, and database queries. Recognizing the pattern helps you debug faster and design cleaner modules.",
         "bullets": [
-          "Step 1: Read and take notes",
-          "Step 2: Code a minimal example",
-          "Step 3: Explain out loud in English"
+          "Applies across frontend and backend code",
+          "Shows up when building real features, not toy examples",
+          "Combine with other topics in this index for full picture"
         ],
-        "icon": "target"
+        "icon": "layers"
       }
     ]
   },
@@ -2434,6 +2522,7 @@ const CONCEPTS = [
       "database"
     ],
     "important": false,
+    "sources": [],
     "intro": "Before authentication, APIs, or caching — you need to understand who does what when you open a website. Every app you use follows this same three-layer pattern.",
     "steps": [
       {
@@ -2545,6 +2634,12 @@ const CONCEPTS = [
       "api"
     ],
     "important": false,
+    "sources": [
+      {
+        "title": "MDN — HTTP methods",
+        "url": "https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods"
+      }
+    ],
     "intro": "HTTP is the language of the web. Every click, form submit, and API call uses it. REST organizes that language into predictable patterns most modern apps rely on.",
     "steps": [
       {
@@ -2644,6 +2739,7 @@ const CONCEPTS = [
       "cdn"
     ],
     "important": false,
+    "sources": [],
     "intro": "Fetching the same data from the database every time is slow and expensive. Caching stores a copy of the answer so identical requests finish almost instantly.",
     "steps": [
       {
@@ -2737,6 +2833,7 @@ const CONCEPTS = [
       "scaling"
     ],
     "important": false,
+    "sources": [],
     "intro": "A viral post or Black Friday sale can send thousands of requests per second. Load balancers spread that traffic across a pool of servers so your app stays fast and available.",
     "steps": [
       {
@@ -2830,6 +2927,7 @@ const CONCEPTS = [
       "real-time"
     ],
     "important": false,
+    "sources": [],
     "intro": "Plain HTTP makes the client ask \"any updates?\" over and over. WebSockets open a persistent channel so the server can push events the moment they happen.",
     "steps": [
       {
@@ -2926,40 +3024,47 @@ const CONCEPTS = [
       "delete"
     ],
     "important": false,
-    "intro": "Create, Read, Update, Delete — the four basic data operations. Part of your Programming Knowledge Index — Database (MongoDB & Concepts).",
+    "sources": [
+      {
+        "title": "MongoDB — CRUD",
+        "url": "https://www.mongodb.com/docs/manual/crud/"
+      }
+    ],
+    "intro": "Create, Read, Update, Delete — the four basic data operations. Databases persist data beyond a single request — design and query patterns matter.",
     "steps": [
       {
-        "kicker": "What it is",
-        "title": "Understanding CRUD Operations",
-        "desc": "Create, Read, Update, Delete — the four basic data operations. This is a core topic in your learning path — understand the idea before memorizing syntax.",
+        "kicker": "Definition",
+        "title": "What is CRUD Operations?",
+        "desc": "Create, Read, Update, Delete — the four basic data operations.",
         "bullets": [
-          "Part of: Database (MongoDB & Concepts)",
-          "Read the steps, then try explaining it out loud",
-          "Build a small example in your own project"
+          "MongoDB stores documents (JSON-like) in collections",
+          "Schema design affects query speed and data consistency",
+          "Indexes speed reads; aggregation pipelines transform data"
         ],
         "icon": "pen-line"
       },
       {
-        "kicker": "Why it matters",
-        "title": "Why you need this",
-        "desc": "Weak mental models here make everything built on top harder. CRUD Operations connects to real work in Next.js, MongoDB, and backend projects you're already building.",
+        "kicker": "How it works",
+        "title": "How CRUD Operations works in practice",
+        "desc": "Create: insertOne / insertMany. Read: find / findOne. Update: updateOne with $set. Delete: deleteOne. In REST: POST=create, GET=read, PUT/PATCH=update, DELETE=delete.",
         "bullets": [
-          "Strong engineers explain concepts clearly",
-          "Interviewers test fundamentals, not just frameworks",
-          "Deep understanding beats copy-paste solutions"
+          "Core mechanism behind crud operations",
+          "Common in database (mongodb & concepts) work",
+          "See code example below when applicable"
         ],
-        "icon": "lightbulb"
+        "icon": "cog",
+        "code": "await db.users.insertOne({ name: \"Ada\" });\nawait db.users.findOne({ email: \"a@b.com\" });"
       },
       {
-        "kicker": "Next step",
-        "title": "How to learn it deeply",
-        "desc": "Pick one resource, build one tiny example, then explain it without looking at notes — like a mock interview.",
+        "kicker": "In your stack",
+        "title": "Where CRUD Operations fits in real projects",
+        "desc": "In your Next.js + MongoDB projects, crud operations connects to features you build daily — API routes, React components, auth flows, and database queries. Recognizing the pattern helps you debug faster and design cleaner modules.",
         "bullets": [
-          "Step 1: Read and take notes",
-          "Step 2: Code a minimal example",
-          "Step 3: Explain out loud in English"
+          "MongoDB Atlas or local mongod",
+          "Mongoose or native driver in Node",
+          "Schema matches how you query in the app"
         ],
-        "icon": "target"
+        "icon": "layers"
       }
     ]
   },
@@ -2978,40 +3083,41 @@ const CONCEPTS = [
       "design"
     ],
     "important": false,
-    "intro": "Structuring documents and collections for your app's queries. Part of your Programming Knowledge Index — Database (MongoDB & Concepts).",
+    "sources": [],
+    "intro": "Structuring documents and collections for your app's queries. Databases persist data beyond a single request — design and query patterns matter.",
     "steps": [
       {
-        "kicker": "What it is",
-        "title": "Understanding Schema Design",
-        "desc": "Structuring documents and collections for your app's queries. This is a core topic in your learning path — understand the idea before memorizing syntax.",
+        "kicker": "Definition",
+        "title": "What is Schema Design?",
+        "desc": "Structuring documents and collections for your app's queries.",
         "bullets": [
-          "Part of: Database (MongoDB & Concepts)",
-          "Read the steps, then try explaining it out loud",
-          "Build a small example in your own project"
+          "MongoDB stores documents (JSON-like) in collections",
+          "Schema design affects query speed and data consistency",
+          "Indexes speed reads; aggregation pipelines transform data"
         ],
         "icon": "table"
       },
       {
-        "kicker": "Why it matters",
-        "title": "Why you need this",
-        "desc": "Weak mental models here make everything built on top harder. Schema Design connects to real work in Next.js, MongoDB, and backend projects you're already building.",
+        "kicker": "How it works",
+        "title": "How Schema Design works in practice",
+        "desc": "Schema Design works by applying clear rules in code. Structuring documents and collections for your app's queries. The mechanics depend on your language and framework, but the underlying idea stays the same across projects.",
         "bullets": [
-          "Strong engineers explain concepts clearly",
-          "Interviewers test fundamentals, not just frameworks",
-          "Deep understanding beats copy-paste solutions"
+          "Core mechanism behind schema design",
+          "Common in database (mongodb & concepts) work",
+          "See code example below when applicable"
         ],
-        "icon": "lightbulb"
+        "icon": "cog"
       },
       {
-        "kicker": "Next step",
-        "title": "How to learn it deeply",
-        "desc": "Pick one resource, build one tiny example, then explain it without looking at notes — like a mock interview.",
+        "kicker": "In your stack",
+        "title": "Where Schema Design fits in real projects",
+        "desc": "In your Next.js + MongoDB projects, schema design connects to features you build daily — API routes, React components, auth flows, and database queries. Recognizing the pattern helps you debug faster and design cleaner modules.",
         "bullets": [
-          "Step 1: Read and take notes",
-          "Step 2: Code a minimal example",
-          "Step 3: Explain out loud in English"
+          "MongoDB Atlas or local mongod",
+          "Mongoose or native driver in Node",
+          "Schema matches how you query in the app"
         ],
-        "icon": "target"
+        "icon": "layers"
       }
     ]
   },
@@ -3030,40 +3136,41 @@ const CONCEPTS = [
       "reference"
     ],
     "important": false,
-    "intro": "Embedding vs referencing — modeling relationships without SQL joins. Part of your Programming Knowledge Index — Database (MongoDB & Concepts).",
+    "sources": [],
+    "intro": "Embedding vs referencing — modeling relationships without SQL joins. Databases persist data beyond a single request — design and query patterns matter.",
     "steps": [
       {
-        "kicker": "What it is",
-        "title": "Understanding Relations in NoSQL",
-        "desc": "Embedding vs referencing — modeling relationships without SQL joins. This is a core topic in your learning path — understand the idea before memorizing syntax.",
+        "kicker": "Definition",
+        "title": "What is Relations in NoSQL?",
+        "desc": "Embedding vs referencing — modeling relationships without SQL joins.",
         "bullets": [
-          "Part of: Database (MongoDB & Concepts)",
-          "Read the steps, then try explaining it out loud",
-          "Build a small example in your own project"
+          "MongoDB stores documents (JSON-like) in collections",
+          "Schema design affects query speed and data consistency",
+          "Indexes speed reads; aggregation pipelines transform data"
         ],
         "icon": "link"
       },
       {
-        "kicker": "Why it matters",
-        "title": "Why you need this",
-        "desc": "Weak mental models here make everything built on top harder. Relations in NoSQL connects to real work in Next.js, MongoDB, and backend projects you're already building.",
+        "kicker": "How it works",
+        "title": "How Relations in NoSQL works in practice",
+        "desc": "Relations in NoSQL works by applying clear rules in code. Embedding vs referencing — modeling relationships without SQL joins. The mechanics depend on your language and framework, but the underlying idea stays the same across projects.",
         "bullets": [
-          "Strong engineers explain concepts clearly",
-          "Interviewers test fundamentals, not just frameworks",
-          "Deep understanding beats copy-paste solutions"
+          "Core mechanism behind relations in nosql",
+          "Common in database (mongodb & concepts) work",
+          "See code example below when applicable"
         ],
-        "icon": "lightbulb"
+        "icon": "cog"
       },
       {
-        "kicker": "Next step",
-        "title": "How to learn it deeply",
-        "desc": "Pick one resource, build one tiny example, then explain it without looking at notes — like a mock interview.",
+        "kicker": "In your stack",
+        "title": "Where Relations in NoSQL fits in real projects",
+        "desc": "In your Next.js + MongoDB projects, relations in nosql connects to features you build daily — API routes, React components, auth flows, and database queries. Recognizing the pattern helps you debug faster and design cleaner modules.",
         "bullets": [
-          "Step 1: Read and take notes",
-          "Step 2: Code a minimal example",
-          "Step 3: Explain out loud in English"
+          "MongoDB Atlas or local mongod",
+          "Mongoose or native driver in Node",
+          "Schema matches how you query in the app"
         ],
-        "icon": "target"
+        "icon": "layers"
       }
     ]
   },
@@ -3082,40 +3189,41 @@ const CONCEPTS = [
       "query"
     ],
     "important": false,
-    "intro": "Speeding up queries with indexes — and the cost of maintaining them. Part of your Programming Knowledge Index — Database (MongoDB & Concepts).",
+    "sources": [],
+    "intro": "Speeding up queries with indexes — and the cost of maintaining them. Databases persist data beyond a single request — design and query patterns matter.",
     "steps": [
       {
-        "kicker": "What it is",
-        "title": "Understanding Indexing",
-        "desc": "Speeding up queries with indexes — and the cost of maintaining them. This is a core topic in your learning path — understand the idea before memorizing syntax.",
+        "kicker": "Definition",
+        "title": "What is Indexing?",
+        "desc": "Speeding up queries with indexes — and the cost of maintaining them.",
         "bullets": [
-          "Part of: Database (MongoDB & Concepts)",
-          "Read the steps, then try explaining it out loud",
-          "Build a small example in your own project"
+          "MongoDB stores documents (JSON-like) in collections",
+          "Schema design affects query speed and data consistency",
+          "Indexes speed reads; aggregation pipelines transform data"
         ],
         "icon": "search"
       },
       {
-        "kicker": "Why it matters",
-        "title": "Why you need this",
-        "desc": "Weak mental models here make everything built on top harder. Indexing connects to real work in Next.js, MongoDB, and backend projects you're already building.",
+        "kicker": "How it works",
+        "title": "How Indexing works in practice",
+        "desc": "Indexing works by applying clear rules in code. Speeding up queries with indexes — and the cost of maintaining them. The mechanics depend on your language and framework, but the underlying idea stays the same across projects.",
         "bullets": [
-          "Strong engineers explain concepts clearly",
-          "Interviewers test fundamentals, not just frameworks",
-          "Deep understanding beats copy-paste solutions"
+          "db.collection.createIndex({ email: 1 }) — ascending",
+          "Compound index: { userId: 1, createdAt: -1 }",
+          "Queries without matching indexes scan every document"
         ],
-        "icon": "lightbulb"
+        "icon": "cog"
       },
       {
-        "kicker": "Next step",
-        "title": "How to learn it deeply",
-        "desc": "Pick one resource, build one tiny example, then explain it without looking at notes — like a mock interview.",
+        "kicker": "In your stack",
+        "title": "Where Indexing fits in real projects",
+        "desc": "In your Next.js + MongoDB projects, indexing connects to features you build daily — API routes, React components, auth flows, and database queries. Recognizing the pattern helps you debug faster and design cleaner modules.",
         "bullets": [
-          "Step 1: Read and take notes",
-          "Step 2: Code a minimal example",
-          "Step 3: Explain out loud in English"
+          "MongoDB Atlas or local mongod",
+          "Mongoose or native driver in Node",
+          "Schema matches how you query in the app"
         ],
-        "icon": "target"
+        "icon": "layers"
       }
     ]
   },
@@ -3134,40 +3242,41 @@ const CONCEPTS = [
       "mongodb"
     ],
     "important": false,
-    "intro": "Pipeline stages for grouping, filtering, and transforming data. Part of your Programming Knowledge Index — Database (MongoDB & Concepts).",
+    "sources": [],
+    "intro": "Pipeline stages for grouping, filtering, and transforming data. Databases persist data beyond a single request — design and query patterns matter.",
     "steps": [
       {
-        "kicker": "What it is",
-        "title": "Understanding Aggregation Basics",
-        "desc": "Pipeline stages for grouping, filtering, and transforming data. This is a core topic in your learning path — understand the idea before memorizing syntax.",
+        "kicker": "Definition",
+        "title": "What is Aggregation Basics?",
+        "desc": "Pipeline stages for grouping, filtering, and transforming data.",
         "bullets": [
-          "Part of: Database (MongoDB & Concepts)",
-          "Read the steps, then try explaining it out loud",
-          "Build a small example in your own project"
+          "MongoDB stores documents (JSON-like) in collections",
+          "Schema design affects query speed and data consistency",
+          "Indexes speed reads; aggregation pipelines transform data"
         ],
         "icon": "bar-chart"
       },
       {
-        "kicker": "Why it matters",
-        "title": "Why you need this",
-        "desc": "Weak mental models here make everything built on top harder. Aggregation Basics connects to real work in Next.js, MongoDB, and backend projects you're already building.",
+        "kicker": "How it works",
+        "title": "How Aggregation Basics works in practice",
+        "desc": "Aggregation Basics works by applying clear rules in code. Pipeline stages for grouping, filtering, and transforming data. The mechanics depend on your language and framework, but the underlying idea stays the same across projects.",
         "bullets": [
-          "Strong engineers explain concepts clearly",
-          "Interviewers test fundamentals, not just frameworks",
-          "Deep understanding beats copy-paste solutions"
+          "Core mechanism behind aggregation basics",
+          "Common in database (mongodb & concepts) work",
+          "See code example below when applicable"
         ],
-        "icon": "lightbulb"
+        "icon": "cog"
       },
       {
-        "kicker": "Next step",
-        "title": "How to learn it deeply",
-        "desc": "Pick one resource, build one tiny example, then explain it without looking at notes — like a mock interview.",
+        "kicker": "In your stack",
+        "title": "Where Aggregation Basics fits in real projects",
+        "desc": "In your Next.js + MongoDB projects, aggregation basics connects to features you build daily — API routes, React components, auth flows, and database queries. Recognizing the pattern helps you debug faster and design cleaner modules.",
         "bullets": [
-          "Step 1: Read and take notes",
-          "Step 2: Code a minimal example",
-          "Step 3: Explain out loud in English"
+          "MongoDB Atlas or local mongod",
+          "Mongoose or native driver in Node",
+          "Schema matches how you query in the app"
         ],
-        "icon": "target"
+        "icon": "layers"
       }
     ]
   },
@@ -3186,40 +3295,41 @@ const CONCEPTS = [
       "trade-offs"
     ],
     "important": false,
-    "intro": "Splitting data for consistency vs duplicating for read speed. Part of your Programming Knowledge Index — Database (MongoDB & Concepts).",
+    "sources": [],
+    "intro": "Splitting data for consistency vs duplicating for read speed. Databases persist data beyond a single request — design and query patterns matter.",
     "steps": [
       {
-        "kicker": "What it is",
-        "title": "Understanding Normalization vs Denormalization",
-        "desc": "Splitting data for consistency vs duplicating for read speed. This is a core topic in your learning path — understand the idea before memorizing syntax.",
+        "kicker": "Definition",
+        "title": "What is Normalization vs Denormalization?",
+        "desc": "Splitting data for consistency vs duplicating for read speed.",
         "bullets": [
-          "Part of: Database (MongoDB & Concepts)",
-          "Read the steps, then try explaining it out loud",
-          "Build a small example in your own project"
+          "MongoDB stores documents (JSON-like) in collections",
+          "Schema design affects query speed and data consistency",
+          "Indexes speed reads; aggregation pipelines transform data"
         ],
         "icon": "scale"
       },
       {
-        "kicker": "Why it matters",
-        "title": "Why you need this",
-        "desc": "Weak mental models here make everything built on top harder. Normalization vs Denormalization connects to real work in Next.js, MongoDB, and backend projects you're already building.",
+        "kicker": "How it works",
+        "title": "How Normalization vs Denormalization works in practice",
+        "desc": "Normalization vs Denormalization works by applying clear rules in code. Splitting data for consistency vs duplicating for read speed. The mechanics depend on your language and framework, but the underlying idea stays the same across projects.",
         "bullets": [
-          "Strong engineers explain concepts clearly",
-          "Interviewers test fundamentals, not just frameworks",
-          "Deep understanding beats copy-paste solutions"
+          "Core mechanism behind normalization vs denormalization",
+          "Common in database (mongodb & concepts) work",
+          "See code example below when applicable"
         ],
-        "icon": "lightbulb"
+        "icon": "cog"
       },
       {
-        "kicker": "Next step",
-        "title": "How to learn it deeply",
-        "desc": "Pick one resource, build one tiny example, then explain it without looking at notes — like a mock interview.",
+        "kicker": "In your stack",
+        "title": "Where Normalization vs Denormalization fits in real projects",
+        "desc": "In your Next.js + MongoDB projects, normalization vs denormalization connects to features you build daily — API routes, React components, auth flows, and database queries. Recognizing the pattern helps you debug faster and design cleaner modules.",
         "bullets": [
-          "Step 1: Read and take notes",
-          "Step 2: Code a minimal example",
-          "Step 3: Explain out loud in English"
+          "MongoDB Atlas or local mongod",
+          "Mongoose or native driver in Node",
+          "Schema matches how you query in the app"
         ],
-        "icon": "target"
+        "icon": "layers"
       }
     ]
   },
@@ -3238,40 +3348,42 @@ const CONCEPTS = [
       "multipart"
     ],
     "important": false,
-    "intro": "Browser API for sending forms including files and fields. Part of your Programming Knowledge Index — Forms & Data Flow.",
+    "sources": [],
+    "intro": "Browser API for sending forms including files and fields. Forms move user input from the browser to your server — validation and sync are critical.",
     "steps": [
       {
-        "kicker": "What it is",
-        "title": "Understanding FormData",
-        "desc": "Browser API for sending forms including files and fields. This is a core topic in your learning path — understand the idea before memorizing syntax.",
+        "kicker": "Definition",
+        "title": "What is FormData?",
+        "desc": "Browser API for sending forms including files and fields.",
         "bullets": [
-          "Part of: Forms & Data Flow",
-          "Read the steps, then try explaining it out loud",
-          "Build a small example in your own project"
+          "HTML forms or React controlled inputs collect user data",
+          "Client validation improves UX; server validation is mandatory",
+          "FormData API sends files and fields in multipart requests"
         ],
         "icon": "file-input"
       },
       {
-        "kicker": "Why it matters",
-        "title": "Why you need this",
-        "desc": "Weak mental models here make everything built on top harder. FormData connects to real work in Next.js, MongoDB, and backend projects you're already building.",
+        "kicker": "How it works",
+        "title": "How FormData works in practice",
+        "desc": "new FormData(formElement) collects all named inputs. Append files with formData.append(\"avatar\", file). Send via fetch with method POST — browser sets Content-Type: multipart/form-data automatically.",
         "bullets": [
-          "Strong engineers explain concepts clearly",
-          "Interviewers test fundamentals, not just frameworks",
-          "Deep understanding beats copy-paste solutions"
+          "Core mechanism behind formdata",
+          "Common in forms & data flow work",
+          "See code example below when applicable"
         ],
-        "icon": "lightbulb"
+        "icon": "cog",
+        "code": "const fd = new FormData(form);\nawait fetch(\"/api/upload\", { method: \"POST\", body: fd });"
       },
       {
-        "kicker": "Next step",
-        "title": "How to learn it deeply",
-        "desc": "Pick one resource, build one tiny example, then explain it without looking at notes — like a mock interview.",
+        "kicker": "In your stack",
+        "title": "Where FormData fits in real projects",
+        "desc": "In your Next.js + MongoDB projects, formdata connects to features you build daily — API routes, React components, auth flows, and database queries. Recognizing the pattern helps you debug faster and design cleaner modules.",
         "bullets": [
-          "Step 1: Read and take notes",
-          "Step 2: Code a minimal example",
-          "Step 3: Explain out loud in English"
+          "Applies across frontend and backend code",
+          "Shows up when building real features, not toy examples",
+          "Combine with other topics in this index for full picture"
         ],
-        "icon": "target"
+        "icon": "layers"
       }
     ]
   },
@@ -3291,40 +3403,41 @@ const CONCEPTS = [
       "zod"
     ],
     "important": false,
-    "intro": "Never trust the client — validate on both sides. Part of your Programming Knowledge Index — Forms & Data Flow.",
+    "sources": [],
+    "intro": "Never trust the client — validate on both sides. Forms move user input from the browser to your server — validation and sync are critical.",
     "steps": [
       {
-        "kicker": "What it is",
-        "title": "Understanding Validation (Client + Server)",
-        "desc": "Never trust the client — validate on both sides. This is a core topic in your learning path — understand the idea before memorizing syntax.",
+        "kicker": "Definition",
+        "title": "What is Validation (Client + Server)?",
+        "desc": "Never trust the client — validate on both sides.",
         "bullets": [
-          "Part of: Forms & Data Flow",
-          "Read the steps, then try explaining it out loud",
-          "Build a small example in your own project"
+          "HTML forms or React controlled inputs collect user data",
+          "Client validation improves UX; server validation is mandatory",
+          "FormData API sends files and fields in multipart requests"
         ],
         "icon": "shield-check"
       },
       {
-        "kicker": "Why it matters",
-        "title": "Why you need this",
-        "desc": "Weak mental models here make everything built on top harder. Validation (Client + Server) connects to real work in Next.js, MongoDB, and backend projects you're already building.",
+        "kicker": "How it works",
+        "title": "How Validation (Client + Server) works in practice",
+        "desc": "Validation (Client + Server) works by applying clear rules in code. Never trust the client — validate on both sides. The mechanics depend on your language and framework, but the underlying idea stays the same across projects.",
         "bullets": [
-          "Strong engineers explain concepts clearly",
-          "Interviewers test fundamentals, not just frameworks",
-          "Deep understanding beats copy-paste solutions"
+          "Core mechanism behind validation (client + server)",
+          "Common in forms & data flow work",
+          "See code example below when applicable"
         ],
-        "icon": "lightbulb"
+        "icon": "cog"
       },
       {
-        "kicker": "Next step",
-        "title": "How to learn it deeply",
-        "desc": "Pick one resource, build one tiny example, then explain it without looking at notes — like a mock interview.",
+        "kicker": "In your stack",
+        "title": "Where Validation (Client + Server) fits in real projects",
+        "desc": "In your Next.js + MongoDB projects, validation (client + server) connects to features you build daily — API routes, React components, auth flows, and database queries. Recognizing the pattern helps you debug faster and design cleaner modules.",
         "bullets": [
-          "Step 1: Read and take notes",
-          "Step 2: Code a minimal example",
-          "Step 3: Explain out loud in English"
+          "Applies across frontend and backend code",
+          "Shows up when building real features, not toy examples",
+          "Combine with other topics in this index for full picture"
         ],
-        "icon": "target"
+        "icon": "layers"
       }
     ]
   },
@@ -3344,40 +3457,41 @@ const CONCEPTS = [
       "s3"
     ],
     "important": false,
-    "intro": "Multipart forms, storage, and size limits. Part of your Programming Knowledge Index — Forms & Data Flow.",
+    "sources": [],
+    "intro": "Multipart forms, storage, and size limits. Forms move user input from the browser to your server — validation and sync are critical.",
     "steps": [
       {
-        "kicker": "What it is",
-        "title": "Understanding File Uploads",
-        "desc": "Multipart forms, storage, and size limits. This is a core topic in your learning path — understand the idea before memorizing syntax.",
+        "kicker": "Definition",
+        "title": "What is File Uploads?",
+        "desc": "Multipart forms, storage, and size limits.",
         "bullets": [
-          "Part of: Forms & Data Flow",
-          "Read the steps, then try explaining it out loud",
-          "Build a small example in your own project"
+          "HTML forms or React controlled inputs collect user data",
+          "Client validation improves UX; server validation is mandatory",
+          "FormData API sends files and fields in multipart requests"
         ],
         "icon": "upload"
       },
       {
-        "kicker": "Why it matters",
-        "title": "Why you need this",
-        "desc": "Weak mental models here make everything built on top harder. File Uploads connects to real work in Next.js, MongoDB, and backend projects you're already building.",
+        "kicker": "How it works",
+        "title": "How File Uploads works in practice",
+        "desc": "File Uploads works by applying clear rules in code. Multipart forms, storage, and size limits. The mechanics depend on your language and framework, but the underlying idea stays the same across projects.",
         "bullets": [
-          "Strong engineers explain concepts clearly",
-          "Interviewers test fundamentals, not just frameworks",
-          "Deep understanding beats copy-paste solutions"
+          "Core mechanism behind file uploads",
+          "Common in forms & data flow work",
+          "See code example below when applicable"
         ],
-        "icon": "lightbulb"
+        "icon": "cog"
       },
       {
-        "kicker": "Next step",
-        "title": "How to learn it deeply",
-        "desc": "Pick one resource, build one tiny example, then explain it without looking at notes — like a mock interview.",
+        "kicker": "In your stack",
+        "title": "Where File Uploads fits in real projects",
+        "desc": "In your Next.js + MongoDB projects, file uploads connects to features you build daily — API routes, React components, auth flows, and database queries. Recognizing the pattern helps you debug faster and design cleaner modules.",
         "bullets": [
-          "Step 1: Read and take notes",
-          "Step 2: Code a minimal example",
-          "Step 3: Explain out loud in English"
+          "Applies across frontend and backend code",
+          "Shows up when building real features, not toy examples",
+          "Combine with other topics in this index for full picture"
         ],
-        "icon": "target"
+        "icon": "layers"
       }
     ]
   },
@@ -3397,40 +3511,41 @@ const CONCEPTS = [
       "json"
     ],
     "important": false,
-    "intro": "fetch, axios, and handling responses from your backend. Part of your Programming Knowledge Index — Forms & Data Flow.",
+    "sources": [],
+    "intro": "fetch, axios, and handling responses from your backend. Forms move user input from the browser to your server — validation and sync are critical.",
     "steps": [
       {
-        "kicker": "What it is",
-        "title": "Understanding API Communication",
-        "desc": "fetch, axios, and handling responses from your backend. This is a core topic in your learning path — understand the idea before memorizing syntax.",
+        "kicker": "Definition",
+        "title": "What is API Communication?",
+        "desc": "fetch, axios, and handling responses from your backend.",
         "bullets": [
-          "Part of: Forms & Data Flow",
-          "Read the steps, then try explaining it out loud",
-          "Build a small example in your own project"
+          "HTML forms or React controlled inputs collect user data",
+          "Client validation improves UX; server validation is mandatory",
+          "FormData API sends files and fields in multipart requests"
         ],
         "icon": "send"
       },
       {
-        "kicker": "Why it matters",
-        "title": "Why you need this",
-        "desc": "Weak mental models here make everything built on top harder. API Communication connects to real work in Next.js, MongoDB, and backend projects you're already building.",
+        "kicker": "How it works",
+        "title": "How API Communication works in practice",
+        "desc": "API Communication works by applying clear rules in code. fetch, axios, and handling responses from your backend. The mechanics depend on your language and framework, but the underlying idea stays the same across projects.",
         "bullets": [
-          "Strong engineers explain concepts clearly",
-          "Interviewers test fundamentals, not just frameworks",
-          "Deep understanding beats copy-paste solutions"
+          "Core mechanism behind api communication",
+          "Common in forms & data flow work",
+          "See code example below when applicable"
         ],
-        "icon": "lightbulb"
+        "icon": "cog"
       },
       {
-        "kicker": "Next step",
-        "title": "How to learn it deeply",
-        "desc": "Pick one resource, build one tiny example, then explain it without looking at notes — like a mock interview.",
+        "kicker": "In your stack",
+        "title": "Where API Communication fits in real projects",
+        "desc": "In your Next.js + MongoDB projects, api communication connects to features you build daily — API routes, React components, auth flows, and database queries. Recognizing the pattern helps you debug faster and design cleaner modules.",
         "bullets": [
-          "Step 1: Read and take notes",
-          "Step 2: Code a minimal example",
-          "Step 3: Explain out loud in English"
+          "Applies across frontend and backend code",
+          "Shows up when building real features, not toy examples",
+          "Combine with other topics in this index for full picture"
         ],
-        "icon": "target"
+        "icon": "layers"
       }
     ]
   },
@@ -3450,40 +3565,41 @@ const CONCEPTS = [
       "revalidate"
     ],
     "important": false,
-    "intro": "Keeping UI state aligned with server data after mutations. Part of your Programming Knowledge Index — Forms & Data Flow.",
+    "sources": [],
+    "intro": "Keeping UI state aligned with server data after mutations. Forms move user input from the browser to your server — validation and sync are critical.",
     "steps": [
       {
-        "kicker": "What it is",
-        "title": "Understanding State Syncing",
-        "desc": "Keeping UI state aligned with server data after mutations. This is a core topic in your learning path — understand the idea before memorizing syntax.",
+        "kicker": "Definition",
+        "title": "What is State Syncing?",
+        "desc": "Keeping UI state aligned with server data after mutations.",
         "bullets": [
-          "Part of: Forms & Data Flow",
-          "Read the steps, then try explaining it out loud",
-          "Build a small example in your own project"
+          "HTML forms or React controlled inputs collect user data",
+          "Client validation improves UX; server validation is mandatory",
+          "FormData API sends files and fields in multipart requests"
         ],
         "icon": "refresh-cw"
       },
       {
-        "kicker": "Why it matters",
-        "title": "Why you need this",
-        "desc": "Weak mental models here make everything built on top harder. State Syncing connects to real work in Next.js, MongoDB, and backend projects you're already building.",
+        "kicker": "How it works",
+        "title": "How State Syncing works in practice",
+        "desc": "State Syncing works by applying clear rules in code. Keeping UI state aligned with server data after mutations. The mechanics depend on your language and framework, but the underlying idea stays the same across projects.",
         "bullets": [
-          "Strong engineers explain concepts clearly",
-          "Interviewers test fundamentals, not just frameworks",
-          "Deep understanding beats copy-paste solutions"
+          "Core mechanism behind state syncing",
+          "Common in forms & data flow work",
+          "See code example below when applicable"
         ],
-        "icon": "lightbulb"
+        "icon": "cog"
       },
       {
-        "kicker": "Next step",
-        "title": "How to learn it deeply",
-        "desc": "Pick one resource, build one tiny example, then explain it without looking at notes — like a mock interview.",
+        "kicker": "In your stack",
+        "title": "Where State Syncing fits in real projects",
+        "desc": "In your Next.js + MongoDB projects, state syncing connects to features you build daily — API routes, React components, auth flows, and database queries. Recognizing the pattern helps you debug faster and design cleaner modules.",
         "bullets": [
-          "Step 1: Read and take notes",
-          "Step 2: Code a minimal example",
-          "Step 3: Explain out loud in English"
+          "Applies across frontend and backend code",
+          "Shows up when building real features, not toy examples",
+          "Combine with other topics in this index for full picture"
         ],
-        "icon": "target"
+        "icon": "layers"
       }
     ]
   },
@@ -3503,40 +3619,41 @@ const CONCEPTS = [
       "token"
     ],
     "important": false,
-    "intro": "Server remembers you vs client carries signed proof. Part of your Programming Knowledge Index — Authentication & Security.",
+    "sources": [],
+    "intro": "Server remembers you vs client carries signed proof. Authentication proves identity; security protects data and users from attacks.",
     "steps": [
       {
-        "kicker": "What it is",
-        "title": "Understanding Sessions vs JWT",
-        "desc": "Server remembers you vs client carries signed proof. This is a core topic in your learning path — understand the idea before memorizing syntax.",
+        "kicker": "Definition",
+        "title": "What is Sessions vs JWT?",
+        "desc": "Server remembers you vs client carries signed proof.",
         "bullets": [
-          "Part of: Authentication & Security",
-          "Read the steps, then try explaining it out loud",
-          "Build a small example in your own project"
+          "Authentication = who are you; Authorization = what can you do",
+          "Sessions, JWT, and OAuth solve login in different ways",
+          "Always use HTTPS; protect cookies; validate on the server"
         ],
         "icon": "git-compare"
       },
       {
-        "kicker": "Why it matters",
-        "title": "Why you need this",
-        "desc": "Weak mental models here make everything built on top harder. Sessions vs JWT connects to real work in Next.js, MongoDB, and backend projects you're already building.",
+        "kicker": "How it works",
+        "title": "How Sessions vs JWT works in practice",
+        "desc": "Sessions: server stores user data, client holds only a session ID cookie. JWT: server signs a token containing claims; client sends it on every request; server verifies signature without a database lookup.",
         "bullets": [
-          "Strong engineers explain concepts clearly",
-          "Interviewers test fundamentals, not just frameworks",
-          "Deep understanding beats copy-paste solutions"
+          "Core mechanism behind sessions vs jwt",
+          "Common in authentication & security work",
+          "See code example below when applicable"
         ],
-        "icon": "lightbulb"
+        "icon": "cog"
       },
       {
-        "kicker": "Next step",
-        "title": "How to learn it deeply",
-        "desc": "Pick one resource, build one tiny example, then explain it without looking at notes — like a mock interview.",
+        "kicker": "In your stack",
+        "title": "Where Sessions vs JWT fits in real projects",
+        "desc": "In your Next.js + MongoDB projects, sessions vs jwt connects to features you build daily — API routes, React components, auth flows, and database queries. Recognizing the pattern helps you debug faster and design cleaner modules.",
         "bullets": [
-          "Step 1: Read and take notes",
-          "Step 2: Code a minimal example",
-          "Step 3: Explain out loud in English"
+          "Kinde OAuth for social login",
+          "Middleware protects /dashboard routes",
+          "Cookies store session tokens securely"
         ],
-        "icon": "target"
+        "icon": "layers"
       }
     ]
   },
@@ -3555,6 +3672,7 @@ const CONCEPTS = [
       "oauth"
     ],
     "important": false,
+    "sources": [],
     "intro": "Authentication answers one question: \"Who is making this request?\" After login, the real design choice is where that proof lives — on the server or with the client.",
     "sections": [
       {
@@ -3729,37 +3847,37 @@ const CONCEPTS = [
     ],
     "steps": [
       {
-        "kicker": "What it is",
-        "title": "Understanding Authentication Deep Dive",
-        "desc": "Sessions, JWT, OAuth flows step by step. This is a core topic in your learning path — understand the idea before memorizing syntax.",
+        "kicker": "Definition",
+        "title": "What is Authentication Deep Dive?",
+        "desc": "Sessions, JWT, OAuth flows step by step.",
         "bullets": [
-          "Part of: Authentication & Security",
-          "Read the steps, then try explaining it out loud",
-          "Build a small example in your own project"
+          "Authentication = who are you; Authorization = what can you do",
+          "Sessions, JWT, and OAuth solve login in different ways",
+          "Always use HTTPS; protect cookies; validate on the server"
         ],
         "icon": "shield-check"
       },
       {
-        "kicker": "Why it matters",
-        "title": "Why you need this",
-        "desc": "Weak mental models here make everything built on top harder. Authentication Deep Dive connects to real work in Next.js, MongoDB, and backend projects you're already building.",
+        "kicker": "How it works",
+        "title": "How Authentication Deep Dive works in practice",
+        "desc": "Authentication Deep Dive works by applying clear rules in code. Sessions, JWT, OAuth flows step by step. The mechanics depend on your language and framework, but the underlying idea stays the same across projects.",
         "bullets": [
-          "Strong engineers explain concepts clearly",
-          "Interviewers test fundamentals, not just frameworks",
-          "Deep understanding beats copy-paste solutions"
+          "Core mechanism behind authentication deep dive",
+          "Common in authentication & security work",
+          "See code example below when applicable"
         ],
-        "icon": "lightbulb"
+        "icon": "cog"
       },
       {
-        "kicker": "Next step",
-        "title": "How to learn it deeply",
-        "desc": "Pick one resource, build one tiny example, then explain it without looking at notes — like a mock interview.",
+        "kicker": "In your stack",
+        "title": "Where Authentication Deep Dive fits in real projects",
+        "desc": "In your Next.js + MongoDB projects, authentication deep dive connects to features you build daily — API routes, React components, auth flows, and database queries. Recognizing the pattern helps you debug faster and design cleaner modules.",
         "bullets": [
-          "Step 1: Read and take notes",
-          "Step 2: Code a minimal example",
-          "Step 3: Explain out loud in English"
+          "Kinde OAuth for social login",
+          "Middleware protects /dashboard routes",
+          "Cookies store session tokens securely"
         ],
-        "icon": "target"
+        "icon": "layers"
       }
     ]
   },
@@ -3779,40 +3897,46 @@ const CONCEPTS = [
       "social login"
     ],
     "important": false,
-    "intro": "Sign in with Google/GitHub — delegated identity without passwords. Part of your Programming Knowledge Index — Authentication & Security.",
+    "sources": [
+      {
+        "title": "OAuth 2.0 — Simplified",
+        "url": "https://oauth.net/2/"
+      }
+    ],
+    "intro": "Sign in with Google/GitHub — delegated identity without passwords. Authentication proves identity; security protects data and users from attacks.",
     "steps": [
       {
-        "kicker": "What it is",
-        "title": "Understanding OAuth 2.0",
-        "desc": "Sign in with Google/GitHub — delegated identity without passwords. This is a core topic in your learning path — understand the idea before memorizing syntax.",
+        "kicker": "Definition",
+        "title": "What is OAuth 2.0?",
+        "desc": "Sign in with Google/GitHub — delegated identity without passwords.",
         "bullets": [
-          "Part of: Authentication & Security",
-          "Read the steps, then try explaining it out loud",
-          "Build a small example in your own project"
+          "Authentication = who are you; Authorization = what can you do",
+          "Sessions, JWT, and OAuth solve login in different ways",
+          "Always use HTTPS; protect cookies; validate on the server"
         ],
         "icon": "fingerprint"
       },
       {
-        "kicker": "Why it matters",
-        "title": "Why you need this",
-        "desc": "Weak mental models here make everything built on top harder. OAuth 2.0 connects to real work in Next.js, MongoDB, and backend projects you're already building.",
+        "kicker": "How it works",
+        "title": "How OAuth 2.0 works in practice",
+        "desc": "OAuth 2.0 works by applying clear rules in code. Sign in with Google/GitHub — delegated identity without passwords. The mechanics depend on your language and framework, but the underlying idea stays the same across projects.",
         "bullets": [
-          "Strong engineers explain concepts clearly",
-          "Interviewers test fundamentals, not just frameworks",
-          "Deep understanding beats copy-paste solutions"
+          "User clicks \"Sign in with Google\"",
+          "Redirect to provider → login + consent",
+          "Provider redirects back with code → exchange for access token"
         ],
-        "icon": "lightbulb"
+        "icon": "cog"
       },
       {
-        "kicker": "Next step",
-        "title": "How to learn it deeply",
-        "desc": "Pick one resource, build one tiny example, then explain it without looking at notes — like a mock interview.",
+        "kicker": "In your stack",
+        "title": "Where OAuth 2.0 fits in real projects",
+        "desc": "In your Next.js + MongoDB projects, oauth 2.0 connects to features you build daily — API routes, React components, auth flows, and database queries. Recognizing the pattern helps you debug faster and design cleaner modules.",
         "bullets": [
-          "Step 1: Read and take notes",
-          "Step 2: Code a minimal example",
-          "Step 3: Explain out loud in English"
+          "Kinde OAuth for social login",
+          "Middleware protects /dashboard routes",
+          "Cookies store session tokens securely"
         ],
-        "icon": "target"
+        "icon": "layers"
       }
     ]
   },
@@ -3832,40 +3956,41 @@ const CONCEPTS = [
       "samesite"
     ],
     "important": false,
-    "intro": "HttpOnly, Secure, SameSite — how browsers store session data. Part of your Programming Knowledge Index — Authentication & Security.",
+    "sources": [],
+    "intro": "HttpOnly, Secure, SameSite — how browsers store session data. Authentication proves identity; security protects data and users from attacks.",
     "steps": [
       {
-        "kicker": "What it is",
-        "title": "Understanding Cookies",
-        "desc": "HttpOnly, Secure, SameSite — how browsers store session data. This is a core topic in your learning path — understand the idea before memorizing syntax.",
+        "kicker": "Definition",
+        "title": "What is Cookies?",
+        "desc": "HttpOnly, Secure, SameSite — how browsers store session data.",
         "bullets": [
-          "Part of: Authentication & Security",
-          "Read the steps, then try explaining it out loud",
-          "Build a small example in your own project"
+          "Authentication = who are you; Authorization = what can you do",
+          "Sessions, JWT, and OAuth solve login in different ways",
+          "Always use HTTPS; protect cookies; validate on the server"
         ],
         "icon": "cookie"
       },
       {
-        "kicker": "Why it matters",
-        "title": "Why you need this",
-        "desc": "Weak mental models here make everything built on top harder. Cookies connects to real work in Next.js, MongoDB, and backend projects you're already building.",
+        "kicker": "How it works",
+        "title": "How Cookies works in practice",
+        "desc": "Cookies works by applying clear rules in code. HttpOnly, Secure, SameSite — how browsers store session data. The mechanics depend on your language and framework, but the underlying idea stays the same across projects.",
         "bullets": [
-          "Strong engineers explain concepts clearly",
-          "Interviewers test fundamentals, not just frameworks",
-          "Deep understanding beats copy-paste solutions"
+          "Core mechanism behind cookies",
+          "Common in authentication & security work",
+          "See code example below when applicable"
         ],
-        "icon": "lightbulb"
+        "icon": "cog"
       },
       {
-        "kicker": "Next step",
-        "title": "How to learn it deeply",
-        "desc": "Pick one resource, build one tiny example, then explain it without looking at notes — like a mock interview.",
+        "kicker": "In your stack",
+        "title": "Where Cookies fits in real projects",
+        "desc": "In your Next.js + MongoDB projects, cookies connects to features you build daily — API routes, React components, auth flows, and database queries. Recognizing the pattern helps you debug faster and design cleaner modules.",
         "bullets": [
-          "Step 1: Read and take notes",
-          "Step 2: Code a minimal example",
-          "Step 3: Explain out loud in English"
+          "Kinde OAuth for social login",
+          "Middleware protects /dashboard routes",
+          "Cookies store session tokens securely"
         ],
-        "icon": "target"
+        "icon": "layers"
       }
     ]
   },
@@ -3885,40 +4010,41 @@ const CONCEPTS = [
       "auth"
     ],
     "important": false,
-    "intro": "Middleware and guards that block unauthenticated access. Part of your Programming Knowledge Index — Authentication & Security.",
+    "sources": [],
+    "intro": "Middleware and guards that block unauthenticated access. Authentication proves identity; security protects data and users from attacks.",
     "steps": [
       {
-        "kicker": "What it is",
-        "title": "Understanding Protected Routes",
-        "desc": "Middleware and guards that block unauthenticated access. This is a core topic in your learning path — understand the idea before memorizing syntax.",
+        "kicker": "Definition",
+        "title": "What is Protected Routes?",
+        "desc": "Middleware and guards that block unauthenticated access.",
         "bullets": [
-          "Part of: Authentication & Security",
-          "Read the steps, then try explaining it out loud",
-          "Build a small example in your own project"
+          "Authentication = who are you; Authorization = what can you do",
+          "Sessions, JWT, and OAuth solve login in different ways",
+          "Always use HTTPS; protect cookies; validate on the server"
         ],
         "icon": "lock"
       },
       {
-        "kicker": "Why it matters",
-        "title": "Why you need this",
-        "desc": "Weak mental models here make everything built on top harder. Protected Routes connects to real work in Next.js, MongoDB, and backend projects you're already building.",
+        "kicker": "How it works",
+        "title": "How Protected Routes works in practice",
+        "desc": "Protected Routes works by applying clear rules in code. Middleware and guards that block unauthenticated access. The mechanics depend on your language and framework, but the underlying idea stays the same across projects.",
         "bullets": [
-          "Strong engineers explain concepts clearly",
-          "Interviewers test fundamentals, not just frameworks",
-          "Deep understanding beats copy-paste solutions"
+          "Core mechanism behind protected routes",
+          "Common in authentication & security work",
+          "See code example below when applicable"
         ],
-        "icon": "lightbulb"
+        "icon": "cog"
       },
       {
-        "kicker": "Next step",
-        "title": "How to learn it deeply",
-        "desc": "Pick one resource, build one tiny example, then explain it without looking at notes — like a mock interview.",
+        "kicker": "In your stack",
+        "title": "Where Protected Routes fits in real projects",
+        "desc": "In your Next.js + MongoDB projects, protected routes connects to features you build daily — API routes, React components, auth flows, and database queries. Recognizing the pattern helps you debug faster and design cleaner modules.",
         "bullets": [
-          "Step 1: Read and take notes",
-          "Step 2: Code a minimal example",
-          "Step 3: Explain out loud in English"
+          "Kinde OAuth for social login",
+          "Middleware protects /dashboard routes",
+          "Cookies store session tokens securely"
         ],
-        "icon": "target"
+        "icon": "layers"
       }
     ]
   },
@@ -3938,40 +4064,41 @@ const CONCEPTS = [
       "attacks"
     ],
     "important": false,
-    "intro": "Cross-site scripting and request forgery — common web attacks. Part of your Programming Knowledge Index — Authentication & Security.",
+    "sources": [],
+    "intro": "Cross-site scripting and request forgery — common web attacks. Authentication proves identity; security protects data and users from attacks.",
     "steps": [
       {
-        "kicker": "What it is",
-        "title": "Understanding XSS & CSRF Basics",
-        "desc": "Cross-site scripting and request forgery — common web attacks. This is a core topic in your learning path — understand the idea before memorizing syntax.",
+        "kicker": "Definition",
+        "title": "What is XSS & CSRF Basics?",
+        "desc": "Cross-site scripting and request forgery — common web attacks.",
         "bullets": [
-          "Part of: Authentication & Security",
-          "Read the steps, then try explaining it out loud",
-          "Build a small example in your own project"
+          "Authentication = who are you; Authorization = what can you do",
+          "Sessions, JWT, and OAuth solve login in different ways",
+          "Always use HTTPS; protect cookies; validate on the server"
         ],
         "icon": "shield-alert"
       },
       {
-        "kicker": "Why it matters",
-        "title": "Why you need this",
-        "desc": "Weak mental models here make everything built on top harder. XSS & CSRF Basics connects to real work in Next.js, MongoDB, and backend projects you're already building.",
+        "kicker": "How it works",
+        "title": "How XSS & CSRF Basics works in practice",
+        "desc": "XSS & CSRF Basics works by applying clear rules in code. Cross-site scripting and request forgery — common web attacks. The mechanics depend on your language and framework, but the underlying idea stays the same across projects.",
         "bullets": [
-          "Strong engineers explain concepts clearly",
-          "Interviewers test fundamentals, not just frameworks",
-          "Deep understanding beats copy-paste solutions"
+          "Core mechanism behind xss & csrf basics",
+          "Common in authentication & security work",
+          "See code example below when applicable"
         ],
-        "icon": "lightbulb"
+        "icon": "cog"
       },
       {
-        "kicker": "Next step",
-        "title": "How to learn it deeply",
-        "desc": "Pick one resource, build one tiny example, then explain it without looking at notes — like a mock interview.",
+        "kicker": "In your stack",
+        "title": "Where XSS & CSRF Basics fits in real projects",
+        "desc": "In your Next.js + MongoDB projects, xss & csrf basics connects to features you build daily — API routes, React components, auth flows, and database queries. Recognizing the pattern helps you debug faster and design cleaner modules.",
         "bullets": [
-          "Step 1: Read and take notes",
-          "Step 2: Code a minimal example",
-          "Step 3: Explain out loud in English"
+          "Kinde OAuth for social login",
+          "Middleware protects /dashboard routes",
+          "Cookies store session tokens securely"
         ],
-        "icon": "target"
+        "icon": "layers"
       }
     ]
   },
@@ -3990,6 +4117,7 @@ const CONCEPTS = [
       "encryption"
     ],
     "important": false,
+    "sources": [],
     "intro": "Without encryption, anyone on the network can read your passwords and cookies. HTTPS wraps HTTP inside TLS so data stays private between client and server.",
     "steps": [
       {
@@ -4085,40 +4213,41 @@ const CONCEPTS = [
       "css"
     ],
     "important": false,
-    "intro": "Layouts that adapt from mobile to desktop. Part of your Programming Knowledge Index — UI / UX & Product Thinking.",
+    "sources": [],
+    "intro": "Layouts that adapt from mobile to desktop. Good UI is usable, consistent, and accessible — not just visually polished.",
     "steps": [
       {
-        "kicker": "What it is",
-        "title": "Understanding Responsive Design",
-        "desc": "Layouts that adapt from mobile to desktop. This is a core topic in your learning path — understand the idea before memorizing syntax.",
+        "kicker": "Definition",
+        "title": "What is Responsive Design?",
+        "desc": "Layouts that adapt from mobile to desktop.",
         "bullets": [
-          "Part of: UI / UX & Product Thinking",
-          "Read the steps, then try explaining it out loud",
-          "Build a small example in your own project"
+          "Users judge apps in seconds — clarity beats decoration",
+          "Responsive layouts work on phone, tablet, and desktop",
+          "Accessibility helps everyone, not just screen reader users"
         ],
         "icon": "smartphone"
       },
       {
-        "kicker": "Why it matters",
-        "title": "Why you need this",
-        "desc": "Weak mental models here make everything built on top harder. Responsive Design connects to real work in Next.js, MongoDB, and backend projects you're already building.",
+        "kicker": "How it works",
+        "title": "How Responsive Design works in practice",
+        "desc": "Responsive Design works by applying clear rules in code. Layouts that adapt from mobile to desktop. The mechanics depend on your language and framework, but the underlying idea stays the same across projects.",
         "bullets": [
-          "Strong engineers explain concepts clearly",
-          "Interviewers test fundamentals, not just frameworks",
-          "Deep understanding beats copy-paste solutions"
+          "Core mechanism behind responsive design",
+          "Common in ui / ux & product thinking work",
+          "See code example below when applicable"
         ],
-        "icon": "lightbulb"
+        "icon": "cog"
       },
       {
-        "kicker": "Next step",
-        "title": "How to learn it deeply",
-        "desc": "Pick one resource, build one tiny example, then explain it without looking at notes — like a mock interview.",
+        "kicker": "In your stack",
+        "title": "Where Responsive Design fits in real projects",
+        "desc": "In your Next.js + MongoDB projects, responsive design connects to features you build daily — API routes, React components, auth flows, and database queries. Recognizing the pattern helps you debug faster and design cleaner modules.",
         "bullets": [
-          "Step 1: Read and take notes",
-          "Step 2: Code a minimal example",
-          "Step 3: Explain out loud in English"
+          "Applies across frontend and backend code",
+          "Shows up when building real features, not toy examples",
+          "Combine with other topics in this index for full picture"
         ],
-        "icon": "target"
+        "icon": "layers"
       }
     ]
   },
@@ -4137,40 +4266,41 @@ const CONCEPTS = [
       "ui"
     ],
     "important": false,
-    "intro": "Building small, focused UI pieces with clear responsibilities. Part of your Programming Knowledge Index — UI / UX & Product Thinking.",
+    "sources": [],
+    "intro": "Building small, focused UI pieces with clear responsibilities. Good UI is usable, consistent, and accessible — not just visually polished.",
     "steps": [
       {
-        "kicker": "What it is",
-        "title": "Understanding Component Design",
-        "desc": "Building small, focused UI pieces with clear responsibilities. This is a core topic in your learning path — understand the idea before memorizing syntax.",
+        "kicker": "Definition",
+        "title": "What is Component Design?",
+        "desc": "Building small, focused UI pieces with clear responsibilities.",
         "bullets": [
-          "Part of: UI / UX & Product Thinking",
-          "Read the steps, then try explaining it out loud",
-          "Build a small example in your own project"
+          "Users judge apps in seconds — clarity beats decoration",
+          "Responsive layouts work on phone, tablet, and desktop",
+          "Accessibility helps everyone, not just screen reader users"
         ],
         "icon": "component"
       },
       {
-        "kicker": "Why it matters",
-        "title": "Why you need this",
-        "desc": "Weak mental models here make everything built on top harder. Component Design connects to real work in Next.js, MongoDB, and backend projects you're already building.",
+        "kicker": "How it works",
+        "title": "How Component Design works in practice",
+        "desc": "Component Design works by applying clear rules in code. Building small, focused UI pieces with clear responsibilities. The mechanics depend on your language and framework, but the underlying idea stays the same across projects.",
         "bullets": [
-          "Strong engineers explain concepts clearly",
-          "Interviewers test fundamentals, not just frameworks",
-          "Deep understanding beats copy-paste solutions"
+          "Core mechanism behind component design",
+          "Common in ui / ux & product thinking work",
+          "See code example below when applicable"
         ],
-        "icon": "lightbulb"
+        "icon": "cog"
       },
       {
-        "kicker": "Next step",
-        "title": "How to learn it deeply",
-        "desc": "Pick one resource, build one tiny example, then explain it without looking at notes — like a mock interview.",
+        "kicker": "In your stack",
+        "title": "Where Component Design fits in real projects",
+        "desc": "In your Next.js + MongoDB projects, component design connects to features you build daily — API routes, React components, auth flows, and database queries. Recognizing the pattern helps you debug faster and design cleaner modules.",
         "bullets": [
-          "Step 1: Read and take notes",
-          "Step 2: Code a minimal example",
-          "Step 3: Explain out loud in English"
+          "Applies across frontend and backend code",
+          "Shows up when building real features, not toy examples",
+          "Combine with other topics in this index for full picture"
         ],
-        "icon": "target"
+        "icon": "layers"
       }
     ]
   },
@@ -4189,40 +4319,41 @@ const CONCEPTS = [
       "tokens"
     ],
     "important": false,
-    "intro": "DRY components and design tokens across your product. Part of your Programming Knowledge Index — UI / UX & Product Thinking.",
+    "sources": [],
+    "intro": "DRY components and design tokens across your product. Good UI is usable, consistent, and accessible — not just visually polished.",
     "steps": [
       {
-        "kicker": "What it is",
-        "title": "Understanding Reusability",
-        "desc": "DRY components and design tokens across your product. This is a core topic in your learning path — understand the idea before memorizing syntax.",
+        "kicker": "Definition",
+        "title": "What is Reusability?",
+        "desc": "DRY components and design tokens across your product.",
         "bullets": [
-          "Part of: UI / UX & Product Thinking",
-          "Read the steps, then try explaining it out loud",
-          "Build a small example in your own project"
+          "Users judge apps in seconds — clarity beats decoration",
+          "Responsive layouts work on phone, tablet, and desktop",
+          "Accessibility helps everyone, not just screen reader users"
         ],
         "icon": "copy"
       },
       {
-        "kicker": "Why it matters",
-        "title": "Why you need this",
-        "desc": "Weak mental models here make everything built on top harder. Reusability connects to real work in Next.js, MongoDB, and backend projects you're already building.",
+        "kicker": "How it works",
+        "title": "How Reusability works in practice",
+        "desc": "Reusability works by applying clear rules in code. DRY components and design tokens across your product. The mechanics depend on your language and framework, but the underlying idea stays the same across projects.",
         "bullets": [
-          "Strong engineers explain concepts clearly",
-          "Interviewers test fundamentals, not just frameworks",
-          "Deep understanding beats copy-paste solutions"
+          "Core mechanism behind reusability",
+          "Common in ui / ux & product thinking work",
+          "See code example below when applicable"
         ],
-        "icon": "lightbulb"
+        "icon": "cog"
       },
       {
-        "kicker": "Next step",
-        "title": "How to learn it deeply",
-        "desc": "Pick one resource, build one tiny example, then explain it without looking at notes — like a mock interview.",
+        "kicker": "In your stack",
+        "title": "Where Reusability fits in real projects",
+        "desc": "In your Next.js + MongoDB projects, reusability connects to features you build daily — API routes, React components, auth flows, and database queries. Recognizing the pattern helps you debug faster and design cleaner modules.",
         "bullets": [
-          "Step 1: Read and take notes",
-          "Step 2: Code a minimal example",
-          "Step 3: Explain out loud in English"
+          "Applies across frontend and backend code",
+          "Shows up when building real features, not toy examples",
+          "Combine with other topics in this index for full picture"
         ],
-        "icon": "target"
+        "icon": "layers"
       }
     ]
   },
@@ -4242,40 +4373,41 @@ const CONCEPTS = [
       "wcag"
     ],
     "important": false,
-    "intro": "Semantic HTML, ARIA, keyboard nav — usable by everyone. Part of your Programming Knowledge Index — UI / UX & Product Thinking.",
+    "sources": [],
+    "intro": "Semantic HTML, ARIA, keyboard nav — usable by everyone. Good UI is usable, consistent, and accessible — not just visually polished.",
     "steps": [
       {
-        "kicker": "What it is",
-        "title": "Understanding Accessibility Basics",
-        "desc": "Semantic HTML, ARIA, keyboard nav — usable by everyone. This is a core topic in your learning path — understand the idea before memorizing syntax.",
+        "kicker": "Definition",
+        "title": "What is Accessibility Basics?",
+        "desc": "Semantic HTML, ARIA, keyboard nav — usable by everyone.",
         "bullets": [
-          "Part of: UI / UX & Product Thinking",
-          "Read the steps, then try explaining it out loud",
-          "Build a small example in your own project"
+          "Users judge apps in seconds — clarity beats decoration",
+          "Responsive layouts work on phone, tablet, and desktop",
+          "Accessibility helps everyone, not just screen reader users"
         ],
         "icon": "accessibility"
       },
       {
-        "kicker": "Why it matters",
-        "title": "Why you need this",
-        "desc": "Weak mental models here make everything built on top harder. Accessibility Basics connects to real work in Next.js, MongoDB, and backend projects you're already building.",
+        "kicker": "How it works",
+        "title": "How Accessibility Basics works in practice",
+        "desc": "Accessibility Basics works by applying clear rules in code. Semantic HTML, ARIA, keyboard nav — usable by everyone. The mechanics depend on your language and framework, but the underlying idea stays the same across projects.",
         "bullets": [
-          "Strong engineers explain concepts clearly",
-          "Interviewers test fundamentals, not just frameworks",
-          "Deep understanding beats copy-paste solutions"
+          "Core mechanism behind accessibility basics",
+          "Common in ui / ux & product thinking work",
+          "See code example below when applicable"
         ],
-        "icon": "lightbulb"
+        "icon": "cog"
       },
       {
-        "kicker": "Next step",
-        "title": "How to learn it deeply",
-        "desc": "Pick one resource, build one tiny example, then explain it without looking at notes — like a mock interview.",
+        "kicker": "In your stack",
+        "title": "Where Accessibility Basics fits in real projects",
+        "desc": "In your Next.js + MongoDB projects, accessibility basics connects to features you build daily — API routes, React components, auth flows, and database queries. Recognizing the pattern helps you debug faster and design cleaner modules.",
         "bullets": [
-          "Step 1: Read and take notes",
-          "Step 2: Code a minimal example",
-          "Step 3: Explain out loud in English"
+          "Applies across frontend and backend code",
+          "Shows up when building real features, not toy examples",
+          "Combine with other topics in this index for full picture"
         ],
-        "icon": "target"
+        "icon": "layers"
       }
     ]
   },
@@ -4295,40 +4427,41 @@ const CONCEPTS = [
       "product"
     ],
     "important": false,
-    "intro": "User journeys, onboarding, and reducing friction in your app. Part of your Programming Knowledge Index — UI / UX & Product Thinking.",
+    "sources": [],
+    "intro": "User journeys, onboarding, and reducing friction in your app. Good UI is usable, consistent, and accessible — not just visually polished.",
     "steps": [
       {
-        "kicker": "What it is",
-        "title": "Understanding UX Flow",
-        "desc": "User journeys, onboarding, and reducing friction in your app. This is a core topic in your learning path — understand the idea before memorizing syntax.",
+        "kicker": "Definition",
+        "title": "What is UX Flow?",
+        "desc": "User journeys, onboarding, and reducing friction in your app.",
         "bullets": [
-          "Part of: UI / UX & Product Thinking",
-          "Read the steps, then try explaining it out loud",
-          "Build a small example in your own project"
+          "Users judge apps in seconds — clarity beats decoration",
+          "Responsive layouts work on phone, tablet, and desktop",
+          "Accessibility helps everyone, not just screen reader users"
         ],
         "icon": "map"
       },
       {
-        "kicker": "Why it matters",
-        "title": "Why you need this",
-        "desc": "Weak mental models here make everything built on top harder. UX Flow connects to real work in Next.js, MongoDB, and backend projects you're already building.",
+        "kicker": "How it works",
+        "title": "How UX Flow works in practice",
+        "desc": "UX Flow works by applying clear rules in code. User journeys, onboarding, and reducing friction in your app. The mechanics depend on your language and framework, but the underlying idea stays the same across projects.",
         "bullets": [
-          "Strong engineers explain concepts clearly",
-          "Interviewers test fundamentals, not just frameworks",
-          "Deep understanding beats copy-paste solutions"
+          "Core mechanism behind ux flow",
+          "Common in ui / ux & product thinking work",
+          "See code example below when applicable"
         ],
-        "icon": "lightbulb"
+        "icon": "cog"
       },
       {
-        "kicker": "Next step",
-        "title": "How to learn it deeply",
-        "desc": "Pick one resource, build one tiny example, then explain it without looking at notes — like a mock interview.",
+        "kicker": "In your stack",
+        "title": "Where UX Flow fits in real projects",
+        "desc": "In your Next.js + MongoDB projects, ux flow connects to features you build daily — API routes, React components, auth flows, and database queries. Recognizing the pattern helps you debug faster and design cleaner modules.",
         "bullets": [
-          "Step 1: Read and take notes",
-          "Step 2: Code a minimal example",
-          "Step 3: Explain out loud in English"
+          "Applies across frontend and backend code",
+          "Shows up when building real features, not toy examples",
+          "Combine with other topics in this index for full picture"
         ],
-        "icon": "target"
+        "icon": "layers"
       }
     ]
   },
@@ -4347,40 +4480,46 @@ const CONCEPTS = [
       "3d"
     ],
     "important": false,
-    "intro": "WebGL made approachable — 3D in the browser. Part of your Programming Knowledge Index — 3D & Advanced Frontend.",
+    "sources": [
+      {
+        "title": "Three.js — Documentation",
+        "url": "https://threejs.org/docs/"
+      }
+    ],
+    "intro": "WebGL made approachable — 3D in the browser. Three.js renders 3D scenes in the browser using WebGL under the hood.",
     "steps": [
       {
-        "kicker": "What it is",
-        "title": "Understanding Three.js Basics",
-        "desc": "WebGL made approachable — 3D in the browser. This is a core topic in your learning path — understand the idea before memorizing syntax.",
+        "kicker": "Definition",
+        "title": "What is Three.js Basics?",
+        "desc": "WebGL made approachable — 3D in the browser.",
         "bullets": [
-          "Part of: 3D & Advanced Frontend",
-          "Read the steps, then try explaining it out loud",
-          "Build a small example in your own project"
+          "WebGL draws triangles; Three.js abstracts scenes and cameras",
+          "Models load as GLTF from Blender or other 3D tools",
+          "Performance matters — too many draw calls drops frame rate"
         ],
         "icon": "box"
       },
       {
-        "kicker": "Why it matters",
-        "title": "Why you need this",
-        "desc": "Weak mental models here make everything built on top harder. Three.js Basics connects to real work in Next.js, MongoDB, and backend projects you're already building.",
+        "kicker": "How it works",
+        "title": "How Three.js Basics works in practice",
+        "desc": "Three.js Basics works by applying clear rules in code. WebGL made approachable — 3D in the browser. The mechanics depend on your language and framework, but the underlying idea stays the same across projects.",
         "bullets": [
-          "Strong engineers explain concepts clearly",
-          "Interviewers test fundamentals, not just frameworks",
-          "Deep understanding beats copy-paste solutions"
+          "Core mechanism behind three.js basics",
+          "Common in 3d & advanced frontend work",
+          "See code example below when applicable"
         ],
-        "icon": "lightbulb"
+        "icon": "cog"
       },
       {
-        "kicker": "Next step",
-        "title": "How to learn it deeply",
-        "desc": "Pick one resource, build one tiny example, then explain it without looking at notes — like a mock interview.",
+        "kicker": "In your stack",
+        "title": "Where Three.js Basics fits in real projects",
+        "desc": "In your Next.js + MongoDB projects, three.js basics connects to features you build daily — API routes, React components, auth flows, and database queries. Recognizing the pattern helps you debug faster and design cleaner modules.",
         "bullets": [
-          "Step 1: Read and take notes",
-          "Step 2: Code a minimal example",
-          "Step 3: Explain out loud in English"
+          "React Three Fiber wraps Three.js in components",
+          "Load GLTF models from /public folder",
+          "Use useFrame for animation loops"
         ],
-        "icon": "target"
+        "icon": "layers"
       }
     ]
   },
@@ -4399,40 +4538,41 @@ const CONCEPTS = [
       "renderer"
     ],
     "important": false,
-    "intro": "The three objects every Three.js app needs. Part of your Programming Knowledge Index — 3D & Advanced Frontend.",
+    "sources": [],
+    "intro": "The three objects every Three.js app needs. Three.js renders 3D scenes in the browser using WebGL under the hood.",
     "steps": [
       {
-        "kicker": "What it is",
-        "title": "Understanding Scene, Camera & Renderer",
-        "desc": "The three objects every Three.js app needs. This is a core topic in your learning path — understand the idea before memorizing syntax.",
+        "kicker": "Definition",
+        "title": "What is Scene, Camera & Renderer?",
+        "desc": "The three objects every Three.js app needs.",
         "bullets": [
-          "Part of: 3D & Advanced Frontend",
-          "Read the steps, then try explaining it out loud",
-          "Build a small example in your own project"
+          "WebGL draws triangles; Three.js abstracts scenes and cameras",
+          "Models load as GLTF from Blender or other 3D tools",
+          "Performance matters — too many draw calls drops frame rate"
         ],
         "icon": "camera"
       },
       {
-        "kicker": "Why it matters",
-        "title": "Why you need this",
-        "desc": "Weak mental models here make everything built on top harder. Scene, Camera & Renderer connects to real work in Next.js, MongoDB, and backend projects you're already building.",
+        "kicker": "How it works",
+        "title": "How Scene, Camera & Renderer works in practice",
+        "desc": "Scene, Camera & Renderer works by applying clear rules in code. The three objects every Three.js app needs. The mechanics depend on your language and framework, but the underlying idea stays the same across projects.",
         "bullets": [
-          "Strong engineers explain concepts clearly",
-          "Interviewers test fundamentals, not just frameworks",
-          "Deep understanding beats copy-paste solutions"
+          "Core mechanism behind scene, camera & renderer",
+          "Common in 3d & advanced frontend work",
+          "See code example below when applicable"
         ],
-        "icon": "lightbulb"
+        "icon": "cog"
       },
       {
-        "kicker": "Next step",
-        "title": "How to learn it deeply",
-        "desc": "Pick one resource, build one tiny example, then explain it without looking at notes — like a mock interview.",
+        "kicker": "In your stack",
+        "title": "Where Scene, Camera & Renderer fits in real projects",
+        "desc": "In your Next.js + MongoDB projects, scene, camera & renderer connects to features you build daily — API routes, React components, auth flows, and database queries. Recognizing the pattern helps you debug faster and design cleaner modules.",
         "bullets": [
-          "Step 1: Read and take notes",
-          "Step 2: Code a minimal example",
-          "Step 3: Explain out loud in English"
+          "React Three Fiber wraps Three.js in components",
+          "Load GLTF models from /public folder",
+          "Use useFrame for animation loops"
         ],
-        "icon": "target"
+        "icon": "layers"
       }
     ]
   },
@@ -4452,40 +4592,41 @@ const CONCEPTS = [
       "import"
     ],
     "important": false,
-    "intro": "Loading and displaying 3D models exported from Blender. Part of your Programming Knowledge Index — 3D & Advanced Frontend.",
+    "sources": [],
+    "intro": "Loading and displaying 3D models exported from Blender. Three.js renders 3D scenes in the browser using WebGL under the hood.",
     "steps": [
       {
-        "kicker": "What it is",
-        "title": "Understanding Models (GLTF & Blender)",
-        "desc": "Loading and displaying 3D models exported from Blender. This is a core topic in your learning path — understand the idea before memorizing syntax.",
+        "kicker": "Definition",
+        "title": "What is Models (GLTF & Blender)?",
+        "desc": "Loading and displaying 3D models exported from Blender.",
         "bullets": [
-          "Part of: 3D & Advanced Frontend",
-          "Read the steps, then try explaining it out loud",
-          "Build a small example in your own project"
+          "WebGL draws triangles; Three.js abstracts scenes and cameras",
+          "Models load as GLTF from Blender or other 3D tools",
+          "Performance matters — too many draw calls drops frame rate"
         ],
         "icon": "file-box"
       },
       {
-        "kicker": "Why it matters",
-        "title": "Why you need this",
-        "desc": "Weak mental models here make everything built on top harder. Models (GLTF & Blender) connects to real work in Next.js, MongoDB, and backend projects you're already building.",
+        "kicker": "How it works",
+        "title": "How Models (GLTF & Blender) works in practice",
+        "desc": "Models (GLTF & Blender) works by applying clear rules in code. Loading and displaying 3D models exported from Blender. The mechanics depend on your language and framework, but the underlying idea stays the same across projects.",
         "bullets": [
-          "Strong engineers explain concepts clearly",
-          "Interviewers test fundamentals, not just frameworks",
-          "Deep understanding beats copy-paste solutions"
+          "Core mechanism behind models (gltf & blender)",
+          "Common in 3d & advanced frontend work",
+          "See code example below when applicable"
         ],
-        "icon": "lightbulb"
+        "icon": "cog"
       },
       {
-        "kicker": "Next step",
-        "title": "How to learn it deeply",
-        "desc": "Pick one resource, build one tiny example, then explain it without looking at notes — like a mock interview.",
+        "kicker": "In your stack",
+        "title": "Where Models (GLTF & Blender) fits in real projects",
+        "desc": "In your Next.js + MongoDB projects, models (gltf & blender) connects to features you build daily — API routes, React components, auth flows, and database queries. Recognizing the pattern helps you debug faster and design cleaner modules.",
         "bullets": [
-          "Step 1: Read and take notes",
-          "Step 2: Code a minimal example",
-          "Step 3: Explain out loud in English"
+          "React Three Fiber wraps Three.js in components",
+          "Load GLTF models from /public folder",
+          "Use useFrame for animation loops"
         ],
-        "icon": "target"
+        "icon": "layers"
       }
     ]
   },
@@ -4504,40 +4645,41 @@ const CONCEPTS = [
       "mixer"
     ],
     "important": false,
-    "intro": "Keyframes, mixers, and animating objects in the scene. Part of your Programming Knowledge Index — 3D & Advanced Frontend.",
+    "sources": [],
+    "intro": "Keyframes, mixers, and animating objects in the scene. Three.js renders 3D scenes in the browser using WebGL under the hood.",
     "steps": [
       {
-        "kicker": "What it is",
-        "title": "Understanding Animations",
-        "desc": "Keyframes, mixers, and animating objects in the scene. This is a core topic in your learning path — understand the idea before memorizing syntax.",
+        "kicker": "Definition",
+        "title": "What is Animations?",
+        "desc": "Keyframes, mixers, and animating objects in the scene.",
         "bullets": [
-          "Part of: 3D & Advanced Frontend",
-          "Read the steps, then try explaining it out loud",
-          "Build a small example in your own project"
+          "WebGL draws triangles; Three.js abstracts scenes and cameras",
+          "Models load as GLTF from Blender or other 3D tools",
+          "Performance matters — too many draw calls drops frame rate"
         ],
         "icon": "play"
       },
       {
-        "kicker": "Why it matters",
-        "title": "Why you need this",
-        "desc": "Weak mental models here make everything built on top harder. Animations connects to real work in Next.js, MongoDB, and backend projects you're already building.",
+        "kicker": "How it works",
+        "title": "How Animations works in practice",
+        "desc": "Animations works by applying clear rules in code. Keyframes, mixers, and animating objects in the scene. The mechanics depend on your language and framework, but the underlying idea stays the same across projects.",
         "bullets": [
-          "Strong engineers explain concepts clearly",
-          "Interviewers test fundamentals, not just frameworks",
-          "Deep understanding beats copy-paste solutions"
+          "Core mechanism behind animations",
+          "Common in 3d & advanced frontend work",
+          "See code example below when applicable"
         ],
-        "icon": "lightbulb"
+        "icon": "cog"
       },
       {
-        "kicker": "Next step",
-        "title": "How to learn it deeply",
-        "desc": "Pick one resource, build one tiny example, then explain it without looking at notes — like a mock interview.",
+        "kicker": "In your stack",
+        "title": "Where Animations fits in real projects",
+        "desc": "In your Next.js + MongoDB projects, animations connects to features you build daily — API routes, React components, auth flows, and database queries. Recognizing the pattern helps you debug faster and design cleaner modules.",
         "bullets": [
-          "Step 1: Read and take notes",
-          "Step 2: Code a minimal example",
-          "Step 3: Explain out loud in English"
+          "React Three Fiber wraps Three.js in components",
+          "Load GLTF models from /public folder",
+          "Use useFrame for animation loops"
         ],
-        "icon": "target"
+        "icon": "layers"
       }
     ]
   },
@@ -4557,40 +4699,41 @@ const CONCEPTS = [
       "3d"
     ],
     "important": false,
-    "intro": "LOD, instancing, and keeping 60fps with complex scenes. Part of your Programming Knowledge Index — 3D & Advanced Frontend.",
+    "sources": [],
+    "intro": "LOD, instancing, and keeping 60fps with complex scenes. Three.js renders 3D scenes in the browser using WebGL under the hood.",
     "steps": [
       {
-        "kicker": "What it is",
-        "title": "Understanding Performance Optimization",
-        "desc": "LOD, instancing, and keeping 60fps with complex scenes. This is a core topic in your learning path — understand the idea before memorizing syntax.",
+        "kicker": "Definition",
+        "title": "What is Performance Optimization?",
+        "desc": "LOD, instancing, and keeping 60fps with complex scenes.",
         "bullets": [
-          "Part of: 3D & Advanced Frontend",
-          "Read the steps, then try explaining it out loud",
-          "Build a small example in your own project"
+          "WebGL draws triangles; Three.js abstracts scenes and cameras",
+          "Models load as GLTF from Blender or other 3D tools",
+          "Performance matters — too many draw calls drops frame rate"
         ],
         "icon": "gauge"
       },
       {
-        "kicker": "Why it matters",
-        "title": "Why you need this",
-        "desc": "Weak mental models here make everything built on top harder. Performance Optimization connects to real work in Next.js, MongoDB, and backend projects you're already building.",
+        "kicker": "How it works",
+        "title": "How Performance Optimization works in practice",
+        "desc": "Performance Optimization works by applying clear rules in code. LOD, instancing, and keeping 60fps with complex scenes. The mechanics depend on your language and framework, but the underlying idea stays the same across projects.",
         "bullets": [
-          "Strong engineers explain concepts clearly",
-          "Interviewers test fundamentals, not just frameworks",
-          "Deep understanding beats copy-paste solutions"
+          "Core mechanism behind performance optimization",
+          "Common in 3d & advanced frontend work",
+          "See code example below when applicable"
         ],
-        "icon": "lightbulb"
+        "icon": "cog"
       },
       {
-        "kicker": "Next step",
-        "title": "How to learn it deeply",
-        "desc": "Pick one resource, build one tiny example, then explain it without looking at notes — like a mock interview.",
+        "kicker": "In your stack",
+        "title": "Where Performance Optimization fits in real projects",
+        "desc": "In your Next.js + MongoDB projects, performance optimization connects to features you build daily — API routes, React components, auth flows, and database queries. Recognizing the pattern helps you debug faster and design cleaner modules.",
         "bullets": [
-          "Step 1: Read and take notes",
-          "Step 2: Code a minimal example",
-          "Step 3: Explain out loud in English"
+          "React Three Fiber wraps Three.js in components",
+          "Load GLTF models from /public folder",
+          "Use useFrame for animation loops"
         ],
-        "icon": "target"
+        "icon": "layers"
       }
     ]
   },
@@ -4610,40 +4753,46 @@ const CONCEPTS = [
       "commit"
     ],
     "important": false,
-    "intro": "Version control, branches, commits, and collaboration. Part of your Programming Knowledge Index — Tools & Ecosystem.",
+    "sources": [
+      {
+        "title": "GitHub Docs — Git",
+        "url": "https://docs.github.com/en/get-started/using-git"
+      }
+    ],
+    "intro": "Version control, branches, commits, and collaboration. Developer tools automate versioning, packaging, and deployment.",
     "steps": [
       {
-        "kicker": "What it is",
-        "title": "Understanding Git & GitHub",
-        "desc": "Version control, branches, commits, and collaboration. This is a core topic in your learning path — understand the idea before memorizing syntax.",
+        "kicker": "Definition",
+        "title": "What is Git & GitHub?",
+        "desc": "Version control, branches, commits, and collaboration.",
         "bullets": [
-          "Part of: Tools & Ecosystem",
-          "Read the steps, then try explaining it out loud",
-          "Build a small example in your own project"
+          "Git tracks every code change — branches isolate features",
+          "npm/pnpm install packages; lockfiles pin exact versions",
+          "Docker packages app + dependencies into reproducible containers"
         ],
         "icon": "git-branch"
       },
       {
-        "kicker": "Why it matters",
-        "title": "Why you need this",
-        "desc": "Weak mental models here make everything built on top harder. Git & GitHub connects to real work in Next.js, MongoDB, and backend projects you're already building.",
+        "kicker": "How it works",
+        "title": "How Git & GitHub works in practice",
+        "desc": "Git & GitHub works by applying clear rules in code. Version control, branches, commits, and collaboration. The mechanics depend on your language and framework, but the underlying idea stays the same across projects.",
         "bullets": [
-          "Strong engineers explain concepts clearly",
-          "Interviewers test fundamentals, not just frameworks",
-          "Deep understanding beats copy-paste solutions"
+          "git init → git add → git commit -m \"msg\"",
+          "git branch feature → git checkout feature",
+          "git push origin feature → open Pull Request on GitHub"
         ],
-        "icon": "lightbulb"
+        "icon": "cog"
       },
       {
-        "kicker": "Next step",
-        "title": "How to learn it deeply",
-        "desc": "Pick one resource, build one tiny example, then explain it without looking at notes — like a mock interview.",
+        "kicker": "In your stack",
+        "title": "Where Git & GitHub fits in real projects",
+        "desc": "In your Next.js + MongoDB projects, git & github connects to features you build daily — API routes, React components, auth flows, and database queries. Recognizing the pattern helps you debug faster and design cleaner modules.",
         "bullets": [
-          "Step 1: Read and take notes",
-          "Step 2: Code a minimal example",
-          "Step 3: Explain out loud in English"
+          "GitHub for your topic repo",
+          "pnpm for faster installs",
+          "Docker for consistent deploy environments"
         ],
-        "icon": "target"
+        "icon": "layers"
       }
     ]
   },
@@ -4662,40 +4811,46 @@ const CONCEPTS = [
       "images"
     ],
     "important": false,
-    "intro": "Containers for consistent dev and deployment environments. Part of your Programming Knowledge Index — Tools & Ecosystem.",
+    "sources": [
+      {
+        "title": "Docker — Get started",
+        "url": "https://docs.docker.com/get-started/"
+      }
+    ],
+    "intro": "Containers for consistent dev and deployment environments. Developer tools automate versioning, packaging, and deployment.",
     "steps": [
       {
-        "kicker": "What it is",
-        "title": "Understanding Docker",
-        "desc": "Containers for consistent dev and deployment environments. This is a core topic in your learning path — understand the idea before memorizing syntax.",
+        "kicker": "Definition",
+        "title": "What is Docker?",
+        "desc": "Containers for consistent dev and deployment environments.",
         "bullets": [
-          "Part of: Tools & Ecosystem",
-          "Read the steps, then try explaining it out loud",
-          "Build a small example in your own project"
+          "Git tracks every code change — branches isolate features",
+          "npm/pnpm install packages; lockfiles pin exact versions",
+          "Docker packages app + dependencies into reproducible containers"
         ],
         "icon": "container"
       },
       {
-        "kicker": "Why it matters",
-        "title": "Why you need this",
-        "desc": "Weak mental models here make everything built on top harder. Docker connects to real work in Next.js, MongoDB, and backend projects you're already building.",
+        "kicker": "How it works",
+        "title": "How Docker works in practice",
+        "desc": "A Dockerfile lists steps to build an image. docker build creates the image; docker run starts a container from it. Containers share the host kernel but have isolated filesystems and networks.",
         "bullets": [
-          "Strong engineers explain concepts clearly",
-          "Interviewers test fundamentals, not just frameworks",
-          "Deep understanding beats copy-paste solutions"
+          "Core mechanism behind docker",
+          "Common in tools & ecosystem work",
+          "See code example below when applicable"
         ],
-        "icon": "lightbulb"
+        "icon": "cog"
       },
       {
-        "kicker": "Next step",
-        "title": "How to learn it deeply",
-        "desc": "Pick one resource, build one tiny example, then explain it without looking at notes — like a mock interview.",
+        "kicker": "In your stack",
+        "title": "Where Docker fits in real projects",
+        "desc": "In your Next.js + MongoDB projects, docker connects to features you build daily — API routes, React components, auth flows, and database queries. Recognizing the pattern helps you debug faster and design cleaner modules.",
         "bullets": [
-          "Step 1: Read and take notes",
-          "Step 2: Code a minimal example",
-          "Step 3: Explain out loud in English"
+          "GitHub for your topic repo",
+          "pnpm for faster installs",
+          "Docker for consistent deploy environments"
         ],
-        "icon": "target"
+        "icon": "layers"
       }
     ]
   },
@@ -4715,40 +4870,41 @@ const CONCEPTS = [
       "lockfile"
     ],
     "important": false,
-    "intro": "Installing dependencies and running scripts. Part of your Programming Knowledge Index — Tools & Ecosystem.",
+    "sources": [],
+    "intro": "Installing dependencies and running scripts. Developer tools automate versioning, packaging, and deployment.",
     "steps": [
       {
-        "kicker": "What it is",
-        "title": "Understanding npm & pnpm",
-        "desc": "Installing dependencies and running scripts. This is a core topic in your learning path — understand the idea before memorizing syntax.",
+        "kicker": "Definition",
+        "title": "What is npm & pnpm?",
+        "desc": "Installing dependencies and running scripts.",
         "bullets": [
-          "Part of: Tools & Ecosystem",
-          "Read the steps, then try explaining it out loud",
-          "Build a small example in your own project"
+          "Git tracks every code change — branches isolate features",
+          "npm/pnpm install packages; lockfiles pin exact versions",
+          "Docker packages app + dependencies into reproducible containers"
         ],
         "icon": "package"
       },
       {
-        "kicker": "Why it matters",
-        "title": "Why you need this",
-        "desc": "Weak mental models here make everything built on top harder. npm & pnpm connects to real work in Next.js, MongoDB, and backend projects you're already building.",
+        "kicker": "How it works",
+        "title": "How npm & pnpm works in practice",
+        "desc": "npm & pnpm works by applying clear rules in code. Installing dependencies and running scripts. The mechanics depend on your language and framework, but the underlying idea stays the same across projects.",
         "bullets": [
-          "Strong engineers explain concepts clearly",
-          "Interviewers test fundamentals, not just frameworks",
-          "Deep understanding beats copy-paste solutions"
+          "Core mechanism behind npm & pnpm",
+          "Common in tools & ecosystem work",
+          "See code example below when applicable"
         ],
-        "icon": "lightbulb"
+        "icon": "cog"
       },
       {
-        "kicker": "Next step",
-        "title": "How to learn it deeply",
-        "desc": "Pick one resource, build one tiny example, then explain it without looking at notes — like a mock interview.",
+        "kicker": "In your stack",
+        "title": "Where npm & pnpm fits in real projects",
+        "desc": "In your Next.js + MongoDB projects, npm & pnpm connects to features you build daily — API routes, React components, auth flows, and database queries. Recognizing the pattern helps you debug faster and design cleaner modules.",
         "bullets": [
-          "Step 1: Read and take notes",
-          "Step 2: Code a minimal example",
-          "Step 3: Explain out loud in English"
+          "GitHub for your topic repo",
+          "pnpm for faster installs",
+          "Docker for consistent deploy environments"
         ],
-        "icon": "target"
+        "icon": "layers"
       }
     ]
   },
@@ -4768,40 +4924,41 @@ const CONCEPTS = [
       "build"
     ],
     "important": false,
-    "intro": "Vite, Webpack, Turbopack — bundling and dev servers. Part of your Programming Knowledge Index — Tools & Ecosystem.",
+    "sources": [],
+    "intro": "Vite, Webpack, Turbopack — bundling and dev servers. Developer tools automate versioning, packaging, and deployment.",
     "steps": [
       {
-        "kicker": "What it is",
-        "title": "Understanding Build Tools",
-        "desc": "Vite, Webpack, Turbopack — bundling and dev servers. This is a core topic in your learning path — understand the idea before memorizing syntax.",
+        "kicker": "Definition",
+        "title": "What is Build Tools?",
+        "desc": "Vite, Webpack, Turbopack — bundling and dev servers.",
         "bullets": [
-          "Part of: Tools & Ecosystem",
-          "Read the steps, then try explaining it out loud",
-          "Build a small example in your own project"
+          "Git tracks every code change — branches isolate features",
+          "npm/pnpm install packages; lockfiles pin exact versions",
+          "Docker packages app + dependencies into reproducible containers"
         ],
         "icon": "hammer"
       },
       {
-        "kicker": "Why it matters",
-        "title": "Why you need this",
-        "desc": "Weak mental models here make everything built on top harder. Build Tools connects to real work in Next.js, MongoDB, and backend projects you're already building.",
+        "kicker": "How it works",
+        "title": "How Build Tools works in practice",
+        "desc": "Build Tools works by applying clear rules in code. Vite, Webpack, Turbopack — bundling and dev servers. The mechanics depend on your language and framework, but the underlying idea stays the same across projects.",
         "bullets": [
-          "Strong engineers explain concepts clearly",
-          "Interviewers test fundamentals, not just frameworks",
-          "Deep understanding beats copy-paste solutions"
+          "Core mechanism behind build tools",
+          "Common in tools & ecosystem work",
+          "See code example below when applicable"
         ],
-        "icon": "lightbulb"
+        "icon": "cog"
       },
       {
-        "kicker": "Next step",
-        "title": "How to learn it deeply",
-        "desc": "Pick one resource, build one tiny example, then explain it without looking at notes — like a mock interview.",
+        "kicker": "In your stack",
+        "title": "Where Build Tools fits in real projects",
+        "desc": "In your Next.js + MongoDB projects, build tools connects to features you build daily — API routes, React components, auth flows, and database queries. Recognizing the pattern helps you debug faster and design cleaner modules.",
         "bullets": [
-          "Step 1: Read and take notes",
-          "Step 2: Code a minimal example",
-          "Step 3: Explain out loud in English"
+          "GitHub for your topic repo",
+          "pnpm for faster installs",
+          "Docker for consistent deploy environments"
         ],
-        "icon": "target"
+        "icon": "layers"
       }
     ]
   },
@@ -4820,40 +4977,41 @@ const CONCEPTS = [
       "breakpoints"
     ],
     "important": false,
-    "intro": "Systematic approach — reproduce, isolate, fix, verify. Part of your Programming Knowledge Index — Software Engineering Mindset.",
+    "sources": [],
+    "intro": "Systematic approach — reproduce, isolate, fix, verify. Engineering mindset — how to think about code quality, debugging, and trade-offs.",
     "steps": [
       {
-        "kicker": "What it is",
-        "title": "Understanding Debugging Strategy",
-        "desc": "Systematic approach — reproduce, isolate, fix, verify. This is a core topic in your learning path — understand the idea before memorizing syntax.",
+        "kicker": "Definition",
+        "title": "What is Debugging Strategy?",
+        "desc": "Systematic approach — reproduce, isolate, fix, verify.",
         "bullets": [
-          "Part of: Software Engineering Mindset",
-          "Read the steps, then try explaining it out loud",
-          "Build a small example in your own project"
+          "Code is read more than written — optimize for clarity",
+          "Every architecture choice is a trade-off, not a silver bullet",
+          "Debug systematically: reproduce → isolate → fix → verify"
         ],
         "icon": "bug"
       },
       {
-        "kicker": "Why it matters",
-        "title": "Why you need this",
-        "desc": "Weak mental models here make everything built on top harder. Debugging Strategy connects to real work in Next.js, MongoDB, and backend projects you're already building.",
+        "kicker": "How it works",
+        "title": "How Debugging Strategy works in practice",
+        "desc": "Debugging Strategy works by applying clear rules in code. Systematic approach — reproduce, isolate, fix, verify. The mechanics depend on your language and framework, but the underlying idea stays the same across projects.",
         "bullets": [
-          "Strong engineers explain concepts clearly",
-          "Interviewers test fundamentals, not just frameworks",
-          "Deep understanding beats copy-paste solutions"
+          "Core mechanism behind debugging strategy",
+          "Common in software engineering mindset work",
+          "See code example below when applicable"
         ],
-        "icon": "lightbulb"
+        "icon": "cog"
       },
       {
-        "kicker": "Next step",
-        "title": "How to learn it deeply",
-        "desc": "Pick one resource, build one tiny example, then explain it without looking at notes — like a mock interview.",
+        "kicker": "In your stack",
+        "title": "Where Debugging Strategy fits in real projects",
+        "desc": "In your Next.js + MongoDB projects, debugging strategy connects to features you build daily — API routes, React components, auth flows, and database queries. Recognizing the pattern helps you debug faster and design cleaner modules.",
         "bullets": [
-          "Step 1: Read and take notes",
-          "Step 2: Code a minimal example",
-          "Step 3: Explain out loud in English"
+          "Applies across frontend and backend code",
+          "Shows up when building real features, not toy examples",
+          "Combine with other topics in this index for full picture"
         ],
-        "icon": "target"
+        "icon": "layers"
       }
     ]
   },
@@ -4872,40 +5030,41 @@ const CONCEPTS = [
       "clean code"
     ],
     "important": false,
-    "intro": "Naming, structure, and writing code others (and future you) understand. Part of your Programming Knowledge Index — Software Engineering Mindset.",
+    "sources": [],
+    "intro": "Naming, structure, and writing code others (and future you) understand. Engineering mindset — how to think about code quality, debugging, and trade-offs.",
     "steps": [
       {
-        "kicker": "What it is",
-        "title": "Understanding Code Readability",
-        "desc": "Naming, structure, and writing code others (and future you) understand. This is a core topic in your learning path — understand the idea before memorizing syntax.",
+        "kicker": "Definition",
+        "title": "What is Code Readability?",
+        "desc": "Naming, structure, and writing code others (and future you) understand.",
         "bullets": [
-          "Part of: Software Engineering Mindset",
-          "Read the steps, then try explaining it out loud",
-          "Build a small example in your own project"
+          "Code is read more than written — optimize for clarity",
+          "Every architecture choice is a trade-off, not a silver bullet",
+          "Debug systematically: reproduce → isolate → fix → verify"
         ],
         "icon": "book-open"
       },
       {
-        "kicker": "Why it matters",
-        "title": "Why you need this",
-        "desc": "Weak mental models here make everything built on top harder. Code Readability connects to real work in Next.js, MongoDB, and backend projects you're already building.",
+        "kicker": "How it works",
+        "title": "How Code Readability works in practice",
+        "desc": "Code Readability works by applying clear rules in code. Naming, structure, and writing code others (and future you) understand. The mechanics depend on your language and framework, but the underlying idea stays the same across projects.",
         "bullets": [
-          "Strong engineers explain concepts clearly",
-          "Interviewers test fundamentals, not just frameworks",
-          "Deep understanding beats copy-paste solutions"
+          "Core mechanism behind code readability",
+          "Common in software engineering mindset work",
+          "See code example below when applicable"
         ],
-        "icon": "lightbulb"
+        "icon": "cog"
       },
       {
-        "kicker": "Next step",
-        "title": "How to learn it deeply",
-        "desc": "Pick one resource, build one tiny example, then explain it without looking at notes — like a mock interview.",
+        "kicker": "In your stack",
+        "title": "Where Code Readability fits in real projects",
+        "desc": "In your Next.js + MongoDB projects, code readability connects to features you build daily — API routes, React components, auth flows, and database queries. Recognizing the pattern helps you debug faster and design cleaner modules.",
         "bullets": [
-          "Step 1: Read and take notes",
-          "Step 2: Code a minimal example",
-          "Step 3: Explain out loud in English"
+          "Applies across frontend and backend code",
+          "Shows up when building real features, not toy examples",
+          "Combine with other topics in this index for full picture"
         ],
-        "icon": "target"
+        "icon": "layers"
       }
     ]
   },
@@ -4924,40 +5083,41 @@ const CONCEPTS = [
       "single responsibility"
     ],
     "important": false,
-    "intro": "Each module does one job — easier to test and change. Part of your Programming Knowledge Index — Software Engineering Mindset.",
+    "sources": [],
+    "intro": "Each module does one job — easier to test and change. Engineering mindset — how to think about code quality, debugging, and trade-offs.",
     "steps": [
       {
-        "kicker": "What it is",
-        "title": "Understanding Separation of Concerns",
-        "desc": "Each module does one job — easier to test and change. This is a core topic in your learning path — understand the idea before memorizing syntax.",
+        "kicker": "Definition",
+        "title": "What is Separation of Concerns?",
+        "desc": "Each module does one job — easier to test and change.",
         "bullets": [
-          "Part of: Software Engineering Mindset",
-          "Read the steps, then try explaining it out loud",
-          "Build a small example in your own project"
+          "Code is read more than written — optimize for clarity",
+          "Every architecture choice is a trade-off, not a silver bullet",
+          "Debug systematically: reproduce → isolate → fix → verify"
         ],
         "icon": "split"
       },
       {
-        "kicker": "Why it matters",
-        "title": "Why you need this",
-        "desc": "Weak mental models here make everything built on top harder. Separation of Concerns connects to real work in Next.js, MongoDB, and backend projects you're already building.",
+        "kicker": "How it works",
+        "title": "How Separation of Concerns works in practice",
+        "desc": "Separation of Concerns works by applying clear rules in code. Each module does one job — easier to test and change. The mechanics depend on your language and framework, but the underlying idea stays the same across projects.",
         "bullets": [
-          "Strong engineers explain concepts clearly",
-          "Interviewers test fundamentals, not just frameworks",
-          "Deep understanding beats copy-paste solutions"
+          "Core mechanism behind separation of concerns",
+          "Common in software engineering mindset work",
+          "See code example below when applicable"
         ],
-        "icon": "lightbulb"
+        "icon": "cog"
       },
       {
-        "kicker": "Next step",
-        "title": "How to learn it deeply",
-        "desc": "Pick one resource, build one tiny example, then explain it without looking at notes — like a mock interview.",
+        "kicker": "In your stack",
+        "title": "Where Separation of Concerns fits in real projects",
+        "desc": "In your Next.js + MongoDB projects, separation of concerns connects to features you build daily — API routes, React components, auth flows, and database queries. Recognizing the pattern helps you debug faster and design cleaner modules.",
         "bullets": [
-          "Step 1: Read and take notes",
-          "Step 2: Code a minimal example",
-          "Step 3: Explain out loud in English"
+          "Applies across frontend and backend code",
+          "Shows up when building real features, not toy examples",
+          "Combine with other topics in this index for full picture"
         ],
-        "icon": "target"
+        "icon": "layers"
       }
     ]
   },
@@ -4976,40 +5136,41 @@ const CONCEPTS = [
       "bottleneck"
     ],
     "important": false,
-    "intro": "Measure first, optimize bottlenecks, avoid premature optimization. Part of your Programming Knowledge Index — Software Engineering Mindset.",
+    "sources": [],
+    "intro": "Measure first, optimize bottlenecks, avoid premature optimization. Engineering mindset — how to think about code quality, debugging, and trade-offs.",
     "steps": [
       {
-        "kicker": "What it is",
-        "title": "Understanding Performance Thinking",
-        "desc": "Measure first, optimize bottlenecks, avoid premature optimization. This is a core topic in your learning path — understand the idea before memorizing syntax.",
+        "kicker": "Definition",
+        "title": "What is Performance Thinking?",
+        "desc": "Measure first, optimize bottlenecks, avoid premature optimization.",
         "bullets": [
-          "Part of: Software Engineering Mindset",
-          "Read the steps, then try explaining it out loud",
-          "Build a small example in your own project"
+          "Code is read more than written — optimize for clarity",
+          "Every architecture choice is a trade-off, not a silver bullet",
+          "Debug systematically: reproduce → isolate → fix → verify"
         ],
         "icon": "zap"
       },
       {
-        "kicker": "Why it matters",
-        "title": "Why you need this",
-        "desc": "Weak mental models here make everything built on top harder. Performance Thinking connects to real work in Next.js, MongoDB, and backend projects you're already building.",
+        "kicker": "How it works",
+        "title": "How Performance Thinking works in practice",
+        "desc": "Performance Thinking works by applying clear rules in code. Measure first, optimize bottlenecks, avoid premature optimization. The mechanics depend on your language and framework, but the underlying idea stays the same across projects.",
         "bullets": [
-          "Strong engineers explain concepts clearly",
-          "Interviewers test fundamentals, not just frameworks",
-          "Deep understanding beats copy-paste solutions"
+          "Core mechanism behind performance thinking",
+          "Common in software engineering mindset work",
+          "See code example below when applicable"
         ],
-        "icon": "lightbulb"
+        "icon": "cog"
       },
       {
-        "kicker": "Next step",
-        "title": "How to learn it deeply",
-        "desc": "Pick one resource, build one tiny example, then explain it without looking at notes — like a mock interview.",
+        "kicker": "In your stack",
+        "title": "Where Performance Thinking fits in real projects",
+        "desc": "In your Next.js + MongoDB projects, performance thinking connects to features you build daily — API routes, React components, auth flows, and database queries. Recognizing the pattern helps you debug faster and design cleaner modules.",
         "bullets": [
-          "Step 1: Read and take notes",
-          "Step 2: Code a minimal example",
-          "Step 3: Explain out loud in English"
+          "Applies across frontend and backend code",
+          "Shows up when building real features, not toy examples",
+          "Combine with other topics in this index for full picture"
         ],
-        "icon": "target"
+        "icon": "layers"
       }
     ]
   },
@@ -5028,40 +5189,41 @@ const CONCEPTS = [
       "architecture"
     ],
     "important": true,
-    "intro": "Every design choice has costs — speed vs simplicity, consistency vs availability. Part of your Programming Knowledge Index — Software Engineering Mindset.",
+    "sources": [],
+    "intro": "Every design choice has costs — speed vs simplicity, consistency vs availability. Engineering mindset — how to think about code quality, debugging, and trade-offs.",
     "steps": [
       {
-        "kicker": "What it is",
-        "title": "Understanding Trade-offs",
-        "desc": "Every design choice has costs — speed vs simplicity, consistency vs availability. This is a core topic in your learning path — understand the idea before memorizing syntax.",
+        "kicker": "Definition",
+        "title": "What is Trade-offs?",
+        "desc": "Every design choice has costs — speed vs simplicity, consistency vs availability.",
         "bullets": [
-          "Part of: Software Engineering Mindset",
-          "Read the steps, then try explaining it out loud",
-          "⚠️ Marked as especially important"
+          "Code is read more than written — optimize for clarity",
+          "Every architecture choice is a trade-off, not a silver bullet",
+          "Debug systematically: reproduce → isolate → fix → verify"
         ],
         "icon": "scale"
       },
       {
-        "kicker": "Why it matters",
-        "title": "Why you need this",
-        "desc": "Weak mental models here make everything built on top harder. Trade-offs connects to real work in Next.js, MongoDB, and backend projects you're already building.",
+        "kicker": "How it works",
+        "title": "How Trade-offs works in practice",
+        "desc": "Caching speeds reads but risks stale data. JWT scales horizontally but is hard to revoke. SQL joins are flexible; NoSQL embeds are fast but duplicate data. No option is free — pick based on constraints.",
         "bullets": [
-          "Strong engineers explain concepts clearly",
-          "Interviewers test fundamentals, not just frameworks",
-          "Deep understanding beats copy-paste solutions"
+          "Core mechanism behind trade-offs",
+          "Common in software engineering mindset work",
+          "See code example below when applicable"
         ],
-        "icon": "lightbulb"
+        "icon": "cog"
       },
       {
-        "kicker": "Next step",
-        "title": "How to learn it deeply",
-        "desc": "Pick one resource, build one tiny example, then explain it without looking at notes — like a mock interview.",
+        "kicker": "In your stack",
+        "title": "Where Trade-offs fits in real projects",
+        "desc": "In your Next.js + MongoDB projects, trade-offs connects to features you build daily — API routes, React components, auth flows, and database queries. Recognizing the pattern helps you debug faster and design cleaner modules.",
         "bullets": [
-          "Step 1: Read and take notes",
-          "Step 2: Code a minimal example",
-          "Step 3: Explain out loud in English"
+          "Applies across frontend and backend code",
+          "Shows up when building real features, not toy examples",
+          "Combine with other topics in this index for full picture"
         ],
-        "icon": "target"
+        "icon": "layers"
       }
     ]
   }

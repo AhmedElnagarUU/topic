@@ -20,6 +20,30 @@ const DocPage = (function () {
     return div.innerHTML;
   }
 
+  function renderSources(sources) {
+    if (!sources?.length) {
+      return `
+        <div class="doc-sources doc-sources-empty">
+          <p class="doc-sources-title"><i data-lucide="link" class="w-4 h-4"></i> Sources</p>
+          <p class="doc-sources-hint">No links yet — add URLs in <code>scripts/topic-sources.js</code> and rebuild.</p>
+        </div>`;
+    }
+    return `
+      <div class="doc-sources">
+        <p class="doc-sources-title"><i data-lucide="link" class="w-4 h-4"></i> Sources</p>
+        <ul class="doc-sources-list">
+          ${sources.map((s) => `
+            <li>
+              <a href="${escapeHtml(s.url)}" target="_blank" rel="noopener noreferrer" class="doc-source-link">
+                <i data-lucide="external-link" class="w-3.5 h-3.5"></i>
+                ${escapeHtml(s.title)}
+              </a>
+            </li>
+          `).join('')}
+        </ul>
+      </div>`;
+  }
+
   function renderVisual(step, color) {
     const v = step.visual;
     if (!v) {
@@ -228,6 +252,7 @@ const DocPage = (function () {
         </div>
         <h1>${escapeHtml(concept.title)}${concept.important ? ' <span class="doc-important-badge">Important</span>' : ''}</h1>
         <p class="doc-hero-intro">${escapeHtml(concept.intro)}</p>
+        ${renderSources(concept.sources)}
       </header>
       ${stepsHtml}
     `;
