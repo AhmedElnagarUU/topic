@@ -270,6 +270,55 @@
   color: rgba(255, 255, 255, 0.75);
 }
 
+/* Side navigation on explanation card */
+.step-nav-shell {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.step-nav-content {
+  flex: 1;
+  min-width: 0;
+}
+
+.step-side-nav {
+  flex-shrink: 0;
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  border: 1px solid rgba(99, 102, 241, 0.25);
+  background: rgba(99, 102, 241, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.22s ease;
+  color: #a5b4fc;
+}
+
+.step-side-nav:hover:not(:disabled) {
+  background: rgba(99, 102, 241, 0.22);
+  border-color: rgba(99, 102, 241, 0.45);
+  color: #c7d2fe;
+  transform: scale(1.05);
+}
+
+.step-side-nav:disabled {
+  opacity: 0.22;
+  cursor: not-allowed;
+  border-color: rgba(255, 255, 255, 0.06);
+  background: rgba(255, 255, 255, 0.03);
+  color: rgba(255, 255, 255, 0.25);
+}
+
+@media (max-width: 480px) {
+  .step-side-nav {
+    width: 38px;
+    height: 38px;
+  }
+}
+
 /* Nav buttons */
 .nav-btn {
   width: 36px;
@@ -285,9 +334,14 @@
   color: rgba(255, 255, 255, 0.5);
 }
 
-.nav-btn:hover {
+.nav-btn:hover:not(:disabled) {
   background: rgba(255, 255, 255, 0.1);
   color: rgba(255, 255, 255, 0.8);
+}
+
+.nav-btn:disabled {
+  opacity: 0.25;
+  cursor: not-allowed;
 }
 
 /* Completion screen */
@@ -441,8 +495,8 @@
 
 .diagram-canvas {
   position: relative;
-  min-height: 420px;
-  height: clamp(420px, 50vh, 560px);
+  min-height: 440px;
+  height: clamp(440px, 52vh, 580px);
   background: rgba(18, 18, 26, 0.6);
   border: 1px solid rgba(255, 255, 255, 0.06);
   border-radius: 20px;
@@ -486,27 +540,34 @@
 
 .connection-line {
   fill: none;
-  stroke-width: 2.5;
+  stroke-width: 2;
   stroke-linecap: round;
+  vector-effect: non-scaling-stroke;
   opacity: 0;
-  transition: opacity 0.5s ease, stroke-width 0.25s ease, filter 0.25s ease;
+  transition: opacity 0.45s ease, stroke-width 0.3s ease;
   pointer-events: none;
 }
 
 .connection-line.revealed {
-  opacity: 0.2;
+  opacity: 0.22;
 }
 
 .connection-line.active {
   opacity: 1;
-  stroke-width: 3;
-  filter: drop-shadow(0 0 6px currentColor);
+  stroke-width: 2.5;
+  animation: line-pulse 1.6s ease-in-out infinite;
+}
+
+@keyframes line-pulse {
+  0%, 100% { opacity: 0.7; }
+  50% { opacity: 1; }
 }
 
 .connection-line-bg {
   fill: none;
-  stroke: rgba(255, 255, 255, 0.06);
+  stroke: rgba(255, 255, 255, 0.05);
   stroke-width: 2;
+  vector-effect: non-scaling-stroke;
   stroke-linecap: round;
   pointer-events: none;
   opacity: 0;
@@ -517,9 +578,15 @@
   opacity: 1;
 }
 
-#nodes-container {
+#nodes-container,
+.nodes-layer {
   position: absolute;
   inset: 36px 24px 28px 24px;
+  pointer-events: none;
+}
+
+.nodes-layer .node-card {
+  pointer-events: auto;
 }
 
 .connection-labels {
@@ -571,20 +638,20 @@
 /* Animated dash along path */
 .flow-particle {
   fill: none;
-  stroke-width: 4;
+  stroke-width: 2.5;
   stroke-linecap: round;
-  stroke-dasharray: 10 200;
+  stroke-dasharray: 8 180;
   opacity: 0;
   transition: opacity 0.4s ease;
 }
 
 .flow-particle.active {
-  opacity: 1;
-  animation: flow-along 1.8s linear infinite;
+  opacity: 0.85;
+  animation: flow-along 2.2s linear infinite;
 }
 
 @keyframes flow-along {
-  to { stroke-dashoffset: -210; }
+  to { stroke-dashoffset: -188; }
 }
 
 /* Node cards */
@@ -608,8 +675,9 @@
 }
 
 .node-card.dimmed {
-  opacity: 0.35;
-  scale: 0.95;
+  opacity: 0.42;
+  scale: 0.96;
+  filter: saturate(0.55);
 }
 
 .node-card.highlight {
@@ -653,7 +721,18 @@
 }
 
 .node-card.sending .node-icon-wrap {
-  box-shadow: 0 0 36px rgba(52, 211, 153, 0.35), 0 8px 32px rgba(0, 0, 0, 0.4);
+  box-shadow: 0 0 24px rgba(52, 211, 153, 0.3), 0 8px 32px rgba(0, 0, 0, 0.4);
+  animation: send-pulse 1.8s ease-in-out infinite;
+}
+
+@keyframes send-pulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.04); }
+}
+
+.flow-packet circle {
+  opacity: 0.95;
+  filter: drop-shadow(0 0 2px currentColor);
 }
 
 .node-label {

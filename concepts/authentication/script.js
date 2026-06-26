@@ -1,93 +1,21 @@
 /**
  * Authentication Concept — Step-by-step Tutorial
- * Linear flow: Building Blocks → Two Approaches → Session → JWT
+ * Linear flow: Two Approaches → Session → JWT
  */
-
-const INTRO = {
-  id: 'intro',
-  accent: '#818cf8',
-  nodes: [
-    { id: 'client', label: 'Client', sublabel: 'Browser or mobile app', icon: 'monitor-smartphone', x: 18, y: 52,
-      tooltip: 'The user\'s device — a web browser, phone app, or desktop program. This is where the user types their password and clicks "Log in".' },
-    { id: 'server', label: 'Server', sublabel: 'Your backend application', icon: 'server', x: 50, y: 52,
-      tooltip: 'The backend that runs your app logic. It receives requests, checks credentials, and decides who gets access.' },
-    { id: 'database', label: 'Database', sublabel: 'Stores user data', icon: 'database', x: 82, y: 52,
-      tooltip: 'Where user accounts, passwords (hashed), and session records live. Redis, PostgreSQL, MongoDB — any persistent store.' },
-  ],
-  connections: [
-    { from: 'client', to: 'server', label: 'HTTP requests', color: '#818cf8',
-      tooltip: 'The client sends requests to the server — login forms, page loads, API calls.' },
-    { from: 'server', to: 'database', label: 'read / write data', color: '#8b5cf6',
-      tooltip: 'The server reads and writes user data — checking passwords, saving sessions, fetching profiles.' },
-  ],
-  steps: [
-    {
-      subtitle: 'The big picture',
-      title: 'What is authentication?',
-      desc: 'Authentication answers one simple question: "Who is making this request?" Every time you log into a website, open a mobile app, or call an API, something needs to verify your identity. Before we look at how that works, let\'s meet the three building blocks present in every auth system.',
-      bullets: [
-        'Authentication = proving who you are',
-        'Authorization (different topic) = what you\'re allowed to do',
-        'Every auth method uses the same three players — they just pass data differently',
-      ],
-      watch: 'No diagram yet — we\'ll add pieces one at a time.',
-      highlight: { nodes: [], connections: [] },
-      showDiagram: false,
-    },
-    {
-      subtitle: 'Player 1',
-      title: 'The Client — where the user sits',
-      desc: 'The client is whatever the user interacts with directly: a web browser (Chrome, Safari), a mobile app on their phone, or a desktop program. When you fill in a login form and click "Sign in", the client packages your email and password and sends them to the server.',
-      bullets: [
-        'Browsers, mobile apps, and desktop apps are all clients',
-        'The client never stores passwords long-term (ideally)',
-        'After login, the client must remember "proof" that you\'re logged in',
-      ],
-      watch: 'Only the Client node appears. This is where every login starts.',
-      highlight: { nodes: ['client'], connections: [] },
-      showDiagram: true,
-    },
-    {
-      subtitle: 'Player 2',
-      title: 'The Server — the gatekeeper',
-      desc: 'The server is your backend — it could be an Express.js app, a Django server, or a cloud function. It receives requests from clients, validates credentials, and decides whether to grant access. The server is the brain of authentication: it checks passwords and issues proof of identity.',
-      bullets: [
-        'Runs on a remote machine (AWS, Heroku, your own server)',
-        'Receives login requests and validates credentials',
-        'Issues whatever "proof" the auth method uses (cookie, token, etc.)',
-      ],
-      watch: 'Now you see Client and Server. The arrow shows requests traveling between them.',
-      highlight: { nodes: ['client', 'server'], connections: [0] },
-      showDiagram: true,
-    },
-    {
-      subtitle: 'Player 3',
-      title: 'The Database — where identity lives',
-      desc: 'The database stores everything persistent: user accounts, hashed passwords, session records, or API keys. When the server needs to check "is this password correct?" or "who owns session ID abc123?", it queries the database. Not every auth method uses the database on every request — but it\'s always involved at login time.',
-      bullets: [
-        'Stores user accounts and hashed passwords',
-        'May store session records (session-based auth)',
-        'Could be PostgreSQL, Redis, MongoDB, or in-memory storage',
-      ],
-      watch: 'All three players are connected. This is the foundation for every auth method.',
-      highlight: { nodes: ['client', 'server', 'database'], connections: [0, 1] },
-      showDiagram: true,
-    },
-  ],
-};
 
 const COMPARE = {
   id: 'compare',
   accent: '#818cf8',
   steps: [
     {
-      subtitle: 'The key question',
-      title: 'Where should identity be stored?',
-      desc: 'Now that you know the three players, here\'s the fundamental question every auth system must answer: after the user logs in, where does the proof of identity live? There are two main answers — and they shape everything else about how your app works.',
+      subtitle: 'The big picture',
+      title: 'What is authentication?',
+      desc: 'Authentication answers one simple question: "Who is making this request?" Every time you log into a website, open a mobile app, or call an API, something needs to verify your identity. After login succeeds, the real design choice is where that proof lives — and there are two main answers.',
       bullets: [
-        'Option A: The server remembers you (session-based)',
-        'Option B: The client carries proof (token-based / JWT)',
-        'Both start the same way — user sends email + password once',
+        'Authentication = proving who you are',
+        'Authorization (different topic) = what you\'re allowed to do',
+        'Option A: the server remembers you (session-based)',
+        'Option B: the client carries proof (token-based / JWT)',
       ],
       watch: 'Read the comparison cards below to see both approaches side by side.',
       highlight: { compareFocus: null },
@@ -139,17 +67,9 @@ const COMPARE = {
 
 const TUTORIAL_PHASES = [
   {
-    id: 'intro',
-    title: 'Meet the Building Blocks',
-    eyebrow: 'Part 1 of 4',
-    description: 'Before any auth method makes sense, you need to know the three players involved in every login flow.',
-    content: INTRO,
-    type: 'intro',
-  },
-  {
     id: 'compare',
     title: 'Two Ways to Prove Identity',
-    eyebrow: 'Part 2 of 4',
+    eyebrow: 'Part 1 of 3',
     description: 'Every auth system answers one question: after login, where does the proof of identity live?',
     content: COMPARE,
     type: 'compare',
@@ -157,7 +77,7 @@ const TUTORIAL_PHASES = [
   {
     id: 'session',
     title: 'Session-Based Auth — Step by Step',
-    eyebrow: 'Part 3 of 4',
+    eyebrow: 'Part 2 of 3',
     description: 'Watch exactly what happens when a user logs in with sessions. The server remembers you via a cookie.',
     approach: 'session',
     type: 'walkthrough',
@@ -165,7 +85,7 @@ const TUTORIAL_PHASES = [
   {
     id: 'jwt',
     title: 'JWT Token Auth — Step by Step',
-    eyebrow: 'Part 4 of 4',
+    eyebrow: 'Part 3 of 3',
     description: 'Now see the same login from the JWT perspective. The client carries signed proof of identity.',
     approach: 'jwt',
     type: 'walkthrough',
@@ -181,22 +101,18 @@ const APPROACHES = {
     overview: 'Think of it like a coat-check ticket. You hand over your password once; the server stores your identity in its memory and gives you back only a random ticket number (session ID) in a cookie. Every request after that just shows the ticket — the server looks up who you are.',
     whenToUse: 'Traditional websites where the browser and server stay tightly coupled — Django, Rails, PHP, Express with server-rendered pages.',
     nodes: [
-      { id: 'client', label: 'Browser', sublabel: 'Sends credentials & cookie', icon: 'monitor-smartphone', x: 12, y: 52,
+      { id: 'client', label: 'Browser', sublabel: 'Sends credentials & cookie', icon: 'monitor-smartphone', x: 15, y: 55,
         tooltip: 'The user\'s web browser. Sends login credentials once, then automatically attaches the session cookie on every future request.' },
-      { id: 'server', label: 'Web Server', sublabel: 'Validates & issues cookie', icon: 'server', x: 50, y: 52,
+      { id: 'server', label: 'Web Server', sublabel: 'Validates & issues cookie', icon: 'server', x: 50, y: 55,
         tooltip: 'Your backend (Express, Django, Rails). Checks passwords, creates session IDs, and reads cookies to know who is logged in.' },
-      { id: 'store', label: 'Session Store', sublabel: 'Redis / DB / Memory', icon: 'database', x: 88, y: 52,
+      { id: 'store', label: 'Session Store', sublabel: 'Redis / DB / Memory', icon: 'database', x: 85, y: 55,
         tooltip: 'Redis, a database, or server memory. Maps session IDs → user data. The real identity lives here — not inside the cookie.' },
     ],
     connections: [
-      { from: 'client', to: 'server', label: '{ email, password }', color: '#34d399',
-        tooltip: 'HTTPS POST sent only at login. Password travels once — never stored in the cookie.' },
-      { from: 'server', to: 'store', label: 'sid → { userId, role }', color: '#8b5cf6',
-        tooltip: 'Server saves a random session ID linked to user data. Like writing a name on a coat-check ticket.' },
-      { from: 'server', to: 'client', label: 'Set-Cookie: sid=abc123', color: '#fbbf24', dashed: true, curve: 22,
-        tooltip: 'Response header that tells the browser to store a small cookie — only the ID, never the password or role.' },
-      { from: 'client', to: 'server', label: 'Cookie: sid=abc123', color: '#22d3ee', curve: -22,
-        tooltip: 'Browser silently sends the cookie on every request. Server looks up sid in the session store.' },
+      { from: 'client', to: 'server', label: '{ email, password }', color: '#34d399' },
+      { from: 'server', to: 'store', label: 'sid → { userId, role }', color: '#8b5cf6' },
+      { from: 'server', to: 'client', label: 'Set-Cookie: sid=abc123', color: '#fbbf24', dashed: true },
+      { from: 'client', to: 'server', label: 'Cookie: sid=abc123', color: '#22d3ee' },
     ],
     steps: [
       {
@@ -260,20 +176,14 @@ const APPROACHES = {
     overview: 'Instead of the server remembering you, it gives you a signed letter (JWT) that proves who you are. The letter contains your identity and an expiry date, sealed with a secret only the server knows. Any service can read and verify it without calling a database.',
     whenToUse: 'Single-page apps (React, Vue), mobile apps, and microservice architectures where multiple APIs need to verify the same user independently.',
     nodes: [
-      { id: 'client', label: 'Client App', sublabel: 'SPA / Mobile / Desktop', icon: 'smartphone', x: 14, y: 72,
-        tooltip: 'React, Vue, or mobile app. Stores the JWT locally and attaches it to every API call via the Authorization header.' },
-      { id: 'server', label: 'Auth Server', sublabel: 'Signs & issues JWT', icon: 'shield', x: 50, y: 24,
-        tooltip: 'Dedicated login service. Validates credentials once, then signs a JWT containing user claims and expiry time.' },
-      { id: 'api', label: 'API Server', sublabel: 'Verifies signature only', icon: 'server', x: 86, y: 72,
-        tooltip: 'Any microservice or API. Verifies the JWT signature with a shared secret — no database lookup needed.' },
+      { id: 'client', label: 'Client App', sublabel: 'SPA / Mobile', icon: 'smartphone', x: 15, y: 55 },
+      { id: 'server', label: 'Auth Server', sublabel: 'Signs JWT', icon: 'shield', x: 50, y: 55 },
+      { id: 'api', label: 'API Server', sublabel: 'Verifies token', icon: 'server', x: 85, y: 55 },
     ],
     connections: [
-      { from: 'client', to: 'server', label: '{ email, password }', color: '#6366f1', curve: 12,
-        tooltip: 'Login request with credentials. Only happens once — the JWT replaces passwords for all future calls.' },
-      { from: 'server', to: 'client', label: 'JWT token', color: '#fbbf24', curve: -12,
-        tooltip: 'Signed token returned to client: header.payload.signature — a self-contained proof of identity.' },
-      { from: 'client', to: 'api', label: 'Bearer eyJ...', color: '#22d3ee', curve: -20,
-        tooltip: 'Every API request carries the JWT in the Authorization header. API verifies signature, not a session DB.' },
+      { from: 'client', to: 'server', label: '{ email, password }', color: '#6366f1' },
+      { from: 'server', to: 'client', label: 'JWT token', color: '#fbbf24', dashed: true },
+      { from: 'client', to: 'api', label: 'Bearer eyJ...', color: '#22d3ee' },
     ],
     steps: [
       {
@@ -474,35 +384,32 @@ let playInterval = null;
 let isComplete = false;
 let advancedApproach = null;
 let advancedStep = 0;
-let renderedPhaseKey = null;
-let currentDiagramData = null;
-let packetAnimRunning = false;
-let packetAnimFrames = [];
-
-// DOM refs
-let canvas, svgLayer, nodesContainer, labelsContainer, packetsContainer, diagramTooltip, stepBar;
+let diagram = null;
+let stepBar;
 
 // ─── Init ────────────────────────────────────────────────────────────────────
 function init() {
-  canvas = document.getElementById('diagram-canvas');
-  svgLayer = document.getElementById('connection-layer');
-  nodesContainer = document.getElementById('nodes-container');
-  labelsContainer = document.getElementById('connection-labels');
-  packetsContainer = document.getElementById('packets-container');
-  diagramTooltip = document.getElementById('diagram-tooltip');
+  diagram = new AuthDiagramEngine({
+    svg: document.getElementById('connection-layer'),
+    nodesEl: document.getElementById('nodes-container'),
+    labelsEl: document.getElementById('connection-labels'),
+    emptyEl: document.getElementById('diagram-empty'),
+  });
   stepBar = document.getElementById('step-bar');
 
-  document.getElementById('prev-step').addEventListener('click', () => goToStep(currentStep - 1));
-  document.getElementById('next-step').addEventListener('click', () => goToStep(currentStep + 1));
-  document.getElementById('play-btn').addEventListener('click', togglePlay);
-  document.getElementById('phase-continue').addEventListener('click', onPhaseContinue);
-  document.getElementById('phase-back').addEventListener('click', onPhaseBack);
-  document.getElementById('restart-btn').addEventListener('click', restartTutorial);
+  document.getElementById('prev-step')?.addEventListener('click', onSidePrev);
+  document.getElementById('next-step')?.addEventListener('click', onSideNext);
+  document.getElementById('prev-step-side')?.addEventListener('click', onSidePrev);
+  document.getElementById('next-step-side')?.addEventListener('click', onSideNext);
+  document.getElementById('play-btn')?.addEventListener('click', togglePlay);
+  document.getElementById('phase-continue')?.addEventListener('click', onPhaseContinue);
+  document.getElementById('phase-back')?.addEventListener('click', onPhaseBack);
+  document.getElementById('restart-btn')?.addEventListener('click', restartTutorial);
 
-  document.querySelectorAll('.phase-pill').forEach(pill => {
+  document.querySelectorAll('.phase-pill').forEach((pill) => {
     pill.addEventListener('click', () => {
       const idx = parseInt(pill.dataset.phase, 10);
-      if (idx <= getMaxUnlockedPhase()) goToPhase(idx);
+      if (!Number.isNaN(idx)) goToPhase(idx);
     });
   });
 
@@ -510,33 +417,69 @@ function init() {
     card.addEventListener('click', () => openAdvanced(card.dataset.approach));
   });
   document.getElementById('back-to-complete').addEventListener('click', closeAdvanced);
-  document.getElementById('adv-prev').addEventListener('click', () => goToAdvancedStep(advancedStep - 1));
-  document.getElementById('adv-next').addEventListener('click', () => goToAdvancedStep(advancedStep + 1));
+  document.getElementById('adv-prev').addEventListener('click', () => onAdvancedSidePrev());
+  document.getElementById('adv-next').addEventListener('click', () => onAdvancedSideNext());
+  document.getElementById('adv-prev-side')?.addEventListener('click', () => onAdvancedSidePrev());
+  document.getElementById('adv-next-side')?.addEventListener('click', () => onAdvancedSideNext());
 
   renderPhase();
-  syncSvgLayer();
-  window.addEventListener('resize', () => {
-    if (currentDiagramData) {
-      renderedPhaseKey = null;
-      renderDiagram(TUTORIAL_PHASES[currentPhaseIndex]);
-    }
-  });
   lucide.createIcons();
   if (window.AnimTooltips) AnimTooltips.refresh();
 }
 
-// ─── Phase navigation ────────────────────────────────────────────────────────
-function getMaxUnlockedPhase() {
-  if (isComplete) return TUTORIAL_PHASES.length - 1;
-  return currentPhaseIndex;
+function onSidePrev() {
+  if (currentStep > 0) {
+    goToStep(currentStep - 1);
+  } else {
+    onPhaseBack();
+  }
 }
 
+function onSideNext() {
+  const phase = TUTORIAL_PHASES[currentPhaseIndex];
+  const steps = getPhaseSteps(phase);
+  if (currentStep < steps.length - 1) {
+    goToStep(currentStep + 1);
+  } else {
+    onPhaseContinue();
+  }
+}
+
+function updateSideNavButtons() {
+  const prevBtns = [document.getElementById('prev-step'), document.getElementById('prev-step-side')];
+  const nextBtns = [document.getElementById('next-step'), document.getElementById('next-step-side')];
+  const atFirst = currentPhaseIndex === 0 && currentStep === 0;
+
+  prevBtns.forEach((btn) => { if (btn) btn.disabled = atFirst; });
+  nextBtns.forEach((btn) => { if (btn) btn.disabled = false; });
+}
+
+function onAdvancedSidePrev() {
+  if (advancedStep > 0) goToAdvancedStep(advancedStep - 1);
+}
+
+function onAdvancedSideNext() {
+  const approach = APPROACHES[advancedApproach];
+  if (!approach) return;
+  if (advancedStep < approach.steps.length - 1) {
+    goToAdvancedStep(advancedStep + 1);
+  }
+}
+
+function updateAdvancedSideNav() {
+  const approach = APPROACHES[advancedApproach];
+  if (!approach) return;
+  const prev = document.getElementById('adv-prev-side');
+  const next = document.getElementById('adv-next-side');
+  if (prev) prev.disabled = advancedStep === 0;
+  if (next) next.disabled = advancedStep >= approach.steps.length - 1;
+}
+
+// ─── Phase navigation ────────────────────────────────────────────────────────
 function goToPhase(index) {
   if (index < 0 || index >= TUTORIAL_PHASES.length) return;
   stopPlay();
-  renderedPhaseKey = null;
-  currentDiagramData = null;
-  stopPacketAnimations();
+  diagram.hide();
   currentPhaseIndex = index;
   currentStep = 0;
   isComplete = false;
@@ -600,13 +543,11 @@ function hideCompleteView() {
 
 // ─── Render phase ────────────────────────────────────────────────────────────
 function getPhaseSteps(phase) {
-  if (phase.type === 'intro') return phase.content.steps;
   if (phase.type === 'compare') return phase.content.steps;
   return APPROACHES[phase.approach].steps;
 }
 
 function getPhaseDiagramData(phase) {
-  if (phase.type === 'intro') return phase.content;
   if (phase.type === 'walkthrough') return APPROACHES[phase.approach];
   return null;
 }
@@ -622,7 +563,7 @@ function renderPhase() {
   document.querySelectorAll('.phase-pill').forEach((pill, i) => {
     pill.classList.toggle('active', i === currentPhaseIndex);
     pill.classList.toggle('done', i < currentPhaseIndex || isComplete);
-    pill.classList.toggle('locked', i > getMaxUnlockedPhase());
+    pill.classList.remove('locked');
   });
   document.querySelectorAll('.phase-connector').forEach((conn, i) => {
     conn.classList.toggle('done', i < currentPhaseIndex || isComplete);
@@ -632,7 +573,7 @@ function renderPhase() {
   const compareView = document.getElementById('compare-view');
   const isCompare = phase.type === 'compare';
   const step = steps[currentStep];
-  const showVisual = !isCompare && (phase.type === 'walkthrough' || (phase.type === 'intro' && step.showDiagram === true));
+  const showVisual = !isCompare && phase.type === 'walkthrough';
   compareView.classList.toggle('hidden', !isCompare);
   document.getElementById('tutorial-visual').classList.toggle('hidden', !showVisual);
 
@@ -666,162 +607,15 @@ function renderPhase() {
     continueBtn.innerHTML = 'Continue <i data-lucide="arrow-right" class="w-4 h-4"></i>';
   }
 
-  renderDiagram(phase);
+  syncDiagram(phase);
   if (isCompare) updateCompareHighlight(step);
   updateStepUI(phase, steps);
+  updateSideNavButtons();
   lucide.createIcons();
 }
 
-// ─── Diagram rendering ───────────────────────────────────────────────────────
-function renderDiagram(phase) {
-  const phaseKey = `${currentPhaseIndex}-${phase.id}`;
-  const steps = getPhaseSteps(phase);
-  const step = steps[currentStep];
-
-  if (renderedPhaseKey === phaseKey && currentDiagramData && phase.type !== 'compare') {
-    updateDiagramHighlights(phase, step);
-    return;
-  }
-
-  renderedPhaseKey = phaseKey;
-  stopPacketAnimations();
-  currentDiagramData = getPhaseDiagramData(phase);
-
-  const emptyEl = document.getElementById('diagram-empty');
-  nodesContainer.innerHTML = '';
-  svgLayer.innerHTML = '';
-  if (labelsContainer) labelsContainer.innerHTML = '';
-  if (packetsContainer) packetsContainer.innerHTML = '';
-  hideDiagramTooltip();
-
-  const showDiagram = phase.type === 'walkthrough' || (phase.type === 'intro' && step.showDiagram === true);
-  emptyEl.classList.toggle('hidden', showDiagram || phase.type === 'compare');
-  if (phase.type === 'compare') return;
-
-  syncSvgLayer();
-
-  const diagramData = currentDiagramData;
-  if (!diagramData || !showDiagram) return;
-
-  const accent = diagramData.accent || diagramData.color || '#818cf8';
-  ensureArrowMarker(accent);
-
-  diagramData.nodes.forEach(node => {
-    const el = document.createElement('div');
-    el.className = 'node-card';
-    el.id = `node-${node.id}`;
-    el.style.left = `${node.x}%`;
-    el.style.top = `${node.y}%`;
-    if (node.y < 35) el.classList.add('popup-below');
-
-    const popupHtml = node.tooltip ? `
-      <div class="node-popup">
-        <strong>${escapeHtml(node.label)}</strong>
-        <p>${escapeHtml(node.tooltip)}</p>
-      </div>
-    ` : '';
-
-    el.innerHTML = `
-      ${popupHtml}
-      <div class="node-icon-wrap relative" style="border-color: ${accent}33" tabindex="0"
-        ${node.tooltip ? `data-tip-title="${escapeHtml(node.label)}" data-tip-text="${escapeHtml(node.tooltip)}"` : ''}>
-        <i data-lucide="${node.icon}" class="lucide-icon-xl" style="color: ${accent}"></i>
-      </div>
-      <span class="node-label">${node.label}</span>
-      <span class="node-sublabel">${node.sublabel}</span>
-    `;
-    nodesContainer.appendChild(el);
-  });
-
-  const svgNS = 'http://www.w3.org/2000/svg';
-  diagramData.connections.forEach((conn, i) => {
-    const fromNode = diagramData.nodes.find(n => n.id === conn.from);
-    const toNode = diagramData.nodes.find(n => n.id === conn.to);
-    if (!fromNode || !toNode) return;
-
-    const path = computePath(fromNode, toNode, conn, i);
-
-    const bgLine = document.createElementNS(svgNS, 'path');
-    bgLine.setAttribute('d', path);
-    bgLine.setAttribute('class', 'connection-line-bg');
-    bgLine.setAttribute('id', `conn-bg-${i}`);
-    svgLayer.appendChild(bgLine);
-
-    const hitLine = document.createElementNS(svgNS, 'path');
-    hitLine.setAttribute('d', path);
-    hitLine.setAttribute('class', 'connection-hit');
-    if (conn.tooltip) {
-      hitLine.addEventListener('mouseenter', (e) => showDiagramTooltip(e, conn.label, conn.tooltip));
-      hitLine.addEventListener('mousemove', moveDiagramTooltip);
-      hitLine.addEventListener('mouseleave', hideDiagramTooltip);
-    }
-    svgLayer.appendChild(hitLine);
-
-    const line = document.createElementNS(svgNS, 'path');
-    line.setAttribute('d', path);
-    line.setAttribute('class', 'connection-line');
-    line.setAttribute('id', `conn-${i}`);
-    line.setAttribute('stroke', conn.color);
-    if (conn.dashed) line.setAttribute('stroke-dasharray', '6 4');
-    svgLayer.appendChild(line);
-
-    const particle = document.createElementNS(svgNS, 'path');
-    particle.setAttribute('d', path);
-    particle.setAttribute('class', 'flow-particle');
-    particle.setAttribute('id', `particle-${i}`);
-    particle.setAttribute('stroke', conn.color);
-    svgLayer.appendChild(particle);
-
-    const labelPos = getLabelPosition(fromNode, toNode, conn, i);
-    if (labelsContainer) {
-      const labelEl = document.createElement('div');
-      labelEl.className = 'conn-label';
-      labelEl.id = `label-${i}`;
-      labelEl.style.left = `${labelPos.x}%`;
-      labelEl.style.top = `${labelPos.y}%`;
-      labelEl.textContent = conn.label;
-      if (conn.tooltip) {
-        labelEl.addEventListener('mouseenter', (e) => showDiagramTooltip(e, conn.label, conn.tooltip));
-        labelEl.addEventListener('mousemove', moveDiagramTooltip);
-        labelEl.addEventListener('mouseleave', hideDiagramTooltip);
-      }
-      labelsContainer.appendChild(labelEl);
-    }
-  });
-
-  lucide.createIcons();
-  if (window.AnimTooltips) AnimTooltips.bind(nodesContainer);
-  requestAnimationFrame(() => updateDiagramHighlights(phase, step));
-}
-
-function ensureArrowMarker(color) {
-  const svgNS = 'http://www.w3.org/2000/svg';
-  let defs = svgLayer.querySelector('defs');
-  if (!defs) {
-    defs = document.createElementNS(svgNS, 'defs');
-    svgLayer.prepend(defs);
-  }
-  if (!defs.querySelector('#arrow-marker')) {
-    const marker = document.createElementNS(svgNS, 'marker');
-    marker.setAttribute('id', 'arrow-marker');
-    marker.setAttribute('viewBox', '0 0 10 10');
-    marker.setAttribute('refX', '8');
-    marker.setAttribute('refY', '5');
-    marker.setAttribute('markerWidth', '5');
-    marker.setAttribute('markerHeight', '5');
-    marker.setAttribute('orient', 'auto');
-    const arrowPath = document.createElementNS(svgNS, 'path');
-    arrowPath.setAttribute('d', 'M 0 0 L 10 5 L 0 10 z');
-    arrowPath.setAttribute('fill', color);
-    marker.appendChild(arrowPath);
-    defs.appendChild(marker);
-  }
-}
-
+// ─── Diagram (AuthDiagramEngine) ─────────────────────────────────────────────
 function getHighlightForStep(phase, step, stepIndex) {
-  if (phase.type === 'intro') {
-    return step.highlight || { nodes: [], connections: [] };
-  }
   if (phase.type === 'walkthrough') {
     const map = getStepHighlightMap(phase.approach);
     return map[stepIndex] || { nodes: [], connections: [] };
@@ -834,81 +628,58 @@ function getRevealedConnections(phase, stepIndex) {
   const steps = getPhaseSteps(phase);
   for (let i = 0; i <= stepIndex && i < steps.length; i++) {
     const h = getHighlightForStep(phase, steps[i], i);
-    (h.connections || []).forEach(c => revealed.add(c));
+    (h.connections || []).forEach((c) => revealed.add(c));
   }
   return revealed;
 }
 
-function updateDiagramHighlights(phase, step, stepIndexOverride) {
-  const diagramData = currentDiagramData || getPhaseDiagramData(phase);
-  if (!diagramData) return;
-
-  const stepIndex = stepIndexOverride ?? currentStep;
+function buildFrame(phase, step, stepIndex) {
+  const diagramData = phase.approach
+    ? APPROACHES[phase.approach]
+    : getPhaseDiagramData(phase);
   const highlight = getHighlightForStep(phase, step, stepIndex);
   const revealed = getRevealedConnections(phase, stepIndex);
-  const visibleNodes = highlight.nodes.length > 0
-    ? highlight.nodes
-    : (phase.type === 'intro' ? [] : diagramData.nodes.map(n => n.id));
+  const allNodeIds = diagramData?.nodes.map((n) => n.id) || [];
 
-  removePulseRings();
+  const visibleNodes = allNodeIds;
+  const highlightNodes = highlight.nodes.length > 0 ? highlight.nodes : allNodeIds;
 
-  diagramData.nodes.forEach((node, i) => {
-    const el = document.getElementById(`node-${node.id}`);
-    if (!el) return;
-    el.classList.remove('highlight', 'dimmed', 'sending', 'visible');
+  return {
+    visibleNodes,
+    highlightNodes,
+    revealedConns: [...revealed],
+    activeConns: highlight.connections || [],
+  };
+}
 
-    if (visibleNodes.includes(node.id)) {
-      setTimeout(() => el.classList.add('visible'), phase.type === 'intro' ? i * 120 : 0);
-      if (highlight.nodes.includes(node.id)) {
-        el.classList.add('highlight');
-      } else if (highlight.nodes.length > 0) {
-        el.classList.add('dimmed');
-      }
-    }
-  });
+function syncDiagram(phase, stepIndexOverride) {
+  const idx = stepIndexOverride ?? currentStep;
+  const steps = getPhaseSteps(phase);
+  const step = steps[idx];
+  const showDiagram = phase.type === 'walkthrough';
 
-  const sendingNodes = new Set();
-  (highlight.connections || []).forEach(i => {
-    const conn = diagramData.connections[i];
-    if (conn) sendingNodes.add(conn.from);
-  });
-  sendingNodes.forEach(id => {
-    const el = document.getElementById(`node-${id}`);
-    if (el) {
-      el.classList.add('sending');
-      addPulseRing(el, diagramData);
-    }
-  });
-
-  const totalConns = diagramData.connections.length;
-  const activeConns = highlight.connections || [];
-  for (let i = 0; i < totalConns; i++) {
-    const isRevealed = revealed.has(i);
-    const isActive = activeConns.includes(i);
-    const connEl = document.getElementById(`conn-${i}`);
-
-    document.getElementById(`conn-bg-${i}`)?.classList.toggle('revealed', isRevealed);
-    connEl?.classList.toggle('revealed', isRevealed);
-    connEl?.classList.toggle('active', isActive);
-    if (isActive) {
-      connEl?.setAttribute('marker-end', 'url(#arrow-marker)');
-    } else {
-      connEl?.removeAttribute('marker-end');
-    }
-    document.getElementById(`particle-${i}`)?.classList.toggle('active', isActive);
-    document.getElementById(`label-${i}`)?.classList.toggle('revealed', isRevealed);
-    document.getElementById(`label-${i}`)?.classList.toggle('active', isActive);
+  if (phase.type === 'compare' || !showDiagram) {
+    diagram.hide();
+    return;
   }
 
-  updateFlowLegend(step, highlight, diagramData);
-  stopPacketAnimations();
-  if (activeConns.length > 0) {
-    activeConns.forEach((connIdx, order) => {
-      setTimeout(() => startPacketAnimation(connIdx), order * 350);
-    });
+  const raw = getPhaseDiagramData(phase);
+  if (!raw) {
+    diagram.hide();
+    return;
   }
 
-  if (phase.type === 'compare') updateCompareHighlight(step);
+  diagram.mount({ ...raw, id: raw.id || phase.id });
+  diagram.applyFrame(buildFrame(phase, step, idx));
+}
+
+function syncAdvancedDiagram() {
+  const approach = APPROACHES[advancedApproach];
+  if (!approach) return;
+  const step = approach.steps[advancedStep];
+  const phase = { type: 'walkthrough', approach: advancedApproach };
+  diagram.mount({ ...approach, id: approach.id });
+  diagram.applyFrame(buildFrame(phase, step, advancedStep));
 }
 
 function updateCompareHighlight(step) {
@@ -917,99 +688,6 @@ function updateCompareHighlight(step) {
   document.getElementById('compare-jwt').classList.toggle('active', focus === 'jwt' || focus === 'both');
   document.getElementById('compare-session').classList.toggle('dimmed', focus === 'jwt');
   document.getElementById('compare-jwt').classList.toggle('dimmed', focus === 'session');
-}
-
-function updateFlowLegend(step, highlight, diagramData) {
-  const legend = document.getElementById('flow-legend');
-  const text = document.getElementById('flow-legend-text');
-  if (!legend || !text) return;
-
-  const hasFlow = step.watch || (highlight.connections && highlight.connections.length > 0);
-  if (!hasFlow) {
-    legend.classList.add('hidden');
-    return;
-  }
-
-  legend.classList.remove('hidden');
-  if (step.watch) {
-    text.textContent = step.watch;
-  } else if (highlight.connections?.length) {
-    const parts = highlight.connections.map((i, order) => {
-      const conn = diagramData.connections[i];
-      const from = diagramData.nodes.find(n => n.id === conn.from)?.label || conn.from;
-      const to = diagramData.nodes.find(n => n.id === conn.to)?.label || conn.to;
-      const prefix = highlight.connections.length > 1 ? `${order + 1}. ` : '';
-      return `${prefix}${from} → ${to} (${conn.label})`;
-    });
-    text.textContent = parts.join('  ·  ');
-  }
-  lucide.createIcons();
-}
-
-function stopPacketAnimations() {
-  packetAnimRunning = false;
-  packetAnimFrames.forEach(id => cancelAnimationFrame(id));
-  packetAnimFrames = [];
-  if (packetsContainer) packetsContainer.innerHTML = '';
-}
-
-function startPacketAnimation(connIndex) {
-  const pathEl = document.getElementById(`conn-${connIndex}`);
-  if (!pathEl || !packetsContainer || !currentDiagramData) return;
-
-  const conn = currentDiagramData.connections[connIndex];
-  if (!conn) return;
-
-  packetAnimRunning = true;
-  const packet = document.createElement('div');
-  packet.className = 'data-packet';
-  packet.textContent = shortenLabel(conn.label);
-  packet.style.background = `${conn.color}22`;
-  packet.style.border = `1px solid ${conn.color}99`;
-  packet.style.color = conn.color;
-  packetsContainer.appendChild(packet);
-  requestAnimationFrame(() => packet.classList.add('show'));
-
-  const duration = 2600;
-  const length = pathEl.getTotalLength();
-  let startTime = null;
-
-  function tick(timestamp) {
-    if (!packetAnimRunning || !packet.parentElement) return;
-    if (!startTime) startTime = timestamp;
-    const progress = ((timestamp - startTime) % duration) / duration;
-    const point = pathEl.getPointAtLength(progress * length);
-    const containerRect = packetsContainer.getBoundingClientRect();
-    const svgPoint = svgLayer.createSVGPoint();
-    svgPoint.x = point.x;
-    svgPoint.y = point.y;
-    const ctm = pathEl.getScreenCTM();
-    if (!ctm) return;
-    const screen = svgPoint.matrixTransform(ctm);
-    packet.style.left = `${screen.x - containerRect.left}px`;
-    packet.style.top = `${screen.y - containerRect.top}px`;
-    const id = requestAnimationFrame(tick);
-    packetAnimFrames.push(id);
-  }
-  packetAnimFrames.push(requestAnimationFrame(tick));
-}
-
-function shortenLabel(label) {
-  if (label.length <= 28) return label;
-  return label.slice(0, 26) + '…';
-}
-
-function addPulseRing(nodeEl, diagramData) {
-  const wrap = nodeEl?.querySelector('.node-icon-wrap');
-  if (!wrap || wrap.querySelector('.pulse-ring')) return;
-  const ring = document.createElement('div');
-  ring.className = 'pulse-ring';
-  ring.style.color = diagramData.color || diagramData.accent || '#6366f1';
-  wrap.appendChild(ring);
-}
-
-function removePulseRings() {
-  document.querySelectorAll('.pulse-ring').forEach(r => r.remove());
 }
 
 function getStepHighlightMap(approachId) {
@@ -1100,7 +778,7 @@ function updateStepUI(phase, steps) {
 
     const watchBlock = document.getElementById('step-watch');
     const watchText = document.getElementById('step-watch-text');
-    const diagramVisible = phase.type === 'walkthrough' || (phase.type === 'intro' && step.showDiagram === true);
+    const diagramVisible = phase.type === 'walkthrough';
     if (watchBlock && watchText) {
       if (step.watch && !diagramVisible) {
         watchBlock.classList.remove('hidden');
@@ -1219,110 +897,22 @@ function hideAdvancedPanel() {
   document.getElementById('tutorial-visual').classList.add('hidden');
   document.getElementById('adv-step-controls').classList.add('hidden');
   document.getElementById('step-controls').classList.remove('hidden');
-  renderedPhaseKey = null;
-  currentDiagramData = null;
-  stopPacketAnimations();
+  diagram.hide();
 
-  // Restore animation inside walkthrough panel
   const visual = document.getElementById('tutorial-visual');
   const phaseActions = document.querySelector('#walkthrough-panel .phase-actions');
   if (phaseActions) phaseActions.insertAdjacentElement('beforebegin', visual);
 }
 
 function renderAdvancedDiagram() {
-  const approach = APPROACHES[advancedApproach];
-  const step = approach.steps[advancedStep];
-  const phaseKey = `advanced-${advancedApproach}`;
-
-  if (renderedPhaseKey === phaseKey && currentDiagramData) {
-    updateDiagramHighlights({ type: 'walkthrough', approach: advancedApproach }, step, advancedStep);
-    return;
-  }
-
-  renderedPhaseKey = phaseKey;
-  syncSvgLayer();
-  stopPacketAnimations();
-  currentDiagramData = approach;
-
-  nodesContainer.innerHTML = '';
-  svgLayer.innerHTML = '';
-  if (labelsContainer) labelsContainer.innerHTML = '';
-  if (packetsContainer) packetsContainer.innerHTML = '';
-
-  const accent = approach.color || '#818cf8';
-  ensureArrowMarker(accent);
-
-  approach.nodes.forEach(node => {
-    const el = document.createElement('div');
-    el.className = 'node-card';
-    el.id = `node-${node.id}`;
-    el.style.left = `${node.x}%`;
-    el.style.top = `${node.y}%`;
-    if (node.y < 35) el.classList.add('popup-below');
-    el.innerHTML = `
-      ${node.tooltip ? `<div class="node-popup"><strong>${escapeHtml(node.label)}</strong><p>${escapeHtml(node.tooltip)}</p></div>` : ''}
-      <div class="node-icon-wrap relative" style="border-color: ${accent}33" tabindex="0"
-        ${node.tooltip ? `data-tip-title="${escapeHtml(node.label)}" data-tip-text="${escapeHtml(node.tooltip)}"` : ''}>
-        <i data-lucide="${node.icon}" class="lucide-icon-xl" style="color: ${accent}"></i>
-      </div>
-      <span class="node-label">${node.label}</span>
-      <span class="node-sublabel">${node.sublabel}</span>
-    `;
-    nodesContainer.appendChild(el);
-  });
-
-  const svgNS = 'http://www.w3.org/2000/svg';
-  approach.connections.forEach((conn, i) => {
-    const fromNode = approach.nodes.find(n => n.id === conn.from);
-    const toNode = approach.nodes.find(n => n.id === conn.to);
-    if (!fromNode || !toNode) return;
-    const path = computePath(fromNode, toNode, conn, i);
-
-    const bgLine = document.createElementNS(svgNS, 'path');
-    bgLine.setAttribute('d', path);
-    bgLine.setAttribute('class', 'connection-line-bg');
-    bgLine.setAttribute('id', `conn-bg-${i}`);
-    svgLayer.appendChild(bgLine);
-
-    const line = document.createElementNS(svgNS, 'path');
-    line.setAttribute('d', path);
-    line.setAttribute('class', 'connection-line');
-    line.setAttribute('id', `conn-${i}`);
-    line.setAttribute('stroke', conn.color);
-    if (conn.dashed) line.setAttribute('stroke-dasharray', '6 4');
-    svgLayer.appendChild(line);
-
-    const particle = document.createElementNS(svgNS, 'path');
-    particle.setAttribute('d', path);
-    particle.setAttribute('class', 'flow-particle');
-    particle.setAttribute('id', `particle-${i}`);
-    particle.setAttribute('stroke', conn.color);
-    svgLayer.appendChild(particle);
-
-    const labelPos = getLabelPosition(fromNode, toNode, conn, i);
-    if (labelsContainer) {
-      const labelEl = document.createElement('div');
-      labelEl.className = 'conn-label';
-      labelEl.id = `label-${i}`;
-      labelEl.style.left = `${labelPos.x}%`;
-      labelEl.style.top = `${labelPos.y}%`;
-      labelEl.textContent = conn.label;
-      labelsContainer.appendChild(labelEl);
-    }
-  });
-
-  lucide.createIcons();
-  if (window.AnimTooltips) AnimTooltips.bind(nodesContainer);
-  requestAnimationFrame(() => {
-    updateDiagramHighlights({ type: 'walkthrough', approach: advancedApproach }, step, advancedStep);
-  });
+  syncAdvancedDiagram();
 }
 
 function goToAdvancedStep(step) {
   const approach = APPROACHES[advancedApproach];
   if (step < 0 || step > approach.steps.length - 1) return;
   advancedStep = step;
-  renderAdvancedDiagram();
+  syncAdvancedDiagram();
   updateAdvancedStepUI();
 }
 
@@ -1361,55 +951,8 @@ function updateAdvancedStepUI() {
     dot.addEventListener('click', () => goToAdvancedStep(i));
     bar.appendChild(dot);
   });
-}
 
-// ─── SVG helpers ─────────────────────────────────────────────────────────────
-function getLabelPosition(from, to, conn, index) {
-  const mx = (from.x + to.x) / 2;
-  const my = (from.y + to.y) / 2;
-  const curve = conn.curve ?? (index % 2 === 0 ? -10 : 10);
-  if (Math.abs(from.y - to.y) < 12) return { x: mx, y: my + curve * 0.6 };
-  return { x: mx + curve * 0.5, y: my + curve * 0.3 };
-}
-
-function computePath(from, to, conn, index) {
-  const fx = from.x, fy = from.y, tx = to.x, ty = to.y;
-  const mx = (fx + tx) / 2, my = (fy + ty) / 2;
-  const curve = conn.curve ?? (index % 2 === 0 ? -14 : 14);
-  const cy = my + curve;
-  if (Math.abs(fy - ty) < 8) return `M ${fx} ${fy} Q ${mx} ${cy} ${tx} ${ty}`;
-  return `M ${fx} ${fy} C ${fx} ${cy} ${tx} ${cy} ${tx} ${ty}`;
-}
-
-function syncSvgLayer() {
-  if (!svgLayer) return;
-  svgLayer.setAttribute('viewBox', '0 0 100 100');
-  svgLayer.setAttribute('preserveAspectRatio', 'none');
-}
-
-function showDiagramTooltip(e, title, text) {
-  if (!diagramTooltip) return;
-  diagramTooltip.innerHTML = `<strong>${escapeHtml(title)}</strong><p>${escapeHtml(text)}</p>`;
-  diagramTooltip.classList.remove('hidden');
-  diagramTooltip.classList.add('visible');
-  moveDiagramTooltip(e);
-}
-
-function moveDiagramTooltip(e) {
-  if (!diagramTooltip) return;
-  const pad = 16;
-  let x = e.clientX + pad, y = e.clientY + pad;
-  const rect = diagramTooltip.getBoundingClientRect();
-  if (x + rect.width > window.innerWidth - pad) x = e.clientX - rect.width - pad;
-  if (y + rect.height > window.innerHeight - pad) y = e.clientY - rect.height - pad;
-  diagramTooltip.style.left = `${x}px`;
-  diagramTooltip.style.top = `${y}px`;
-}
-
-function hideDiagramTooltip() {
-  if (!diagramTooltip) return;
-  diagramTooltip.classList.add('hidden');
-  diagramTooltip.classList.remove('visible');
+  updateAdvancedSideNav();
 }
 
 function escapeHtml(str) {

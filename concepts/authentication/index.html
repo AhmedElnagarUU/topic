@@ -69,23 +69,18 @@
       <!-- Phase progress -->
       <nav id="phase-nav" class="phase-nav mb-8" aria-label="Tutorial progress">
         <div class="phase-track">
-          <button class="phase-pill active" data-phase="0">
+          <button type="button" class="phase-pill active" data-phase="0">
             <span class="phase-num">1</span>
-            <span class="phase-label">Building Blocks</span>
-          </button>
-          <div class="phase-connector"></div>
-          <button class="phase-pill" data-phase="1">
-            <span class="phase-num">2</span>
             <span class="phase-label">Two Approaches</span>
           </button>
           <div class="phase-connector"></div>
-          <button class="phase-pill" data-phase="2">
-            <span class="phase-num">3</span>
+          <button type="button" class="phase-pill" data-phase="1">
+            <span class="phase-num">2</span>
             <span class="phase-label">Sessions</span>
           </button>
           <div class="phase-connector"></div>
-          <button class="phase-pill" data-phase="3">
-            <span class="phase-num">4</span>
+          <button type="button" class="phase-pill" data-phase="2">
+            <span class="phase-num">3</span>
             <span class="phase-label">JWT</span>
           </button>
         </div>
@@ -93,14 +88,14 @@
 
       <!-- Phase header -->
       <div id="phase-header" class="mb-6">
-        <p id="phase-eyebrow" class="text-xs font-medium text-indigo-300/70 uppercase tracking-widest mb-2">Part 1 of 4</p>
-        <h2 id="phase-title" class="text-xl font-semibold text-white mb-2">Meet the Building Blocks</h2>
+        <p id="phase-eyebrow" class="text-xs font-medium text-indigo-300/70 uppercase tracking-widest mb-2">Part 1 of 3</p>
+        <h2 id="phase-title" class="text-xl font-semibold text-white mb-2">Two Ways to Prove Identity</h2>
         <p id="phase-desc" class="text-sm text-white/45 leading-relaxed max-w-2xl">
-          Before any auth method makes sense, you need to know the three players involved in every login flow.
+          Every auth system answers one question: after login, where does the proof of identity live?
         </p>
       </div>
 
-      <!-- Comparison view (shown only in phase 2) -->
+      <!-- Comparison view (shown during the Two Approaches phase) -->
       <div id="compare-view" class="compare-view hidden mb-6">
         <div class="compare-grid">
           <div id="compare-session" class="compare-card compare-session">
@@ -138,20 +133,30 @@
           <p id="approach-overview" class="overview"></p>
         </div>
 
-        <div class="info-panel">
-          <div class="flex items-center gap-2 mb-2">
-            <i data-lucide="circle-dot" class="w-4 h-4 text-indigo-400"></i>
-            <span class="text-xs text-indigo-300/70 font-mono">Step <span id="step-num">1</span> of <span id="step-total">4</span></span>
+        <div class="step-nav-shell">
+          <button type="button" id="prev-step-side" class="step-side-nav" aria-label="Previous step">
+            <i data-lucide="chevron-left" class="w-5 h-5"></i>
+          </button>
+
+          <div class="info-panel step-nav-content">
+            <div class="flex items-center gap-2 mb-2">
+              <i data-lucide="circle-dot" class="w-4 h-4 text-indigo-400"></i>
+              <span class="text-xs text-indigo-300/70 font-mono">Step <span id="step-num">1</span> of <span id="step-total">4</span></span>
+            </div>
+            <p id="step-subtitle" class="step-subtitle"></p>
+            <h3 id="step-title" class="step-title"></h3>
+            <p id="step-desc" class="step-desc"></p>
+            <ul id="step-bullets" class="step-bullets"></ul>
+            <div id="step-code" class="code-block hidden"></div>
+            <div id="step-watch" class="watch-callout hidden">
+              <i data-lucide="eye" class="w-3.5 h-3.5"></i>
+              <span id="step-watch-text"></span>
+            </div>
           </div>
-          <p id="step-subtitle" class="step-subtitle"></p>
-          <h3 id="step-title" class="step-title"></h3>
-          <p id="step-desc" class="step-desc"></p>
-          <ul id="step-bullets" class="step-bullets"></ul>
-          <div id="step-code" class="code-block hidden"></div>
-          <div id="step-watch" class="watch-callout hidden">
-            <i data-lucide="eye" class="w-3.5 h-3.5"></i>
-            <span id="step-watch-text"></span>
-          </div>
+
+          <button type="button" id="next-step-side" class="step-side-nav" aria-label="Next step">
+            <i data-lucide="chevron-right" class="w-5 h-5"></i>
+          </button>
         </div>
 
         <!-- Animation window (below explanation) -->
@@ -171,8 +176,8 @@
             <div id="diagram-canvas" class="diagram-canvas relative">
               <svg id="connection-layer" class="connection-layer" preserveAspectRatio="none"></svg>
               <div id="connection-labels" class="connection-labels"></div>
-              <div id="packets-container" class="packets-container"></div>
-              <div id="nodes-container" class="absolute inset-0"></div>
+              <div id="packets-container" class="packets-container hidden" aria-hidden="true"></div>
+              <div id="nodes-container" class="nodes-layer"></div>
               <div id="diagram-empty" class="diagram-empty hidden">
                 <i data-lucide="lightbulb" class="w-8 h-8 text-indigo-400/50 mb-3"></i>
                 <p>We'll build the diagram step by step — one piece at a time.</p>
@@ -183,14 +188,14 @@
 
           <div id="step-controls" class="step-controls">
             <div class="flex items-center gap-2">
-              <button id="play-btn" class="play-btn hidden">
+              <button type="button" id="play-btn" class="play-btn hidden">
                 <i data-lucide="play" class="w-4 h-4"></i>
                 Play Flow
               </button>
-              <button id="prev-step" class="nav-btn" title="Previous step">
+              <button type="button" id="prev-step" class="nav-btn" title="Previous step">
                 <i data-lucide="chevron-left" class="w-4 h-4"></i>
               </button>
-              <button id="next-step" class="nav-btn" title="Next step">
+              <button type="button" id="next-step" class="nav-btn" title="Next step">
                 <i data-lucide="chevron-right" class="w-4 h-4"></i>
               </button>
             </div>
@@ -199,8 +204,8 @@
 
           <div id="adv-step-controls" class="step-controls hidden">
             <div class="flex items-center gap-2">
-              <button id="adv-prev" class="nav-btn"><i data-lucide="chevron-left" class="w-4 h-4"></i></button>
-              <button id="adv-next" class="nav-btn"><i data-lucide="chevron-right" class="w-4 h-4"></i></button>
+              <button type="button" id="adv-prev" class="nav-btn"><i data-lucide="chevron-left" class="w-4 h-4"></i></button>
+              <button type="button" id="adv-next" class="nav-btn"><i data-lucide="chevron-right" class="w-4 h-4"></i></button>
             </div>
             <div id="adv-step-bar" class="step-bar flex-1 max-w-sm ml-4"></div>
           </div>
@@ -208,11 +213,11 @@
 
         <!-- Phase navigation -->
         <div class="phase-actions">
-          <button id="phase-back" class="phase-action-btn secondary hidden">
+          <button type="button" id="phase-back" class="phase-action-btn secondary hidden">
             <i data-lucide="arrow-left" class="w-4 h-4"></i>
             Previous section
           </button>
-          <button id="phase-continue" class="phase-action-btn primary">
+          <button type="button" id="phase-continue" class="phase-action-btn primary">
             Continue
             <i data-lucide="arrow-right" class="w-4 h-4"></i>
           </button>
@@ -228,7 +233,7 @@
           <h2>You've learned the two core patterns!</h2>
           <p>Session-based and JWT are the foundation of almost every login system. You now understand where identity lives and what travels over the network.</p>
           <div class="complete-actions">
-            <button id="restart-btn" class="phase-action-btn secondary">
+            <button type="button" id="restart-btn" class="phase-action-btn secondary">
               <i data-lucide="rotate-ccw" class="w-4 h-4"></i>
               Start over
             </button>
@@ -242,7 +247,7 @@
           </a>
           <p class="text-xs font-medium text-white/30 uppercase tracking-widest mb-4">Go deeper — other approaches</p>
           <div class="advanced-grid">
-            <button class="advanced-card" data-approach="oauth">
+            <button type="button" class="advanced-card" data-approach="oauth">
               <div class="advanced-icon bg-violet-500/15 border border-violet-500/25">
                 <i data-lucide="share-2" class="text-violet-400 w-5 h-5"></i>
               </div>
@@ -251,7 +256,7 @@
                 <div class="text-xs text-white/35">"Sign in with Google" — no password stored</div>
               </div>
             </button>
-            <button class="advanced-card" data-approach="apikey">
+            <button type="button" class="advanced-card" data-approach="apikey">
               <div class="advanced-icon bg-amber-500/15 border border-amber-500/25">
                 <i data-lucide="hash" class="text-amber-400 w-5 h-5"></i>
               </div>
@@ -266,7 +271,7 @@
 
       <!-- Advanced walkthrough (hidden until user picks OAuth/API Key) -->
       <div id="advanced-panel" class="advanced-panel hidden">
-        <button id="back-to-complete" class="text-sm text-white/40 hover:text-white/70 flex items-center gap-2 mb-6 transition-colors">
+        <button type="button" id="back-to-complete" class="text-sm text-white/40 hover:text-white/70 flex items-center gap-2 mb-6 transition-colors">
           <i data-lucide="arrow-left" class="w-4 h-4"></i>
           Back to summary
         </button>
@@ -275,16 +280,24 @@
           <p id="advanced-overview" class="overview"></p>
           <p id="advanced-when" class="when-to-use"></p>
         </div>
-        <div class="info-panel mb-5" id="advanced-info">
-          <div class="flex items-center gap-2 mb-2">
-            <i data-lucide="circle-dot" class="w-4 h-4 text-indigo-400"></i>
-            <span class="text-xs text-indigo-300/70 font-mono">Step <span id="adv-step-num">1</span> of <span id="adv-step-total">4</span></span>
+        <div class="step-nav-shell mb-5">
+          <button type="button" id="adv-prev-side" class="step-side-nav" aria-label="Previous step">
+            <i data-lucide="chevron-left" class="w-5 h-5"></i>
+          </button>
+          <div class="info-panel step-nav-content" id="advanced-info">
+            <div class="flex items-center gap-2 mb-2">
+              <i data-lucide="circle-dot" class="w-4 h-4 text-indigo-400"></i>
+              <span class="text-xs text-indigo-300/70 font-mono">Step <span id="adv-step-num">1</span> of <span id="adv-step-total">4</span></span>
+            </div>
+            <p id="adv-step-subtitle" class="step-subtitle"></p>
+            <h3 id="adv-step-title" class="step-title"></h3>
+            <p id="adv-step-desc" class="step-desc"></p>
+            <ul id="adv-step-bullets" class="step-bullets"></ul>
+            <div id="adv-step-code" class="code-block hidden"></div>
           </div>
-          <p id="adv-step-subtitle" class="step-subtitle"></p>
-          <h3 id="adv-step-title" class="step-title"></h3>
-          <p id="adv-step-desc" class="step-desc"></p>
-          <ul id="adv-step-bullets" class="step-bullets"></ul>
-          <div id="adv-step-code" class="code-block hidden"></div>
+          <button type="button" id="adv-next-side" class="step-side-nav" aria-label="Next step">
+            <i data-lucide="chevron-right" class="w-5 h-5"></i>
+          </button>
         </div>
         <div class="space-y-4 mb-5">
           <div>
@@ -309,6 +322,7 @@
   <script src="../../js/concept-path.js"></script>
   <script src="../../js/concept-nav.js"></script>
   <script src="../../js/anim-tooltips.js"></script>
+  <script src="diagram-engine.js"></script>
   <script src="script.js"></script>
 </body>
 </html>
