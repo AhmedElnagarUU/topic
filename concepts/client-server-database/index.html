@@ -14,115 +14,50 @@
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="../../css/shared.css">
   <link rel="stylesheet" href="../../css/theme.css">
-  <link rel="stylesheet" href="../../css/concept-base.css">
-  <link rel="stylesheet" href="styles.css">
-  <script>
-    tailwind.config = { theme: { extend: { colors: { deep: '#0a0a0f' } } } };
-  </script>
+  <link rel="stylesheet" href="../../css/docs.css">
+  <script>tailwind.config = { theme: { extend: { colors: { deep: '#0a0a0f' } } } };</script>
 </head>
 <body class="bg-deep text-white" data-concept-id="client-server-database">
   <div class="ambient-bg"></div>
   <div class="grid-overlay"></div>
   <div class="relative z-10 min-h-screen">
     <header class="border-b border-white/5 backdrop-blur-sm bg-deep/80 sticky top-0 z-50">
-      <div class="max-w-5xl mx-auto px-6 py-4 flex items-center justify-between">
+      <div class="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between gap-4">
         <div class="flex items-center gap-4">
           <a href="../../index.html" class="flex items-center gap-2 text-white/40 hover:text-white/70 transition-colors text-sm no-underline">
-            <i data-lucide="arrow-left" class="w-4 h-4"></i> Concepts
+            <i data-lucide="arrow-left" class="w-4 h-4"></i> All concepts
           </a>
-          <div class="w-px h-5 bg-white/10"></div>
-          <div class="flex items-center gap-3">
-            <div class="w-9 h-9 rounded-xl bg-cyan-500/15 border border-cyan-500/25 flex items-center justify-center">
-              <i data-lucide="layers" class="text-cyan-400 w-5 h-5"></i>
-            </div>
-            <div>
-              <h1 class="text-base font-semibold">Client, Server & Database</h1>
-              <p class="text-xs text-white/35">Start here — the foundation</p>
-            </div>
-          </div>
         </div>
         <div class="flex items-center gap-3">
+          <div id="header-search" class="header-search search-wrap">
+            <i data-lucide="search" class="search-icon"></i>
+            <input type="search" class="search-input" placeholder="Search…" aria-label="Search concepts" autocomplete="off">
+            <div class="search-results" role="listbox"></div>
+          </div>
           <button type="button" class="theme-toggle" data-theme-toggle aria-label="Switch theme">
             <i data-theme-icon data-lucide="sun"></i><span data-theme-label>Light</span>
           </button>
-          <span class="concept-badge">01</span>
         </div>
       </div>
     </header>
-
-    <main class="concept-main">
-      <nav id="step-nav" class="step-nav" aria-label="Steps"></nav>
-      <p class="concept-eyebrow" id="concept-eyebrow">Step 1 of 5</p>
-      <h2 class="concept-heading" id="concept-heading">The three layers of every web app</h2>
-      <p class="concept-intro" id="concept-intro">Before authentication, APIs, or caching — you need to understand who does what when you open a website.</p>
-
-      <div class="tutorial-layout">
-        <div class="info-panel">
-          <p class="step-kicker" id="step-kicker"></p>
-          <h3 class="step-title" id="step-title"></h3>
-          <p class="step-desc" id="step-desc"></p>
-          <ul class="step-bullets" id="step-bullets"></ul>
-        </div>
-
-        <div class="visual-panel">
-          <p class="visual-kicker"><i data-lucide="layers" class="w-3.5 h-3.5"></i> Vertical stack animation</p>
-          <div id="flow-hint" class="flow-hint hidden"></div>
-          <div id="anim-canvas" class="anim-canvas stack-canvas">
-            <div id="stack-empty" class="stack-empty">
-              <i data-lucide="layers" class="w-8 h-8 text-cyan-400/40 mb-2"></i>
-              <p>Layers build one at a time — client, server, then database.</p>
-            </div>
-            <div class="stack-lane">
-              <div class="stack-layer" id="layer-client" data-layer="client"
-                data-tip-title="Client"
-                data-tip-text="Browser or mobile app on the user's device. Sends requests and renders the UI — never talks to the database directly.">
-                <div class="layer-icon"><i data-lucide="monitor-smartphone"></i></div>
-                <div class="layer-text"><strong>Client</strong><span>Browser / mobile app</span></div>
-              </div>
-              <div class="stack-connector" id="conn-down"
-                data-tip-title="HTTP request"
-                data-tip-text="The client sends a request downward to the server over the network (HTTP/HTTPS)."></div>
-              <div class="stack-layer" id="layer-server" data-layer="server"
-                data-tip-title="Server"
-                data-tip-text="Backend application that validates requests, runs business logic, and talks to the database.">
-                <div class="layer-icon"><i data-lucide="server"></i></div>
-                <div class="layer-text"><strong>Server</strong><span>Backend logic & APIs</span></div>
-              </div>
-              <div class="stack-connector" id="conn-down-2"
-                data-tip-title="Database query"
-                data-tip-text="The server reads or writes data — SQL queries, document lookups, etc."></div>
-              <div class="stack-layer" id="layer-database" data-layer="database"
-                data-tip-title="Database"
-                data-tip-text="Persistent storage for users, posts, orders. Only the server has credentials to access it.">
-                <div class="layer-icon"><i data-lucide="database"></i></div>
-                <div class="layer-text"><strong>Database</strong><span>Persistent storage</span></div>
-              </div>
-            </div>
-            <div id="stack-packet" class="stack-packet hidden"></div>
-          </div>
-          <div class="anim-controls">
-            <div class="flex gap-2">
-              <button id="prev-btn" class="nav-btn" title="Previous"><i data-lucide="chevron-left" class="w-4 h-4"></i></button>
-              <button id="next-btn" class="nav-btn" title="Next"><i data-lucide="chevron-right" class="w-4 h-4"></i></button>
-            </div>
-            <div id="step-bar" class="step-bar"></div>
-          </div>
-          <div class="tutorial-actions">
-            <button id="continue-btn" class="action-btn primary">Continue <i data-lucide="arrow-right" class="w-4 h-4"></i></button>
-          </div>
-        </div>
-      </div>
-
-      <a href="../authentication/index.html" id="next-concept" class="next-concept-link hidden">
-        Next concept: Authentication <i data-lucide="arrow-right" class="w-4 h-4"></i>
-      </a>
-    </main>
+    <div class="doc-layout">
+      <aside id="doc-toc"></aside>
+      <div id="doc-article" class="doc-article"></div>
+    </div>
+    <footer class="border-t border-white/5 py-8 mt-8">
+      <div class="max-w-6xl mx-auto px-6 text-xs text-white/25">Concept Lab — Client, Server & Database</div>
+    </footer>
   </div>
   <script src="https://unpkg.com/lucide@0.469.0/dist/umd/lucide.min.js"></script>
+  <script src="../../js/concepts-data.js"></script>
+  <script src="../../js/search.js"></script>
+  <script src="../../js/doc-page.js"></script>
   <script src="../../js/theme.js"></script>
-  <script src="../../js/concept-path.js"></script>
-  <script src="../../js/concept-nav.js"></script>
-  <script src="../../js/anim-tooltips.js"></script>
-  <script src="script.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const el = document.getElementById('header-search');
+      if (el) ConceptSearch.init(el, { basePath: '../../' });
+    });
+  </script>
 </body>
 </html>
