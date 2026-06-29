@@ -1,5 +1,5 @@
 /**
- * Concept Lab — Collapsible sidebar navigation (index page only)
+ * Concept Lab — Collapsible sidebar navigation (grouped by tier)
  */
 const SidebarNav = (function () {
   const STORAGE_KEY = 'concept-lab-sidebar-open';
@@ -47,9 +47,16 @@ const SidebarNav = (function () {
     if (!container || typeof CONCEPT_CATEGORIES === 'undefined') return;
 
     const saved = getOpenCategories();
-    const categories = [...CONCEPT_CATEGORIES].sort((a, b) => a.order - b.order);
-    const defaultOpen = activeCategoryId || (activeId && CONCEPTS.find((c) => c.id === activeId)?.category) || categories[0]?.id;
-    const openSet = new Set(saved || categories.map((c) => c.id));
+    const tiers = typeof KNOWLEDGE_TIERS !== 'undefined'
+      ? [...KNOWLEDGE_TIERS].sort((a, b) => a.order - b.order)
+      : [{ id: 'all', name: 'All topics' }];
+
+    const getCategories = typeof getCategoriesByTier === 'function'
+      ? getCategoriesByTier
+      : (tierId) => CONCEPT_CATEGORIES.filter((c) => c.tier === tierId).sort((a, b) => a.order - b.order);
+
+    const defaultOpen = activeCategoryId || (activeId && CONCEPTS.find((c) => c.id === activeId)?.category) || CONCEPT_CATEGORIES[0]?.id;
+    const openSet = new Set(saved || CONCEPT_CATEGORIES.map((c) => c.id));
 
     let html = `
       <nav class="sidebar-nav-inner" aria-label="All topics">
@@ -64,28 +71,41 @@ const SidebarNav = (function () {
         </div>
         <ul class="sidebar-category-list">`;
 
-    categories.forEach((cat) => {
-      const concepts = getConceptsByCategory(cat.id);
-      const isOpen = openSet.has(cat.id);
+    tiers.forEach((tier) => {
+      const categories = tier.id === 'all'
+        ? [...CONCEPT_CATEGORIES].sort((a, b) => a.order - b.order)
+        : getCategories(tier.id);
+
+      if (!categories.length) return;
+
       html += `
-        <li class="sidebar-category" data-category="${cat.id}">
-          <button type="button" class="sidebar-category-btn${isOpen ? ' open' : ''}" aria-expanded="${isOpen}" data-toggle="${cat.id}">
-            <i data-lucide="chevron-right" class="sidebar-chevron"></i>
-            <span class="sidebar-category-name">${escapeHtml(cat.name)}</span>
-            <span class="sidebar-category-count">${concepts.length}</span>
-          </button>
-          <ul class="sidebar-topic-list${isOpen ? ' open' : ''}">
-            ${concepts.map((c) => `
-              <li>
-                <a href="${basePath}concepts/${c.slug}/index.html"
-                   class="sidebar-topic-link${c.id === activeId ? ' active' : ''}">
-                  <i data-lucide="${c.icon}" class="w-3.5 h-3.5"></i>
-                  <span>${escapeHtml(c.title)}</span>
-                </a>
-              </li>
-            `).join('')}
-          </ul>
+        <li class="sidebar-tier">
+          <div class="sidebar-tier-label">${escapeHtml(tier.name)}</div>
         </li>`;
+
+      categories.forEach((cat) => {
+        const concepts = getConceptsByCategory(cat.id);
+        const isOpen = openSet.has(cat.id);
+        html += `
+          <li class="sidebar-category" data-category="${cat.id}">
+            <button type="button" class="sidebar-category-btn${isOpen ? ' open' : ''}" aria-expanded="${isOpen}" data-toggle="${cat.id}">
+              <i data-lucide="chevron-right" class="sidebar-chevron"></i>
+              <span class="sidebar-category-name">${escapeHtml(cat.name)}</span>
+              <span class="sidebar-category-count">${concepts.length}</span>
+            </button>
+            <ul class="sidebar-topic-list${isOpen ? ' open' : ''}">
+              ${concepts.map((c) => `
+                <li>
+                  <a href="${basePath}concepts/${c.slug}/index.html"
+                     class="sidebar-topic-link${c.id === activeId ? ' active' : ''}">
+                    <i data-lucide="${c.icon}" class="w-3.5 h-3.5"></i>
+                    <span>${escapeHtml(c.title)}</span>
+                  </a>
+                </li>
+              `).join('')}
+            </ul>
+          </li>`;
+      });
     });
 
     html += '</ul></nav>';

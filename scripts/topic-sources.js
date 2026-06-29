@@ -3,6 +3,36 @@
  * Format: { title: 'Display name', url: 'https://...' }
  */
 module.exports = {
+  variables: [
+    { title: 'MDN — Variables', url: 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Grammar_and_types#declarations' },
+  ],
+  'data-types': [
+    { title: 'MDN — JavaScript data types', url: 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures' },
+  ],
+  closures: [
+    { title: 'MDN — Closures', url: 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Closures' },
+  ],
+  scope: [
+    { title: 'MDN — Scope', url: 'https://developer.mozilla.org/en-US/docs/Glossary/Scope' },
+  ],
+  'stack-vs-heap': [
+    { title: 'MDN — Memory Management', url: 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Memory_management' },
+  ],
+  'express-basics': [
+    { title: 'Express — Getting started', url: 'https://expressjs.com/en/starter/installing.html' },
+  ],
+  routing: [
+    { title: 'Express — Routing', url: 'https://expressjs.com/en/guide/routing.html' },
+  ],
+  middleware: [
+    { title: 'Express — Middleware', url: 'https://expressjs.com/en/guide/using-middleware.html' },
+  ],
+  'big-o': [
+    { title: 'Big-O Cheat Sheet', url: 'https://www.bigocheatsheet.com/' },
+  ],
+  'binary-search': [
+    { title: 'MDN — Binary search', url: 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/sort' },
+  ],
   'variables-data-types': [
     { title: 'MDN — JavaScript data types', url: 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Grammar_and_types#declarations' },
   ],

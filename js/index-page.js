@@ -1,54 +1,81 @@
 /**
- * Concept Lab — Index page renderer
+ * Concept Lab — Index page renderer (grouped by tier → category)
  */
 document.addEventListener('DOMContentLoaded', () => {
   const container = document.getElementById('categories-container');
   const statsEl = document.getElementById('doc-stats');
   if (!container) return;
 
-  const stats = typeof getKnowledgeStats === 'function' ? getKnowledgeStats() : { topicCount: 0, categoryCount: 0, stepCount: 0 };
+  const stats = typeof getKnowledgeStats === 'function' ? getKnowledgeStats() : { topicCount: 0, categoryCount: 0, tierCount: 3, fundamentalCount: 0, stepCount: 0 };
 
   if (statsEl) {
     statsEl.innerHTML = `
       <div class="doc-stat"><span class="doc-stat-num">${stats.topicCount}</span><span class="doc-stat-label">Topics</span></div>
-      <div class="doc-stat"><span class="doc-stat-num">${stats.categoryCount}</span><span class="doc-stat-label">Categories</span></div>
+      <div class="doc-stat"><span class="doc-stat-num">${stats.fundamentalCount || 0}</span><span class="doc-stat-label">Fundamental</span></div>
+      <div class="doc-stat"><span class="doc-stat-num">${stats.tierCount || 3}</span><span class="doc-stat-label">Tiers</span></div>
       <div class="doc-stat"><span class="doc-stat-num">${stats.stepCount}+</span><span class="doc-stat-label">Steps</span></div>
     `;
   }
 
-  const sorted = [...CONCEPT_CATEGORIES].sort((a, b) => a.order - b.order);
+  const tiers = typeof KNOWLEDGE_TIERS !== 'undefined'
+    ? [...KNOWLEDGE_TIERS].sort((a, b) => a.order - b.order)
+    : [];
 
-  container.innerHTML = sorted.map((cat) => {
-    const concepts = getConceptsByCategory(cat.id);
+  const getCategories = typeof getCategoriesByTier === 'function'
+    ? getCategoriesByTier
+    : (tierId) => CONCEPT_CATEGORIES.filter((c) => c.tier === tierId).sort((a, b) => a.order - b.order);
+
+  container.innerHTML = tiers.map((tier) => {
+    const categories = getCategories(tier.id);
+    const topicCount = categories.reduce((n, cat) => n + getConceptsByCategory(cat.id).length, 0);
+
     return `
-      <section class="category-block" id="category-${cat.id}">
-        <div class="category-header">
-          <div class="category-icon-wrap ${cat.color}">
-            <i data-lucide="${cat.icon}" class="w-5 h-5"></i>
+      <section class="tier-block" id="tier-${tier.id}">
+        <div class="tier-header ${tier.color}">
+          <div class="tier-icon-wrap ${tier.color}">
+            <i data-lucide="${tier.icon}" class="w-6 h-6"></i>
           </div>
-          <div>
-            <p class="category-order">Category ${cat.order} of ${sorted.length}</p>
-            <h3 class="category-title">${cat.name}</h3>
-            <p class="category-desc">${cat.description}</p>
+          <div class="tier-header-text">
+            <p class="tier-label">Tier ${tier.order} — ${topicCount} topics</p>
+            <h2 class="tier-title">${tier.name}</h2>
+            <p class="tier-desc">${tier.description}</p>
           </div>
         </div>
-        <div class="doc-concept-grid">
-          ${concepts.map((c) => `
-            <a href="concepts/${c.slug}/index.html" class="doc-concept-card ${c.color}">
-              <div class="doc-concept-card-top">
-                <div class="doc-concept-icon ${c.color}">
-                  <i data-lucide="${c.icon}" class="w-5 h-5"></i>
+
+        ${categories.map((cat, catIndex) => {
+          const concepts = getConceptsByCategory(cat.id);
+          return `
+            <section class="category-block" id="category-${cat.id}">
+              <div class="category-header">
+                <div class="category-icon-wrap ${cat.color}">
+                  <i data-lucide="${cat.icon}" class="w-5 h-5"></i>
                 </div>
-                <span class="doc-concept-num">${c.num}</span>
+                <div>
+                  <p class="category-order">${catIndex + 1} of ${categories.length} in ${tier.name}</p>
+                  <h3 class="category-title">${cat.name}</h3>
+                  <p class="category-desc">${cat.description}</p>
+                </div>
               </div>
-              <h4 class="doc-concept-title">${c.title}${c.important ? ' <span class="doc-important-badge">Important</span>' : ''}</h4>
-              <p class="doc-concept-summary">${c.summary}</p>
-              <div class="doc-concept-tags">
-                ${(c.tags || []).slice(0, 3).map((t) => `<span class="doc-tag">${t}</span>`).join('')}
+              <div class="doc-concept-grid">
+                ${concepts.map((c) => `
+                  <a href="concepts/${c.slug}/index.html" class="doc-concept-card ${c.color}">
+                    <div class="doc-concept-card-top">
+                      <div class="doc-concept-icon ${c.color}">
+                        <i data-lucide="${c.icon}" class="w-5 h-5"></i>
+                      </div>
+                      <span class="doc-concept-num">${c.num}</span>
+                    </div>
+                    <h4 class="doc-concept-title">${c.title}${c.important ? ' <span class="doc-important-badge">Important</span>' : ''}</h4>
+                    <p class="doc-concept-summary">${c.summary}</p>
+                    <div class="doc-concept-tags">
+                      ${(c.tags || []).slice(0, 3).map((t) => `<span class="doc-tag">${t}</span>`).join('')}
+                    </div>
+                  </a>
+                `).join('')}
               </div>
-            </a>
-          `).join('')}
-        </div>
+            </section>
+          `;
+        }).join('')}
       </section>
     `;
   }).join('');
