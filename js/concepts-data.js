@@ -1,140 +1,225 @@
 /**
  * Concept Lab — Programming Knowledge Index
  * Auto-generated from scripts/build-knowledge-index.js
- * 86 topics across 13 categories
+ * 108 topics across 18 categories in 3 tiers
  */
-const CONCEPT_CATEGORIES = [
+const KNOWLEDGE_TIERS = [
   {
-    "id": "core-fundamentals",
-    "name": "Core Programming Fundamentals",
-    "description": "Variables, functions, scope, memory — the thinking skills behind every language.",
-    "icon": "brain",
+    "id": "fundamental",
+    "name": "Fundamental",
+    "description": "Core building blocks — programming basics, data structures, algorithms, and backend foundations. Master these first.",
+    "icon": "blocks",
     "color": "cyan",
     "order": 1
   },
   {
-    "id": "javascript",
-    "name": "JavaScript Deep Understanding",
-    "description": "Execution context, event loop, async, closures — critical for React and Next.js.",
-    "icon": "file-code",
+    "id": "middle",
+    "name": "Middle",
+    "description": "Frameworks and practical skills — JavaScript deep dives, React, Next.js, databases, and tools.",
+    "icon": "layers",
     "color": "amber",
     "order": 2
   },
   {
+    "id": "advanced",
+    "name": "Advanced",
+    "description": "Architecture, security, performance, and engineering mindset — for production-grade systems.",
+    "icon": "rocket",
+    "color": "violet",
+    "order": 3
+  }
+];
+
+const CONCEPT_CATEGORIES = [
+  {
+    "id": "fund-core-basics",
+    "tier": "fundamental",
+    "name": "Core Programming Basics",
+    "description": "Variables, data types, control flow, loops, and functions — the syntax every program is built from.",
+    "icon": "code",
+    "color": "cyan",
+    "order": 1
+  },
+  {
+    "id": "fund-logic-behavior",
+    "tier": "fundamental",
+    "name": "Logic & Behavior",
+    "description": "Scope, closures, and error handling — how code behaves beyond simple statements.",
+    "icon": "brain",
+    "color": "teal",
+    "order": 2
+  },
+  {
+    "id": "fund-memory-execution",
+    "tier": "fundamental",
+    "name": "Memory & Execution",
+    "description": "How programs store and run code — stack vs heap and what happens at runtime.",
+    "icon": "cpu",
+    "color": "emerald",
+    "order": 3
+  },
+  {
+    "id": "fund-backend",
+    "tier": "fundamental",
+    "name": "Backend Fundamentals",
+    "description": "Express.js basics — server setup, routing, and middleware for your first API.",
+    "icon": "server",
+    "color": "rose",
+    "order": 4
+  },
+  {
+    "id": "fund-data-structures",
+    "tier": "fundamental",
+    "name": "Data Structures",
+    "description": "Arrays, objects, stacks, queues, linked lists, hash maps, and sets — organizing data efficiently.",
+    "icon": "database",
+    "color": "sky",
+    "order": 5
+  },
+  {
+    "id": "fund-algorithms",
+    "tier": "fundamental",
+    "name": "Algorithms",
+    "description": "Sorting, searching, recursion, and Big O — the logic patterns behind efficient code.",
+    "icon": "git-merge",
+    "color": "indigo",
+    "order": 6
+  },
+  {
+    "id": "javascript",
+    "tier": "middle",
+    "name": "JavaScript Deep Understanding",
+    "description": "Execution context, event loop, async, closures — critical for React and Next.js.",
+    "icon": "file-code",
+    "color": "amber",
+    "order": 7
+  },
+  {
     "id": "typescript",
+    "tier": "middle",
     "name": "TypeScript",
     "description": "Types, generics, narrowing — safer code for APIs and components.",
     "icon": "binary",
     "color": "violet",
-    "order": 3
+    "order": 8
   },
   {
     "id": "react",
+    "tier": "middle",
     "name": "React",
     "description": "Components, state, hooks, server vs client — your frontend core.",
     "icon": "atom",
     "color": "sky",
-    "order": 4
+    "order": 9
   },
   {
     "id": "nextjs",
+    "tier": "middle",
     "name": "Next.js",
     "description": "App Router, Server Actions, caching, auth — your main stack.",
     "icon": "triangle",
     "color": "indigo",
-    "order": 5
+    "order": 10
   },
   {
     "id": "backend",
+    "tier": "middle",
     "name": "Backend & Web Architecture",
     "description": "MVC, services, HTTP, client/server, scaling — how backends are built.",
     "icon": "server",
     "color": "rose",
-    "order": 6
+    "order": 11
   },
   {
     "id": "database",
+    "tier": "middle",
     "name": "Database (MongoDB & Concepts)",
     "description": "CRUD, schema design, indexing, aggregation — data that lasts.",
     "icon": "database",
     "color": "emerald",
-    "order": 7
+    "order": 12
   },
   {
     "id": "forms",
+    "tier": "middle",
     "name": "Forms & Data Flow",
     "description": "FormData, validation, uploads, API sync — moving data through your app.",
     "icon": "form-input",
     "color": "orange",
-    "order": 8
-  },
-  {
-    "id": "auth-security",
-    "name": "Authentication & Security",
-    "description": "Sessions, JWT, OAuth, cookies, XSS/CSRF — protecting users and data.",
-    "icon": "shield-check",
-    "color": "lime",
-    "order": 9
+    "order": 13
   },
   {
     "id": "ui-ux",
+    "tier": "middle",
     "name": "UI / UX & Product Thinking",
     "description": "Responsive design, components, accessibility, user flows.",
     "icon": "layout",
     "color": "fuchsia",
-    "order": 10
-  },
-  {
-    "id": "threejs",
-    "name": "3D & Advanced Frontend",
-    "description": "Three.js, scenes, models, animations — interactive 3D on the web.",
-    "icon": "box",
-    "color": "purple",
-    "order": 11
+    "order": 14
   },
   {
     "id": "tools",
+    "tier": "middle",
     "name": "Tools & Ecosystem",
     "description": "Git, Docker, package managers, build tools.",
     "icon": "wrench",
     "color": "slate",
-    "order": 12
+    "order": 15
+  },
+  {
+    "id": "auth-security",
+    "tier": "advanced",
+    "name": "Authentication & Security",
+    "description": "Sessions, JWT, OAuth, cookies, XSS/CSRF — protecting users and data.",
+    "icon": "shield-check",
+    "color": "lime",
+    "order": 16
+  },
+  {
+    "id": "threejs",
+    "tier": "advanced",
+    "name": "3D & Advanced Frontend",
+    "description": "Three.js, scenes, models, animations — interactive 3D on the web.",
+    "icon": "box",
+    "color": "purple",
+    "order": 17
   },
   {
     "id": "mindset",
+    "tier": "advanced",
     "name": "Software Engineering Mindset",
     "description": "Debugging, trade-offs, readability — junior to strong engineer.",
     "icon": "lightbulb",
     "color": "indigo",
-    "order": 13
+    "order": 18
   }
 ];
 
 const CONCEPTS = [
   {
-    "id": "variables-data-types",
-    "slug": "variables-data-types",
+    "id": "variables",
+    "slug": "variables",
     "num": "01",
-    "title": "Variables & Data Types",
-    "summary": "Names for values — strings, numbers, booleans, objects, and how they behave.",
-    "category": "core-fundamentals",
+    "title": "Variables",
+    "summary": "Named containers for values — const, let, and when to use each.",
+    "category": "fund-core-basics",
+    "tier": "fundamental",
     "icon": "variable",
     "color": "cyan",
     "tags": [
       "variables",
-      "types",
-      "string",
-      "number",
-      "boolean"
+      "const",
+      "let",
+      "assignment"
     ],
     "important": false,
     "sources": [
       {
-        "title": "MDN — JavaScript data types",
+        "title": "MDN — Variables",
         "url": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Grammar_and_types#declarations"
       }
     ],
-    "intro": "Before loops, functions, or frameworks — you store and manipulate values. Understanding data types is the first mental model every programmer needs.",
+    "intro": "Before loops, functions, or frameworks — you need names for values. Variables are the first concept every programmer learns.",
     "steps": [
       {
         "kicker": "What they are",
@@ -148,9 +233,59 @@ const CONCEPTS = [
         "icon": "variable"
       },
       {
+        "kicker": "Declaration",
+        "title": "Declaring variables",
+        "desc": "const user = \"Ada\"; creates a binding. let count = 0; allows reassignment. Always declare before use — undeclared variables throw ReferenceError.",
+        "bullets": [
+          "const name = value — cannot reassign",
+          "let name = value — can reassign",
+          "Naming: camelCase for variables"
+        ],
+        "icon": "pen-line"
+      },
+      {
+        "kicker": "Assignment",
+        "title": "Reading and updating",
+        "desc": "Read a variable by using its name. Update with let: count = count + 1. const objects can have properties changed — only the binding is locked.",
+        "bullets": [
+          "const obj = {}; obj.x = 1 — allowed",
+          "const obj = {}; obj = {} — error",
+          "Destructuring: const { name } = user"
+        ],
+        "icon": "refresh-cw"
+      }
+    ]
+  },
+  {
+    "id": "data-types",
+    "slug": "data-types",
+    "num": "02",
+    "title": "Data Types",
+    "summary": "Strings, numbers, booleans, null, undefined — primitives vs references.",
+    "category": "fund-core-basics",
+    "tier": "fundamental",
+    "icon": "hash",
+    "color": "cyan",
+    "tags": [
+      "types",
+      "string",
+      "number",
+      "boolean",
+      "primitive"
+    ],
+    "important": false,
+    "sources": [
+      {
+        "title": "MDN — JavaScript data types",
+        "url": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures"
+      }
+    ],
+    "intro": "Every value in a program has a type. Understanding types prevents bugs and makes code predictable.",
+    "steps": [
+      {
         "kicker": "Primitives",
         "title": "Primitive data types",
-        "desc": "Strings (text), numbers, booleans (true/false), null, undefined, bigint, and symbol. Primitives are copied by value — changing a copy doesn't affect the original.",
+        "desc": "Strings (text), numbers, booleans (true/false), null, undefined, bigint, and symbol. Primitives are copied by value.",
         "bullets": [
           "string — \"hello\"",
           "number — 42, 3.14",
@@ -160,25 +295,37 @@ const CONCEPTS = [
         "icon": "hash"
       },
       {
-        "kicker": "Objects",
+        "kicker": "References",
         "title": "Objects and references",
         "desc": "Objects, arrays, and functions are reference types. Two variables can point to the same object — mutating one affects the other.",
         "bullets": [
           "Objects group related data: { name, age }",
           "Arrays are ordered lists",
-          "References matter when passing to functions"
+          "typeof operator checks type"
         ],
         "icon": "braces"
+      },
+      {
+        "kicker": "Coercion",
+        "title": "Type coercion basics",
+        "desc": "JavaScript sometimes converts types automatically: \"5\" + 1 = \"51\" (string concat). Use === for strict equality without coercion.",
+        "bullets": [
+          "== coerces types — avoid it",
+          "=== compares value and type",
+          "Number(\"42\") explicit conversion"
+        ],
+        "icon": "alert-triangle"
       }
     ]
   },
   {
     "id": "control-flow",
     "slug": "control-flow",
-    "num": "02",
+    "num": "03",
     "title": "Control Flow",
     "summary": "if/else and switch — branching logic based on conditions.",
-    "category": "core-fundamentals",
+    "category": "fund-core-basics",
+    "tier": "fundamental",
     "icon": "git-branch",
     "color": "cyan",
     "tags": [
@@ -239,7 +386,7 @@ const CONCEPTS = [
         "icon": "layers",
         "visual": {
           "type": "integration",
-          "category": "core-fundamentals",
+          "category": "fund-core-basics",
           "title": "Control Flow"
         }
       }
@@ -248,10 +395,11 @@ const CONCEPTS = [
   {
     "id": "loops",
     "slug": "loops",
-    "num": "03",
+    "num": "04",
     "title": "Loops",
     "summary": "for and while loops — repeating work without copy-pasting code.",
-    "category": "core-fundamentals",
+    "category": "fund-core-basics",
+    "tier": "fundamental",
     "icon": "repeat",
     "color": "cyan",
     "tags": [
@@ -312,7 +460,7 @@ const CONCEPTS = [
         "icon": "layers",
         "visual": {
           "type": "integration",
-          "category": "core-fundamentals",
+          "category": "fund-core-basics",
           "title": "Loops"
         }
       }
@@ -321,30 +469,31 @@ const CONCEPTS = [
   {
     "id": "functions",
     "slug": "functions",
-    "num": "04",
+    "num": "05",
     "title": "Functions",
-    "summary": "Pure vs impure functions — reusable blocks of logic with inputs and outputs.",
-    "category": "core-fundamentals",
+    "summary": "Reusable blocks of logic with inputs (parameters) and outputs (return values).",
+    "category": "fund-core-basics",
+    "tier": "fundamental",
     "icon": "function-square",
     "color": "cyan",
     "tags": [
       "functions",
-      "pure",
-      "impure",
-      "parameters"
+      "parameters",
+      "return",
+      "pure"
     ],
     "important": false,
     "sources": [],
-    "intro": "Pure vs impure functions — reusable blocks of logic with inputs and outputs. Core building blocks that every language shares. Strong fundamentals make frameworks easier to reason about.",
+    "intro": "Reusable blocks of logic with inputs (parameters) and outputs (return values). Core building blocks that every language shares. Strong fundamentals make frameworks easier to reason about.",
     "steps": [
       {
         "kicker": "Definition",
         "title": "What is Functions?",
-        "desc": "Pure vs impure functions — reusable blocks of logic with inputs and outputs.",
+        "desc": "Reusable blocks of logic with inputs (parameters) and outputs (return values).",
         "bullets": [
           "Foundation for reading and writing any programming language",
           "Shows up in every function, component, and API you build",
-          "Related ideas: functions, pure, impure"
+          "Related ideas: functions, parameters, return"
         ],
         "icon": "function-square",
         "visual": {
@@ -354,7 +503,7 @@ const CONCEPTS = [
           "bullets": [
             "Foundation for reading and writing any programming language",
             "Shows up in every function, component, and API you build",
-            "Related ideas: functions, pure, impure"
+            "Related ideas: functions, parameters, return"
           ]
         }
       },
@@ -385,25 +534,86 @@ const CONCEPTS = [
         "icon": "layers",
         "visual": {
           "type": "integration",
-          "category": "core-fundamentals",
+          "category": "fund-core-basics",
           "title": "Functions"
         }
       }
     ]
   },
   {
-    "id": "scope-closures",
-    "slug": "scope-closures",
-    "num": "05",
-    "title": "Scope & Closures",
-    "summary": "Where variables live and how inner functions remember outer variables.",
-    "category": "core-fundamentals",
+    "id": "scope",
+    "slug": "scope",
+    "num": "01",
+    "title": "Scope",
+    "summary": "Where variables are visible — global, function, and block scope.",
+    "category": "fund-logic-behavior",
+    "tier": "fundamental",
     "icon": "braces",
-    "color": "cyan",
+    "color": "teal",
     "tags": [
       "scope",
+      "lexical",
+      "block",
+      "global"
+    ],
+    "important": false,
+    "sources": [
+      {
+        "title": "MDN — Scope",
+        "url": "https://developer.mozilla.org/en-US/docs/Glossary/Scope"
+      }
+    ],
+    "intro": "Scope decides where variables are visible. Lexical scope means the structure of your code determines what each function can access.",
+    "steps": [
+      {
+        "kicker": "Levels",
+        "title": "Global, function, and block scope",
+        "desc": "Global — entire file. Function — inside a function declaration. Block — inside { } with let/const.",
+        "bullets": [
+          "Global scope — entire file",
+          "Function scope — inside a function",
+          "Block scope — inside { } with let/const"
+        ],
+        "icon": "braces"
+      },
+      {
+        "kicker": "Rules",
+        "title": "Inner sees outer, not vice versa",
+        "desc": "Inner scopes can read variables from outer scopes. Outer scopes cannot see variables declared inside inner blocks.",
+        "bullets": [
+          "Shadowing: inner let x hides outer x",
+          "const/let are block-scoped",
+          "var is function-scoped (legacy)"
+        ],
+        "icon": "eye"
+      },
+      {
+        "kicker": "Practical",
+        "title": "Why scope matters",
+        "desc": "Scope prevents naming collisions, enables encapsulation, and is the foundation for closures and modules.",
+        "bullets": [
+          "Keep variables as local as possible",
+          "Avoid polluting global scope",
+          "Modules use scope for privacy"
+        ],
+        "icon": "shield"
+      }
+    ]
+  },
+  {
+    "id": "closures",
+    "slug": "closures",
+    "num": "02",
+    "title": "Closures",
+    "summary": "Functions that remember variables from where they were created.",
+    "category": "fund-logic-behavior",
+    "tier": "fundamental",
+    "icon": "lock",
+    "color": "teal",
+    "tags": [
       "closures",
       "lexical",
+      "callbacks",
       "important"
     ],
     "important": true,
@@ -413,124 +623,53 @@ const CONCEPTS = [
         "url": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Closures"
       }
     ],
-    "intro": "Scope decides where variables are visible. Closures let functions remember variables from where they were created — not where they were called.",
+    "intro": "A closure is when an inner function keeps access to outer variables even after the outer function has returned. This is one of the most important concepts in JavaScript.",
     "steps": [
       {
-        "kicker": "Scope",
-        "title": "Lexical scope",
-        "desc": "Variables are visible inside the block or function where they are declared. Inner scopes can see outer scopes; outer scopes cannot see inner ones.",
-        "bullets": [
-          "Global scope — entire file",
-          "Function scope — inside a function",
-          "Block scope — inside { } with let/const"
-        ],
-        "icon": "braces"
-      },
-      {
-        "kicker": "Closure",
+        "kicker": "Definition",
         "title": "Functions remember their birthplace",
-        "desc": "A closure is when an inner function keeps access to outer variables even after the outer function has returned. That's how callbacks, factories, and private state work.",
+        "desc": "A closure = inner function + the variables from its outer scope. The inner function \"closes over\" those variables.",
         "bullets": [
           "Inner function + outer variables = closure",
-          "Used in event handlers and React hooks",
-          "Common interview topic for good reason"
+          "Variables persist after outer function returns",
+          "Every function in JS creates a closure"
         ],
         "icon": "lock"
       },
       {
-        "kicker": "Practical",
-        "title": "Why closures matter in real code",
-        "desc": "React hooks rely on closures. Module patterns use closures for privacy. Mistakes with closures in loops (var in for) are a classic bug — use let or IIFE.",
+        "kicker": "Example",
+        "title": "Closure in action",
+        "desc": "function makeCounter() { let n = 0; return () => ++n; } — each call to the returned function remembers n.",
         "bullets": [
-          "useState closures in React",
-          "Private variables in modules",
-          "Loop + setTimeout classic bug"
+          "Factory functions use closures",
+          "Event handlers capture variables",
+          "React hooks rely on closures"
         ],
         "icon": "code"
-      }
-    ]
-  },
-  {
-    "id": "memory-basics",
-    "slug": "memory-basics",
-    "num": "06",
-    "title": "Memory Basics",
-    "summary": "Stack vs heap — how programs store values and objects in memory.",
-    "category": "core-fundamentals",
-    "icon": "cpu",
-    "color": "cyan",
-    "tags": [
-      "stack",
-      "heap",
-      "memory",
-      "allocation"
-    ],
-    "important": false,
-    "sources": [],
-    "intro": "Stack vs heap — how programs store values and objects in memory. Core building blocks that every language shares. Strong fundamentals make frameworks easier to reason about.",
-    "steps": [
-      {
-        "kicker": "Definition",
-        "title": "What is Memory Basics?",
-        "desc": "Stack vs heap — how programs store values and objects in memory.",
-        "bullets": [
-          "Foundation for reading and writing any programming language",
-          "Shows up in every function, component, and API you build",
-          "Related ideas: stack, heap, memory"
-        ],
-        "icon": "cpu",
-        "visual": {
-          "type": "definition",
-          "icon": "cpu",
-          "title": "Memory Basics",
-          "bullets": [
-            "Foundation for reading and writing any programming language",
-            "Shows up in every function, component, and API you build",
-            "Related ideas: stack, heap, memory"
-          ]
-        }
       },
       {
-        "kicker": "How it works",
-        "title": "How Memory Basics works in practice",
-        "desc": "Memory Basics works by applying clear rules in code. Stack vs heap — how programs store values and objects in memory. The mechanics depend on your language and framework, but the underlying idea stays the same across projects.",
+        "kicker": "Gotchas",
+        "title": "Common closure bugs",
+        "desc": "var in a loop + setTimeout prints the same value every time. Use let (block scope) or an IIFE to capture the right value per iteration.",
         "bullets": [
-          "Core mechanism behind memory basics",
-          "Common in core programming fundamentals work",
-          "See code example below when applicable"
+          "Loop + var + async = classic bug",
+          "Use let in for loops",
+          "Closures enable private state"
         ],
-        "icon": "cog",
-        "visual": {
-          "type": "mechanism"
-        }
-      },
-      {
-        "kicker": "In your stack",
-        "title": "Where Memory Basics fits in real projects",
-        "desc": "In your Next.js + MongoDB projects, memory basics connects to features you build daily — API routes, React components, auth flows, and database queries. Recognizing the pattern helps you debug faster and design cleaner modules.",
-        "bullets": [
-          "Applies across frontend and backend code",
-          "Shows up when building real features, not toy examples",
-          "Combine with other topics in this index for full picture"
-        ],
-        "icon": "layers",
-        "visual": {
-          "type": "integration",
-          "category": "core-fundamentals",
-          "title": "Memory Basics"
-        }
+        "icon": "bug"
       }
     ]
   },
   {
     "id": "error-handling",
     "slug": "error-handling",
-    "num": "07",
+    "num": "03",
     "title": "Error Handling",
     "summary": "try/catch, throwing errors, and failing gracefully instead of crashing.",
-    "category": "core-fundamentals",
+    "category": "fund-logic-behavior",
+    "tier": "fundamental",
     "icon": "alert-circle",
-    "color": "cyan",
+    "color": "teal",
     "tags": [
       "errors",
       "try",
@@ -539,16 +678,16 @@ const CONCEPTS = [
     ],
     "important": false,
     "sources": [],
-    "intro": "try/catch, throwing errors, and failing gracefully instead of crashing. Core building blocks that every language shares. Strong fundamentals make frameworks easier to reason about.",
+    "intro": "try/catch, throwing errors, and failing gracefully instead of crashing. How code behaves beyond simple statements — visibility, memory of scope, and handling failures.",
     "steps": [
       {
         "kicker": "Definition",
         "title": "What is Error Handling?",
         "desc": "try/catch, throwing errors, and failing gracefully instead of crashing.",
         "bullets": [
-          "Foundation for reading and writing any programming language",
-          "Shows up in every function, component, and API you build",
-          "Related ideas: errors, try, catch"
+          "Explains why code behaves unexpectedly when scope or errors are mishandled",
+          "Closures are the foundation for callbacks, hooks, and modules",
+          "Key terms: errors, try, catch, exceptions"
         ],
         "icon": "alert-circle",
         "visual": {
@@ -556,9 +695,9 @@ const CONCEPTS = [
           "icon": "alert-circle",
           "title": "Error Handling",
           "bullets": [
-            "Foundation for reading and writing any programming language",
-            "Shows up in every function, component, and API you build",
-            "Related ideas: errors, try, catch"
+            "Explains why code behaves unexpectedly when scope or errors are mishandled",
+            "Closures are the foundation for callbacks, hooks, and modules",
+            "Key terms: errors, try, catch, exceptions"
           ]
         }
       },
@@ -568,7 +707,7 @@ const CONCEPTS = [
         "desc": "Error Handling works by applying clear rules in code. try/catch, throwing errors, and failing gracefully instead of crashing. The mechanics depend on your language and framework, but the underlying idea stays the same across projects.",
         "bullets": [
           "Core mechanism behind error handling",
-          "Common in core programming fundamentals work",
+          "Common in logic & behavior work",
           "See code example below when applicable"
         ],
         "icon": "cog",
@@ -588,9 +727,1526 @@ const CONCEPTS = [
         "icon": "layers",
         "visual": {
           "type": "integration",
-          "category": "core-fundamentals",
+          "category": "fund-logic-behavior",
           "title": "Error Handling"
         }
+      }
+    ]
+  },
+  {
+    "id": "stack-vs-heap",
+    "slug": "stack-vs-heap",
+    "num": "01",
+    "title": "Stack vs Heap",
+    "summary": "How programs store primitives on the stack and objects on the heap.",
+    "category": "fund-memory-execution",
+    "tier": "fundamental",
+    "icon": "cpu",
+    "color": "emerald",
+    "tags": [
+      "stack",
+      "heap",
+      "memory",
+      "allocation"
+    ],
+    "important": false,
+    "sources": [
+      {
+        "title": "MDN — Memory Management",
+        "url": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Memory_management"
+      }
+    ],
+    "intro": "Programs need memory. Primitives live on the stack; objects live on the heap. Understanding this explains references, garbage collection, and stack overflows.",
+    "steps": [
+      {
+        "kicker": "Stack",
+        "title": "The call stack",
+        "desc": "Stack stores primitives and function call frames. Fast, fixed-size, LIFO — last function in, first out.",
+        "bullets": [
+          "Primitives: number, boolean, string (small)",
+          "Function calls push frames onto stack",
+          "Stack overflow = too many nested calls"
+        ],
+        "icon": "layers"
+      },
+      {
+        "kicker": "Heap",
+        "title": "The heap",
+        "desc": "Objects, arrays, and closures live on the heap. Variables on the stack hold a reference (pointer) to heap memory.",
+        "bullets": [
+          "Objects allocated on heap",
+          "Stack variable holds reference",
+          "Garbage collector frees unused heap memory"
+        ],
+        "icon": "cpu"
+      },
+      {
+        "kicker": "Implications",
+        "title": "Why this matters in JS",
+        "desc": "Copying an object copies the reference, not the object. Two variables can point to the same heap object.",
+        "bullets": [
+          "const a = { x: 1 }; const b = a — same object",
+          "Spread {...obj} creates shallow copy",
+          "Deep clone needed for nested objects"
+        ],
+        "icon": "copy"
+      }
+    ]
+  },
+  {
+    "id": "express-basics",
+    "slug": "express-basics",
+    "num": "01",
+    "title": "Express.js Basics",
+    "summary": "Node.js web framework — what Express is and why backends use it.",
+    "category": "fund-backend",
+    "tier": "fundamental",
+    "icon": "server",
+    "color": "rose",
+    "tags": [
+      "express",
+      "node",
+      "backend",
+      "framework"
+    ],
+    "important": false,
+    "sources": [
+      {
+        "title": "Express — Getting started",
+        "url": "https://expressjs.com/en/starter/installing.html"
+      }
+    ],
+    "intro": "Express is the most popular Node.js web framework. It handles HTTP requests, routing, and middleware so you can build APIs and backends quickly.",
+    "steps": [
+      {
+        "kicker": "What it is",
+        "title": "Express on Node.js",
+        "desc": "Node.js runs JavaScript on the server. Express adds routing, middleware, and request/response helpers on top of Node's http module.",
+        "bullets": [
+          "npm install express",
+          "Minimal API in a few lines",
+          "Used by millions of production apps"
+        ],
+        "icon": "server"
+      },
+      {
+        "kicker": "Core pieces",
+        "title": "App, request, response",
+        "desc": "const app = express() creates an application. Each route handler receives req (request) and res (response) objects.",
+        "bullets": [
+          "req.params — URL parameters",
+          "req.body — POST JSON/form data",
+          "res.json() — send JSON response"
+        ],
+        "icon": "package"
+      },
+      {
+        "kicker": "First app",
+        "title": "Hello World server",
+        "desc": "const express = require(\"express\"); const app = express(); app.get(\"/\", (req, res) => res.send(\"Hello\")); app.listen(3000);",
+        "bullets": [
+          "listen(PORT) starts the server",
+          "Default port 3000 for development",
+          "Use nodemon for auto-restart"
+        ],
+        "icon": "play"
+      }
+    ]
+  },
+  {
+    "id": "server-setup",
+    "slug": "server-setup",
+    "num": "02",
+    "title": "Server Setup",
+    "summary": "Creating an Express app, listening on a port, and handling requests.",
+    "category": "fund-backend",
+    "tier": "fundamental",
+    "icon": "plug",
+    "color": "rose",
+    "tags": [
+      "server",
+      "listen",
+      "port",
+      "setup"
+    ],
+    "important": false,
+    "sources": [],
+    "intro": "Creating an Express app, listening on a port, and handling requests. Your first backend — Node.js and Express handle HTTP so your app can serve APIs and data.",
+    "steps": [
+      {
+        "kicker": "Definition",
+        "title": "What is Server Setup?",
+        "desc": "Creating an Express app, listening on a port, and handling requests.",
+        "bullets": [
+          "Express is the standard starting point for Node.js APIs",
+          "Every web app needs a server to handle HTTP requests",
+          "Routing and middleware are patterns you will use in every backend"
+        ],
+        "icon": "plug",
+        "visual": {
+          "type": "definition",
+          "icon": "plug",
+          "title": "Server Setup",
+          "bullets": [
+            "Express is the standard starting point for Node.js APIs",
+            "Every web app needs a server to handle HTTP requests",
+            "Routing and middleware are patterns you will use in every backend"
+          ]
+        }
+      },
+      {
+        "kicker": "How it works",
+        "title": "How Server Setup works in practice",
+        "desc": "Server Setup works by applying clear rules in code. Creating an Express app, listening on a port, and handling requests. The mechanics depend on your language and framework, but the underlying idea stays the same across projects.",
+        "bullets": [
+          "Core mechanism behind server setup",
+          "Common in backend fundamentals work",
+          "See code example below when applicable"
+        ],
+        "icon": "cog",
+        "visual": {
+          "type": "mechanism"
+        }
+      },
+      {
+        "kicker": "In your stack",
+        "title": "Where Server Setup fits in real projects",
+        "desc": "In your Next.js + MongoDB projects, server setup connects to features you build daily — API routes, React components, auth flows, and database queries. Recognizing the pattern helps you debug faster and design cleaner modules.",
+        "bullets": [
+          "Applies across frontend and backend code",
+          "Shows up when building real features, not toy examples",
+          "Combine with other topics in this index for full picture"
+        ],
+        "icon": "layers",
+        "visual": {
+          "type": "integration",
+          "category": "fund-backend",
+          "title": "Server Setup"
+        }
+      }
+    ]
+  },
+  {
+    "id": "routing",
+    "slug": "routing",
+    "num": "03",
+    "title": "Routing",
+    "summary": "Mapping URLs and HTTP methods to handler functions.",
+    "category": "fund-backend",
+    "tier": "fundamental",
+    "icon": "route",
+    "color": "rose",
+    "tags": [
+      "routing",
+      "get",
+      "post",
+      "endpoints"
+    ],
+    "important": false,
+    "sources": [
+      {
+        "title": "Express — Routing",
+        "url": "https://expressjs.com/en/guide/routing.html"
+      }
+    ],
+    "intro": "Mapping URLs and HTTP methods to handler functions. Your first backend — Node.js and Express handle HTTP so your app can serve APIs and data.",
+    "steps": [
+      {
+        "kicker": "Definition",
+        "title": "What is Routing?",
+        "desc": "Mapping URLs and HTTP methods to handler functions.",
+        "bullets": [
+          "Express is the standard starting point for Node.js APIs",
+          "Every web app needs a server to handle HTTP requests",
+          "Routing and middleware are patterns you will use in every backend"
+        ],
+        "icon": "route",
+        "visual": {
+          "type": "definition",
+          "icon": "route",
+          "title": "Routing",
+          "bullets": [
+            "Express is the standard starting point for Node.js APIs",
+            "Every web app needs a server to handle HTTP requests",
+            "Routing and middleware are patterns you will use in every backend"
+          ]
+        }
+      },
+      {
+        "kicker": "How it works",
+        "title": "How Routing works in practice",
+        "desc": "app.get(\"/users\", handler) maps GET /users to a function. app.post(\"/users\", handler) handles POST. Route params: /users/:id captures id in req.params.id.",
+        "bullets": [
+          "Core mechanism behind routing",
+          "Common in backend fundamentals work",
+          "See code example below when applicable"
+        ],
+        "icon": "cog",
+        "visual": {
+          "type": "mechanism"
+        },
+        "code": "app.get(\"/api/users/:id\", (req, res) => {\n  res.json({ id: req.params.id });\n});"
+      },
+      {
+        "kicker": "In your stack",
+        "title": "Where Routing fits in real projects",
+        "desc": "In your Next.js + MongoDB projects, routing connects to features you build daily — API routes, React components, auth flows, and database queries. Recognizing the pattern helps you debug faster and design cleaner modules.",
+        "bullets": [
+          "Applies across frontend and backend code",
+          "Shows up when building real features, not toy examples",
+          "Combine with other topics in this index for full picture"
+        ],
+        "icon": "layers",
+        "visual": {
+          "type": "integration",
+          "category": "fund-backend",
+          "title": "Routing"
+        }
+      }
+    ]
+  },
+  {
+    "id": "middleware",
+    "slug": "middleware",
+    "num": "04",
+    "title": "Middleware",
+    "summary": "Functions that run between request and response — logging, parsing, auth.",
+    "category": "fund-backend",
+    "tier": "fundamental",
+    "icon": "filter",
+    "color": "rose",
+    "tags": [
+      "middleware",
+      "express",
+      "next",
+      "pipeline"
+    ],
+    "important": false,
+    "sources": [
+      {
+        "title": "Express — Middleware",
+        "url": "https://expressjs.com/en/guide/using-middleware.html"
+      }
+    ],
+    "intro": "Functions that run between request and response — logging, parsing, auth. Your first backend — Node.js and Express handle HTTP so your app can serve APIs and data.",
+    "steps": [
+      {
+        "kicker": "Definition",
+        "title": "What is Middleware?",
+        "desc": "Functions that run between request and response — logging, parsing, auth.",
+        "bullets": [
+          "Express is the standard starting point for Node.js APIs",
+          "Every web app needs a server to handle HTTP requests",
+          "Routing and middleware are patterns you will use in every backend"
+        ],
+        "icon": "filter",
+        "visual": {
+          "type": "definition",
+          "icon": "filter",
+          "title": "Middleware",
+          "bullets": [
+            "Express is the standard starting point for Node.js APIs",
+            "Every web app needs a server to handle HTTP requests",
+            "Routing and middleware are patterns you will use in every backend"
+          ]
+        }
+      },
+      {
+        "kicker": "How it works",
+        "title": "How Middleware works in practice",
+        "desc": "Middleware functions run in order: (req, res, next) => { ...; next(); }. express.json() parses JSON bodies. Custom middleware can log requests, check auth, or handle errors.",
+        "bullets": [
+          "Core mechanism behind middleware",
+          "Common in backend fundamentals work",
+          "See code example below when applicable"
+        ],
+        "icon": "cog",
+        "visual": {
+          "type": "mechanism"
+        },
+        "code": "app.use((req, res, next) => {\n  console.log(req.method, req.url);\n  next();\n});"
+      },
+      {
+        "kicker": "In your stack",
+        "title": "Where Middleware fits in real projects",
+        "desc": "In your Next.js + MongoDB projects, middleware connects to features you build daily — API routes, React components, auth flows, and database queries. Recognizing the pattern helps you debug faster and design cleaner modules.",
+        "bullets": [
+          "Applies across frontend and backend code",
+          "Shows up when building real features, not toy examples",
+          "Combine with other topics in this index for full picture"
+        ],
+        "icon": "layers",
+        "visual": {
+          "type": "integration",
+          "category": "fund-backend",
+          "title": "Middleware"
+        }
+      }
+    ]
+  },
+  {
+    "id": "ds-arrays",
+    "slug": "ds-arrays",
+    "num": "01",
+    "title": "Array",
+    "summary": "Ordered collections — push, pop, map, filter, and index access.",
+    "category": "fund-data-structures",
+    "tier": "fundamental",
+    "icon": "list",
+    "color": "sky",
+    "tags": [
+      "array",
+      "list",
+      "ordered",
+      "index"
+    ],
+    "important": false,
+    "sources": [],
+    "intro": "Ordered collections — push, pop, map, filter, and index access. Ways to organize data — each structure trades speed, memory, and simplicity differently.",
+    "steps": [
+      {
+        "kicker": "Definition",
+        "title": "What is Array?",
+        "desc": "Ordered collections — push, pop, map, filter, and index access.",
+        "bullets": [
+          "Choosing the right structure affects speed and code clarity",
+          "Arrays and objects are built into JavaScript; others you implement or use from libraries",
+          "Structure: Array — array, list"
+        ],
+        "icon": "list",
+        "visual": {
+          "type": "definition",
+          "icon": "list",
+          "title": "Array",
+          "bullets": [
+            "Choosing the right structure affects speed and code clarity",
+            "Arrays and objects are built into JavaScript; others you implement or use from libraries",
+            "Structure: Array — array, list"
+          ]
+        }
+      },
+      {
+        "kicker": "How it works",
+        "title": "How Array works in practice",
+        "desc": "Array works by applying clear rules in code. Ordered collections — push, pop, map, filter, and index access. The mechanics depend on your language and framework, but the underlying idea stays the same across projects.",
+        "bullets": [
+          "Core mechanism behind array",
+          "Common in data structures work",
+          "See code example below when applicable"
+        ],
+        "icon": "cog",
+        "visual": {
+          "type": "mechanism"
+        },
+        "code": "const nums = [1, 2, 3];\nnums.push(4);\nconst doubled = nums.map(n => n * 2);"
+      },
+      {
+        "kicker": "In your stack",
+        "title": "Where Array fits in real projects",
+        "desc": "In your Next.js + MongoDB projects, array connects to features you build daily — API routes, React components, auth flows, and database queries. Recognizing the pattern helps you debug faster and design cleaner modules.",
+        "bullets": [
+          "Applies across frontend and backend code",
+          "Shows up when building real features, not toy examples",
+          "Combine with other topics in this index for full picture"
+        ],
+        "icon": "layers",
+        "visual": {
+          "type": "integration",
+          "category": "fund-data-structures",
+          "title": "Array"
+        }
+      }
+    ]
+  },
+  {
+    "id": "ds-objects",
+    "slug": "ds-objects",
+    "num": "02",
+    "title": "Object",
+    "summary": "Key-value pairs for grouping related data — the most common structure in JS.",
+    "category": "fund-data-structures",
+    "tier": "fundamental",
+    "icon": "braces",
+    "color": "sky",
+    "tags": [
+      "object",
+      "key-value",
+      "properties",
+      "record"
+    ],
+    "important": false,
+    "sources": [],
+    "intro": "Key-value pairs for grouping related data — the most common structure in JS. Ways to organize data — each structure trades speed, memory, and simplicity differently.",
+    "steps": [
+      {
+        "kicker": "Definition",
+        "title": "What is Object?",
+        "desc": "Key-value pairs for grouping related data — the most common structure in JS.",
+        "bullets": [
+          "Choosing the right structure affects speed and code clarity",
+          "Arrays and objects are built into JavaScript; others you implement or use from libraries",
+          "Structure: Object — object, key-value"
+        ],
+        "icon": "braces",
+        "visual": {
+          "type": "definition",
+          "icon": "braces",
+          "title": "Object",
+          "bullets": [
+            "Choosing the right structure affects speed and code clarity",
+            "Arrays and objects are built into JavaScript; others you implement or use from libraries",
+            "Structure: Object — object, key-value"
+          ]
+        }
+      },
+      {
+        "kicker": "How it works",
+        "title": "How Object works in practice",
+        "desc": "Object works by applying clear rules in code. Key-value pairs for grouping related data — the most common structure in JS. The mechanics depend on your language and framework, but the underlying idea stays the same across projects.",
+        "bullets": [
+          "Core mechanism behind object",
+          "Common in data structures work",
+          "See code example below when applicable"
+        ],
+        "icon": "cog",
+        "visual": {
+          "type": "mechanism"
+        }
+      },
+      {
+        "kicker": "In your stack",
+        "title": "Where Object fits in real projects",
+        "desc": "In your Next.js + MongoDB projects, object connects to features you build daily — API routes, React components, auth flows, and database queries. Recognizing the pattern helps you debug faster and design cleaner modules.",
+        "bullets": [
+          "Applies across frontend and backend code",
+          "Shows up when building real features, not toy examples",
+          "Combine with other topics in this index for full picture"
+        ],
+        "icon": "layers",
+        "visual": {
+          "type": "integration",
+          "category": "fund-data-structures",
+          "title": "Object"
+        }
+      }
+    ]
+  },
+  {
+    "id": "ds-stack",
+    "slug": "ds-stack",
+    "num": "03",
+    "title": "Stack",
+    "summary": "Last-in, first-out (LIFO) — push and pop from the top only.",
+    "category": "fund-data-structures",
+    "tier": "fundamental",
+    "icon": "layers",
+    "color": "sky",
+    "tags": [
+      "stack",
+      "lifo",
+      "push",
+      "pop"
+    ],
+    "important": false,
+    "sources": [],
+    "intro": "Last-in, first-out (LIFO) — push and pop from the top only. Ways to organize data — each structure trades speed, memory, and simplicity differently.",
+    "steps": [
+      {
+        "kicker": "Definition",
+        "title": "What is Stack?",
+        "desc": "Last-in, first-out (LIFO) — push and pop from the top only.",
+        "bullets": [
+          "Choosing the right structure affects speed and code clarity",
+          "Arrays and objects are built into JavaScript; others you implement or use from libraries",
+          "Structure: Stack — stack, lifo"
+        ],
+        "icon": "layers",
+        "visual": {
+          "type": "definition",
+          "icon": "layers",
+          "title": "Stack",
+          "bullets": [
+            "Choosing the right structure affects speed and code clarity",
+            "Arrays and objects are built into JavaScript; others you implement or use from libraries",
+            "Structure: Stack — stack, lifo"
+          ]
+        }
+      },
+      {
+        "kicker": "How it works",
+        "title": "How Stack works in practice",
+        "desc": "Stack operations: push (add to top), pop (remove from top), peek (view top). JavaScript arrays work as stacks with push/pop. Used for undo, browser history, call stack.",
+        "bullets": [
+          "Core mechanism behind stack",
+          "Common in data structures work",
+          "See code example below when applicable"
+        ],
+        "icon": "cog",
+        "visual": {
+          "type": "mechanism"
+        }
+      },
+      {
+        "kicker": "In your stack",
+        "title": "Where Stack fits in real projects",
+        "desc": "In your Next.js + MongoDB projects, stack connects to features you build daily — API routes, React components, auth flows, and database queries. Recognizing the pattern helps you debug faster and design cleaner modules.",
+        "bullets": [
+          "Applies across frontend and backend code",
+          "Shows up when building real features, not toy examples",
+          "Combine with other topics in this index for full picture"
+        ],
+        "icon": "layers",
+        "visual": {
+          "type": "integration",
+          "category": "fund-data-structures",
+          "title": "Stack"
+        }
+      }
+    ]
+  },
+  {
+    "id": "ds-queue",
+    "slug": "ds-queue",
+    "num": "04",
+    "title": "Queue",
+    "summary": "First-in, first-out (FIFO) — enqueue at back, dequeue from front.",
+    "category": "fund-data-structures",
+    "tier": "fundamental",
+    "icon": "list-ordered",
+    "color": "sky",
+    "tags": [
+      "queue",
+      "fifo",
+      "enqueue",
+      "dequeue"
+    ],
+    "important": false,
+    "sources": [],
+    "intro": "First-in, first-out (FIFO) — enqueue at back, dequeue from front. Ways to organize data — each structure trades speed, memory, and simplicity differently.",
+    "steps": [
+      {
+        "kicker": "Definition",
+        "title": "What is Queue?",
+        "desc": "First-in, first-out (FIFO) — enqueue at back, dequeue from front.",
+        "bullets": [
+          "Choosing the right structure affects speed and code clarity",
+          "Arrays and objects are built into JavaScript; others you implement or use from libraries",
+          "Structure: Queue — queue, fifo"
+        ],
+        "icon": "list-ordered",
+        "visual": {
+          "type": "definition",
+          "icon": "list-ordered",
+          "title": "Queue",
+          "bullets": [
+            "Choosing the right structure affects speed and code clarity",
+            "Arrays and objects are built into JavaScript; others you implement or use from libraries",
+            "Structure: Queue — queue, fifo"
+          ]
+        }
+      },
+      {
+        "kicker": "How it works",
+        "title": "How Queue works in practice",
+        "desc": "Queue operations: enqueue (add to back), dequeue (remove from front). Implement with array (shift is O(n)) or linked list (O(1)). Used for task scheduling, BFS traversal.",
+        "bullets": [
+          "Core mechanism behind queue",
+          "Common in data structures work",
+          "See code example below when applicable"
+        ],
+        "icon": "cog",
+        "visual": {
+          "type": "mechanism"
+        }
+      },
+      {
+        "kicker": "In your stack",
+        "title": "Where Queue fits in real projects",
+        "desc": "In your Next.js + MongoDB projects, queue connects to features you build daily — API routes, React components, auth flows, and database queries. Recognizing the pattern helps you debug faster and design cleaner modules.",
+        "bullets": [
+          "Applies across frontend and backend code",
+          "Shows up when building real features, not toy examples",
+          "Combine with other topics in this index for full picture"
+        ],
+        "icon": "layers",
+        "visual": {
+          "type": "integration",
+          "category": "fund-data-structures",
+          "title": "Queue"
+        }
+      }
+    ]
+  },
+  {
+    "id": "ds-linked-list",
+    "slug": "ds-linked-list",
+    "num": "05",
+    "title": "Linked List",
+    "summary": "Nodes chained by pointers — efficient insert/delete, no random access.",
+    "category": "fund-data-structures",
+    "tier": "fundamental",
+    "icon": "link",
+    "color": "sky",
+    "tags": [
+      "linked list",
+      "nodes",
+      "pointers",
+      "chain"
+    ],
+    "important": false,
+    "sources": [],
+    "intro": "Nodes chained by pointers — efficient insert/delete, no random access. Ways to organize data — each structure trades speed, memory, and simplicity differently.",
+    "steps": [
+      {
+        "kicker": "Definition",
+        "title": "What is Linked List?",
+        "desc": "Nodes chained by pointers — efficient insert/delete, no random access.",
+        "bullets": [
+          "Choosing the right structure affects speed and code clarity",
+          "Arrays and objects are built into JavaScript; others you implement or use from libraries",
+          "Structure: Linked List — linked list, nodes"
+        ],
+        "icon": "link",
+        "visual": {
+          "type": "definition",
+          "icon": "link",
+          "title": "Linked List",
+          "bullets": [
+            "Choosing the right structure affects speed and code clarity",
+            "Arrays and objects are built into JavaScript; others you implement or use from libraries",
+            "Structure: Linked List — linked list, nodes"
+          ]
+        }
+      },
+      {
+        "kicker": "How it works",
+        "title": "How Linked List works in practice",
+        "desc": "Each node holds a value and a next pointer. Insert/delete at known position is O(1). No random access — finding element is O(n). Foundation for stacks, queues, and trees.",
+        "bullets": [
+          "Core mechanism behind linked list",
+          "Common in data structures work",
+          "See code example below when applicable"
+        ],
+        "icon": "cog",
+        "visual": {
+          "type": "mechanism"
+        }
+      },
+      {
+        "kicker": "In your stack",
+        "title": "Where Linked List fits in real projects",
+        "desc": "In your Next.js + MongoDB projects, linked list connects to features you build daily — API routes, React components, auth flows, and database queries. Recognizing the pattern helps you debug faster and design cleaner modules.",
+        "bullets": [
+          "Applies across frontend and backend code",
+          "Shows up when building real features, not toy examples",
+          "Combine with other topics in this index for full picture"
+        ],
+        "icon": "layers",
+        "visual": {
+          "type": "integration",
+          "category": "fund-data-structures",
+          "title": "Linked List"
+        }
+      }
+    ]
+  },
+  {
+    "id": "ds-hash-map",
+    "slug": "ds-hash-map",
+    "num": "06",
+    "title": "Hash Map",
+    "summary": "Key-value store with O(1) average lookup — Map and object in JavaScript.",
+    "category": "fund-data-structures",
+    "tier": "fundamental",
+    "icon": "table",
+    "color": "sky",
+    "tags": [
+      "hash map",
+      "dictionary",
+      "map",
+      "lookup"
+    ],
+    "important": false,
+    "sources": [],
+    "intro": "Key-value store with O(1) average lookup — Map and object in JavaScript. Ways to organize data — each structure trades speed, memory, and simplicity differently.",
+    "steps": [
+      {
+        "kicker": "Definition",
+        "title": "What is Hash Map?",
+        "desc": "Key-value store with O(1) average lookup — Map and object in JavaScript.",
+        "bullets": [
+          "Choosing the right structure affects speed and code clarity",
+          "Arrays and objects are built into JavaScript; others you implement or use from libraries",
+          "Structure: Hash Map — hash map, dictionary"
+        ],
+        "icon": "table",
+        "visual": {
+          "type": "definition",
+          "icon": "table",
+          "title": "Hash Map",
+          "bullets": [
+            "Choosing the right structure affects speed and code clarity",
+            "Arrays and objects are built into JavaScript; others you implement or use from libraries",
+            "Structure: Hash Map — hash map, dictionary"
+          ]
+        }
+      },
+      {
+        "kicker": "How it works",
+        "title": "How Hash Map works in practice",
+        "desc": "Maps keys to values using a hash function. Average O(1) get/set/delete. JavaScript: Map for any key type, Object for string keys. Used for caches, indexes, frequency counts.",
+        "bullets": [
+          "Core mechanism behind hash map",
+          "Common in data structures work",
+          "See code example below when applicable"
+        ],
+        "icon": "cog",
+        "visual": {
+          "type": "mechanism"
+        },
+        "code": "const map = new Map();\nmap.set(\"name\", \"Ada\");\nmap.get(\"name\"); // \"Ada\""
+      },
+      {
+        "kicker": "In your stack",
+        "title": "Where Hash Map fits in real projects",
+        "desc": "In your Next.js + MongoDB projects, hash map connects to features you build daily — API routes, React components, auth flows, and database queries. Recognizing the pattern helps you debug faster and design cleaner modules.",
+        "bullets": [
+          "Applies across frontend and backend code",
+          "Shows up when building real features, not toy examples",
+          "Combine with other topics in this index for full picture"
+        ],
+        "icon": "layers",
+        "visual": {
+          "type": "integration",
+          "category": "fund-data-structures",
+          "title": "Hash Map"
+        }
+      }
+    ]
+  },
+  {
+    "id": "ds-set",
+    "slug": "ds-set",
+    "num": "07",
+    "title": "Set",
+    "summary": "Collection of unique values — no duplicates, fast membership checks.",
+    "category": "fund-data-structures",
+    "tier": "fundamental",
+    "icon": "circle-dot",
+    "color": "sky",
+    "tags": [
+      "set",
+      "unique",
+      "membership",
+      "collection"
+    ],
+    "important": false,
+    "sources": [],
+    "intro": "Collection of unique values — no duplicates, fast membership checks. Ways to organize data — each structure trades speed, memory, and simplicity differently.",
+    "steps": [
+      {
+        "kicker": "Definition",
+        "title": "What is Set?",
+        "desc": "Collection of unique values — no duplicates, fast membership checks.",
+        "bullets": [
+          "Choosing the right structure affects speed and code clarity",
+          "Arrays and objects are built into JavaScript; others you implement or use from libraries",
+          "Structure: Set — set, unique"
+        ],
+        "icon": "circle-dot",
+        "visual": {
+          "type": "definition",
+          "icon": "circle-dot",
+          "title": "Set",
+          "bullets": [
+            "Choosing the right structure affects speed and code clarity",
+            "Arrays and objects are built into JavaScript; others you implement or use from libraries",
+            "Structure: Set — set, unique"
+          ]
+        }
+      },
+      {
+        "kicker": "How it works",
+        "title": "How Set works in practice",
+        "desc": "Stores unique values only. add, has, delete are O(1) average. Use when you need fast membership checks or deduplication. JavaScript Set preserves insertion order.",
+        "bullets": [
+          "Core mechanism behind set",
+          "Common in data structures work",
+          "See code example below when applicable"
+        ],
+        "icon": "cog",
+        "visual": {
+          "type": "mechanism"
+        }
+      },
+      {
+        "kicker": "In your stack",
+        "title": "Where Set fits in real projects",
+        "desc": "In your Next.js + MongoDB projects, set connects to features you build daily — API routes, React components, auth flows, and database queries. Recognizing the pattern helps you debug faster and design cleaner modules.",
+        "bullets": [
+          "Applies across frontend and backend code",
+          "Shows up when building real features, not toy examples",
+          "Combine with other topics in this index for full picture"
+        ],
+        "icon": "layers",
+        "visual": {
+          "type": "integration",
+          "category": "fund-data-structures",
+          "title": "Set"
+        }
+      }
+    ]
+  },
+  {
+    "id": "sorting",
+    "slug": "sorting",
+    "num": "01",
+    "title": "Sorting",
+    "summary": "Arranging data in order — overview of why and when sorting matters.",
+    "category": "fund-algorithms",
+    "tier": "fundamental",
+    "icon": "arrow-up-down",
+    "color": "indigo",
+    "tags": [
+      "sorting",
+      "order",
+      "algorithms",
+      "overview"
+    ],
+    "important": false,
+    "sources": [],
+    "intro": "Arranging data in order — overview of why and when sorting matters. Step-by-step procedures for solving problems — sorting, searching, and measuring efficiency.",
+    "steps": [
+      {
+        "kicker": "Definition",
+        "title": "What is Sorting?",
+        "desc": "Arranging data in order — overview of why and when sorting matters.",
+        "bullets": [
+          "Interview staples and real-world performance decisions",
+          "Big O lets you compare solutions before writing code",
+          "Algorithm: Sorting — sorting, order"
+        ],
+        "icon": "arrow-up-down",
+        "visual": {
+          "type": "definition",
+          "icon": "arrow-up-down",
+          "title": "Sorting",
+          "bullets": [
+            "Interview staples and real-world performance decisions",
+            "Big O lets you compare solutions before writing code",
+            "Algorithm: Sorting — sorting, order"
+          ]
+        }
+      },
+      {
+        "kicker": "How it works",
+        "title": "How Sorting works in practice",
+        "desc": "Sorting works by applying clear rules in code. Arranging data in order — overview of why and when sorting matters. The mechanics depend on your language and framework, but the underlying idea stays the same across projects.",
+        "bullets": [
+          "Core mechanism behind sorting",
+          "Common in algorithms work",
+          "See code example below when applicable"
+        ],
+        "icon": "cog",
+        "visual": {
+          "type": "mechanism"
+        }
+      },
+      {
+        "kicker": "In your stack",
+        "title": "Where Sorting fits in real projects",
+        "desc": "In your Next.js + MongoDB projects, sorting connects to features you build daily — API routes, React components, auth flows, and database queries. Recognizing the pattern helps you debug faster and design cleaner modules.",
+        "bullets": [
+          "Applies across frontend and backend code",
+          "Shows up when building real features, not toy examples",
+          "Combine with other topics in this index for full picture"
+        ],
+        "icon": "layers",
+        "visual": {
+          "type": "integration",
+          "category": "fund-algorithms",
+          "title": "Sorting"
+        }
+      }
+    ]
+  },
+  {
+    "id": "bubble-sort",
+    "slug": "bubble-sort",
+    "num": "02",
+    "title": "Bubble Sort",
+    "summary": "Compare adjacent pairs and swap — simple but O(n²), good for learning.",
+    "category": "fund-algorithms",
+    "tier": "fundamental",
+    "icon": "arrow-up-narrow-wide",
+    "color": "indigo",
+    "tags": [
+      "bubble sort",
+      "swap",
+      "comparison",
+      "o(n²)"
+    ],
+    "important": false,
+    "sources": [],
+    "intro": "Compare adjacent pairs and swap — simple but O(n²), good for learning. Step-by-step procedures for solving problems — sorting, searching, and measuring efficiency.",
+    "steps": [
+      {
+        "kicker": "Definition",
+        "title": "What is Bubble Sort?",
+        "desc": "Compare adjacent pairs and swap — simple but O(n²), good for learning.",
+        "bullets": [
+          "Interview staples and real-world performance decisions",
+          "Big O lets you compare solutions before writing code",
+          "Algorithm: Bubble Sort — bubble sort, swap"
+        ],
+        "icon": "arrow-up-narrow-wide",
+        "visual": {
+          "type": "definition",
+          "icon": "arrow-up-narrow-wide",
+          "title": "Bubble Sort",
+          "bullets": [
+            "Interview staples and real-world performance decisions",
+            "Big O lets you compare solutions before writing code",
+            "Algorithm: Bubble Sort — bubble sort, swap"
+          ]
+        }
+      },
+      {
+        "kicker": "How it works",
+        "title": "How Bubble Sort works in practice",
+        "desc": "Walk through the array comparing adjacent pairs. If left > right, swap them. After one pass, the largest element bubbles to the end. Repeat for n-1 passes. Simple to code but O(n²) — too slow for large datasets.",
+        "bullets": [
+          "Core mechanism behind bubble sort",
+          "Common in algorithms work",
+          "See code example below when applicable"
+        ],
+        "icon": "cog",
+        "visual": {
+          "type": "mechanism"
+        },
+        "code": "for (let i = 0; i < arr.length; i++) {\n  for (let j = 0; j < arr.length - i - 1; j++) {\n    if (arr[j] > arr[j+1]) [arr[j], arr[j+1]] = [arr[j+1], arr[j]];\n  }\n}"
+      },
+      {
+        "kicker": "In your stack",
+        "title": "Where Bubble Sort fits in real projects",
+        "desc": "In your Next.js + MongoDB projects, bubble sort connects to features you build daily — API routes, React components, auth flows, and database queries. Recognizing the pattern helps you debug faster and design cleaner modules.",
+        "bullets": [
+          "Applies across frontend and backend code",
+          "Shows up when building real features, not toy examples",
+          "Combine with other topics in this index for full picture"
+        ],
+        "icon": "layers",
+        "visual": {
+          "type": "integration",
+          "category": "fund-algorithms",
+          "title": "Bubble Sort"
+        }
+      }
+    ]
+  },
+  {
+    "id": "merge-sort",
+    "slug": "merge-sort",
+    "num": "03",
+    "title": "Merge Sort",
+    "summary": "Divide array in half, sort each, merge — stable O(n log n) sort.",
+    "category": "fund-algorithms",
+    "tier": "fundamental",
+    "icon": "git-merge",
+    "color": "indigo",
+    "tags": [
+      "merge sort",
+      "divide",
+      "conquer",
+      "o(n log n)"
+    ],
+    "important": false,
+    "sources": [],
+    "intro": "Divide array in half, sort each, merge — stable O(n log n) sort. Step-by-step procedures for solving problems — sorting, searching, and measuring efficiency.",
+    "steps": [
+      {
+        "kicker": "Definition",
+        "title": "What is Merge Sort?",
+        "desc": "Divide array in half, sort each, merge — stable O(n log n) sort.",
+        "bullets": [
+          "Interview staples and real-world performance decisions",
+          "Big O lets you compare solutions before writing code",
+          "Algorithm: Merge Sort — merge sort, divide"
+        ],
+        "icon": "git-merge",
+        "visual": {
+          "type": "definition",
+          "icon": "git-merge",
+          "title": "Merge Sort",
+          "bullets": [
+            "Interview staples and real-world performance decisions",
+            "Big O lets you compare solutions before writing code",
+            "Algorithm: Merge Sort — merge sort, divide"
+          ]
+        }
+      },
+      {
+        "kicker": "How it works",
+        "title": "How Merge Sort works in practice",
+        "desc": "Split the array in half recursively until single elements. Merge sorted halves back together comparing heads. Always O(n log n) but needs extra memory for the temporary arrays.",
+        "bullets": [
+          "Core mechanism behind merge sort",
+          "Common in algorithms work",
+          "See code example below when applicable"
+        ],
+        "icon": "cog",
+        "visual": {
+          "type": "mechanism"
+        }
+      },
+      {
+        "kicker": "In your stack",
+        "title": "Where Merge Sort fits in real projects",
+        "desc": "In your Next.js + MongoDB projects, merge sort connects to features you build daily — API routes, React components, auth flows, and database queries. Recognizing the pattern helps you debug faster and design cleaner modules.",
+        "bullets": [
+          "Applies across frontend and backend code",
+          "Shows up when building real features, not toy examples",
+          "Combine with other topics in this index for full picture"
+        ],
+        "icon": "layers",
+        "visual": {
+          "type": "integration",
+          "category": "fund-algorithms",
+          "title": "Merge Sort"
+        }
+      }
+    ]
+  },
+  {
+    "id": "quick-sort",
+    "slug": "quick-sort",
+    "num": "04",
+    "title": "Quick Sort",
+    "summary": "Pick pivot, partition, recurse — fast average case O(n log n).",
+    "category": "fund-algorithms",
+    "tier": "fundamental",
+    "icon": "zap",
+    "color": "indigo",
+    "tags": [
+      "quick sort",
+      "pivot",
+      "partition",
+      "recursion"
+    ],
+    "important": false,
+    "sources": [],
+    "intro": "Pick pivot, partition, recurse — fast average case O(n log n). Step-by-step procedures for solving problems — sorting, searching, and measuring efficiency.",
+    "steps": [
+      {
+        "kicker": "Definition",
+        "title": "What is Quick Sort?",
+        "desc": "Pick pivot, partition, recurse — fast average case O(n log n).",
+        "bullets": [
+          "Interview staples and real-world performance decisions",
+          "Big O lets you compare solutions before writing code",
+          "Algorithm: Quick Sort — quick sort, pivot"
+        ],
+        "icon": "zap",
+        "visual": {
+          "type": "definition",
+          "icon": "zap",
+          "title": "Quick Sort",
+          "bullets": [
+            "Interview staples and real-world performance decisions",
+            "Big O lets you compare solutions before writing code",
+            "Algorithm: Quick Sort — quick sort, pivot"
+          ]
+        }
+      },
+      {
+        "kicker": "How it works",
+        "title": "How Quick Sort works in practice",
+        "desc": "Pick a pivot element. Partition: smaller elements left, larger right. Recursively sort each partition. Average O(n log n), worst O(n²) if pivot choice is bad.",
+        "bullets": [
+          "Core mechanism behind quick sort",
+          "Common in algorithms work",
+          "See code example below when applicable"
+        ],
+        "icon": "cog",
+        "visual": {
+          "type": "mechanism"
+        }
+      },
+      {
+        "kicker": "In your stack",
+        "title": "Where Quick Sort fits in real projects",
+        "desc": "In your Next.js + MongoDB projects, quick sort connects to features you build daily — API routes, React components, auth flows, and database queries. Recognizing the pattern helps you debug faster and design cleaner modules.",
+        "bullets": [
+          "Applies across frontend and backend code",
+          "Shows up when building real features, not toy examples",
+          "Combine with other topics in this index for full picture"
+        ],
+        "icon": "layers",
+        "visual": {
+          "type": "integration",
+          "category": "fund-algorithms",
+          "title": "Quick Sort"
+        }
+      }
+    ]
+  },
+  {
+    "id": "searching",
+    "slug": "searching",
+    "num": "05",
+    "title": "Searching",
+    "summary": "Finding items in a collection — linear vs binary strategies.",
+    "category": "fund-algorithms",
+    "tier": "fundamental",
+    "icon": "search",
+    "color": "indigo",
+    "tags": [
+      "searching",
+      "find",
+      "lookup",
+      "overview"
+    ],
+    "important": false,
+    "sources": [],
+    "intro": "Finding items in a collection — linear vs binary strategies. Step-by-step procedures for solving problems — sorting, searching, and measuring efficiency.",
+    "steps": [
+      {
+        "kicker": "Definition",
+        "title": "What is Searching?",
+        "desc": "Finding items in a collection — linear vs binary strategies.",
+        "bullets": [
+          "Interview staples and real-world performance decisions",
+          "Big O lets you compare solutions before writing code",
+          "Algorithm: Searching — searching, find"
+        ],
+        "icon": "search",
+        "visual": {
+          "type": "definition",
+          "icon": "search",
+          "title": "Searching",
+          "bullets": [
+            "Interview staples and real-world performance decisions",
+            "Big O lets you compare solutions before writing code",
+            "Algorithm: Searching — searching, find"
+          ]
+        }
+      },
+      {
+        "kicker": "How it works",
+        "title": "How Searching works in practice",
+        "desc": "Searching works by applying clear rules in code. Finding items in a collection — linear vs binary strategies. The mechanics depend on your language and framework, but the underlying idea stays the same across projects.",
+        "bullets": [
+          "Core mechanism behind searching",
+          "Common in algorithms work",
+          "See code example below when applicable"
+        ],
+        "icon": "cog",
+        "visual": {
+          "type": "mechanism"
+        }
+      },
+      {
+        "kicker": "In your stack",
+        "title": "Where Searching fits in real projects",
+        "desc": "In your Next.js + MongoDB projects, searching connects to features you build daily — API routes, React components, auth flows, and database queries. Recognizing the pattern helps you debug faster and design cleaner modules.",
+        "bullets": [
+          "Applies across frontend and backend code",
+          "Shows up when building real features, not toy examples",
+          "Combine with other topics in this index for full picture"
+        ],
+        "icon": "layers",
+        "visual": {
+          "type": "integration",
+          "category": "fund-algorithms",
+          "title": "Searching"
+        }
+      }
+    ]
+  },
+  {
+    "id": "linear-search",
+    "slug": "linear-search",
+    "num": "06",
+    "title": "Linear Search",
+    "summary": "Check every element one by one — works on any list, O(n) time.",
+    "category": "fund-algorithms",
+    "tier": "fundamental",
+    "icon": "scan",
+    "color": "indigo",
+    "tags": [
+      "linear search",
+      "sequential",
+      "o(n)",
+      "unsorted"
+    ],
+    "important": false,
+    "sources": [],
+    "intro": "Check every element one by one — works on any list, O(n) time. Step-by-step procedures for solving problems — sorting, searching, and measuring efficiency.",
+    "steps": [
+      {
+        "kicker": "Definition",
+        "title": "What is Linear Search?",
+        "desc": "Check every element one by one — works on any list, O(n) time.",
+        "bullets": [
+          "Interview staples and real-world performance decisions",
+          "Big O lets you compare solutions before writing code",
+          "Algorithm: Linear Search — linear search, sequential"
+        ],
+        "icon": "scan",
+        "visual": {
+          "type": "definition",
+          "icon": "scan",
+          "title": "Linear Search",
+          "bullets": [
+            "Interview staples and real-world performance decisions",
+            "Big O lets you compare solutions before writing code",
+            "Algorithm: Linear Search — linear search, sequential"
+          ]
+        }
+      },
+      {
+        "kicker": "How it works",
+        "title": "How Linear Search works in practice",
+        "desc": "Start at index 0, compare each element to the target. Move forward until found or end of list. Works on unsorted data. Time: O(n) — every element might need checking.",
+        "bullets": [
+          "Core mechanism behind linear search",
+          "Common in algorithms work",
+          "See code example below when applicable"
+        ],
+        "icon": "cog",
+        "visual": {
+          "type": "mechanism"
+        }
+      },
+      {
+        "kicker": "In your stack",
+        "title": "Where Linear Search fits in real projects",
+        "desc": "In your Next.js + MongoDB projects, linear search connects to features you build daily — API routes, React components, auth flows, and database queries. Recognizing the pattern helps you debug faster and design cleaner modules.",
+        "bullets": [
+          "Applies across frontend and backend code",
+          "Shows up when building real features, not toy examples",
+          "Combine with other topics in this index for full picture"
+        ],
+        "icon": "layers",
+        "visual": {
+          "type": "integration",
+          "category": "fund-algorithms",
+          "title": "Linear Search"
+        }
+      }
+    ]
+  },
+  {
+    "id": "binary-search",
+    "slug": "binary-search",
+    "num": "07",
+    "title": "Binary Search",
+    "summary": "Halve the search space each step — requires sorted data, O(log n).",
+    "category": "fund-algorithms",
+    "tier": "fundamental",
+    "icon": "binary",
+    "color": "indigo",
+    "tags": [
+      "binary search",
+      "sorted",
+      "divide",
+      "o(log n)"
+    ],
+    "important": false,
+    "sources": [
+      {
+        "title": "MDN — Binary search",
+        "url": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/sort"
+      }
+    ],
+    "intro": "Halve the search space each step — requires sorted data, O(log n). Step-by-step procedures for solving problems — sorting, searching, and measuring efficiency.",
+    "steps": [
+      {
+        "kicker": "Definition",
+        "title": "What is Binary Search?",
+        "desc": "Halve the search space each step — requires sorted data, O(log n).",
+        "bullets": [
+          "Interview staples and real-world performance decisions",
+          "Big O lets you compare solutions before writing code",
+          "Algorithm: Binary Search — binary search, sorted"
+        ],
+        "icon": "binary",
+        "visual": {
+          "type": "definition",
+          "icon": "binary",
+          "title": "Binary Search",
+          "bullets": [
+            "Interview staples and real-world performance decisions",
+            "Big O lets you compare solutions before writing code",
+            "Algorithm: Binary Search — binary search, sorted"
+          ]
+        }
+      },
+      {
+        "kicker": "How it works",
+        "title": "How Binary Search works in practice",
+        "desc": "Requires a sorted array. Compare target to middle element. If too small, search left half; if too large, search right half. Repeat until found or range is empty. Time: O(log n).",
+        "bullets": [
+          "Core mechanism behind binary search",
+          "Common in algorithms work",
+          "See code example below when applicable"
+        ],
+        "icon": "cog",
+        "visual": {
+          "type": "mechanism"
+        },
+        "code": "function search(arr, target) {\n  let lo = 0, hi = arr.length - 1;\n  while (lo <= hi) {\n    const mid = Math.floor((lo + hi) / 2);\n    if (arr[mid] === target) return mid;\n    if (arr[mid] < target) lo = mid + 1;\n    else hi = mid - 1;\n  }\n  return -1;\n}"
+      },
+      {
+        "kicker": "In your stack",
+        "title": "Where Binary Search fits in real projects",
+        "desc": "In your Next.js + MongoDB projects, binary search connects to features you build daily — API routes, React components, auth flows, and database queries. Recognizing the pattern helps you debug faster and design cleaner modules.",
+        "bullets": [
+          "Applies across frontend and backend code",
+          "Shows up when building real features, not toy examples",
+          "Combine with other topics in this index for full picture"
+        ],
+        "icon": "layers",
+        "visual": {
+          "type": "integration",
+          "category": "fund-algorithms",
+          "title": "Binary Search"
+        }
+      }
+    ]
+  },
+  {
+    "id": "recursion",
+    "slug": "recursion",
+    "num": "08",
+    "title": "Recursion",
+    "summary": "A function that calls itself — base case + recursive case.",
+    "category": "fund-algorithms",
+    "tier": "fundamental",
+    "icon": "repeat",
+    "color": "indigo",
+    "tags": [
+      "recursion",
+      "base case",
+      "self-call",
+      "stack"
+    ],
+    "important": false,
+    "sources": [],
+    "intro": "A function that calls itself — base case + recursive case. Step-by-step procedures for solving problems — sorting, searching, and measuring efficiency.",
+    "steps": [
+      {
+        "kicker": "Definition",
+        "title": "What is Recursion?",
+        "desc": "A function that calls itself — base case + recursive case.",
+        "bullets": [
+          "Interview staples and real-world performance decisions",
+          "Big O lets you compare solutions before writing code",
+          "Algorithm: Recursion — recursion, base case"
+        ],
+        "icon": "repeat",
+        "visual": {
+          "type": "definition",
+          "icon": "repeat",
+          "title": "Recursion",
+          "bullets": [
+            "Interview staples and real-world performance decisions",
+            "Big O lets you compare solutions before writing code",
+            "Algorithm: Recursion — recursion, base case"
+          ]
+        }
+      },
+      {
+        "kicker": "How it works",
+        "title": "How Recursion works in practice",
+        "desc": "A recursive function solves a problem by calling itself on a smaller subproblem. Every recursion needs a base case (stop condition) and a recursive case (smaller input). Risk: stack overflow if base case is missing.",
+        "bullets": [
+          "Core mechanism behind recursion",
+          "Common in algorithms work",
+          "See code example below when applicable"
+        ],
+        "icon": "cog",
+        "visual": {
+          "type": "mechanism"
+        },
+        "code": "function factorial(n) {\n  if (n <= 1) return 1; // base case\n  return n * factorial(n - 1);\n}"
+      },
+      {
+        "kicker": "In your stack",
+        "title": "Where Recursion fits in real projects",
+        "desc": "In your Next.js + MongoDB projects, recursion connects to features you build daily — API routes, React components, auth flows, and database queries. Recognizing the pattern helps you debug faster and design cleaner modules.",
+        "bullets": [
+          "Applies across frontend and backend code",
+          "Shows up when building real features, not toy examples",
+          "Combine with other topics in this index for full picture"
+        ],
+        "icon": "layers",
+        "visual": {
+          "type": "integration",
+          "category": "fund-algorithms",
+          "title": "Recursion"
+        }
+      }
+    ]
+  },
+  {
+    "id": "big-o",
+    "slug": "big-o",
+    "num": "09",
+    "title": "Time Complexity (Big O)",
+    "summary": "How runtime grows with input size — O(1), O(n), O(n²), O(log n).",
+    "category": "fund-algorithms",
+    "tier": "fundamental",
+    "icon": "trending-up",
+    "color": "indigo",
+    "tags": [
+      "big o",
+      "complexity",
+      "performance",
+      "important"
+    ],
+    "important": true,
+    "sources": [
+      {
+        "title": "Big-O Cheat Sheet",
+        "url": "https://www.bigocheatsheet.com/"
+      }
+    ],
+    "intro": "Big O describes how an algorithm's runtime or memory grows as input size increases. It's the language engineers use to compare solutions.",
+    "steps": [
+      {
+        "kicker": "Notation",
+        "title": "What Big O means",
+        "desc": "O(1) = constant time regardless of input size. O(n) = grows linearly. O(n²) = grows with square of input. O(log n) = halves problem each step.",
+        "bullets": [
+          "O(1) — array index access",
+          "O(n) — linear search",
+          "O(log n) — binary search",
+          "O(n²) — nested loops / bubble sort"
+        ],
+        "icon": "trending-up"
+      },
+      {
+        "kicker": "Compare",
+        "title": "Ranking common complexities",
+        "desc": "O(1) < O(log n) < O(n) < O(n log n) < O(n²) < O(2^n). Prefer lower complexity when data grows.",
+        "bullets": [
+          "10,000 items: O(n²) = 100M ops",
+          "Same data: O(n log n) ≈ 130K ops",
+          "Always consider worst case"
+        ],
+        "icon": "bar-chart"
+      },
+      {
+        "kicker": "Practice",
+        "title": "Spot complexity in code",
+        "desc": "Single loop = O(n). Nested loop = O(n²). Halving each step = O(log n). Hash map lookup = O(1) average.",
+        "bullets": [
+          "Count loops and nesting depth",
+          "Sorting usually O(n log n) minimum",
+          "Space complexity counts extra memory"
+        ],
+        "icon": "search"
       }
     ]
   },
@@ -601,6 +2257,7 @@ const CONCEPTS = [
     "title": "Execution Context",
     "summary": "How JavaScript creates an environment when code runs.",
     "category": "javascript",
+    "tier": "middle",
     "icon": "play-circle",
     "color": "amber",
     "tags": [
@@ -672,6 +2329,7 @@ const CONCEPTS = [
     "title": "Call Stack",
     "summary": "The stack of functions waiting to finish — last in, first out.",
     "category": "javascript",
+    "tier": "middle",
     "icon": "layers",
     "color": "amber",
     "tags": [
@@ -743,6 +2401,7 @@ const CONCEPTS = [
     "title": "Event Loop",
     "summary": "How async callbacks, promises, and rendering share one thread.",
     "category": "javascript",
+    "tier": "middle",
     "icon": "refresh-cw",
     "color": "amber",
     "tags": [
@@ -806,6 +2465,7 @@ const CONCEPTS = [
     "title": "Promises & async/await",
     "summary": "Handling future results without blocking the main thread.",
     "category": "javascript",
+    "tier": "middle",
     "icon": "timer",
     "color": "amber",
     "tags": [
@@ -884,6 +2544,7 @@ const CONCEPTS = [
     "title": "Closures (Deep Dive)",
     "summary": "Functions that close over variables — factories, privacy, and callbacks.",
     "category": "javascript",
+    "tier": "middle",
     "icon": "lock",
     "color": "amber",
     "tags": [
@@ -955,6 +2616,7 @@ const CONCEPTS = [
     "title": "Prototypes & Inheritance",
     "summary": "How objects inherit behavior through the prototype chain.",
     "category": "javascript",
+    "tier": "middle",
     "icon": "git-merge",
     "color": "amber",
     "tags": [
@@ -1026,6 +2688,7 @@ const CONCEPTS = [
     "title": "The this Keyword",
     "summary": "What \"this\" refers to — and why it changes with call site and bind.",
     "category": "javascript",
+    "tier": "middle",
     "icon": "target",
     "color": "amber",
     "tags": [
@@ -1098,6 +2761,7 @@ const CONCEPTS = [
     "title": "Modules (ESM vs CommonJS)",
     "summary": "import/export vs require — splitting code into reusable files.",
     "category": "javascript",
+    "tier": "middle",
     "icon": "package",
     "color": "amber",
     "tags": [
@@ -1170,6 +2834,7 @@ const CONCEPTS = [
     "title": "Types vs Interfaces",
     "summary": "When to use type aliases vs interfaces for shapes and contracts.",
     "category": "typescript",
+    "tier": "middle",
     "icon": "file-type",
     "color": "violet",
     "tags": [
@@ -1242,6 +2907,7 @@ const CONCEPTS = [
     "title": "Generics",
     "summary": "Reusable types that work with many different values — Array<T>, Promise<T>.",
     "category": "typescript",
+    "tier": "middle",
     "icon": "boxes",
     "color": "violet",
     "tags": [
@@ -1313,6 +2979,7 @@ const CONCEPTS = [
     "title": "Utility Types",
     "summary": "Partial, Pick, Omit, Record — built-in type transformers.",
     "category": "typescript",
+    "tier": "middle",
     "icon": "wrench",
     "color": "violet",
     "tags": [
@@ -1385,6 +3052,7 @@ const CONCEPTS = [
     "title": "Type Inference",
     "summary": "How TypeScript figures out types without you writing them.",
     "category": "typescript",
+    "tier": "middle",
     "icon": "scan",
     "color": "violet",
     "tags": [
@@ -1456,6 +3124,7 @@ const CONCEPTS = [
     "title": "Narrowing",
     "summary": "Refining union types inside if blocks — typeof, in, discriminated unions.",
     "category": "typescript",
+    "tier": "middle",
     "icon": "filter",
     "color": "violet",
     "tags": [
@@ -1527,6 +3196,7 @@ const CONCEPTS = [
     "title": "Type Safety in APIs",
     "summary": "Typing request/response shapes so frontend and backend agree.",
     "category": "typescript",
+    "tier": "middle",
     "icon": "shield",
     "color": "violet",
     "tags": [
@@ -1599,6 +3269,7 @@ const CONCEPTS = [
     "title": "JSX",
     "summary": "HTML-like syntax inside JavaScript for describing UI.",
     "category": "react",
+    "tier": "middle",
     "icon": "code",
     "color": "sky",
     "tags": [
@@ -1671,6 +3342,7 @@ const CONCEPTS = [
     "title": "Props",
     "summary": "Passing data from parent to child components — read-only inputs.",
     "category": "react",
+    "tier": "middle",
     "icon": "arrow-right-left",
     "color": "sky",
     "tags": [
@@ -1743,6 +3415,7 @@ const CONCEPTS = [
     "title": "State",
     "summary": "Data that changes over time and triggers re-renders when updated.",
     "category": "react",
+    "tier": "middle",
     "icon": "toggle-left",
     "color": "sky",
     "tags": [
@@ -1815,6 +3488,7 @@ const CONCEPTS = [
     "title": "Context API",
     "summary": "Sharing data across the tree without prop drilling.",
     "category": "react",
+    "tier": "middle",
     "icon": "share-2",
     "color": "sky",
     "tags": [
@@ -1886,6 +3560,7 @@ const CONCEPTS = [
     "title": "Server vs Client Components",
     "summary": "What runs on the server vs the browser in modern React apps.",
     "category": "react",
+    "tier": "middle",
     "icon": "monitor-smartphone",
     "color": "sky",
     "tags": [
@@ -1957,6 +3632,7 @@ const CONCEPTS = [
     "title": "Rendering Behavior",
     "summary": "When and why React re-renders — reconciliation and the virtual DOM.",
     "category": "react",
+    "tier": "middle",
     "icon": "eye",
     "color": "sky",
     "tags": [
@@ -2028,6 +3704,7 @@ const CONCEPTS = [
     "title": "Re-renders & Optimization",
     "summary": "useMemo, useCallback, React.memo — avoiding unnecessary work.",
     "category": "react",
+    "tier": "middle",
     "icon": "zap",
     "color": "sky",
     "tags": [
@@ -2100,6 +3777,7 @@ const CONCEPTS = [
     "title": "Hooks",
     "summary": "useEffect, useMemo, useCallback — attaching logic to components.",
     "category": "react",
+    "tier": "middle",
     "icon": "anchor",
     "color": "sky",
     "tags": [
@@ -2172,6 +3850,7 @@ const CONCEPTS = [
     "title": "Controlled vs Uncontrolled Forms",
     "summary": "React state drives inputs vs the DOM holds the value.",
     "category": "react",
+    "tier": "middle",
     "icon": "form-input",
     "color": "sky",
     "tags": [
@@ -2244,6 +3923,7 @@ const CONCEPTS = [
     "title": "App Router",
     "summary": "File-based routing with layouts, loading, and error boundaries.",
     "category": "nextjs",
+    "tier": "middle",
     "icon": "route",
     "color": "indigo",
     "tags": [
@@ -2320,6 +4000,7 @@ const CONCEPTS = [
     "title": "Server Actions",
     "summary": "Call server functions directly from forms and components.",
     "category": "nextjs",
+    "tier": "middle",
     "icon": "server",
     "color": "indigo",
     "tags": [
@@ -2397,6 +4078,7 @@ const CONCEPTS = [
     "title": "Routing & Layouts",
     "summary": "Nested routes, shared layouts, and parallel routes.",
     "category": "nextjs",
+    "tier": "middle",
     "icon": "layout-template",
     "color": "indigo",
     "tags": [
@@ -2468,6 +4150,7 @@ const CONCEPTS = [
     "title": "Data Fetching Patterns",
     "summary": "fetch in Server Components, loading states, and streaming.",
     "category": "nextjs",
+    "tier": "middle",
     "icon": "download",
     "color": "indigo",
     "tags": [
@@ -2539,6 +4222,7 @@ const CONCEPTS = [
     "title": "Caching & Revalidation",
     "summary": "Next.js cache layers, ISR, and on-demand revalidation.",
     "category": "nextjs",
+    "tier": "middle",
     "icon": "hard-drive",
     "color": "indigo",
     "tags": [
@@ -2610,6 +4294,7 @@ const CONCEPTS = [
     "title": "Authentication in Next.js",
     "summary": "NextAuth, Kinde, middleware — protecting routes and sessions.",
     "category": "nextjs",
+    "tier": "middle",
     "icon": "key",
     "color": "indigo",
     "tags": [
@@ -2682,6 +4367,7 @@ const CONCEPTS = [
     "title": "API Routes vs Server Actions",
     "summary": "When to use route handlers vs server actions for mutations.",
     "category": "nextjs",
+    "tier": "middle",
     "icon": "git-compare",
     "color": "indigo",
     "tags": [
@@ -2753,6 +4439,7 @@ const CONCEPTS = [
     "title": "MVC Pattern",
     "summary": "Model, View, Controller — separating data, UI, and request handling.",
     "category": "backend",
+    "tier": "middle",
     "icon": "layout-grid",
     "color": "rose",
     "tags": [
@@ -2825,6 +4512,7 @@ const CONCEPTS = [
     "title": "Services Layer",
     "summary": "Business logic isolated from HTTP — reusable across controllers.",
     "category": "backend",
+    "tier": "middle",
     "icon": "cog",
     "color": "rose",
     "tags": [
@@ -2896,6 +4584,7 @@ const CONCEPTS = [
     "title": "Controllers",
     "summary": "Thin handlers that parse requests and call services.",
     "category": "backend",
+    "tier": "middle",
     "icon": "radio",
     "color": "rose",
     "tags": [
@@ -2967,6 +4656,7 @@ const CONCEPTS = [
     "title": "DTOs & Mappers",
     "summary": "Data Transfer Objects — shaping data between layers safely.",
     "category": "backend",
+    "tier": "middle",
     "icon": "arrow-left-right",
     "color": "rose",
     "tags": [
@@ -3038,6 +4728,7 @@ const CONCEPTS = [
     "title": "Validation",
     "summary": "Rejecting bad input at the boundary before it hits business logic.",
     "category": "backend",
+    "tier": "middle",
     "icon": "check-square",
     "color": "rose",
     "tags": [
@@ -3110,6 +4801,7 @@ const CONCEPTS = [
     "title": "Error Handling",
     "summary": "Consistent error responses, status codes, and logging.",
     "category": "backend",
+    "tier": "middle",
     "icon": "alert-triangle",
     "color": "rose",
     "tags": [
@@ -3181,6 +4873,7 @@ const CONCEPTS = [
     "title": "Clean Architecture Basics",
     "summary": "Dependencies point inward — domain at the center, frameworks at the edge.",
     "category": "backend",
+    "tier": "middle",
     "icon": "building",
     "color": "rose",
     "tags": [
@@ -3252,6 +4945,7 @@ const CONCEPTS = [
     "title": "Client, Server & Database",
     "summary": "The three layers behind every web app.",
     "category": "backend",
+    "tier": "middle",
     "icon": "layers",
     "color": "rose",
     "tags": [
@@ -3364,6 +5058,7 @@ const CONCEPTS = [
     "title": "HTTP & REST APIs",
     "summary": "GET, POST, status codes, and REST resource design.",
     "category": "backend",
+    "tier": "middle",
     "icon": "globe",
     "color": "rose",
     "tags": [
@@ -3469,6 +5164,7 @@ const CONCEPTS = [
     "title": "Caching",
     "summary": "Cache hits, misses, CDNs, and invalidation.",
     "category": "backend",
+    "tier": "middle",
     "icon": "zap",
     "color": "rose",
     "tags": [
@@ -3564,6 +5260,7 @@ const CONCEPTS = [
     "title": "Load Balancing",
     "summary": "Distributing traffic across server pools.",
     "category": "backend",
+    "tier": "middle",
     "icon": "share-2",
     "color": "rose",
     "tags": [
@@ -3658,6 +5355,7 @@ const CONCEPTS = [
     "title": "WebSockets",
     "summary": "Real-time push without polling.",
     "category": "backend",
+    "tier": "middle",
     "icon": "radio",
     "color": "rose",
     "tags": [
@@ -3752,6 +5450,7 @@ const CONCEPTS = [
     "title": "CRUD Operations",
     "summary": "Create, Read, Update, Delete — the four basic data operations.",
     "category": "database",
+    "tier": "middle",
     "icon": "pen-line",
     "color": "emerald",
     "tags": [
@@ -3831,6 +5530,7 @@ const CONCEPTS = [
     "title": "Schema Design",
     "summary": "Structuring documents and collections for your app's queries.",
     "category": "database",
+    "tier": "middle",
     "icon": "table",
     "color": "emerald",
     "tags": [
@@ -3902,6 +5602,7 @@ const CONCEPTS = [
     "title": "Relations in NoSQL",
     "summary": "Embedding vs referencing — modeling relationships without SQL joins.",
     "category": "database",
+    "tier": "middle",
     "icon": "link",
     "color": "emerald",
     "tags": [
@@ -3973,6 +5674,7 @@ const CONCEPTS = [
     "title": "Indexing",
     "summary": "Speeding up queries with indexes — and the cost of maintaining them.",
     "category": "database",
+    "tier": "middle",
     "icon": "search",
     "color": "emerald",
     "tags": [
@@ -4044,6 +5746,7 @@ const CONCEPTS = [
     "title": "Aggregation Basics",
     "summary": "Pipeline stages for grouping, filtering, and transforming data.",
     "category": "database",
+    "tier": "middle",
     "icon": "bar-chart",
     "color": "emerald",
     "tags": [
@@ -4115,6 +5818,7 @@ const CONCEPTS = [
     "title": "Normalization vs Denormalization",
     "summary": "Splitting data for consistency vs duplicating for read speed.",
     "category": "database",
+    "tier": "middle",
     "icon": "scale",
     "color": "emerald",
     "tags": [
@@ -4186,6 +5890,7 @@ const CONCEPTS = [
     "title": "FormData",
     "summary": "Browser API for sending forms including files and fields.",
     "category": "forms",
+    "tier": "middle",
     "icon": "file-input",
     "color": "orange",
     "tags": [
@@ -4258,6 +5963,7 @@ const CONCEPTS = [
     "title": "Validation (Client + Server)",
     "summary": "Never trust the client — validate on both sides.",
     "category": "forms",
+    "tier": "middle",
     "icon": "shield-check",
     "color": "orange",
     "tags": [
@@ -4330,6 +6036,7 @@ const CONCEPTS = [
     "title": "File Uploads",
     "summary": "Multipart forms, storage, and size limits.",
     "category": "forms",
+    "tier": "middle",
     "icon": "upload",
     "color": "orange",
     "tags": [
@@ -4402,6 +6109,7 @@ const CONCEPTS = [
     "title": "API Communication",
     "summary": "fetch, axios, and handling responses from your backend.",
     "category": "forms",
+    "tier": "middle",
     "icon": "send",
     "color": "orange",
     "tags": [
@@ -4474,6 +6182,7 @@ const CONCEPTS = [
     "title": "State Syncing",
     "summary": "Keeping UI state aligned with server data after mutations.",
     "category": "forms",
+    "tier": "middle",
     "icon": "refresh-cw",
     "color": "orange",
     "tags": [
@@ -4540,12 +6249,677 @@ const CONCEPTS = [
     ]
   },
   {
+    "id": "responsive-design",
+    "slug": "responsive-design",
+    "num": "01",
+    "title": "Responsive Design",
+    "summary": "Layouts that adapt from mobile to desktop.",
+    "category": "ui-ux",
+    "tier": "middle",
+    "icon": "smartphone",
+    "color": "fuchsia",
+    "tags": [
+      "responsive",
+      "mobile",
+      "breakpoints",
+      "css"
+    ],
+    "important": false,
+    "sources": [],
+    "intro": "Layouts that adapt from mobile to desktop. Good UI is usable, consistent, and accessible — not just visually polished.",
+    "steps": [
+      {
+        "kicker": "Definition",
+        "title": "What is Responsive Design?",
+        "desc": "Layouts that adapt from mobile to desktop.",
+        "bullets": [
+          "Users judge apps in seconds — clarity beats decoration",
+          "Responsive layouts work on phone, tablet, and desktop",
+          "Accessibility helps everyone, not just screen reader users"
+        ],
+        "icon": "smartphone",
+        "visual": {
+          "type": "definition",
+          "icon": "smartphone",
+          "title": "Responsive Design",
+          "bullets": [
+            "Users judge apps in seconds — clarity beats decoration",
+            "Responsive layouts work on phone, tablet, and desktop",
+            "Accessibility helps everyone, not just screen reader users"
+          ]
+        }
+      },
+      {
+        "kicker": "How it works",
+        "title": "How Responsive Design works in practice",
+        "desc": "Responsive Design works by applying clear rules in code. Layouts that adapt from mobile to desktop. The mechanics depend on your language and framework, but the underlying idea stays the same across projects.",
+        "bullets": [
+          "Core mechanism behind responsive design",
+          "Common in ui / ux & product thinking work",
+          "See code example below when applicable"
+        ],
+        "icon": "cog",
+        "visual": {
+          "type": "mechanism"
+        }
+      },
+      {
+        "kicker": "In your stack",
+        "title": "Where Responsive Design fits in real projects",
+        "desc": "In your Next.js + MongoDB projects, responsive design connects to features you build daily — API routes, React components, auth flows, and database queries. Recognizing the pattern helps you debug faster and design cleaner modules.",
+        "bullets": [
+          "Applies across frontend and backend code",
+          "Shows up when building real features, not toy examples",
+          "Combine with other topics in this index for full picture"
+        ],
+        "icon": "layers",
+        "visual": {
+          "type": "integration",
+          "category": "ui-ux",
+          "title": "Responsive Design"
+        }
+      }
+    ]
+  },
+  {
+    "id": "component-design",
+    "slug": "component-design",
+    "num": "02",
+    "title": "Component Design",
+    "summary": "Building small, focused UI pieces with clear responsibilities.",
+    "category": "ui-ux",
+    "tier": "middle",
+    "icon": "component",
+    "color": "fuchsia",
+    "tags": [
+      "components",
+      "design",
+      "ui"
+    ],
+    "important": false,
+    "sources": [],
+    "intro": "Building small, focused UI pieces with clear responsibilities. Good UI is usable, consistent, and accessible — not just visually polished.",
+    "steps": [
+      {
+        "kicker": "Definition",
+        "title": "What is Component Design?",
+        "desc": "Building small, focused UI pieces with clear responsibilities.",
+        "bullets": [
+          "Users judge apps in seconds — clarity beats decoration",
+          "Responsive layouts work on phone, tablet, and desktop",
+          "Accessibility helps everyone, not just screen reader users"
+        ],
+        "icon": "component",
+        "visual": {
+          "type": "definition",
+          "icon": "component",
+          "title": "Component Design",
+          "bullets": [
+            "Users judge apps in seconds — clarity beats decoration",
+            "Responsive layouts work on phone, tablet, and desktop",
+            "Accessibility helps everyone, not just screen reader users"
+          ]
+        }
+      },
+      {
+        "kicker": "How it works",
+        "title": "How Component Design works in practice",
+        "desc": "Component Design works by applying clear rules in code. Building small, focused UI pieces with clear responsibilities. The mechanics depend on your language and framework, but the underlying idea stays the same across projects.",
+        "bullets": [
+          "Core mechanism behind component design",
+          "Common in ui / ux & product thinking work",
+          "See code example below when applicable"
+        ],
+        "icon": "cog",
+        "visual": {
+          "type": "mechanism"
+        }
+      },
+      {
+        "kicker": "In your stack",
+        "title": "Where Component Design fits in real projects",
+        "desc": "In your Next.js + MongoDB projects, component design connects to features you build daily — API routes, React components, auth flows, and database queries. Recognizing the pattern helps you debug faster and design cleaner modules.",
+        "bullets": [
+          "Applies across frontend and backend code",
+          "Shows up when building real features, not toy examples",
+          "Combine with other topics in this index for full picture"
+        ],
+        "icon": "layers",
+        "visual": {
+          "type": "integration",
+          "category": "ui-ux",
+          "title": "Component Design"
+        }
+      }
+    ]
+  },
+  {
+    "id": "reusability",
+    "slug": "reusability",
+    "num": "03",
+    "title": "Reusability",
+    "summary": "DRY components and design tokens across your product.",
+    "category": "ui-ux",
+    "tier": "middle",
+    "icon": "copy",
+    "color": "fuchsia",
+    "tags": [
+      "reusable",
+      "dry",
+      "tokens"
+    ],
+    "important": false,
+    "sources": [],
+    "intro": "DRY components and design tokens across your product. Good UI is usable, consistent, and accessible — not just visually polished.",
+    "steps": [
+      {
+        "kicker": "Definition",
+        "title": "What is Reusability?",
+        "desc": "DRY components and design tokens across your product.",
+        "bullets": [
+          "Users judge apps in seconds — clarity beats decoration",
+          "Responsive layouts work on phone, tablet, and desktop",
+          "Accessibility helps everyone, not just screen reader users"
+        ],
+        "icon": "copy",
+        "visual": {
+          "type": "definition",
+          "icon": "copy",
+          "title": "Reusability",
+          "bullets": [
+            "Users judge apps in seconds — clarity beats decoration",
+            "Responsive layouts work on phone, tablet, and desktop",
+            "Accessibility helps everyone, not just screen reader users"
+          ]
+        }
+      },
+      {
+        "kicker": "How it works",
+        "title": "How Reusability works in practice",
+        "desc": "Reusability works by applying clear rules in code. DRY components and design tokens across your product. The mechanics depend on your language and framework, but the underlying idea stays the same across projects.",
+        "bullets": [
+          "Core mechanism behind reusability",
+          "Common in ui / ux & product thinking work",
+          "See code example below when applicable"
+        ],
+        "icon": "cog",
+        "visual": {
+          "type": "mechanism"
+        }
+      },
+      {
+        "kicker": "In your stack",
+        "title": "Where Reusability fits in real projects",
+        "desc": "In your Next.js + MongoDB projects, reusability connects to features you build daily — API routes, React components, auth flows, and database queries. Recognizing the pattern helps you debug faster and design cleaner modules.",
+        "bullets": [
+          "Applies across frontend and backend code",
+          "Shows up when building real features, not toy examples",
+          "Combine with other topics in this index for full picture"
+        ],
+        "icon": "layers",
+        "visual": {
+          "type": "integration",
+          "category": "ui-ux",
+          "title": "Reusability"
+        }
+      }
+    ]
+  },
+  {
+    "id": "accessibility",
+    "slug": "accessibility",
+    "num": "04",
+    "title": "Accessibility Basics",
+    "summary": "Semantic HTML, ARIA, keyboard nav — usable by everyone.",
+    "category": "ui-ux",
+    "tier": "middle",
+    "icon": "accessibility",
+    "color": "fuchsia",
+    "tags": [
+      "a11y",
+      "aria",
+      "accessibility",
+      "wcag"
+    ],
+    "important": false,
+    "sources": [],
+    "intro": "Semantic HTML, ARIA, keyboard nav — usable by everyone. Good UI is usable, consistent, and accessible — not just visually polished.",
+    "steps": [
+      {
+        "kicker": "Definition",
+        "title": "What is Accessibility Basics?",
+        "desc": "Semantic HTML, ARIA, keyboard nav — usable by everyone.",
+        "bullets": [
+          "Users judge apps in seconds — clarity beats decoration",
+          "Responsive layouts work on phone, tablet, and desktop",
+          "Accessibility helps everyone, not just screen reader users"
+        ],
+        "icon": "accessibility",
+        "visual": {
+          "type": "definition",
+          "icon": "accessibility",
+          "title": "Accessibility Basics",
+          "bullets": [
+            "Users judge apps in seconds — clarity beats decoration",
+            "Responsive layouts work on phone, tablet, and desktop",
+            "Accessibility helps everyone, not just screen reader users"
+          ]
+        }
+      },
+      {
+        "kicker": "How it works",
+        "title": "How Accessibility Basics works in practice",
+        "desc": "Accessibility Basics works by applying clear rules in code. Semantic HTML, ARIA, keyboard nav — usable by everyone. The mechanics depend on your language and framework, but the underlying idea stays the same across projects.",
+        "bullets": [
+          "Core mechanism behind accessibility basics",
+          "Common in ui / ux & product thinking work",
+          "See code example below when applicable"
+        ],
+        "icon": "cog",
+        "visual": {
+          "type": "mechanism"
+        }
+      },
+      {
+        "kicker": "In your stack",
+        "title": "Where Accessibility Basics fits in real projects",
+        "desc": "In your Next.js + MongoDB projects, accessibility basics connects to features you build daily — API routes, React components, auth flows, and database queries. Recognizing the pattern helps you debug faster and design cleaner modules.",
+        "bullets": [
+          "Applies across frontend and backend code",
+          "Shows up when building real features, not toy examples",
+          "Combine with other topics in this index for full picture"
+        ],
+        "icon": "layers",
+        "visual": {
+          "type": "integration",
+          "category": "ui-ux",
+          "title": "Accessibility Basics"
+        }
+      }
+    ]
+  },
+  {
+    "id": "ux-flow",
+    "slug": "ux-flow",
+    "num": "05",
+    "title": "UX Flow",
+    "summary": "User journeys, onboarding, and reducing friction in your app.",
+    "category": "ui-ux",
+    "tier": "middle",
+    "icon": "map",
+    "color": "fuchsia",
+    "tags": [
+      "ux",
+      "flow",
+      "onboarding",
+      "product"
+    ],
+    "important": false,
+    "sources": [],
+    "intro": "User journeys, onboarding, and reducing friction in your app. Good UI is usable, consistent, and accessible — not just visually polished.",
+    "steps": [
+      {
+        "kicker": "Definition",
+        "title": "What is UX Flow?",
+        "desc": "User journeys, onboarding, and reducing friction in your app.",
+        "bullets": [
+          "Users judge apps in seconds — clarity beats decoration",
+          "Responsive layouts work on phone, tablet, and desktop",
+          "Accessibility helps everyone, not just screen reader users"
+        ],
+        "icon": "map",
+        "visual": {
+          "type": "definition",
+          "icon": "map",
+          "title": "UX Flow",
+          "bullets": [
+            "Users judge apps in seconds — clarity beats decoration",
+            "Responsive layouts work on phone, tablet, and desktop",
+            "Accessibility helps everyone, not just screen reader users"
+          ]
+        }
+      },
+      {
+        "kicker": "How it works",
+        "title": "How UX Flow works in practice",
+        "desc": "UX Flow works by applying clear rules in code. User journeys, onboarding, and reducing friction in your app. The mechanics depend on your language and framework, but the underlying idea stays the same across projects.",
+        "bullets": [
+          "Core mechanism behind ux flow",
+          "Common in ui / ux & product thinking work",
+          "See code example below when applicable"
+        ],
+        "icon": "cog",
+        "visual": {
+          "type": "mechanism"
+        }
+      },
+      {
+        "kicker": "In your stack",
+        "title": "Where UX Flow fits in real projects",
+        "desc": "In your Next.js + MongoDB projects, ux flow connects to features you build daily — API routes, React components, auth flows, and database queries. Recognizing the pattern helps you debug faster and design cleaner modules.",
+        "bullets": [
+          "Applies across frontend and backend code",
+          "Shows up when building real features, not toy examples",
+          "Combine with other topics in this index for full picture"
+        ],
+        "icon": "layers",
+        "visual": {
+          "type": "integration",
+          "category": "ui-ux",
+          "title": "UX Flow"
+        }
+      }
+    ]
+  },
+  {
+    "id": "git-github",
+    "slug": "git-github",
+    "num": "01",
+    "title": "Git & GitHub",
+    "summary": "Version control, branches, commits, and collaboration.",
+    "category": "tools",
+    "tier": "middle",
+    "icon": "git-branch",
+    "color": "slate",
+    "tags": [
+      "git",
+      "github",
+      "branch",
+      "commit"
+    ],
+    "important": false,
+    "sources": [
+      {
+        "title": "GitHub Docs — Git",
+        "url": "https://docs.github.com/en/get-started/using-git"
+      }
+    ],
+    "intro": "Version control, branches, commits, and collaboration. Developer tools automate versioning, packaging, and deployment.",
+    "steps": [
+      {
+        "kicker": "Definition",
+        "title": "What is Git & GitHub?",
+        "desc": "Version control, branches, commits, and collaboration.",
+        "bullets": [
+          "Git tracks every code change — branches isolate features",
+          "npm/pnpm install packages; lockfiles pin exact versions",
+          "Docker packages app + dependencies into reproducible containers"
+        ],
+        "icon": "git-branch",
+        "visual": {
+          "type": "definition",
+          "icon": "git-branch",
+          "title": "Git & GitHub",
+          "bullets": [
+            "Git tracks every code change — branches isolate features",
+            "npm/pnpm install packages; lockfiles pin exact versions",
+            "Docker packages app + dependencies into reproducible containers"
+          ]
+        }
+      },
+      {
+        "kicker": "How it works",
+        "title": "How Git & GitHub works in practice",
+        "desc": "Git & GitHub works by applying clear rules in code. Version control, branches, commits, and collaboration. The mechanics depend on your language and framework, but the underlying idea stays the same across projects.",
+        "bullets": [
+          "git init → git add → git commit -m \"msg\"",
+          "git branch feature → git checkout feature",
+          "git push origin feature → open Pull Request on GitHub"
+        ],
+        "icon": "cog",
+        "visual": {
+          "type": "mechanism"
+        }
+      },
+      {
+        "kicker": "In your stack",
+        "title": "Where Git & GitHub fits in real projects",
+        "desc": "In your Next.js + MongoDB projects, git & github connects to features you build daily — API routes, React components, auth flows, and database queries. Recognizing the pattern helps you debug faster and design cleaner modules.",
+        "bullets": [
+          "GitHub for your topic repo",
+          "pnpm for faster installs",
+          "Docker for consistent deploy environments"
+        ],
+        "icon": "layers",
+        "visual": {
+          "type": "integration",
+          "category": "tools",
+          "title": "Git & GitHub"
+        }
+      }
+    ]
+  },
+  {
+    "id": "docker",
+    "slug": "docker",
+    "num": "02",
+    "title": "Docker",
+    "summary": "Containers for consistent dev and deployment environments.",
+    "category": "tools",
+    "tier": "middle",
+    "icon": "container",
+    "color": "slate",
+    "tags": [
+      "docker",
+      "containers",
+      "images"
+    ],
+    "important": false,
+    "sources": [
+      {
+        "title": "Docker — Get started",
+        "url": "https://docs.docker.com/get-started/"
+      }
+    ],
+    "intro": "Containers for consistent dev and deployment environments. Developer tools automate versioning, packaging, and deployment.",
+    "steps": [
+      {
+        "kicker": "Definition",
+        "title": "What is Docker?",
+        "desc": "Containers for consistent dev and deployment environments.",
+        "bullets": [
+          "Git tracks every code change — branches isolate features",
+          "npm/pnpm install packages; lockfiles pin exact versions",
+          "Docker packages app + dependencies into reproducible containers"
+        ],
+        "icon": "container",
+        "visual": {
+          "type": "definition",
+          "icon": "container",
+          "title": "Docker",
+          "bullets": [
+            "Git tracks every code change — branches isolate features",
+            "npm/pnpm install packages; lockfiles pin exact versions",
+            "Docker packages app + dependencies into reproducible containers"
+          ]
+        }
+      },
+      {
+        "kicker": "How it works",
+        "title": "How Docker works in practice",
+        "desc": "A Dockerfile lists steps to build an image. docker build creates the image; docker run starts a container from it. Containers share the host kernel but have isolated filesystems and networks.",
+        "bullets": [
+          "Core mechanism behind docker",
+          "Common in tools & ecosystem work",
+          "See code example below when applicable"
+        ],
+        "icon": "cog",
+        "visual": {
+          "type": "mechanism"
+        }
+      },
+      {
+        "kicker": "In your stack",
+        "title": "Where Docker fits in real projects",
+        "desc": "In your Next.js + MongoDB projects, docker connects to features you build daily — API routes, React components, auth flows, and database queries. Recognizing the pattern helps you debug faster and design cleaner modules.",
+        "bullets": [
+          "GitHub for your topic repo",
+          "pnpm for faster installs",
+          "Docker for consistent deploy environments"
+        ],
+        "icon": "layers",
+        "visual": {
+          "type": "integration",
+          "category": "tools",
+          "title": "Docker"
+        }
+      }
+    ]
+  },
+  {
+    "id": "package-managers",
+    "slug": "package-managers",
+    "num": "03",
+    "title": "npm & pnpm",
+    "summary": "Installing dependencies and running scripts.",
+    "category": "tools",
+    "tier": "middle",
+    "icon": "package",
+    "color": "slate",
+    "tags": [
+      "npm",
+      "pnpm",
+      "dependencies",
+      "lockfile"
+    ],
+    "important": false,
+    "sources": [],
+    "intro": "Installing dependencies and running scripts. Developer tools automate versioning, packaging, and deployment.",
+    "steps": [
+      {
+        "kicker": "Definition",
+        "title": "What is npm & pnpm?",
+        "desc": "Installing dependencies and running scripts.",
+        "bullets": [
+          "Git tracks every code change — branches isolate features",
+          "npm/pnpm install packages; lockfiles pin exact versions",
+          "Docker packages app + dependencies into reproducible containers"
+        ],
+        "icon": "package",
+        "visual": {
+          "type": "definition",
+          "icon": "package",
+          "title": "npm & pnpm",
+          "bullets": [
+            "Git tracks every code change — branches isolate features",
+            "npm/pnpm install packages; lockfiles pin exact versions",
+            "Docker packages app + dependencies into reproducible containers"
+          ]
+        }
+      },
+      {
+        "kicker": "How it works",
+        "title": "How npm & pnpm works in practice",
+        "desc": "npm & pnpm works by applying clear rules in code. Installing dependencies and running scripts. The mechanics depend on your language and framework, but the underlying idea stays the same across projects.",
+        "bullets": [
+          "Core mechanism behind npm & pnpm",
+          "Common in tools & ecosystem work",
+          "See code example below when applicable"
+        ],
+        "icon": "cog",
+        "visual": {
+          "type": "mechanism"
+        }
+      },
+      {
+        "kicker": "In your stack",
+        "title": "Where npm & pnpm fits in real projects",
+        "desc": "In your Next.js + MongoDB projects, npm & pnpm connects to features you build daily — API routes, React components, auth flows, and database queries. Recognizing the pattern helps you debug faster and design cleaner modules.",
+        "bullets": [
+          "GitHub for your topic repo",
+          "pnpm for faster installs",
+          "Docker for consistent deploy environments"
+        ],
+        "icon": "layers",
+        "visual": {
+          "type": "integration",
+          "category": "tools",
+          "title": "npm & pnpm"
+        }
+      }
+    ]
+  },
+  {
+    "id": "build-tools",
+    "slug": "build-tools",
+    "num": "04",
+    "title": "Build Tools",
+    "summary": "Vite, Webpack, Turbopack — bundling and dev servers.",
+    "category": "tools",
+    "tier": "middle",
+    "icon": "hammer",
+    "color": "slate",
+    "tags": [
+      "vite",
+      "webpack",
+      "bundler",
+      "build"
+    ],
+    "important": false,
+    "sources": [],
+    "intro": "Vite, Webpack, Turbopack — bundling and dev servers. Developer tools automate versioning, packaging, and deployment.",
+    "steps": [
+      {
+        "kicker": "Definition",
+        "title": "What is Build Tools?",
+        "desc": "Vite, Webpack, Turbopack — bundling and dev servers.",
+        "bullets": [
+          "Git tracks every code change — branches isolate features",
+          "npm/pnpm install packages; lockfiles pin exact versions",
+          "Docker packages app + dependencies into reproducible containers"
+        ],
+        "icon": "hammer",
+        "visual": {
+          "type": "definition",
+          "icon": "hammer",
+          "title": "Build Tools",
+          "bullets": [
+            "Git tracks every code change — branches isolate features",
+            "npm/pnpm install packages; lockfiles pin exact versions",
+            "Docker packages app + dependencies into reproducible containers"
+          ]
+        }
+      },
+      {
+        "kicker": "How it works",
+        "title": "How Build Tools works in practice",
+        "desc": "Build Tools works by applying clear rules in code. Vite, Webpack, Turbopack — bundling and dev servers. The mechanics depend on your language and framework, but the underlying idea stays the same across projects.",
+        "bullets": [
+          "Core mechanism behind build tools",
+          "Common in tools & ecosystem work",
+          "See code example below when applicable"
+        ],
+        "icon": "cog",
+        "visual": {
+          "type": "mechanism"
+        }
+      },
+      {
+        "kicker": "In your stack",
+        "title": "Where Build Tools fits in real projects",
+        "desc": "In your Next.js + MongoDB projects, build tools connects to features you build daily — API routes, React components, auth flows, and database queries. Recognizing the pattern helps you debug faster and design cleaner modules.",
+        "bullets": [
+          "GitHub for your topic repo",
+          "pnpm for faster installs",
+          "Docker for consistent deploy environments"
+        ],
+        "icon": "layers",
+        "visual": {
+          "type": "integration",
+          "category": "tools",
+          "title": "Build Tools"
+        }
+      }
+    ]
+  },
+  {
     "id": "sessions-vs-jwt",
     "slug": "sessions-vs-jwt",
     "num": "01",
     "title": "Sessions vs JWT",
     "summary": "Server remembers you vs client carries signed proof.",
     "category": "auth-security",
+    "tier": "advanced",
     "icon": "git-compare",
     "color": "lime",
     "tags": [
@@ -4618,6 +6992,7 @@ const CONCEPTS = [
     "title": "Authentication Deep Dive",
     "summary": "Sessions, JWT, OAuth flows step by step.",
     "category": "auth-security",
+    "tier": "advanced",
     "icon": "shield-check",
     "color": "lime",
     "tags": [
@@ -4860,6 +7235,7 @@ const CONCEPTS = [
     "title": "OAuth 2.0",
     "summary": "Sign in with Google/GitHub — delegated identity without passwords.",
     "category": "auth-security",
+    "tier": "advanced",
     "icon": "fingerprint",
     "color": "lime",
     "tags": [
@@ -4937,6 +7313,7 @@ const CONCEPTS = [
     "title": "Cookies",
     "summary": "HttpOnly, Secure, SameSite — how browsers store session data.",
     "category": "auth-security",
+    "tier": "advanced",
     "icon": "cookie",
     "color": "lime",
     "tags": [
@@ -5009,6 +7386,7 @@ const CONCEPTS = [
     "title": "Protected Routes",
     "summary": "Middleware and guards that block unauthenticated access.",
     "category": "auth-security",
+    "tier": "advanced",
     "icon": "lock",
     "color": "lime",
     "tags": [
@@ -5081,6 +7459,7 @@ const CONCEPTS = [
     "title": "XSS & CSRF Basics",
     "summary": "Cross-site scripting and request forgery — common web attacks.",
     "category": "auth-security",
+    "tier": "advanced",
     "icon": "shield-alert",
     "color": "lime",
     "tags": [
@@ -5153,6 +7532,7 @@ const CONCEPTS = [
     "title": "Encryption & HTTPS",
     "summary": "TLS, certificates, and data in transit.",
     "category": "auth-security",
+    "tier": "advanced",
     "icon": "lock",
     "color": "lime",
     "tags": [
@@ -5242,370 +7622,13 @@ const CONCEPTS = [
     ]
   },
   {
-    "id": "responsive-design",
-    "slug": "responsive-design",
-    "num": "01",
-    "title": "Responsive Design",
-    "summary": "Layouts that adapt from mobile to desktop.",
-    "category": "ui-ux",
-    "icon": "smartphone",
-    "color": "fuchsia",
-    "tags": [
-      "responsive",
-      "mobile",
-      "breakpoints",
-      "css"
-    ],
-    "important": false,
-    "sources": [],
-    "intro": "Layouts that adapt from mobile to desktop. Good UI is usable, consistent, and accessible — not just visually polished.",
-    "steps": [
-      {
-        "kicker": "Definition",
-        "title": "What is Responsive Design?",
-        "desc": "Layouts that adapt from mobile to desktop.",
-        "bullets": [
-          "Users judge apps in seconds — clarity beats decoration",
-          "Responsive layouts work on phone, tablet, and desktop",
-          "Accessibility helps everyone, not just screen reader users"
-        ],
-        "icon": "smartphone",
-        "visual": {
-          "type": "definition",
-          "icon": "smartphone",
-          "title": "Responsive Design",
-          "bullets": [
-            "Users judge apps in seconds — clarity beats decoration",
-            "Responsive layouts work on phone, tablet, and desktop",
-            "Accessibility helps everyone, not just screen reader users"
-          ]
-        }
-      },
-      {
-        "kicker": "How it works",
-        "title": "How Responsive Design works in practice",
-        "desc": "Responsive Design works by applying clear rules in code. Layouts that adapt from mobile to desktop. The mechanics depend on your language and framework, but the underlying idea stays the same across projects.",
-        "bullets": [
-          "Core mechanism behind responsive design",
-          "Common in ui / ux & product thinking work",
-          "See code example below when applicable"
-        ],
-        "icon": "cog",
-        "visual": {
-          "type": "mechanism"
-        }
-      },
-      {
-        "kicker": "In your stack",
-        "title": "Where Responsive Design fits in real projects",
-        "desc": "In your Next.js + MongoDB projects, responsive design connects to features you build daily — API routes, React components, auth flows, and database queries. Recognizing the pattern helps you debug faster and design cleaner modules.",
-        "bullets": [
-          "Applies across frontend and backend code",
-          "Shows up when building real features, not toy examples",
-          "Combine with other topics in this index for full picture"
-        ],
-        "icon": "layers",
-        "visual": {
-          "type": "integration",
-          "category": "ui-ux",
-          "title": "Responsive Design"
-        }
-      }
-    ]
-  },
-  {
-    "id": "component-design",
-    "slug": "component-design",
-    "num": "02",
-    "title": "Component Design",
-    "summary": "Building small, focused UI pieces with clear responsibilities.",
-    "category": "ui-ux",
-    "icon": "component",
-    "color": "fuchsia",
-    "tags": [
-      "components",
-      "design",
-      "ui"
-    ],
-    "important": false,
-    "sources": [],
-    "intro": "Building small, focused UI pieces with clear responsibilities. Good UI is usable, consistent, and accessible — not just visually polished.",
-    "steps": [
-      {
-        "kicker": "Definition",
-        "title": "What is Component Design?",
-        "desc": "Building small, focused UI pieces with clear responsibilities.",
-        "bullets": [
-          "Users judge apps in seconds — clarity beats decoration",
-          "Responsive layouts work on phone, tablet, and desktop",
-          "Accessibility helps everyone, not just screen reader users"
-        ],
-        "icon": "component",
-        "visual": {
-          "type": "definition",
-          "icon": "component",
-          "title": "Component Design",
-          "bullets": [
-            "Users judge apps in seconds — clarity beats decoration",
-            "Responsive layouts work on phone, tablet, and desktop",
-            "Accessibility helps everyone, not just screen reader users"
-          ]
-        }
-      },
-      {
-        "kicker": "How it works",
-        "title": "How Component Design works in practice",
-        "desc": "Component Design works by applying clear rules in code. Building small, focused UI pieces with clear responsibilities. The mechanics depend on your language and framework, but the underlying idea stays the same across projects.",
-        "bullets": [
-          "Core mechanism behind component design",
-          "Common in ui / ux & product thinking work",
-          "See code example below when applicable"
-        ],
-        "icon": "cog",
-        "visual": {
-          "type": "mechanism"
-        }
-      },
-      {
-        "kicker": "In your stack",
-        "title": "Where Component Design fits in real projects",
-        "desc": "In your Next.js + MongoDB projects, component design connects to features you build daily — API routes, React components, auth flows, and database queries. Recognizing the pattern helps you debug faster and design cleaner modules.",
-        "bullets": [
-          "Applies across frontend and backend code",
-          "Shows up when building real features, not toy examples",
-          "Combine with other topics in this index for full picture"
-        ],
-        "icon": "layers",
-        "visual": {
-          "type": "integration",
-          "category": "ui-ux",
-          "title": "Component Design"
-        }
-      }
-    ]
-  },
-  {
-    "id": "reusability",
-    "slug": "reusability",
-    "num": "03",
-    "title": "Reusability",
-    "summary": "DRY components and design tokens across your product.",
-    "category": "ui-ux",
-    "icon": "copy",
-    "color": "fuchsia",
-    "tags": [
-      "reusable",
-      "dry",
-      "tokens"
-    ],
-    "important": false,
-    "sources": [],
-    "intro": "DRY components and design tokens across your product. Good UI is usable, consistent, and accessible — not just visually polished.",
-    "steps": [
-      {
-        "kicker": "Definition",
-        "title": "What is Reusability?",
-        "desc": "DRY components and design tokens across your product.",
-        "bullets": [
-          "Users judge apps in seconds — clarity beats decoration",
-          "Responsive layouts work on phone, tablet, and desktop",
-          "Accessibility helps everyone, not just screen reader users"
-        ],
-        "icon": "copy",
-        "visual": {
-          "type": "definition",
-          "icon": "copy",
-          "title": "Reusability",
-          "bullets": [
-            "Users judge apps in seconds — clarity beats decoration",
-            "Responsive layouts work on phone, tablet, and desktop",
-            "Accessibility helps everyone, not just screen reader users"
-          ]
-        }
-      },
-      {
-        "kicker": "How it works",
-        "title": "How Reusability works in practice",
-        "desc": "Reusability works by applying clear rules in code. DRY components and design tokens across your product. The mechanics depend on your language and framework, but the underlying idea stays the same across projects.",
-        "bullets": [
-          "Core mechanism behind reusability",
-          "Common in ui / ux & product thinking work",
-          "See code example below when applicable"
-        ],
-        "icon": "cog",
-        "visual": {
-          "type": "mechanism"
-        }
-      },
-      {
-        "kicker": "In your stack",
-        "title": "Where Reusability fits in real projects",
-        "desc": "In your Next.js + MongoDB projects, reusability connects to features you build daily — API routes, React components, auth flows, and database queries. Recognizing the pattern helps you debug faster and design cleaner modules.",
-        "bullets": [
-          "Applies across frontend and backend code",
-          "Shows up when building real features, not toy examples",
-          "Combine with other topics in this index for full picture"
-        ],
-        "icon": "layers",
-        "visual": {
-          "type": "integration",
-          "category": "ui-ux",
-          "title": "Reusability"
-        }
-      }
-    ]
-  },
-  {
-    "id": "accessibility",
-    "slug": "accessibility",
-    "num": "04",
-    "title": "Accessibility Basics",
-    "summary": "Semantic HTML, ARIA, keyboard nav — usable by everyone.",
-    "category": "ui-ux",
-    "icon": "accessibility",
-    "color": "fuchsia",
-    "tags": [
-      "a11y",
-      "aria",
-      "accessibility",
-      "wcag"
-    ],
-    "important": false,
-    "sources": [],
-    "intro": "Semantic HTML, ARIA, keyboard nav — usable by everyone. Good UI is usable, consistent, and accessible — not just visually polished.",
-    "steps": [
-      {
-        "kicker": "Definition",
-        "title": "What is Accessibility Basics?",
-        "desc": "Semantic HTML, ARIA, keyboard nav — usable by everyone.",
-        "bullets": [
-          "Users judge apps in seconds — clarity beats decoration",
-          "Responsive layouts work on phone, tablet, and desktop",
-          "Accessibility helps everyone, not just screen reader users"
-        ],
-        "icon": "accessibility",
-        "visual": {
-          "type": "definition",
-          "icon": "accessibility",
-          "title": "Accessibility Basics",
-          "bullets": [
-            "Users judge apps in seconds — clarity beats decoration",
-            "Responsive layouts work on phone, tablet, and desktop",
-            "Accessibility helps everyone, not just screen reader users"
-          ]
-        }
-      },
-      {
-        "kicker": "How it works",
-        "title": "How Accessibility Basics works in practice",
-        "desc": "Accessibility Basics works by applying clear rules in code. Semantic HTML, ARIA, keyboard nav — usable by everyone. The mechanics depend on your language and framework, but the underlying idea stays the same across projects.",
-        "bullets": [
-          "Core mechanism behind accessibility basics",
-          "Common in ui / ux & product thinking work",
-          "See code example below when applicable"
-        ],
-        "icon": "cog",
-        "visual": {
-          "type": "mechanism"
-        }
-      },
-      {
-        "kicker": "In your stack",
-        "title": "Where Accessibility Basics fits in real projects",
-        "desc": "In your Next.js + MongoDB projects, accessibility basics connects to features you build daily — API routes, React components, auth flows, and database queries. Recognizing the pattern helps you debug faster and design cleaner modules.",
-        "bullets": [
-          "Applies across frontend and backend code",
-          "Shows up when building real features, not toy examples",
-          "Combine with other topics in this index for full picture"
-        ],
-        "icon": "layers",
-        "visual": {
-          "type": "integration",
-          "category": "ui-ux",
-          "title": "Accessibility Basics"
-        }
-      }
-    ]
-  },
-  {
-    "id": "ux-flow",
-    "slug": "ux-flow",
-    "num": "05",
-    "title": "UX Flow",
-    "summary": "User journeys, onboarding, and reducing friction in your app.",
-    "category": "ui-ux",
-    "icon": "map",
-    "color": "fuchsia",
-    "tags": [
-      "ux",
-      "flow",
-      "onboarding",
-      "product"
-    ],
-    "important": false,
-    "sources": [],
-    "intro": "User journeys, onboarding, and reducing friction in your app. Good UI is usable, consistent, and accessible — not just visually polished.",
-    "steps": [
-      {
-        "kicker": "Definition",
-        "title": "What is UX Flow?",
-        "desc": "User journeys, onboarding, and reducing friction in your app.",
-        "bullets": [
-          "Users judge apps in seconds — clarity beats decoration",
-          "Responsive layouts work on phone, tablet, and desktop",
-          "Accessibility helps everyone, not just screen reader users"
-        ],
-        "icon": "map",
-        "visual": {
-          "type": "definition",
-          "icon": "map",
-          "title": "UX Flow",
-          "bullets": [
-            "Users judge apps in seconds — clarity beats decoration",
-            "Responsive layouts work on phone, tablet, and desktop",
-            "Accessibility helps everyone, not just screen reader users"
-          ]
-        }
-      },
-      {
-        "kicker": "How it works",
-        "title": "How UX Flow works in practice",
-        "desc": "UX Flow works by applying clear rules in code. User journeys, onboarding, and reducing friction in your app. The mechanics depend on your language and framework, but the underlying idea stays the same across projects.",
-        "bullets": [
-          "Core mechanism behind ux flow",
-          "Common in ui / ux & product thinking work",
-          "See code example below when applicable"
-        ],
-        "icon": "cog",
-        "visual": {
-          "type": "mechanism"
-        }
-      },
-      {
-        "kicker": "In your stack",
-        "title": "Where UX Flow fits in real projects",
-        "desc": "In your Next.js + MongoDB projects, ux flow connects to features you build daily — API routes, React components, auth flows, and database queries. Recognizing the pattern helps you debug faster and design cleaner modules.",
-        "bullets": [
-          "Applies across frontend and backend code",
-          "Shows up when building real features, not toy examples",
-          "Combine with other topics in this index for full picture"
-        ],
-        "icon": "layers",
-        "visual": {
-          "type": "integration",
-          "category": "ui-ux",
-          "title": "UX Flow"
-        }
-      }
-    ]
-  },
-  {
     "id": "threejs-basics",
     "slug": "threejs-basics",
     "num": "01",
     "title": "Three.js Basics",
     "summary": "WebGL made approachable — 3D in the browser.",
     "category": "threejs",
+    "tier": "advanced",
     "icon": "box",
     "color": "purple",
     "tags": [
@@ -5682,6 +7705,7 @@ const CONCEPTS = [
     "title": "Scene, Camera & Renderer",
     "summary": "The three objects every Three.js app needs.",
     "category": "threejs",
+    "tier": "advanced",
     "icon": "camera",
     "color": "purple",
     "tags": [
@@ -5753,6 +7777,7 @@ const CONCEPTS = [
     "title": "Models (GLTF & Blender)",
     "summary": "Loading and displaying 3D models exported from Blender.",
     "category": "threejs",
+    "tier": "advanced",
     "icon": "file-box",
     "color": "purple",
     "tags": [
@@ -5825,6 +7850,7 @@ const CONCEPTS = [
     "title": "Animations",
     "summary": "Keyframes, mixers, and animating objects in the scene.",
     "category": "threejs",
+    "tier": "advanced",
     "icon": "play",
     "color": "purple",
     "tags": [
@@ -5896,6 +7922,7 @@ const CONCEPTS = [
     "title": "Performance Optimization",
     "summary": "LOD, instancing, and keeping 60fps with complex scenes.",
     "category": "threejs",
+    "tier": "advanced",
     "icon": "gauge",
     "color": "purple",
     "tags": [
@@ -5962,309 +7989,13 @@ const CONCEPTS = [
     ]
   },
   {
-    "id": "git-github",
-    "slug": "git-github",
-    "num": "01",
-    "title": "Git & GitHub",
-    "summary": "Version control, branches, commits, and collaboration.",
-    "category": "tools",
-    "icon": "git-branch",
-    "color": "slate",
-    "tags": [
-      "git",
-      "github",
-      "branch",
-      "commit"
-    ],
-    "important": false,
-    "sources": [
-      {
-        "title": "GitHub Docs — Git",
-        "url": "https://docs.github.com/en/get-started/using-git"
-      }
-    ],
-    "intro": "Version control, branches, commits, and collaboration. Developer tools automate versioning, packaging, and deployment.",
-    "steps": [
-      {
-        "kicker": "Definition",
-        "title": "What is Git & GitHub?",
-        "desc": "Version control, branches, commits, and collaboration.",
-        "bullets": [
-          "Git tracks every code change — branches isolate features",
-          "npm/pnpm install packages; lockfiles pin exact versions",
-          "Docker packages app + dependencies into reproducible containers"
-        ],
-        "icon": "git-branch",
-        "visual": {
-          "type": "definition",
-          "icon": "git-branch",
-          "title": "Git & GitHub",
-          "bullets": [
-            "Git tracks every code change — branches isolate features",
-            "npm/pnpm install packages; lockfiles pin exact versions",
-            "Docker packages app + dependencies into reproducible containers"
-          ]
-        }
-      },
-      {
-        "kicker": "How it works",
-        "title": "How Git & GitHub works in practice",
-        "desc": "Git & GitHub works by applying clear rules in code. Version control, branches, commits, and collaboration. The mechanics depend on your language and framework, but the underlying idea stays the same across projects.",
-        "bullets": [
-          "git init → git add → git commit -m \"msg\"",
-          "git branch feature → git checkout feature",
-          "git push origin feature → open Pull Request on GitHub"
-        ],
-        "icon": "cog",
-        "visual": {
-          "type": "mechanism"
-        }
-      },
-      {
-        "kicker": "In your stack",
-        "title": "Where Git & GitHub fits in real projects",
-        "desc": "In your Next.js + MongoDB projects, git & github connects to features you build daily — API routes, React components, auth flows, and database queries. Recognizing the pattern helps you debug faster and design cleaner modules.",
-        "bullets": [
-          "GitHub for your topic repo",
-          "pnpm for faster installs",
-          "Docker for consistent deploy environments"
-        ],
-        "icon": "layers",
-        "visual": {
-          "type": "integration",
-          "category": "tools",
-          "title": "Git & GitHub"
-        }
-      }
-    ]
-  },
-  {
-    "id": "docker",
-    "slug": "docker",
-    "num": "02",
-    "title": "Docker",
-    "summary": "Containers for consistent dev and deployment environments.",
-    "category": "tools",
-    "icon": "container",
-    "color": "slate",
-    "tags": [
-      "docker",
-      "containers",
-      "images"
-    ],
-    "important": false,
-    "sources": [
-      {
-        "title": "Docker — Get started",
-        "url": "https://docs.docker.com/get-started/"
-      }
-    ],
-    "intro": "Containers for consistent dev and deployment environments. Developer tools automate versioning, packaging, and deployment.",
-    "steps": [
-      {
-        "kicker": "Definition",
-        "title": "What is Docker?",
-        "desc": "Containers for consistent dev and deployment environments.",
-        "bullets": [
-          "Git tracks every code change — branches isolate features",
-          "npm/pnpm install packages; lockfiles pin exact versions",
-          "Docker packages app + dependencies into reproducible containers"
-        ],
-        "icon": "container",
-        "visual": {
-          "type": "definition",
-          "icon": "container",
-          "title": "Docker",
-          "bullets": [
-            "Git tracks every code change — branches isolate features",
-            "npm/pnpm install packages; lockfiles pin exact versions",
-            "Docker packages app + dependencies into reproducible containers"
-          ]
-        }
-      },
-      {
-        "kicker": "How it works",
-        "title": "How Docker works in practice",
-        "desc": "A Dockerfile lists steps to build an image. docker build creates the image; docker run starts a container from it. Containers share the host kernel but have isolated filesystems and networks.",
-        "bullets": [
-          "Core mechanism behind docker",
-          "Common in tools & ecosystem work",
-          "See code example below when applicable"
-        ],
-        "icon": "cog",
-        "visual": {
-          "type": "mechanism"
-        }
-      },
-      {
-        "kicker": "In your stack",
-        "title": "Where Docker fits in real projects",
-        "desc": "In your Next.js + MongoDB projects, docker connects to features you build daily — API routes, React components, auth flows, and database queries. Recognizing the pattern helps you debug faster and design cleaner modules.",
-        "bullets": [
-          "GitHub for your topic repo",
-          "pnpm for faster installs",
-          "Docker for consistent deploy environments"
-        ],
-        "icon": "layers",
-        "visual": {
-          "type": "integration",
-          "category": "tools",
-          "title": "Docker"
-        }
-      }
-    ]
-  },
-  {
-    "id": "package-managers",
-    "slug": "package-managers",
-    "num": "03",
-    "title": "npm & pnpm",
-    "summary": "Installing dependencies and running scripts.",
-    "category": "tools",
-    "icon": "package",
-    "color": "slate",
-    "tags": [
-      "npm",
-      "pnpm",
-      "dependencies",
-      "lockfile"
-    ],
-    "important": false,
-    "sources": [],
-    "intro": "Installing dependencies and running scripts. Developer tools automate versioning, packaging, and deployment.",
-    "steps": [
-      {
-        "kicker": "Definition",
-        "title": "What is npm & pnpm?",
-        "desc": "Installing dependencies and running scripts.",
-        "bullets": [
-          "Git tracks every code change — branches isolate features",
-          "npm/pnpm install packages; lockfiles pin exact versions",
-          "Docker packages app + dependencies into reproducible containers"
-        ],
-        "icon": "package",
-        "visual": {
-          "type": "definition",
-          "icon": "package",
-          "title": "npm & pnpm",
-          "bullets": [
-            "Git tracks every code change — branches isolate features",
-            "npm/pnpm install packages; lockfiles pin exact versions",
-            "Docker packages app + dependencies into reproducible containers"
-          ]
-        }
-      },
-      {
-        "kicker": "How it works",
-        "title": "How npm & pnpm works in practice",
-        "desc": "npm & pnpm works by applying clear rules in code. Installing dependencies and running scripts. The mechanics depend on your language and framework, but the underlying idea stays the same across projects.",
-        "bullets": [
-          "Core mechanism behind npm & pnpm",
-          "Common in tools & ecosystem work",
-          "See code example below when applicable"
-        ],
-        "icon": "cog",
-        "visual": {
-          "type": "mechanism"
-        }
-      },
-      {
-        "kicker": "In your stack",
-        "title": "Where npm & pnpm fits in real projects",
-        "desc": "In your Next.js + MongoDB projects, npm & pnpm connects to features you build daily — API routes, React components, auth flows, and database queries. Recognizing the pattern helps you debug faster and design cleaner modules.",
-        "bullets": [
-          "GitHub for your topic repo",
-          "pnpm for faster installs",
-          "Docker for consistent deploy environments"
-        ],
-        "icon": "layers",
-        "visual": {
-          "type": "integration",
-          "category": "tools",
-          "title": "npm & pnpm"
-        }
-      }
-    ]
-  },
-  {
-    "id": "build-tools",
-    "slug": "build-tools",
-    "num": "04",
-    "title": "Build Tools",
-    "summary": "Vite, Webpack, Turbopack — bundling and dev servers.",
-    "category": "tools",
-    "icon": "hammer",
-    "color": "slate",
-    "tags": [
-      "vite",
-      "webpack",
-      "bundler",
-      "build"
-    ],
-    "important": false,
-    "sources": [],
-    "intro": "Vite, Webpack, Turbopack — bundling and dev servers. Developer tools automate versioning, packaging, and deployment.",
-    "steps": [
-      {
-        "kicker": "Definition",
-        "title": "What is Build Tools?",
-        "desc": "Vite, Webpack, Turbopack — bundling and dev servers.",
-        "bullets": [
-          "Git tracks every code change — branches isolate features",
-          "npm/pnpm install packages; lockfiles pin exact versions",
-          "Docker packages app + dependencies into reproducible containers"
-        ],
-        "icon": "hammer",
-        "visual": {
-          "type": "definition",
-          "icon": "hammer",
-          "title": "Build Tools",
-          "bullets": [
-            "Git tracks every code change — branches isolate features",
-            "npm/pnpm install packages; lockfiles pin exact versions",
-            "Docker packages app + dependencies into reproducible containers"
-          ]
-        }
-      },
-      {
-        "kicker": "How it works",
-        "title": "How Build Tools works in practice",
-        "desc": "Build Tools works by applying clear rules in code. Vite, Webpack, Turbopack — bundling and dev servers. The mechanics depend on your language and framework, but the underlying idea stays the same across projects.",
-        "bullets": [
-          "Core mechanism behind build tools",
-          "Common in tools & ecosystem work",
-          "See code example below when applicable"
-        ],
-        "icon": "cog",
-        "visual": {
-          "type": "mechanism"
-        }
-      },
-      {
-        "kicker": "In your stack",
-        "title": "Where Build Tools fits in real projects",
-        "desc": "In your Next.js + MongoDB projects, build tools connects to features you build daily — API routes, React components, auth flows, and database queries. Recognizing the pattern helps you debug faster and design cleaner modules.",
-        "bullets": [
-          "GitHub for your topic repo",
-          "pnpm for faster installs",
-          "Docker for consistent deploy environments"
-        ],
-        "icon": "layers",
-        "visual": {
-          "type": "integration",
-          "category": "tools",
-          "title": "Build Tools"
-        }
-      }
-    ]
-  },
-  {
     "id": "debugging-strategy",
     "slug": "debugging-strategy",
     "num": "01",
     "title": "Debugging Strategy",
     "summary": "Systematic approach — reproduce, isolate, fix, verify.",
     "category": "mindset",
+    "tier": "advanced",
     "icon": "bug",
     "color": "indigo",
     "tags": [
@@ -6336,6 +8067,7 @@ const CONCEPTS = [
     "title": "Code Readability",
     "summary": "Naming, structure, and writing code others (and future you) understand.",
     "category": "mindset",
+    "tier": "advanced",
     "icon": "book-open",
     "color": "indigo",
     "tags": [
@@ -6407,6 +8139,7 @@ const CONCEPTS = [
     "title": "Separation of Concerns",
     "summary": "Each module does one job — easier to test and change.",
     "category": "mindset",
+    "tier": "advanced",
     "icon": "split",
     "color": "indigo",
     "tags": [
@@ -6478,6 +8211,7 @@ const CONCEPTS = [
     "title": "Performance Thinking",
     "summary": "Measure first, optimize bottlenecks, avoid premature optimization.",
     "category": "mindset",
+    "tier": "advanced",
     "icon": "zap",
     "color": "indigo",
     "tags": [
@@ -6549,6 +8283,7 @@ const CONCEPTS = [
     "title": "Trade-offs",
     "summary": "Every design choice has costs — speed vs simplicity, consistency vs availability.",
     "category": "mindset",
+    "tier": "advanced",
     "icon": "scale",
     "color": "indigo",
     "tags": [
@@ -6620,12 +8355,15 @@ function getSearchIndex() {
   const items = [];
   CONCEPTS.forEach((concept) => {
     const cat = CONCEPT_CATEGORIES.find((c) => c.id === concept.category);
+    const tier = KNOWLEDGE_TIERS.find((t) => t.id === cat?.tier);
     const base = {
       conceptId: concept.id,
       conceptTitle: concept.title,
       conceptSlug: concept.slug,
       category: cat?.name || '',
       categoryId: concept.category,
+      tier: tier?.name || '',
+      tierId: cat?.tier || '',
       color: concept.color,
       icon: concept.icon,
       summary: concept.summary,
@@ -6685,13 +8423,24 @@ function getConceptsByCategory(categoryId) {
   return CONCEPTS.filter((c) => c.category === categoryId);
 }
 
+function getCategoriesByTier(tierId) {
+  return CONCEPT_CATEGORIES.filter((c) => c.tier === tierId).sort((a, b) => a.order - b.order);
+}
+
+function getConceptsByTier(tierId) {
+  const catIds = new Set(getCategoriesByTier(tierId).map((c) => c.id));
+  return CONCEPTS.filter((c) => catIds.has(c.category));
+}
+
 function getKnowledgeStats() {
   const topicCount = CONCEPTS.length;
   const categoryCount = CONCEPT_CATEGORIES.length;
+  const tierCount = KNOWLEDGE_TIERS.length;
+  const fundamentalCount = getConceptsByTier('fundamental').length;
   const stepCount = CONCEPTS.reduce((n, c) => {
     if (c.steps) return n + c.steps.length;
     if (c.sections) return n + c.sections.reduce((s, sec) => s + sec.steps.length, 0);
     return n;
   }, 0);
-  return { topicCount, categoryCount, stepCount };
+  return { topicCount, categoryCount, tierCount, fundamentalCount, stepCount };
 }

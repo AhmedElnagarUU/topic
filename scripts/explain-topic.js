@@ -3,7 +3,12 @@
  * No generic "how to learn" placeholders — actual concept explanations.
  */
 const CATEGORY_INTROS = {
-  'core-fundamentals': 'Core building blocks that every language shares. Strong fundamentals make frameworks easier to reason about.',
+  'fund-core-basics': 'Core building blocks that every language shares. Strong fundamentals make frameworks easier to reason about.',
+  'fund-logic-behavior': 'How code behaves beyond simple statements — visibility, memory of scope, and handling failures.',
+  'fund-memory-execution': 'What happens under the hood when your program runs — where data lives and how calls stack up.',
+  'fund-backend': 'Your first backend — Node.js and Express handle HTTP so your app can serve APIs and data.',
+  'fund-data-structures': 'Ways to organize data — each structure trades speed, memory, and simplicity differently.',
+  'fund-algorithms': 'Step-by-step procedures for solving problems — sorting, searching, and measuring efficiency.',
   javascript: 'JavaScript runtime behavior — how code executes, handles async work, and manages memory.',
   typescript: 'Static types on top of JavaScript — catching mistakes before runtime and documenting contracts.',
   react: 'React models UI as a function of state. Components re-render when data changes.',
@@ -65,10 +70,35 @@ function explainTopic(topic, category) {
 
 function buildDefinitionBullets(topic, cat) {
   const map = {
-    'core-fundamentals': [
+    'fund-core-basics': [
       'Foundation for reading and writing any programming language',
       'Shows up in every function, component, and API you build',
       `Related ideas: ${(topic.tags || []).slice(0, 3).join(', ')}`,
+    ],
+    'fund-logic-behavior': [
+      'Explains why code behaves unexpectedly when scope or errors are mishandled',
+      'Closures are the foundation for callbacks, hooks, and modules',
+      `Key terms: ${(topic.tags || []).join(', ')}`,
+    ],
+    'fund-memory-execution': [
+      'Primitives vs references — why object copies behave differently',
+      'Stack overflow and memory leaks start making sense with this model',
+      'Connects to the call stack and garbage collection in JavaScript',
+    ],
+    'fund-backend': [
+      'Express is the standard starting point for Node.js APIs',
+      'Every web app needs a server to handle HTTP requests',
+      'Routing and middleware are patterns you will use in every backend',
+    ],
+    'fund-data-structures': [
+      'Choosing the right structure affects speed and code clarity',
+      'Arrays and objects are built into JavaScript; others you implement or use from libraries',
+      `Structure: ${topic.title} — ${(topic.tags || []).slice(0, 2).join(', ')}`,
+    ],
+    'fund-algorithms': [
+      'Interview staples and real-world performance decisions',
+      'Big O lets you compare solutions before writing code',
+      `Algorithm: ${topic.title} — ${(topic.tags || []).slice(0, 2).join(', ')}`,
     ],
     javascript: [
       'Runs in browsers and Node.js — same language, different APIs',
@@ -131,7 +161,7 @@ function buildDefinitionBullets(topic, cat) {
       'Debug systematically: reproduce → isolate → fix → verify',
     ],
   };
-  return map[cat.id] || map['core-fundamentals'];
+  return map[cat.id] || map['fund-core-basics'];
 }
 
 function buildHowItWorksDesc(topic, cat) {
@@ -140,6 +170,19 @@ function buildHowItWorksDesc(topic, cat) {
     'control-flow': 'Programs branch based on conditions. if/else runs one path or another. switch matches a value against multiple cases — cleaner than long if chains when comparing one variable.',
     loops: 'Loops repeat a block until a condition is false (while) or for a set count (for). for...of iterates arrays; for...in iterates object keys. break exits early; continue skips to the next iteration.',
     functions: 'A function takes inputs (parameters), runs logic, and returns an output. Pure functions always return the same output for the same input and cause no side effects. Impure functions read/write external state — database calls, DOM updates, etc.',
+    'bubble-sort': 'Walk through the array comparing adjacent pairs. If left > right, swap them. After one pass, the largest element bubbles to the end. Repeat for n-1 passes. Simple to code but O(n²) — too slow for large datasets.',
+    'merge-sort': 'Split the array in half recursively until single elements. Merge sorted halves back together comparing heads. Always O(n log n) but needs extra memory for the temporary arrays.',
+    'quick-sort': 'Pick a pivot element. Partition: smaller elements left, larger right. Recursively sort each partition. Average O(n log n), worst O(n²) if pivot choice is bad.',
+    'linear-search': 'Start at index 0, compare each element to the target. Move forward until found or end of list. Works on unsorted data. Time: O(n) — every element might need checking.',
+    'binary-search': 'Requires a sorted array. Compare target to middle element. If too small, search left half; if too large, search right half. Repeat until found or range is empty. Time: O(log n).',
+    recursion: 'A recursive function solves a problem by calling itself on a smaller subproblem. Every recursion needs a base case (stop condition) and a recursive case (smaller input). Risk: stack overflow if base case is missing.',
+    routing: 'app.get("/users", handler) maps GET /users to a function. app.post("/users", handler) handles POST. Route params: /users/:id captures id in req.params.id.',
+    middleware: 'Middleware functions run in order: (req, res, next) => { ...; next(); }. express.json() parses JSON bodies. Custom middleware can log requests, check auth, or handle errors.',
+    'ds-stack': 'Stack operations: push (add to top), pop (remove from top), peek (view top). JavaScript arrays work as stacks with push/pop. Used for undo, browser history, call stack.',
+    'ds-queue': 'Queue operations: enqueue (add to back), dequeue (remove from front). Implement with array (shift is O(n)) or linked list (O(1)). Used for task scheduling, BFS traversal.',
+    'ds-linked-list': 'Each node holds a value and a next pointer. Insert/delete at known position is O(1). No random access — finding element is O(n). Foundation for stacks, queues, and trees.',
+    'ds-hash-map': 'Maps keys to values using a hash function. Average O(1) get/set/delete. JavaScript: Map for any key type, Object for string keys. Used for caches, indexes, frequency counts.',
+    'ds-set': 'Stores unique values only. add, has, delete are O(1) average. Use when you need fast membership checks or deduplication. JavaScript Set preserves insertion order.',
     'promises-async': 'A Promise represents a value that will exist later. .then() runs on success; .catch() on failure. async/await is syntactic sugar — await pauses the function until the Promise settles, without blocking the main thread.',
     jsx: 'JSX looks like HTML but compiles to JavaScript function calls: React.createElement(type, props, children). You must close tags, use className instead of class, and wrap multiple elements in a fragment <>...</>.',
     props: 'Props are read-only inputs passed from parent to child. <UserCard name="Ada" age={42} /> — the child receives { name: "Ada", age: 42 }. Changing props in the child does not affect the parent.',
@@ -200,10 +243,20 @@ function buildStackBullets(topic, cat) {
 
 function buildCodeExample(topic, cat) {
   const examples = {
-    'variables-data-types': 'const name = "Ada";\nlet count = 0;\nconst user = { id: 1, role: "admin" };',
+    variables: 'const name = "Ada";\nlet count = 0;\ncount = count + 1;',
+    'data-types': 'const text = "hello";\nconst num = 42;\nconst active = true;\nconst user = { id: 1, role: "admin" };',
     'control-flow': 'if (score >= 60) {\n  console.log("Pass");\n} else {\n  console.log("Fail");\n}',
     loops: 'for (const item of items) {\n  console.log(item);\n}',
     functions: 'function greet(name) {\n  return `Hello, ${name}`;\n}',
+    closures: 'function makeCounter() {\n  let n = 0;\n  return () => ++n;\n}',
+    'bubble-sort': 'for (let i = 0; i < arr.length; i++) {\n  for (let j = 0; j < arr.length - i - 1; j++) {\n    if (arr[j] > arr[j+1]) [arr[j], arr[j+1]] = [arr[j+1], arr[j]];\n  }\n}',
+    'binary-search': 'function search(arr, target) {\n  let lo = 0, hi = arr.length - 1;\n  while (lo <= hi) {\n    const mid = Math.floor((lo + hi) / 2);\n    if (arr[mid] === target) return mid;\n    if (arr[mid] < target) lo = mid + 1;\n    else hi = mid - 1;\n  }\n  return -1;\n}',
+    recursion: 'function factorial(n) {\n  if (n <= 1) return 1; // base case\n  return n * factorial(n - 1);\n}',
+    routing: 'app.get("/api/users/:id", (req, res) => {\n  res.json({ id: req.params.id });\n});',
+    middleware: 'app.use((req, res, next) => {\n  console.log(req.method, req.url);\n  next();\n});',
+    'express-basics': 'const express = require("express");\nconst app = express();\napp.get("/", (req, res) => res.send("Hello"));\napp.listen(3000);',
+    'ds-arrays': 'const nums = [1, 2, 3];\nnums.push(4);\nconst doubled = nums.map(n => n * 2);',
+    'ds-hash-map': 'const map = new Map();\nmap.set("name", "Ada");\nmap.get("name"); // "Ada"',
     'promises-async': 'async function fetchUser(id) {\n  const res = await fetch(`/api/users/${id}`);\n  return res.json();\n}',
     jsx: 'function Card({ title }) {\n  return <div className="card"><h2>{title}</h2></div>;\n}',
     props: '<Button label="Save" onClick={handleSave} />',

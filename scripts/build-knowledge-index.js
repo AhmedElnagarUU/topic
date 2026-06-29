@@ -7,33 +7,81 @@ const path = require('path');
 const { explainTopic } = require('./explain-topic');
 const TOPIC_SOURCES = require('./topic-sources');
 
+const TIERS = [
+  { id: 'fundamental', name: 'Fundamental', description: 'Core building blocks — programming basics, data structures, algorithms, and backend foundations. Master these first.', icon: 'blocks', color: 'cyan', order: 1 },
+  { id: 'middle', name: 'Middle', description: 'Frameworks and practical skills — JavaScript deep dives, React, Next.js, databases, and tools.', icon: 'layers', color: 'amber', order: 2 },
+  { id: 'advanced', name: 'Advanced', description: 'Architecture, security, performance, and engineering mindset — for production-grade systems.', icon: 'rocket', color: 'violet', order: 3 },
+];
+
 const CATEGORIES = [
-  { id: 'core-fundamentals', name: 'Core Programming Fundamentals', description: 'Variables, functions, scope, memory — the thinking skills behind every language.', icon: 'brain', color: 'cyan', order: 1 },
-  { id: 'javascript', name: 'JavaScript Deep Understanding', description: 'Execution context, event loop, async, closures — critical for React and Next.js.', icon: 'file-code', color: 'amber', order: 2 },
-  { id: 'typescript', name: 'TypeScript', description: 'Types, generics, narrowing — safer code for APIs and components.', icon: 'binary', color: 'violet', order: 3 },
-  { id: 'react', name: 'React', description: 'Components, state, hooks, server vs client — your frontend core.', icon: 'atom', color: 'sky', order: 4 },
-  { id: 'nextjs', name: 'Next.js', description: 'App Router, Server Actions, caching, auth — your main stack.', icon: 'triangle', color: 'indigo', order: 5 },
-  { id: 'backend', name: 'Backend & Web Architecture', description: 'MVC, services, HTTP, client/server, scaling — how backends are built.', icon: 'server', color: 'rose', order: 6 },
-  { id: 'database', name: 'Database (MongoDB & Concepts)', description: 'CRUD, schema design, indexing, aggregation — data that lasts.', icon: 'database', color: 'emerald', order: 7 },
-  { id: 'forms', name: 'Forms & Data Flow', description: 'FormData, validation, uploads, API sync — moving data through your app.', icon: 'form-input', color: 'orange', order: 8 },
-  { id: 'auth-security', name: 'Authentication & Security', description: 'Sessions, JWT, OAuth, cookies, XSS/CSRF — protecting users and data.', icon: 'shield-check', color: 'lime', order: 9 },
-  { id: 'ui-ux', name: 'UI / UX & Product Thinking', description: 'Responsive design, components, accessibility, user flows.', icon: 'layout', color: 'fuchsia', order: 10 },
-  { id: 'threejs', name: '3D & Advanced Frontend', description: 'Three.js, scenes, models, animations — interactive 3D on the web.', icon: 'box', color: 'purple', order: 11 },
-  { id: 'tools', name: 'Tools & Ecosystem', description: 'Git, Docker, package managers, build tools.', icon: 'wrench', color: 'slate', order: 12 },
-  { id: 'mindset', name: 'Software Engineering Mindset', description: 'Debugging, trade-offs, readability — junior to strong engineer.', icon: 'lightbulb', color: 'indigo', order: 13 },
+  // ── Fundamental tier ──────────────────────────────────────────────────────
+  { id: 'fund-core-basics', tier: 'fundamental', name: 'Core Programming Basics', description: 'Variables, data types, control flow, loops, and functions — the syntax every program is built from.', icon: 'code', color: 'cyan', order: 1 },
+  { id: 'fund-logic-behavior', tier: 'fundamental', name: 'Logic & Behavior', description: 'Scope, closures, and error handling — how code behaves beyond simple statements.', icon: 'brain', color: 'teal', order: 2 },
+  { id: 'fund-memory-execution', tier: 'fundamental', name: 'Memory & Execution', description: 'How programs store and run code — stack vs heap and what happens at runtime.', icon: 'cpu', color: 'emerald', order: 3 },
+  { id: 'fund-backend', tier: 'fundamental', name: 'Backend Fundamentals', description: 'Express.js basics — server setup, routing, and middleware for your first API.', icon: 'server', color: 'rose', order: 4 },
+  { id: 'fund-data-structures', tier: 'fundamental', name: 'Data Structures', description: 'Arrays, objects, stacks, queues, linked lists, hash maps, and sets — organizing data efficiently.', icon: 'database', color: 'sky', order: 5 },
+  { id: 'fund-algorithms', tier: 'fundamental', name: 'Algorithms', description: 'Sorting, searching, recursion, and Big O — the logic patterns behind efficient code.', icon: 'git-merge', color: 'indigo', order: 6 },
+
+  // ── Middle tier ─────────────────────────────────────────────────────────────
+  { id: 'javascript', tier: 'middle', name: 'JavaScript Deep Understanding', description: 'Execution context, event loop, async, closures — critical for React and Next.js.', icon: 'file-code', color: 'amber', order: 7 },
+  { id: 'typescript', tier: 'middle', name: 'TypeScript', description: 'Types, generics, narrowing — safer code for APIs and components.', icon: 'binary', color: 'violet', order: 8 },
+  { id: 'react', tier: 'middle', name: 'React', description: 'Components, state, hooks, server vs client — your frontend core.', icon: 'atom', color: 'sky', order: 9 },
+  { id: 'nextjs', tier: 'middle', name: 'Next.js', description: 'App Router, Server Actions, caching, auth — your main stack.', icon: 'triangle', color: 'indigo', order: 10 },
+  { id: 'backend', tier: 'middle', name: 'Backend & Web Architecture', description: 'MVC, services, HTTP, client/server, scaling — how backends are built.', icon: 'server', color: 'rose', order: 11 },
+  { id: 'database', tier: 'middle', name: 'Database (MongoDB & Concepts)', description: 'CRUD, schema design, indexing, aggregation — data that lasts.', icon: 'database', color: 'emerald', order: 12 },
+  { id: 'forms', tier: 'middle', name: 'Forms & Data Flow', description: 'FormData, validation, uploads, API sync — moving data through your app.', icon: 'form-input', color: 'orange', order: 13 },
+  { id: 'ui-ux', tier: 'middle', name: 'UI / UX & Product Thinking', description: 'Responsive design, components, accessibility, user flows.', icon: 'layout', color: 'fuchsia', order: 14 },
+  { id: 'tools', tier: 'middle', name: 'Tools & Ecosystem', description: 'Git, Docker, package managers, build tools.', icon: 'wrench', color: 'slate', order: 15 },
+
+  // ── Advanced tier ─────────────────────────────────────────────────────────
+  { id: 'auth-security', tier: 'advanced', name: 'Authentication & Security', description: 'Sessions, JWT, OAuth, cookies, XSS/CSRF — protecting users and data.', icon: 'shield-check', color: 'lime', order: 16 },
+  { id: 'threejs', tier: 'advanced', name: '3D & Advanced Frontend', description: 'Three.js, scenes, models, animations — interactive 3D on the web.', icon: 'box', color: 'purple', order: 17 },
+  { id: 'mindset', tier: 'advanced', name: 'Software Engineering Mindset', description: 'Debugging, trade-offs, readability — junior to strong engineer.', icon: 'lightbulb', color: 'indigo', order: 18 },
 ];
 
 const TOPICS = [
-  // 1 Core Fundamentals
-  { id: 'variables-data-types', title: 'Variables & Data Types', category: 'core-fundamentals', icon: 'variable', summary: 'Names for values — strings, numbers, booleans, objects, and how they behave.', tags: ['variables', 'types', 'string', 'number', 'boolean'] },
-  { id: 'control-flow', title: 'Control Flow', category: 'core-fundamentals', icon: 'git-branch', summary: 'if/else and switch — branching logic based on conditions.', tags: ['if', 'else', 'switch', 'conditions'] },
-  { id: 'loops', title: 'Loops', category: 'core-fundamentals', icon: 'repeat', summary: 'for and while loops — repeating work without copy-pasting code.', tags: ['for', 'while', 'iteration', 'loop'] },
-  { id: 'functions', title: 'Functions', category: 'core-fundamentals', icon: 'function-square', summary: 'Pure vs impure functions — reusable blocks of logic with inputs and outputs.', tags: ['functions', 'pure', 'impure', 'parameters'] },
-  { id: 'scope-closures', title: 'Scope & Closures', category: 'core-fundamentals', icon: 'braces', summary: 'Where variables live and how inner functions remember outer variables.', tags: ['scope', 'closures', 'lexical', 'important'], important: true },
-  { id: 'memory-basics', title: 'Memory Basics', category: 'core-fundamentals', icon: 'cpu', summary: 'Stack vs heap — how programs store values and objects in memory.', tags: ['stack', 'heap', 'memory', 'allocation'] },
-  { id: 'error-handling', title: 'Error Handling', category: 'core-fundamentals', icon: 'alert-circle', summary: 'try/catch, throwing errors, and failing gracefully instead of crashing.', tags: ['errors', 'try', 'catch', 'exceptions'] },
+  // ── Fundamental: Core Programming Basics ──────────────────────────────────
+  { id: 'variables', title: 'Variables', category: 'fund-core-basics', icon: 'variable', summary: 'Named containers for values — const, let, and when to use each.', tags: ['variables', 'const', 'let', 'assignment'] },
+  { id: 'data-types', title: 'Data Types', category: 'fund-core-basics', icon: 'hash', summary: 'Strings, numbers, booleans, null, undefined — primitives vs references.', tags: ['types', 'string', 'number', 'boolean', 'primitive'] },
+  { id: 'control-flow', title: 'Control Flow', category: 'fund-core-basics', icon: 'git-branch', summary: 'if/else and switch — branching logic based on conditions.', tags: ['if', 'else', 'switch', 'conditions'] },
+  { id: 'loops', title: 'Loops', category: 'fund-core-basics', icon: 'repeat', summary: 'for and while loops — repeating work without copy-pasting code.', tags: ['for', 'while', 'iteration', 'loop'] },
+  { id: 'functions', title: 'Functions', category: 'fund-core-basics', icon: 'function-square', summary: 'Reusable blocks of logic with inputs (parameters) and outputs (return values).', tags: ['functions', 'parameters', 'return', 'pure'] },
 
-  // 2 JavaScript
+  // ── Fundamental: Logic & Behavior ───────────────────────────────────────────
+  { id: 'scope', title: 'Scope', category: 'fund-logic-behavior', icon: 'braces', summary: 'Where variables are visible — global, function, and block scope.', tags: ['scope', 'lexical', 'block', 'global'] },
+  { id: 'closures', title: 'Closures', category: 'fund-logic-behavior', icon: 'lock', summary: 'Functions that remember variables from where they were created.', tags: ['closures', 'lexical', 'callbacks', 'important'], important: true },
+  { id: 'error-handling', title: 'Error Handling', category: 'fund-logic-behavior', icon: 'alert-circle', summary: 'try/catch, throwing errors, and failing gracefully instead of crashing.', tags: ['errors', 'try', 'catch', 'exceptions'] },
+
+  // ── Fundamental: Memory & Execution ───────────────────────────────────────
+  { id: 'stack-vs-heap', title: 'Stack vs Heap', category: 'fund-memory-execution', icon: 'cpu', summary: 'How programs store primitives on the stack and objects on the heap.', tags: ['stack', 'heap', 'memory', 'allocation'] },
+
+  // ── Fundamental: Backend Fundamentals ─────────────────────────────────────
+  { id: 'express-basics', title: 'Express.js Basics', category: 'fund-backend', icon: 'server', summary: 'Node.js web framework — what Express is and why backends use it.', tags: ['express', 'node', 'backend', 'framework'] },
+  { id: 'server-setup', title: 'Server Setup', category: 'fund-backend', icon: 'plug', summary: 'Creating an Express app, listening on a port, and handling requests.', tags: ['server', 'listen', 'port', 'setup'] },
+  { id: 'routing', title: 'Routing', category: 'fund-backend', icon: 'route', summary: 'Mapping URLs and HTTP methods to handler functions.', tags: ['routing', 'get', 'post', 'endpoints'] },
+  { id: 'middleware', title: 'Middleware', category: 'fund-backend', icon: 'filter', summary: 'Functions that run between request and response — logging, parsing, auth.', tags: ['middleware', 'express', 'next', 'pipeline'] },
+
+  // ── Fundamental: Data Structures ──────────────────────────────────────────
+  { id: 'ds-arrays', title: 'Array', category: 'fund-data-structures', icon: 'list', summary: 'Ordered collections — push, pop, map, filter, and index access.', tags: ['array', 'list', 'ordered', 'index'] },
+  { id: 'ds-objects', title: 'Object', category: 'fund-data-structures', icon: 'braces', summary: 'Key-value pairs for grouping related data — the most common structure in JS.', tags: ['object', 'key-value', 'properties', 'record'] },
+  { id: 'ds-stack', title: 'Stack', category: 'fund-data-structures', icon: 'layers', summary: 'Last-in, first-out (LIFO) — push and pop from the top only.', tags: ['stack', 'lifo', 'push', 'pop'] },
+  { id: 'ds-queue', title: 'Queue', category: 'fund-data-structures', icon: 'list-ordered', summary: 'First-in, first-out (FIFO) — enqueue at back, dequeue from front.', tags: ['queue', 'fifo', 'enqueue', 'dequeue'] },
+  { id: 'ds-linked-list', title: 'Linked List', category: 'fund-data-structures', icon: 'link', summary: 'Nodes chained by pointers — efficient insert/delete, no random access.', tags: ['linked list', 'nodes', 'pointers', 'chain'] },
+  { id: 'ds-hash-map', title: 'Hash Map', category: 'fund-data-structures', icon: 'table', summary: 'Key-value store with O(1) average lookup — Map and object in JavaScript.', tags: ['hash map', 'dictionary', 'map', 'lookup'] },
+  { id: 'ds-set', title: 'Set', category: 'fund-data-structures', icon: 'circle-dot', summary: 'Collection of unique values — no duplicates, fast membership checks.', tags: ['set', 'unique', 'membership', 'collection'] },
+
+  // ── Fundamental: Algorithms ───────────────────────────────────────────────
+  { id: 'sorting', title: 'Sorting', category: 'fund-algorithms', icon: 'arrow-up-down', summary: 'Arranging data in order — overview of why and when sorting matters.', tags: ['sorting', 'order', 'algorithms', 'overview'] },
+  { id: 'bubble-sort', title: 'Bubble Sort', category: 'fund-algorithms', icon: 'arrow-up-narrow-wide', summary: 'Compare adjacent pairs and swap — simple but O(n²), good for learning.', tags: ['bubble sort', 'swap', 'comparison', 'o(n²)'] },
+  { id: 'merge-sort', title: 'Merge Sort', category: 'fund-algorithms', icon: 'git-merge', summary: 'Divide array in half, sort each, merge — stable O(n log n) sort.', tags: ['merge sort', 'divide', 'conquer', 'o(n log n)'] },
+  { id: 'quick-sort', title: 'Quick Sort', category: 'fund-algorithms', icon: 'zap', summary: 'Pick pivot, partition, recurse — fast average case O(n log n).', tags: ['quick sort', 'pivot', 'partition', 'recursion'] },
+  { id: 'searching', title: 'Searching', category: 'fund-algorithms', icon: 'search', summary: 'Finding items in a collection — linear vs binary strategies.', tags: ['searching', 'find', 'lookup', 'overview'] },
+  { id: 'linear-search', title: 'Linear Search', category: 'fund-algorithms', icon: 'scan', summary: 'Check every element one by one — works on any list, O(n) time.', tags: ['linear search', 'sequential', 'o(n)', 'unsorted'] },
+  { id: 'binary-search', title: 'Binary Search', category: 'fund-algorithms', icon: 'binary', summary: 'Halve the search space each step — requires sorted data, O(log n).', tags: ['binary search', 'sorted', 'divide', 'o(log n)'] },
+  { id: 'recursion', title: 'Recursion', category: 'fund-algorithms', icon: 'repeat', summary: 'A function that calls itself — base case + recursive case.', tags: ['recursion', 'base case', 'self-call', 'stack'] },
+  { id: 'big-o', title: 'Time Complexity (Big O)', category: 'fund-algorithms', icon: 'trending-up', summary: 'How runtime grows with input size — O(1), O(n), O(n²), O(log n).', tags: ['big o', 'complexity', 'performance', 'important'], important: true },
+
+  // ── Middle: JavaScript ──────────────────────────────────────────────────────
   { id: 'execution-context', title: 'Execution Context', category: 'javascript', icon: 'play-circle', summary: 'How JavaScript creates an environment when code runs.', tags: ['execution', 'context', 'hoisting'] },
   { id: 'call-stack', title: 'Call Stack', category: 'javascript', icon: 'layers', summary: 'The stack of functions waiting to finish — last in, first out.', tags: ['call stack', 'stack overflow', 'functions'] },
   { id: 'event-loop', title: 'Event Loop', category: 'javascript', icon: 'refresh-cw', summary: 'How async callbacks, promises, and rendering share one thread.', tags: ['event loop', 'async', 'microtasks', 'important'], important: true },
@@ -138,12 +186,60 @@ const TOPICS = [
 ];
 
 const TOPIC_CONTENT = {
-  'variables-data-types': {
-    intro: 'Before loops, functions, or frameworks — you store and manipulate values. Understanding data types is the first mental model every programmer needs.',
+  variables: {
+    intro: 'Before loops, functions, or frameworks — you need names for values. Variables are the first concept every programmer learns.',
     steps: [
       { kicker: 'What they are', title: 'Variables name values', desc: 'A variable is a labeled box. You put a value in, read it later, or replace it. const means never reassign; let means you can change the reference.', bullets: ['const for values that won\'t be reassigned', 'let when the reference changes', 'Avoid var in modern JavaScript'], icon: 'variable' },
-      { kicker: 'Primitives', title: 'Primitive data types', desc: 'Strings (text), numbers, booleans (true/false), null, undefined, bigint, and symbol. Primitives are copied by value — changing a copy doesn\'t affect the original.', bullets: ['string — "hello"', 'number — 42, 3.14', 'boolean — true / false', 'null vs undefined — intentional empty vs missing'], icon: 'hash' },
-      { kicker: 'Objects', title: 'Objects and references', desc: 'Objects, arrays, and functions are reference types. Two variables can point to the same object — mutating one affects the other.', bullets: ['Objects group related data: { name, age }', 'Arrays are ordered lists', 'References matter when passing to functions'], icon: 'braces' },
+      { kicker: 'Declaration', title: 'Declaring variables', desc: 'const user = "Ada"; creates a binding. let count = 0; allows reassignment. Always declare before use — undeclared variables throw ReferenceError.', bullets: ['const name = value — cannot reassign', 'let name = value — can reassign', 'Naming: camelCase for variables'], icon: 'pen-line' },
+      { kicker: 'Assignment', title: 'Reading and updating', desc: 'Read a variable by using its name. Update with let: count = count + 1. const objects can have properties changed — only the binding is locked.', bullets: ['const obj = {}; obj.x = 1 — allowed', 'const obj = {}; obj = {} — error', 'Destructuring: const { name } = user'], icon: 'refresh-cw' },
+    ],
+  },
+  'data-types': {
+    intro: 'Every value in a program has a type. Understanding types prevents bugs and makes code predictable.',
+    steps: [
+      { kicker: 'Primitives', title: 'Primitive data types', desc: 'Strings (text), numbers, booleans (true/false), null, undefined, bigint, and symbol. Primitives are copied by value.', bullets: ['string — "hello"', 'number — 42, 3.14', 'boolean — true / false', 'null vs undefined — intentional empty vs missing'], icon: 'hash' },
+      { kicker: 'References', title: 'Objects and references', desc: 'Objects, arrays, and functions are reference types. Two variables can point to the same object — mutating one affects the other.', bullets: ['Objects group related data: { name, age }', 'Arrays are ordered lists', 'typeof operator checks type'], icon: 'braces' },
+      { kicker: 'Coercion', title: 'Type coercion basics', desc: 'JavaScript sometimes converts types automatically: "5" + 1 = "51" (string concat). Use === for strict equality without coercion.', bullets: ['== coerces types — avoid it', '=== compares value and type', 'Number("42") explicit conversion'], icon: 'alert-triangle' },
+    ],
+  },
+  closures: {
+    intro: 'A closure is when an inner function keeps access to outer variables even after the outer function has returned. This is one of the most important concepts in JavaScript.',
+    steps: [
+      { kicker: 'Definition', title: 'Functions remember their birthplace', desc: 'A closure = inner function + the variables from its outer scope. The inner function "closes over" those variables.', bullets: ['Inner function + outer variables = closure', 'Variables persist after outer function returns', 'Every function in JS creates a closure'], icon: 'lock' },
+      { kicker: 'Example', title: 'Closure in action', desc: 'function makeCounter() { let n = 0; return () => ++n; } — each call to the returned function remembers n.', bullets: ['Factory functions use closures', 'Event handlers capture variables', 'React hooks rely on closures'], icon: 'code' },
+      { kicker: 'Gotchas', title: 'Common closure bugs', desc: 'var in a loop + setTimeout prints the same value every time. Use let (block scope) or an IIFE to capture the right value per iteration.', bullets: ['Loop + var + async = classic bug', 'Use let in for loops', 'Closures enable private state'], icon: 'bug' },
+    ],
+  },
+  scope: {
+    intro: 'Scope decides where variables are visible. Lexical scope means the structure of your code determines what each function can access.',
+    steps: [
+      { kicker: 'Levels', title: 'Global, function, and block scope', desc: 'Global — entire file. Function — inside a function declaration. Block — inside { } with let/const.', bullets: ['Global scope — entire file', 'Function scope — inside a function', 'Block scope — inside { } with let/const'], icon: 'braces' },
+      { kicker: 'Rules', title: 'Inner sees outer, not vice versa', desc: 'Inner scopes can read variables from outer scopes. Outer scopes cannot see variables declared inside inner blocks.', bullets: ['Shadowing: inner let x hides outer x', 'const/let are block-scoped', 'var is function-scoped (legacy)'], icon: 'eye' },
+      { kicker: 'Practical', title: 'Why scope matters', desc: 'Scope prevents naming collisions, enables encapsulation, and is the foundation for closures and modules.', bullets: ['Keep variables as local as possible', 'Avoid polluting global scope', 'Modules use scope for privacy'], icon: 'shield' },
+    ],
+  },
+  'stack-vs-heap': {
+    intro: 'Programs need memory. Primitives live on the stack; objects live on the heap. Understanding this explains references, garbage collection, and stack overflows.',
+    steps: [
+      { kicker: 'Stack', title: 'The call stack', desc: 'Stack stores primitives and function call frames. Fast, fixed-size, LIFO — last function in, first out.', bullets: ['Primitives: number, boolean, string (small)', 'Function calls push frames onto stack', 'Stack overflow = too many nested calls'], icon: 'layers' },
+      { kicker: 'Heap', title: 'The heap', desc: 'Objects, arrays, and closures live on the heap. Variables on the stack hold a reference (pointer) to heap memory.', bullets: ['Objects allocated on heap', 'Stack variable holds reference', 'Garbage collector frees unused heap memory'], icon: 'cpu' },
+      { kicker: 'Implications', title: 'Why this matters in JS', desc: 'Copying an object copies the reference, not the object. Two variables can point to the same heap object.', bullets: ['const a = { x: 1 }; const b = a — same object', 'Spread {...obj} creates shallow copy', 'Deep clone needed for nested objects'], icon: 'copy' },
+    ],
+  },
+  'big-o': {
+    intro: 'Big O describes how an algorithm\'s runtime or memory grows as input size increases. It\'s the language engineers use to compare solutions.',
+    steps: [
+      { kicker: 'Notation', title: 'What Big O means', desc: 'O(1) = constant time regardless of input size. O(n) = grows linearly. O(n²) = grows with square of input. O(log n) = halves problem each step.', bullets: ['O(1) — array index access', 'O(n) — linear search', 'O(log n) — binary search', 'O(n²) — nested loops / bubble sort'], icon: 'trending-up' },
+      { kicker: 'Compare', title: 'Ranking common complexities', desc: 'O(1) < O(log n) < O(n) < O(n log n) < O(n²) < O(2^n). Prefer lower complexity when data grows.', bullets: ['10,000 items: O(n²) = 100M ops', 'Same data: O(n log n) ≈ 130K ops', 'Always consider worst case'], icon: 'bar-chart' },
+      { kicker: 'Practice', title: 'Spot complexity in code', desc: 'Single loop = O(n). Nested loop = O(n²). Halving each step = O(log n). Hash map lookup = O(1) average.', bullets: ['Count loops and nesting depth', 'Sorting usually O(n log n) minimum', 'Space complexity counts extra memory'], icon: 'search' },
+    ],
+  },
+  'express-basics': {
+    intro: 'Express is the most popular Node.js web framework. It handles HTTP requests, routing, and middleware so you can build APIs and backends quickly.',
+    steps: [
+      { kicker: 'What it is', title: 'Express on Node.js', desc: 'Node.js runs JavaScript on the server. Express adds routing, middleware, and request/response helpers on top of Node\'s http module.', bullets: ['npm install express', 'Minimal API in a few lines', 'Used by millions of production apps'], icon: 'server' },
+      { kicker: 'Core pieces', title: 'App, request, response', desc: 'const app = express() creates an application. Each route handler receives req (request) and res (response) objects.', bullets: ['req.params — URL parameters', 'req.body — POST JSON/form data', 'res.json() — send JSON response'], icon: 'package' },
+      { kicker: 'First app', title: 'Hello World server', desc: 'const express = require("express"); const app = express(); app.get("/", (req, res) => res.send("Hello")); app.listen(3000);', bullets: ['listen(PORT) starts the server', 'Default port 3000 for development', 'Use nodemon for auto-restart'], icon: 'play' },
     ],
   },
   'event-loop': {
@@ -158,7 +254,7 @@ const TOPIC_CONTENT = {
     intro: 'Scope decides where variables are visible. Closures let functions remember variables from where they were created — not where they were called.',
     steps: [
       { kicker: 'Scope', title: 'Lexical scope', desc: 'Variables are visible inside the block or function where they are declared. Inner scopes can see outer scopes; outer scopes cannot see inner ones.', bullets: ['Global scope — entire file', 'Function scope — inside a function', 'Block scope — inside { } with let/const'], icon: 'braces' },
-      { kicker: 'Closure', title: 'Functions remember their birthplace', desc: 'A closure is when an inner function keeps access to outer variables even after the outer function has returned. That\'s how callbacks, factories, and private state work.', bullets: ['Inner function + outer variables = closure', 'Used in event handlers and React hooks', 'Common interview topic for good reason'], icon: 'lock' },
+      { kicker: 'Closure', title: 'Functions remember their birthplace', desc: 'A closure is when an inner function keeps access to outer variables even after the outer function has returned.', bullets: ['Inner function + outer variables = closure', 'Used in event handlers and React hooks', 'Common interview topic for good reason'], icon: 'lock' },
       { kicker: 'Practical', title: 'Why closures matter in real code', desc: 'React hooks rely on closures. Module patterns use closures for privacy. Mistakes with closures in loops (var in for) are a classic bug — use let or IIFE.', bullets: ['useState closures in React', 'Private variables in modules', 'Loop + setTimeout classic bug'], icon: 'code' },
     ],
   },
@@ -190,6 +286,7 @@ function buildConcept(topic, index) {
     title: topic.title,
     summary: topic.summary,
     category: topic.category,
+    tier: cat.tier,
     icon: topic.icon,
     color: cat.color,
     tags: topic.tags,
@@ -215,8 +312,10 @@ CATEGORIES.forEach((cat) => {
 const output = `/**
  * Concept Lab — Programming Knowledge Index
  * Auto-generated from scripts/build-knowledge-index.js
- * ${concepts.length} topics across ${CATEGORIES.length} categories
+ * ${concepts.length} topics across ${CATEGORIES.length} categories in ${TIERS.length} tiers
  */
+const KNOWLEDGE_TIERS = ${JSON.stringify(TIERS, null, 2)};
+
 const CONCEPT_CATEGORIES = ${JSON.stringify(CATEGORIES, null, 2)};
 
 const CONCEPTS = ${JSON.stringify(concepts, null, 2)};
@@ -226,12 +325,15 @@ function getSearchIndex() {
   const items = [];
   CONCEPTS.forEach((concept) => {
     const cat = CONCEPT_CATEGORIES.find((c) => c.id === concept.category);
+    const tier = KNOWLEDGE_TIERS.find((t) => t.id === cat?.tier);
     const base = {
       conceptId: concept.id,
       conceptTitle: concept.title,
       conceptSlug: concept.slug,
       category: cat?.name || '',
       categoryId: concept.category,
+      tier: tier?.name || '',
+      tierId: cat?.tier || '',
       color: concept.color,
       icon: concept.icon,
       summary: concept.summary,
@@ -291,15 +393,26 @@ function getConceptsByCategory(categoryId) {
   return CONCEPTS.filter((c) => c.category === categoryId);
 }
 
+function getCategoriesByTier(tierId) {
+  return CONCEPT_CATEGORIES.filter((c) => c.tier === tierId).sort((a, b) => a.order - b.order);
+}
+
+function getConceptsByTier(tierId) {
+  const catIds = new Set(getCategoriesByTier(tierId).map((c) => c.id));
+  return CONCEPTS.filter((c) => catIds.has(c.category));
+}
+
 function getKnowledgeStats() {
   const topicCount = CONCEPTS.length;
   const categoryCount = CONCEPT_CATEGORIES.length;
+  const tierCount = KNOWLEDGE_TIERS.length;
+  const fundamentalCount = getConceptsByTier('fundamental').length;
   const stepCount = CONCEPTS.reduce((n, c) => {
     if (c.steps) return n + c.steps.length;
     if (c.sections) return n + c.sections.reduce((s, sec) => s + sec.steps.length, 0);
     return n;
   }, 0);
-  return { topicCount, categoryCount, stepCount };
+  return { topicCount, categoryCount, tierCount, fundamentalCount, stepCount };
 }
 `;
 
